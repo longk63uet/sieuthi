@@ -18,6 +18,11 @@
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
                             <input type="text" class="form-control" name="product_price" id="exampleInputEmail1" placeholder="Nhập tên giá tiền sản phẩm">
                         </div>
+                        
+                         <div class="form-group">
+                            <label for="exampleInputEmail1">SL sản phẩm</label>
+                            <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="exampleInputEmail1" placeholder="Điền số lượng">
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
                             <input type="file" class="form-control" name="product_image" id="exampleInputEmail1" >

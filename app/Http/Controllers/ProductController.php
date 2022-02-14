@@ -10,7 +10,16 @@ session_start();
 
 class ProductController extends Controller
 {
+    public function authLogin(){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
+            return Redirect::to('dashboard');
+        }else{
+            return Redirect::to('admin')->send();
+        }
+    }
     public function addProduct(){
+        $this->AuthLogin();
         $cate = DB::table('category')->orderBy('category_id','desc')->get();
         return view('admin.add_product',['cate'=>$cate]);
     }
@@ -23,19 +32,36 @@ class ProductController extends Controller
 
     public function deleteProduct($product_id ){
         $data = DB::table('product')->where('product_id', $product_id)->delete();
-        Session::put('message', "Xóa danh mục sản phẩm thành công");
+        Session::put('message', "Xóa sản phẩm thành công");
         return Redirect::to('/all-product');
     }
 
     public function updateProduct(Request $request, $product_id ){
         $data = array();
-        $data['product_name'] = $request->product;
+        $data['product_name'] = $request->product_name;
+        $data['product_quantity'] = $request->product_quantity;
+        
+        $data['product_price'] = $request->product_price;
         $data['product_detail'] = $request->product_detail;
+        $data['product_content'] = $request->product_content;
+        $data['category_id'] = $request->product_cate;
         $data['product_status'] = $request->product_status;
-
-        DB::table('product')->where('product_id', $product_id)->update($data);
-        Session::put('message', "Cập nhật danh mục sản phẩm thành công");
-        return Redirect::to('/all-product');
+        $get_image = $request->file('product_image');
+        
+        if($get_image){
+                    $get_name_image = $get_image->getClientOriginalName();
+                    $name_image = current(explode('.',$get_name_image));
+                    $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+                    $get_image->move('public/uploads/product',$new_image);
+                    $data['product_image'] = $new_image;
+                    DB::table('product')->where('product_id',$product_id)->update($data);
+                    Session::put('message','Cập nhật sản phẩm thành công');
+                    return Redirect::to('all-product');
+        }
+            
+        DB::table('product')->where('product_id',$product_id)->update($data);
+        Session::put('message','Cập nhật sản phẩm thành công');
+        return Redirect::to('all-product');
 
     }
 
@@ -43,6 +69,8 @@ class ProductController extends Controller
         $data = array();
         $data['product_name'] = $request->product_name;
         $data['product_detail'] = $request->product_detail;
+        $data['product_quantity'] = $request->product_quantity;
+        // 
         $data['product_price'] = $request->product_price;
         $data['product_content'] = $request->product_content;
         $data['category_id'] = $request->category_id;
@@ -57,7 +85,7 @@ class ProductController extends Controller
             $data['product_image'] = $new_image;
             DB::table('product')->insert($data);
             Session::put('message','Thêm sản phẩm thành công');
-            return Redirect::to('add-product');
+            return Redirect::to('all-product');
         }
         $data['product_image'] = '';
         DB::table('product')->insert($data);
@@ -70,5 +98,14 @@ class ProductController extends Controller
         ->join('category','category.category_id','=','product.category_id')
         ->orderby('product.product_id','desc')->paginate(5);
     	return view('admin.all_product')->with('all_product', $all_product);
+    }
+//frontend
+    public function detailProduct($product_id){
+        $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
+        $product = DB::table('product')
+        ->join('category','category.category_id','=','product.category_id')
+        ->where('product.product_id',$product_id)->get();
+        $
+        return view('pages.detail_product',['cate'=>$cate, 'product'=>$product]);
     }
 }

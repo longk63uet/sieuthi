@@ -17,12 +17,16 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
+//danh muc san pham
+Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
+//chi tiet san pham
+Route::get('/chi-tiet/{product_id}', [ProductController::class, 'detailProduct']);
 
 
 //Admin
-Route::get('/admin', [AdminController::class, 'index']);
+Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin-dashboard', [AdminController::class, 'dashboard']);
