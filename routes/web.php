@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoryProductController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,10 @@ use App\Http\Controllers\ProductController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//home
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('/tim-kiem', [HomeController::class, 'search']);
+
 
 //danh muc san pham
 Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
@@ -46,3 +50,25 @@ Route::get('/delete-product/{product_id}', [ProductController::class, 'deletePro
 Route::post('/save-product', [ProductController::class, 'saveProduct']);
 Route::post('/update-product/{product_id}', [ProductController::class, 'updateProduct']);
 Route::get('/all-product', [ProductController::class, 'allProduct']);
+
+
+//add to cart
+Route::post('/update-cart-quantity',[CartController::class, 'updateCartQuantity']);
+Route::post('/update-cart',[CartController::class, 'updateCart']);
+Route::post('/save-cart',[CartController::class, 'saveCart']);
+Route::post('/add-cart-ajax',[CartController::class, 'addCartAjax']);
+Route::get('/show-cart',[CartController::class, 'showCart']);
+Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
+Route::get('/delete-cart',[CartController::class, 'deleteCart']);
+
+//checkout
+Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);
+Route::post('/add-customer',[CheckoutController::class, 'addCustomer']);
+Route::get('/checkout',[CheckoutController::class, 'checkout']);
+Route::post('/save-checkout-customer',[CheckoutController::class, 'saveCheckout']);
+Route::post('/payment',[CheckoutController::class, 'payment']);
+Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
+Route::post('/login-customer',[CheckoutController::class, 'loginCustomer']);
+
+//
+

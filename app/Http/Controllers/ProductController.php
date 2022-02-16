@@ -105,7 +105,15 @@ class ProductController extends Controller
         $product = DB::table('product')
         ->join('category','category.category_id','=','product.category_id')
         ->where('product.product_id',$product_id)->get();
-        $
-        return view('pages.detail_product',['cate'=>$cate, 'product'=>$product]);
+        foreach($product as $pro){
+            $related = $pro->category_id;
+        }
+        
+        $relatedProduct = DB::table('product')
+        ->join('category','category.category_id','=','product.category_id')
+        ->where('product.category_id',$related)
+        ->whereNotIn('product.product_id',[$product_id])
+        ->limit(4)->get();
+        return view('pages.detail_product',['cate'=>$cate, 'product'=>$product,'relatedProduct'=>$relatedProduct]);
     }
 }

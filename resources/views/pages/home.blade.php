@@ -27,12 +27,12 @@
                         <ul class="featured__item__pic__hover">
                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="{{url('/add-to-cart/'.$pro->product_id)}}" data-url="{{url('/add-to-cart/'.$pro->product_id)}}" class="add-to-cart"><i class="fa fa-shopping-cart "></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
                         <h6><a href="{{url('/chi-tiet/'.$pro->product_id)}}">{{$pro->product_name}}</a></h6>
-                        <h5>{{$pro->product_price}}</h5>
+                        <h5>{{number_format($pro->product_price)}} VNĐ</h5>
                     </div>
                 </div>
             
@@ -311,3 +311,28 @@
 </section>
 <!-- Blog Section End -->
 @endsection
+
+{{-- <script>
+    function addToCart(event) {
+        event.preventDefault();
+        let urlCart = $(this).data('url');
+        $.ajax({
+            type: "GET",
+            url: urlCart,
+            dataType: 'json',
+            success: function(data){
+
+            },
+            error: function(){
+
+            }
+
+        }
+
+        )
+
+    }
+    $(function () {
+        $('.add-to-cart').on('click', addToCart)
+    })
+</script> --}}

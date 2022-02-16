@@ -23,11 +23,13 @@ class CategoryProductController extends Controller
     }
 
     public function editCategory(Request $request, $category_id ){
+        $this->AuthLogin();
         $data = DB::table('category')->where('category_id', $category_id)->get();
         return view('admin.edit_category',['data' => $data]);
     }
 
     public function deleteCategory($category_id ){
+        $this->AuthLogin();
         $data = DB::table('category')->where('category_id', $category_id)->delete();
         Session::put('message', "Xóa danh mục sản phẩm thành công");
         return Redirect::to('/all-category');
