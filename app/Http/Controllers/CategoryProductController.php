@@ -10,27 +10,28 @@ session_start();
 class CategoryProductController extends Controller
 {
     //admin
-    public function authLogin(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
-            return Redirect::to('dashboard');
-        }else{
-            return Redirect::to('admin')->send();
-        }
-    }
+    // public function authLogin(){
+    //     $admin_id = Session::get('admin_id');
+    //     if($admin_id){
+    //         return Redirect::to('dashboard');
+    //     }else{
+    //         return Redirect::to('admin')->send();
+    //     }
+    // }
     public function addCategory(){
-        $this->AuthLogin();
+        // $this->AuthLogin();
+        dd(Session::get('admin_id'));
         return view('admin.add_category');
     }
 
     public function editCategory(Request $request, $category_id ){
-        $this->AuthLogin();
+        // $this->AuthLogin();
         $data = DB::table('category')->where('category_id', $category_id)->get();
         return view('admin.edit_category',['data' => $data]);
     }
 
     public function deleteCategory($category_id ){
-        $this->AuthLogin();
+        // $this->AuthLogin();
         $data = DB::table('category')->where('category_id', $category_id)->delete();
         Session::put('message', "Xóa danh mục sản phẩm thành công");
         return Redirect::to('/all-category');

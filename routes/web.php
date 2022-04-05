@@ -28,10 +28,12 @@ use Illuminate\Support\Facades\Auth;
 ///////////////////////admin/////////////////////////////
 
 //dashboard
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/dashboard', [AdminController::class, 'showDashboard']);
-Route::get('/logout', [AdminController::class, 'logout']);
-Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
+// Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::middleware('auth')->group(function () {
+Route::get('/dashboard', [AdminController::class, 'showDashboard'])->middleware('checklogin');
+});
+// Route::get('/logout', [AdminController::class, 'logout']);
+// Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
 
 //category
 Route::get('/add-category', [CategoryProductController::class, 'addCategory']);
@@ -105,7 +107,7 @@ Route::post('/login-customer',[CheckoutController::class, 'loginCustomer']);
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 
 //get located

@@ -48,20 +48,21 @@
             <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                 <img alt="" src="images/2.png">
                 <span class="username">
-					@php
-						$name = Session::get('admin_name');
-						if($name){
-							echo $name;
-							Session::put('name','');
-						}
-					@endphp
+					{{Auth::user()->name}}
 				</span>
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Thông tin cá nhân</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Thiết lập</a></li>
-                <li><a href="{{url('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
+                <li> <a href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa fa-sign-out"> Log out</i>
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                    class="d-none">
+                    @csrf
+                </form></li>
             </ul>
         </li>
         <!-- user login dropdown end -->
