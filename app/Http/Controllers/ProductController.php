@@ -10,6 +10,7 @@ session_start();
 
 class ProductController extends Controller
 {
+    //admin
     public function authLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id){
@@ -99,7 +100,9 @@ class ProductController extends Controller
         ->orderby('product.product_id','desc')->paginate(5);
     	return view('admin.all_product')->with('all_product', $all_product);
     }
-//frontend
+    
+    //user
+
     public function detailProduct($product_id){
         $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
         $product = DB::table('product')

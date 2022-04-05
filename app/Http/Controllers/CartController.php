@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
-use Gloudemans\Shoppingcart\Cart;
+use App\Models\Coupon;
 session_start();
 
 class CartController extends Controller
@@ -20,7 +20,6 @@ class CartController extends Controller
         $product_image = $request->product_image;
         $cart = Session::get('cart');
         $product = DB::table('product')->where('product_id', $productId)->get();
-    
     
        $cart = array();
        if(isset($cart['id'])){
@@ -37,7 +36,6 @@ class CartController extends Controller
     }
     Session::put('cart', $cart);
 
-        
     return Redirect::to('/show-cart');
     }
 
@@ -53,6 +51,8 @@ class CartController extends Controller
         return Redirect::to('/');
     }
 
+    
+
     public function addCart($product_id)
     {
        $product = DB::table('product')->where('product_id', $product_id)->get();
@@ -63,7 +63,6 @@ class CartController extends Controller
            $product_price = $pro->product_price;
            $product_image = $pro->product_image;
        }
-       
 
        $cart = array();
 

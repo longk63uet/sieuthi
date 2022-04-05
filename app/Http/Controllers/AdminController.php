@@ -11,6 +11,7 @@ session_start();
 
 class AdminController extends Controller
 {
+    //Xác thực đăng nhập
     public function authLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id){
@@ -29,11 +30,15 @@ class AdminController extends Controller
         return view('admin.dashboard');
     }
 
-    public function dashboard(Request $request){
+    public function loginDashboard(Request $request){
+        $validated = $request->validate([
+            'email' => 'required||max:255',
+            'password' => 'required',
+        ]);
         $admin_email = $request->email;
         $admin_password = md5($request->password);
 
-        $result = DB::table('admin_table')->where('email', $admin_email )->where('password', $admin_password )->first();
+        $result = DB::table('users')->where('email', $admin_email )->where('password', $admin_password )->first();
         if($result){
             Session::put('admin_name', $result->name);
             Session::put('admin_id', $result->id);
@@ -50,4 +55,5 @@ class AdminController extends Controller
         Session::put('admin_id', null );
         return Redirect::to('/admin');
     }
+    
 }

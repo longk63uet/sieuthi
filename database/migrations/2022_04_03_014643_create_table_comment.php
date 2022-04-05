@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->integer('product_quantity');
+        Schema::table('comment', function (Blueprint $table) {
+            //
         });
     }
 
@@ -25,6 +25,14 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::create('comment', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->integer('product_id');
+            $table->integer('user_id');
+            $table->text('comment');
+            $table->integer('star');
+
+        });
     }
 };

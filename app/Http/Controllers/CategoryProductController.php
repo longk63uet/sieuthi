@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 session_start();
 class CategoryProductController extends Controller
 {
+    //admin
     public function authLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id){
@@ -62,7 +63,9 @@ class CategoryProductController extends Controller
         $data = DB::table('category')->get();
         return view('admin.all_category', ['data' => $data]);
     }
-//frontend
+
+
+//user
     public function showCategoryHome($category_id){
         $cate_product = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
         $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->get();

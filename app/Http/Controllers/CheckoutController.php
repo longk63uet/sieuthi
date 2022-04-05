@@ -44,8 +44,24 @@ class CheckoutController extends Controller
     	$shipping_id = DB::table('shipping')->insertGetId($data);
 
     	Session::put('shipping_id',$shipping_id);
-    	
-		
+
+        // payment
+
+        $data = array();
+        $data['payment_method'] = $request->payment_option;
+        $data['payment_status'] = 'Đang chờ xử lý';
+        $payment_id = DB::table('payment')->insertGetId($data);
+
+        //insert order
+        $order_data = array();
+        $order_data['customer_id'] = Session::get('customer_id');
+        $order_data['shipping_id'] = Session::get('shipping_id');
+        $order_data['payment_id'] = $payment_id;
+        $order_data['order_total'] = Cart::total();
+        $order_data['order_status'] = 'Đang chờ xử lý';
+        $order_id = DB::table('order')->insertGetId($order_data);
+
+        //insert order_details
 
     	return Redirect::to('/payment');
 
@@ -54,6 +70,7 @@ class CheckoutController extends Controller
     public function payment(){
         return view('payment');
     }
+    
     public function logoutCheckout(){
     	Session::forget('customer_id');
     	return Redirect::to('/');
@@ -74,4 +91,5 @@ class CheckoutController extends Controller
         Session::save();
 
     }
+	
 }

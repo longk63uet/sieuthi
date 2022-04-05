@@ -127,8 +127,8 @@ $total = 0;
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Mã giảm giá</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Nhập mã giảm giá">
+                            <form action="{{url('check-coupon')}}" method="POST">
+                                <input type="text" name="coupon" placeholder="Nhập mã giảm giá">
                                 <button type="submit" class="site-btn">Áp dụng</button>
                             </form>
                         </div>

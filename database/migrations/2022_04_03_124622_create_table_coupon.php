@@ -13,8 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('product', function (Blueprint $table) {
-            $table->integer('product_quantity');
+        Schema::create('coupon', function (Blueprint $table) {
+            $table->id();
+            $table->timestamps();
+            $table->string('coupon_name');
+            $table->integer('coupon_code');
+            $table->integer('coupon_quantity');
+            $table->integer('coupon_discount');
+            $table->integer('coupon_condition');
         });
     }
 
@@ -25,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product');
+        Schema::dropIfExists('table_coupon');
     }
 };

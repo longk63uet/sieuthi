@@ -30,7 +30,7 @@
 <header class="header fixed-top clearfix">
 <!--logo start-->
 <div class="brand">
-    <a href="index.html" class="logo">
+    <a href="{{url('/dashboard')}}" class="logo">
         DashBoard
     </a>
     <div class="sidebar-toggle-box">
@@ -78,9 +78,39 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="index.html">
+                    <a class="active" href="{{url('/dashboard')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Tổng quan</span>
+                    </a>
+                </li>
+				<li>
+                    <a class="active" href="{{url('/manage-order')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý đơn hàng</span>
+                    </a>
+                </li>
+				<li>
+                    <a class="active" href="{{url('/manage-user')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý người dùng</span>
+                    </a>
+                </li>
+				<li>
+                    <a class="active" href="{{url('/manage-banner')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý Banner quảng cáo</span>
+                    </a>
+                </li>
+				<li>
+                    <a class="active" href="{{url('/manage-blog')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý Blogs</span>
+                    </a>
+                </li>
+				<li>
+                    <a class="active" href="{{url('/manage-coupon')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý mã giảm giá</span>
                     </a>
                 </li>
                 <li class="sub-menu">

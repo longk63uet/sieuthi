@@ -7,7 +7,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\CouponController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\OrderController;
 
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,22 +24,14 @@ use App\Http\Controllers\CheckoutController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//home
-Route::get('/', [HomeController::class, 'index'])->name('index');
-Route::post('/tim-kiem', [HomeController::class, 'search']);
 
+///////////////////////admin/////////////////////////////
 
-//danh muc san pham
-Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
-//chi tiet san pham
-Route::get('/chi-tiet/{product_id}', [ProductController::class, 'detailProduct']);
-
-
-//Admin
+//dashboard
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
-Route::post('/admin-dashboard', [AdminController::class, 'dashboard']);
+Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
 
 //category
 Route::get('/add-category', [CategoryProductController::class, 'addCategory']);
@@ -51,17 +49,47 @@ Route::post('/save-product', [ProductController::class, 'saveProduct']);
 Route::post('/update-product/{product_id}', [ProductController::class, 'updateProduct']);
 Route::get('/all-product', [ProductController::class, 'allProduct']);
 
+//order
+Route::get('/manage-order', [OrderController::class, 'manageOrder']);
+Route::get('/view-order/{order_id}', [AdminController::class, 'viewOrder']);
 
-//add to cart
+//coupon
+Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);
+
+//user
+Route::get('/manage-user', [UserController::class, 'manageUser']);
+
+//banner
+Route::get('/manage-banner', [BannerController::class, 'manageBanner']);
+
+//blogs
+Route::get('/manage-blog', [BlogController::class, 'manageBlog']);
+
+
+
+
+
+
+////////////////////////user/////////////////////////////
+
+//index
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::post('/tim-kiem', [HomeController::class, 'search']);
+
+//product
+Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
+Route::get('/chi-tiet/{product_id}', [ProductController::class, 'detailProduct']);
+
+//Cart
 Route::post('/update-cart-quantity',[CartController::class, 'updateCartQuantity']);
 Route::post('/update-cart',[CartController::class, 'updateCart']);
 Route::post('/save-cart',[CartController::class, 'saveCart']);
-Route::post('/add-cart-ajax',[CartController::class, 'addCartAjax']);
+Route::post('/check-coupon',[CartController::class, 'checkCoupon']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart',[CartController::class, 'deleteCart']);
 
-//checkout
+//Checkout
 Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);
 Route::post('/add-customer',[CheckoutController::class, 'addCustomer']);
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
@@ -69,6 +97,4 @@ Route::post('/save-checkout-customer',[CheckoutController::class, 'saveCheckout'
 Route::post('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
 Route::post('/login-customer',[CheckoutController::class, 'loginCustomer']);
-
-//
 

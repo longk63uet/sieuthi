@@ -38,7 +38,6 @@
         <th>Tên sản phẩm</th>
         <th>Số lượng</th>
         <th>Giá</th>
-        <th>Slug</th>
         <th>Hình sản phẩm</th>
         <th>Danh mục</th>
         <th>Hiển thị</th>
@@ -55,7 +54,6 @@
         
          
             <td>{{ number_format($product->product_price,0,',','.') }}đ</td>
-            <td>{{ $product->product_slug }}</td>  
             <td><img src="public/uploads/product/{{ $product->product_image }}" height="100" width="100"></td>
             <td>{{ $product->category_name }}</td>
         <td><span class="text-ellipsis">
