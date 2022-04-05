@@ -11,8 +11,8 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\GetLocalController;
 use App\Http\Controllers\OrderController;
-
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +28,12 @@ use Illuminate\Support\Facades\Auth;
 ///////////////////////admin/////////////////////////////
 
 //dashboard
-Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-Route::get('/dashboard', [AdminController::class, 'showDashboard']);
-Route::get('/logout', [AdminController::class, 'logout']);
-Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
+// Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+Route::middleware('auth')->group(function () {
+Route::get('/dashboard', [AdminController::class, 'showDashboard'])->middleware('checklogin');
+});
+// Route::get('/logout', [AdminController::class, 'logout']);
+// Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
 
 //category
 Route::get('/add-category', [CategoryProductController::class, 'addCategory']);
@@ -102,3 +104,13 @@ Route::post('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
 Route::post('/login-customer',[CheckoutController::class, 'loginCustomer']);
 
+
+Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//get located
+
+Route::post('district', [GetLocalController::class, 'district'])->name('district');
+Route::post('village', [GetLocalController::class, 'village'])->name('village');

@@ -14,8 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('role');
-            
+            $table->string('phone')->nullable();
+            $table->string('city')->nullable();
+            $table->string('district')->nullable();
+            $table->string('village')->nullable();
+            $table->string('address')->nullable();
+            $table->string('image')->nullable();
+            $table->unsignedBigInteger('role_id')->nullable();  
+            $table->string('google_id')->nullable();
+
         });
     }
 

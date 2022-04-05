@@ -11,16 +11,17 @@ session_start();
 class ProductController extends Controller
 {
     //admin
-    public function authLogin(){
-        $admin_id = Session::get('admin_id');
-        if($admin_id){
-            return Redirect::to('dashboard');
-        }else{
-            return Redirect::to('admin')->send();
-        }
-    }
+    // public function authLogin(){
+    //     $admin_id = Session::get('admin_id');
+    //     if($admin_id){
+    //         return Redirect::to('dashboard');
+    //     }
+        
+    //     return Redirect::to('admin')->send();
+        
+    // }
     public function addProduct(){
-        $this->AuthLogin();
+        // $this->AuthLogin();
         $cate = DB::table('category')->orderBy('category_id','desc')->get();
         return view('admin.add_product',['cate'=>$cate]);
     }
