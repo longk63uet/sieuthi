@@ -11,8 +11,8 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\GetLocalController;
 use App\Http\Controllers\OrderController;
-
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -102,3 +102,13 @@ Route::post('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
 Route::post('/login-customer',[CheckoutController::class, 'loginCustomer']);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+//get located
+
+Route::post('district', [GetLocalController::class, 'district'])->name('district');
+Route::post('village', [GetLocalController::class, 'village'])->name('village');
