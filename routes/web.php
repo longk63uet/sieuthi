@@ -55,6 +55,10 @@ Route::get('/view-order/{order_id}', [AdminController::class, 'viewOrder']);
 
 //coupon
 Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);
+Route::get('/unset-coupon','CouponController@unsetCoupon');
+Route::get('/insert-coupon','CouponController@insertCoupon');
+Route::get('/delete-coupon/{coupon_id}','CouponController@deleteCoupon');
+Route::post('/add-coupon','CouponController@addCoupon');
 
 //user
 Route::get('/manage-user', [UserController::class, 'manageUser']);

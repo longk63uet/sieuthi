@@ -10,7 +10,7 @@ session_start();
 
 class CouponController extends Controller
 {
-	public function unset_coupon(){
+	public function unsetCoupon(){
 		$coupon = Session::get('coupon');
         if($coupon==true){
           
@@ -18,10 +18,10 @@ class CouponController extends Controller
             return redirect()->back()->with('message','Xóa mã khuyến mãi thành công');
         }
 	}
-    public function insert_coupon(){
+    public function inserCoupon(){
     	return view('admin.coupon.insert_coupon');
     }
-    public function delete_coupon($coupon_id){
+    public function deleteCoupon($coupon_id){
     	$coupon = Coupon::find($coupon_id);
     	$coupon->delete();
     	Session::put('message','Xóa mã giảm giá thành công');
@@ -31,7 +31,7 @@ class CouponController extends Controller
     	$coupon = Coupon::orderby('coupon_id','DESC')->paginate(2);
     	return view('admin.list_coupon')->with(compact('coupon'));
     }
-    public function insert_coupon_code(Request $request){
+    public function addCoupon(Request $request){
     	$data = $request->all();
 
     	$coupon = new Coupon;
