@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('matp');
             $table->integer('maqh');
-            $table->integer('matx');
+            $table->integer('xaid');
             $table->integer('shpping_fee');
 
         });

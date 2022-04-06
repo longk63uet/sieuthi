@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('order', function (Blueprint $table) {
-            $table->bigIncrements('order_id');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
             $table->integer('user_id');
-            $table->integer('shipping_id');
-            $table->integer('payment_id');
-            $table->float('order_total');
-            $table->integer('order_status');
-            $table->timestamps();
         });
     }
 
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order');
+        Schema::dropIfExists('table_roles');
     }
 };

@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('product_image');
             $table->integer('product_status');
             $table->text('product_content');
-            $table->timestamps();
+            $table->timestamps();  
         });
     }
 

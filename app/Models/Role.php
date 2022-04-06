@@ -5,17 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Coupon extends Model
+class Role extends Model
 {
     use HasFactory;
-    protected $table = 'coupon';
+    protected $table = 'roles';
     public $timestamps = false;
-    
+
     protected $fillable = [
-        'coupon_name', 
-        'coupon_code', 
-        'coupon_time',
-        'coupon_number', 
-        'coupon_condition',
+        'name'
     ];
+
+    public function admin(){
+        return $this->belongsToMany(User::class);
+    }
 }

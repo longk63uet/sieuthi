@@ -10,5 +10,10 @@ class ShippingFee extends Model
     use HasFactory;
     protected $table = 'shipping_fee';
     public $timestamps = false; 
-    protected $fillable = [];
+    protected $fillable = [
+        'matp',
+        'maqh',
+        'xaid',
+        'shpping_fee'
+    ];
 }

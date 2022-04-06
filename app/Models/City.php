@@ -5,15 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class City extends Model
 {
     use HasFactory;
-    protected $table = 'blogs';
-    public $timestamps = false; 
-    
+    protected $table = 'cities';
+    public $timestamps = false;
+
+    protected $primaryKey= 'matp';
+
     protected $fillable = [
-        'title',
-        'content',
-        'images',
+        'name',
+        'slug',
+        'type',
     ];
 }

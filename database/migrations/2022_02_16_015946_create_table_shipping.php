@@ -17,7 +17,7 @@ return new class extends Migration
             $table->Increments('shipping_id');
             $table->string('shipping_name');
             $table->string('shipping_surname');
-            $table->integer('customer_id');
+            $table->integer('user_id');
             $table->string('shipping_address');
             $table->string('shipping_city');
             $table->string('shipping_town');

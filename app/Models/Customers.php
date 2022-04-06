@@ -10,5 +10,8 @@ class Customers extends Model
     use HasFactory;
     protected $table = 'customer';
     public $timestamps = false; 
-    protected $fillable = [];
+    
+    protected $fillable = [
+        
+    ];
 }

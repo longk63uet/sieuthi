@@ -5,15 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Blog extends Model
+class Village extends Model
 {
     use HasFactory;
-    protected $table = 'blogs';
+    protected $table = 'villages';
     public $timestamps = false; 
-    
+
+    protected $primaryKey = 'xaid';
     protected $fillable = [
-        'title',
-        'content',
-        'images',
+        'name',
+        'type',
+        'maqh',
     ];
 }
