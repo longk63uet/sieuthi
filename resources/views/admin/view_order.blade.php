@@ -29,9 +29,9 @@
         <tbody>
         
           <tr>
-            <td>{{$users->user_name}}</td>
-            <td>{{$users->user_phone}}</td>
-            <td>{{$users->user_email}}</td>
+            <td>{{$user->name}}</td>
+            <td>{{$user->phone}}</td>
+            <td>{{$user->email}}</td>
           </tr>
      
         </tbody>
@@ -176,7 +176,7 @@
             <td>{{number_format($subtotal ,0,',','.')}}đ</td>
           </tr>
         @endforeach
-          <tr>
+          {{-- <tr>
             <td colspan="2">  
             @php 
                 $total_coupon = 0;
@@ -193,10 +193,10 @@
                   $total_coupon = $total + $details->product_feeship - $coupon_number ;
 
                   @endphp
-              @endif
+              @endif --}}
 
-              Phí ship : {{number_format($details->product_feeship,0,',','.')}}đ</br> 
-             Thanh toán: {{number_format($total_coupon,0,',','.')}}đ 
+              {{-- Phí ship : {{number_format($details->product_feeship,0,',','.')}}đ</br> 
+             Thanh toán: {{number_format($total_coupon,0,',','.')}}đ  --}}
             </td>
           </tr>
           <tr>
@@ -242,7 +242,7 @@
           </tr>
         </tbody>
       </table>
-      <a target="_blank" href="{{url('/print-order/'.$details->order_code)}}">In đơn hàng</a>
+      <a target="_blank" href="{{url('/print-order/')}}">In đơn hàng</a>
     </div>
    
   </div>

@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Customers extends Model
+class District extends Model
 {
     use HasFactory;
-    protected $table = 'customer';
+    protected $table = 'districts';
     public $timestamps = false; 
-    protected $fillable = [];
+    protected $primaryKey = 'ma_qh';
+
 }

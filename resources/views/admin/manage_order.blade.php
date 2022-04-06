@@ -23,8 +23,10 @@
           <tr>
            
             <th>Thứ tự</th>
+            <th>Tên khách hàng</th>
             <th>Mã đơn hàng</th>
             <th>Ngày tháng đặt hàng</th>
+            <th>Tổng thanh toán</th>
             <th>Tình trạng đơn hàng</th>
 
             <th style="width:30px;"></th>
@@ -40,8 +42,10 @@
             @endphp
           <tr>
             <td><i>{{$i}}</i></label></td>
+            <td>{{ $order->name }}</td>
             <td>{{ $order->order_id }}</td>
             <td>{{ $order->created_at }}</td>
+            <td>{{ $order->order_total }}</td>
             <td>@if($order->order_status==1)
                     Đơn hàng mới
                 @else 

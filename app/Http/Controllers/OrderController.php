@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Shipping;
+use Illuminate\Support\Facades\App;
 use App\Models\Coupon;
 
 session_start();
@@ -37,7 +38,7 @@ class OrderController extends Controller
         $order_details = OrderDetail::with('product')->where('order_id',$orderId)->get();
 		$order = Order::where('order_id',$orderId)->get();
 		foreach($order as $key => $ord){
-			$user_id = $ord->id;
+			$user_id = $ord->user_id;
 			$shipping_id = $ord->shipping_id;
 			$order_status = $ord->order_status;
 		}
@@ -46,19 +47,32 @@ class OrderController extends Controller
 
 		$order_details_product = OrderDetail::with('product')->where('order_id',$orderId)->get();
 
-		foreach($order_details_product as $key => $order_d){
+		// foreach($order_details_product as $key => $order_d){
 
-			$product_coupon = $order_d->product_coupon;
-		}
-		if($product_coupon != 'no'){
-			$coupon = Coupon::where('coupon_code',$product_coupon)->first();
-			// $coupon_condition = $coupon->coupon_condition;
-			// $coupon_number = $coupon->coupon_number;
-		}else{
-			$coupon_condition = 2;
-			$coupon_number = 0;
-		}
+		// 	$product_coupon = $order_d->product_coupon;
+		// }
+		// if($product_coupon != 'no'){
+		// 	$coupon = Coupon::where('coupon_code',$product_coupon)->first();
+		// 	// $coupon_condition = $coupon->coupon_condition;
+		// 	// $coupon_number = $coupon->coupon_number;
+		// }else{
+		// 	$coupon_condition = 2;
+		// 	$coupon_number = 0;
+		// }
 		
-		return view('admin.view_order')->with(compact('order_details','user','shipping','order_details','coupon_condition','coupon_number','order','order_status'));
+		return view('admin.view_order')->with(compact('order_details','user','shipping','order_details','order','order_status'));
     }
+	public function printOrder($checkout_code){
+		$pdf = App::make('dompdf.wrapper');
+		$pdf->loadHTML($this->print_order_convert($checkout_code));
+		
+		return $pdf->stream();
+	}
+	public function deleteOrder(Request $request ,$order_id){
+		$order = Order::where('order_id',$order_id)->first();
+		$order->delete();
+		 Session::put('message','Xóa đơn hàng thành công');
+        return redirect()->back();
+
+	}
 }

@@ -52,6 +52,8 @@ Route::get('/all-product', [ProductController::class, 'allProduct']);
 //order
 Route::get('/manage-order', [OrderController::class, 'manageOrder']);
 Route::get('/view-order/{order_id}', [OrderController::class, 'viewOrder']);
+Route::get('/delete-order/{order_id}',[OrderController::class, 'deleteOrder']);
+Route::get('/print-order/{checkout_code}',[OrderController::class, 'printOrder']);
 
 //coupon
 Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);

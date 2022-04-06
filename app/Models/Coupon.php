@@ -10,8 +10,8 @@ class Coupon extends Model
     use HasFactory;
     public $timestamps = false;
     protected $fillable = [
-    	'coupon_name', 'coupon_code', 'coupon_time','coupon_number', 'coupon_condition'
+    	'coupon_name', 'coupon_code', 'coupon_quantity','coupon_number', 'coupon_time'
     ];
-    protected $primaryKey = 'coupon_id';
+    protected $primaryKey = 'cid';
  	protected $table = 'coupon';
 }
