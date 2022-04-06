@@ -16,17 +16,17 @@ class CheckoutController extends Controller
     public function checkout(){
         return view('checkout');
     }
-    public function addCustomer(Request $request){
+    public function adduser(Request $request){
         $data = array();
-        $data['customer_name'] = $request->customer_name;
-    	$data['customer_phone'] = $request->customer_phone;
-    	$data['customer_email'] = $request->customer_email;
-    	$data['customer_password'] = md5($request->customer_password);
+        $data['name'] = $request->user_name;
+    	$data['user_phone'] = $request->user_phone;
+    	$data['email'] = $request->user_email;
+    	$data['password'] = md5($request->user_password);
 
-    	$customer_id = DB::table('customers')->insertGetId($data);
+    	$users_id = DB::table('users')->insertGetId($data);
 
-    	Session::put('customer_id',$customer_id);
-    	Session::put('customer_name',$request->customer_name);
+    	Session::put('user_id', $users_id);
+    	Session::put('user_name',$request->user_name);
     	return Redirect::to('/checkout');
     }
 
@@ -54,7 +54,7 @@ class CheckoutController extends Controller
 
         //insert order
         $order_data = array();
-        $order_data['customer_id'] = Session::get('customer_id');
+        $order_data['user_id'] = Session::get('user_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         // $order_data['order_total'] = Cart::total();
@@ -72,18 +72,18 @@ class CheckoutController extends Controller
     }
     
     public function logoutCheckout(){
-    	Session::forget('customer_id');
+    	Session::forget('user_id');
     	return Redirect::to('/');
     }
-    public function loginCustomer(Request $request){
+    public function loginuser(Request $request){
     	$email = $request->email;
     	$password = md5($request->password);
-    	$result = DB::table('customers')->where('customer_email',$email)->where('customer_password',$password)->first();
+    	$result = DB::table('users')->where('email',$email)->where('password',$password)->first();
     	
     	
     	if($result){
            
-    		Session::put('customer_id',$result->customer_id);
+    		Session::put('user_id',$result->id);
     		return Redirect::to('/checkout');
     	}else{
     		return Redirect::to('/login-checkout');

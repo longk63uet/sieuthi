@@ -29,9 +29,9 @@
         <tbody>
         
           <tr>
-            <td>{{$customer->customer_name}}</td>
-            <td>{{$customer->customer_phone}}</td>
-            <td>{{$customer->customer_email}}</td>
+            <td>{{$users->user_name}}</td>
+            <td>{{$users->user_phone}}</td>
+            <td>{{$users->user_email}}</td>
           </tr>
      
         </tbody>

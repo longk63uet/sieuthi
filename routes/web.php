@@ -53,7 +53,7 @@ Route::get('/all-product', [ProductController::class, 'allProduct']);
 
 //order
 Route::get('/manage-order', [OrderController::class, 'manageOrder']);
-Route::get('/view-order/{order_id}', [AdminController::class, 'viewOrder']);
+Route::get('/view-order/{order_id}', [OrderController::class, 'viewOrder']);
 
 //coupon
 Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);
@@ -97,12 +97,12 @@ Route::get('/delete-cart',[CartController::class, 'deleteCart']);
 
 //Checkout
 Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);
-Route::post('/add-customer',[CheckoutController::class, 'addCustomer']);
+Route::post('/add-user',[CheckoutController::class, 'adduser']);
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
-Route::post('/save-checkout-customer',[CheckoutController::class, 'saveCheckout']);
+Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);
 Route::post('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
-Route::post('/login-customer',[CheckoutController::class, 'loginCustomer']);
+Route::post('/login-user',[CheckoutController::class, 'loginuser']);
 
 
 Auth::routes();

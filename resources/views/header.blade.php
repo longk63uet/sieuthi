@@ -20,8 +20,6 @@
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}" type="text/css">
-
 </head>
 
 <body>
@@ -61,37 +59,28 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-                            
-                            @if (Route::has('login'))
-                            <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                                @auth
-                                <li class="nav-item dropdown">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }}
-                                    </a>
-    
-                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                           onclick="event.preventDefault();
-                                                         document.getElementById('logout-form').submit();">
-                                            {{ __('Logout') }}
-                                        </a>
-    
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
-                                    
-                                @else
-                                    <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                                    @if (Route::has('register'))
-                                        <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                                    @endif
-                                @endauth
+                            <?php
+                                   $customer_id = Session::get('customer_id');
+                                   if($customer_id!=NULL){ 
+                                 ?>
+                                 <div class="header__top__right__auth">
+                                  <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
+                                </div>
+                                <?php
+                            }else{
+                                 ?>
+                                 <div class="header__top__right__auth">
+                                 <a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                </div>
+                                 <?php 
+                             }
+                                 ?>
+                            {{-- <div class="header__top__right__auth">
+                                <a href="{{url('login-checkout')}}"><i class="fa fa-user"></i> Đăng nhập</a>
+                            </div> --}}
+                            <div class="header__top__right__auth">
+                                <a href="{{route('admin')}}"><i class="fa-regular fa-user-gear"></i> Admin</a>
                             </div>
-                        @endif
                         </div>
                     </div>
                 </div>
@@ -129,8 +118,4 @@
             </div>
         </div>
     </header>
-
-    <script src="{{ asset('js/app.js') }}"></script>
-
-
     <!-- Header Section End -->

@@ -61,10 +61,10 @@
               <tr>
                
                 <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-                <td>{{ $user->admin_name }}</td>
-                <td>{{ $user->admin_email }} <input type="hidden" name="admin_email" value="{{ $user->admin_email }}"></td>
-                <td>{{ $user->admin_phone }}</td>
-                <td>{{ $user->admin_password }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }} <input type="hidden" name="admin_email" value="{{ $user->admin_email }}"></td>
+                <td>{{ $user->user_phone }}</td>
+                {{-- <td>{{ $user->admin_password }}</td> --}}
                 {{-- <td><input type="checkbox" name="author_role" {{$user->hasRole('author') ? 'checked' : ''}}></td>
                 <td><input type="checkbox" name="admin_role"  {{$user->hasRole('admin') ? 'checked' : ''}}></td>
                 <td><input type="checkbox" name="user_role"  {{$user->hasRole('user') ? 'checked' : ''}}></td> --}}
