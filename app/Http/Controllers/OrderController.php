@@ -2,10 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
+use App\Models\OrderDetail;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Shipping;
+use App\Models\Coupon;
+
 session_start();
 
 class OrderController extends Controller
@@ -22,19 +28,37 @@ class OrderController extends Controller
     public function manageOrder(){
         $this->AuthLogin();
         $all_order = DB::table('order')
-        ->join('customers','order.customer_id','=','customers.customer_id')
-        ->select('order.*','customers.customer_name')
+        ->join('users','order.user_id','=','users.id')
+        ->select('order.*','users.name')
         ->orderby('order.order_id','desc')->get();
         return view('admin.manage_order')->with('all_order',$all_order);
     }
     public function viewOrder($orderId){
-        $this->AuthLogin();
-        $order_by_id = DB::table('order')
-        ->join('customers','order.customer_id','=','customers.customer_id')
-        ->join('shipping','order.shipping_id','=','shipping.shipping_id')
-        ->join('order_details','order.order_id','=','order_details.order_id')
-        ->select('order.*','customers.*','shipping.*','order_details.*')->first();
-        return view('admin.view_order')->with('order_by_id',$order_by_id);
-        
+        $order_details = OrderDetail::with('product')->where('order_id',$orderId)->get();
+		$order = Order::where('order_id',$orderId)->get();
+		foreach($order as $key => $ord){
+			$user_id = $ord->id;
+			$shipping_id = $ord->shipping_id;
+			$order_status = $ord->order_status;
+		}
+		$user = User::where('id',$user_id)->first();
+		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
+
+		$order_details_product = OrderDetail::with('product')->where('order_id',$orderId)->get();
+
+		foreach($order_details_product as $key => $order_d){
+
+			$product_coupon = $order_d->product_coupon;
+		}
+		if($product_coupon != 'no'){
+			$coupon = Coupon::where('coupon_code',$product_coupon)->first();
+			// $coupon_condition = $coupon->coupon_condition;
+			// $coupon_number = $coupon->coupon_number;
+		}else{
+			$coupon_condition = 2;
+			$coupon_number = 0;
+		}
+		
+		return view('admin.view_order')->with(compact('order_details','user','shipping','order_details','coupon_condition','coupon_number','order','order_status'));
     }
 }

@@ -29,7 +29,7 @@
         </div>
         <div class="checkout__form">
             <h4>Hóa đơn</h4>
-            <form action="{{url('save-checkout-customer')}}" method="POST">
+            <form action="{{url('save-checkout-user')}}" method="POST">
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">

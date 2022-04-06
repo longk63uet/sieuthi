@@ -60,8 +60,8 @@
                                 </ul>
                             </div>
                             <?php
-                                   $customer_id = Session::get('customer_id');
-                                   if($customer_id!=NULL){ 
+                                   $user_id = Session::get('user_id');
+                                   if($user_id!=NULL){ 
                                  ?>
                                  <div class="header__top__right__auth">
                                   <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>

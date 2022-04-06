@@ -143,8 +143,8 @@ $total = 0;
                             <li>Tổng thanh toán <span>{{$total}} VNĐ</span></li>
                         </ul>
                         <?php
-                        $customer_id = Session::get('customer_id');
-                        if($customer_id!=NULL){ 
+                        $user_id = Session::get('user_id');
+                        if($user_id!=NULL){ 
                       ?>
                       <div class="header__top__right__auth">
                         <a href="{{url('checkout')}}" class="primary-btn">Tiếp tục thanh toán</a>
