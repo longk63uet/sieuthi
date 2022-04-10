@@ -31,7 +31,7 @@ class OrderController extends Controller
         $all_order = DB::table('order')
         ->join('users','order.user_id','=','users.id')
         ->select('order.*','users.name')
-        ->orderby('order.order_id','desc')->get();
+        ->orderby('order.order_id','desc')->paginate(10);
         return view('admin.manage_order')->with('all_order',$all_order);
     }
     public function viewOrder($orderId){
@@ -69,9 +69,8 @@ class OrderController extends Controller
 		return $pdf->stream();
 	}
 	public function deleteOrder(Request $request ,$order_id){
-		$order = Order::where('order_id',$order_id)->first();
-		$order->delete();
-		 Session::put('message','Xóa đơn hàng thành công');
+		$order = Order::where('order_id',$order_id)->delete();
+        Session::put('message', "Xóa đơn hàng thành công");
         return redirect()->back();
 
 	}

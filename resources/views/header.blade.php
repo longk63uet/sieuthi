@@ -59,22 +59,7 @@
                                     <li><a href="#">English</a></li>
                                 </ul>
                             </div>
-                            <?php
-                                   $user_id = Session::get('user_id');
-                                   if($user_id!=NULL){ 
-                                 ?>
-                                 <div class="header__top__right__auth">
-                                  <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
-                                </div>
-                                <?php
-                            }else{
-                                 ?>
-                                 <div class="header__top__right__auth">
-                                 <a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
-                                </div>
-                                 <?php 
-                             }
-                                 ?>
+                            
                             {{-- <div class="header__top__right__auth">
                                 <a href="{{url('login-checkout')}}"><i class="fa fa-user"></i> Đăng nhập</a>
                             </div> --}}
@@ -106,10 +91,32 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
+                            @php
+                               $quantity = Session::get('cart') ? Session::get('cart')->totalQuantity : 0
+                            @endphp
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="{{url('show-cart')}}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="{{url('show-cart')}}"><i class="fa fa-shopping-bag"></i> <span>@php
+                                echo "$quantity"
+        
+                            @endphp
+                            </span></a></li>
                         </ul>
-                        <div class="header__cart__price">Sản phẩm: <span></span></div>
+                        <?php
+                                   $user_id = Session::get('user_id');
+                                   if($user_id!=NULL){ 
+                                 ?>
+                                 <div class="header__top__right__auth">
+                                  <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
+                                </div>
+                                <?php
+                            }else{
+                                 ?>
+                                 <div class="header__top__right__auth">
+                                 <a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                </div>
+                                 <?php 
+                             }
+                                 ?>
                     </div>
                 </div>
             </div>

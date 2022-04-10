@@ -78,31 +78,29 @@ $total = 0;
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($cart as $cart)
+                                
+                                @if($cart)
+                                @foreach($cart->products as $carts)
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img style="width:150px; hight:150px" src="{{URL('/public/uploads/product/'.$cart['image'])}}" alt="">
-                                        <h5>{{$cart['name']}}</h5>
+                                        <img style="width:150px; hight:150px" src="{{URL('/public/uploads/product/'.$carts['info']->product_image)}}" alt="">
+                                        <h5>{{$carts['info']->product_name}}</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {{$cart['price']}}
+                                        {{$carts['info']->product_price}}
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="{{$cart['quantity']}}">
+                                                <input type="text" value="{{$carts['quantity']}}">
                                             </div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                       @php
-                                       $sumProduct = $cart['price'] * $cart['quantity'];
-                                       echo $sumProduct;  
-                                       $total += $sumProduct;
-                                       @endphp
+                                      
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a href="{{url('delete-cart')}}">
+                                        <a href="{{url('/delete-cart/'.$carts['info']->product_id)}}">
                                         <span class="icon_close"></span>
                                     </a>
                                     </td>
@@ -139,8 +137,8 @@ $total = 0;
                         <h5>Tổng tiền</h5>
                         <ul>
 
-                            <li>Giá tiền<span>{{$total}} VNĐ</span></li>
-                            <li>Tổng thanh toán <span>{{$total}} VNĐ</span></li>
+                            <li>Giá tiền<span> VNĐ</span></li>
+                            <li>Tổng thanh toán <span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
                         </ul>
                         <?php
                         $user_id = Session::get('user_id');
@@ -158,8 +156,9 @@ $total = 0;
                       <?php 
                   }
                       ?>
-                       
-                    
+                    @else
+                    <h4>Giỏ hàng của bạn đang trống</h4>  
+                    @endif
                     </div>
                 </div>
             </div>

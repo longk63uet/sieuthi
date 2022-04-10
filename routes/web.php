@@ -93,7 +93,7 @@ Route::post('/save-cart',[CartController::class, 'saveCart']);
 Route::post('/check-coupon',[CartController::class, 'checkCoupon']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
-Route::get('/delete-cart',[CartController::class, 'deleteCart']);
+Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
 
 //Checkout
 Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);

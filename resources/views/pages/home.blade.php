@@ -8,13 +8,6 @@
                 <div class="section-title">
                     <h2>Sản phẩm nổi bật</h2>
                 </div>
-                <div class="featured__controls">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Oranges</li>
-
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="row featured__filter">
