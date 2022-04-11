@@ -9,6 +9,6 @@ class Blog extends Model
 {
     use HasFactory;
     protected $table = 'blogs';
-    public $timestamps = false; 
+    public $timestamps = true; 
     protected $fillable = ['title', 'content', 'images'];
 }

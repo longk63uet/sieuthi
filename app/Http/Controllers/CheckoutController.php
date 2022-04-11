@@ -41,30 +41,46 @@ class CheckoutController extends Controller
     	$data['shipping_address'] = $request->shipping_address;
         $data['shipping_city'] = $request->shipping_city;
         $data['shipping_town'] = $request->shipping_town;
+        $data['user_id'] = Session::get('user_id');
     	$shipping_id = DB::table('shipping')->insertGetId($data);
 
     	Session::put('shipping_id',$shipping_id);
+    
 
+        
+
+    }
+
+    public function orderPlace(Request $request){
         // payment
 
-        $data = array();
-        $data['payment_method'] = $request->payment_option;
-        $data['payment_status'] = 'Đang chờ xử lý';
-        $payment_id = DB::table('payment')->insertGetId($data);
-
+        // $data = array();
+        // $data['payment_method'] = $request->payment_option;
+        // $data['payment_status'] = 'Đang chờ xử lý';
+        // $payment_id = DB::table('payment')->insertGetId($data);
+        $cart = Session::get('cart');
         //insert order
         $order_data = array();
         $order_data['user_id'] = Session::get('user_id');
         $order_data['shipping_id'] = Session::get('shipping_id');
-        $order_data['payment_id'] = $payment_id;
-        // $order_data['order_total'] = Cart::total();
-        $order_data['order_status'] = 'Đang chờ xử lý';
+        // $order_data['payment_id'] = $payment_id;
+        $order_data['order_status'] = 1;
+        $order_data['order_total'] = $cart->totalPrice;
         $order_id = DB::table('order')->insertGetId($order_data);
 
         //insert order_details
+       
+        foreach($cart->products as $carts){
+            $order_d_data['order_id'] = $order_id;
+            $order_d_data['product_id'] = $carts['info']->product_id;
+            $order_d_data['product_name'] = $carts['info']->product_name;
+            $order_d_data['product_price'] = $carts['info']->product_price;
+            $order_d_data['product_sales_quantity'] = $carts['quantity'];
+            DB::table('order_details')->insert($order_d_data);
+            // dd($order_d_data);
+        }
 
     	return Redirect::to('/payment');
-
     }
 
     public function payment(){

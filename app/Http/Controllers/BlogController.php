@@ -8,7 +8,7 @@ use App\Models\Blog;
 class BlogController extends Controller
 {
     public function manageBlog(){
-        $blog = Blog::orderBy('id','DESC')->paginate(5);
+        $blog = Blog::all();
         return view('admin.manage_blog')->with(compact('blog'));  
     }
 }

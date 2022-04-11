@@ -30,6 +30,7 @@
         <div class="checkout__form">
             <h4>Hóa đơn</h4>
             <form action="{{url('save-checkout-user')}}" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
@@ -37,7 +38,7 @@
                                
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text" name="shipping_surname">
+                                    <input type="text" name="shipping_surname" value="">
                                 </div>
                             </div>
                             <div class="col-lg-6">

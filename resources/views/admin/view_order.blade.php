@@ -135,7 +135,7 @@
         </thead>
         <tbody>
           @php 
-          $i = 0;
+          $i = 1;
           $total = 0;
           @endphp
         @foreach($order_details as $key => $details)
@@ -143,6 +143,7 @@
           <tr class="color_qty_{{$details->product_id}}">
            
             <td><i>{{$i}}</i></td>
+            @php $i++ @endphp
             <td>{{$details->product_name}}</td>
             <td>{{$details->product->product_quantity}}</td>
             <td>@if($details->product_coupon!='no')
@@ -170,7 +171,7 @@
 
             </td>
             <td>{{number_format($details->product_price ,0,',','.')}}đ</td>
-            <td>{{number_format($subtotal ,0,',','.')}}đ</td>
+            {{-- <td>{{number_format($subtotal ,0,',','.')}}đ</td> --}}
           </tr>
         @endforeach
             </td>
