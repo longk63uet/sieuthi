@@ -100,7 +100,7 @@ Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);
 Route::post('/add-user',[CheckoutController::class, 'adduser']);
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
 Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);
-Route::post('/payment',[CheckoutController::class, 'payment']);
+Route::get('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
 Route::post('/login-user',[CheckoutController::class, 'loginuser']);
 

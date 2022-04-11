@@ -39,6 +39,7 @@ class AdminController extends Controller
         $user_password = md5($request->password);
 
         $result = DB::table('users')->where('email', $user_email )->where('password', $user_password )->first();
+        // dd($result);
         if($result){
             Session::put('user_name', $result->name);
             Session::put('user_id', $result->id);

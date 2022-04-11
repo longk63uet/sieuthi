@@ -55,7 +55,7 @@
           
             <td>{{ $cou->coupon_name }}</td>
             <td>{{ $cou->coupon_code }}</td>
-            <td>{{ $cou->coupon_time }}</td>
+            <td>{{ $cou->coupon_quantity }}</td>
             <td><span class="text-ellipsis">
               <?php
                if($cou->coupon_condition==1){

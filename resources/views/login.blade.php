@@ -9,8 +9,8 @@
 						<h2>Đăng nhập tài khoản</h2>
 						<form action="{{URL('/login-user')}}" method="POST">
 							{{csrf_field()}}
-							<input type="text" name="email_account" placeholder="Tài khoản" />
-							<input type="password" name="password_account" placeholder="Mật khẩu" />
+							<input type="text" name="email" placeholder="Tài khoản" />
+							<input type="password" name="password" placeholder="Mật khẩu" />
 							<span>
 								<input type="checkbox" class="checkbox"> 
 								Ghi nhớ đăng nhập

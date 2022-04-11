@@ -41,17 +41,11 @@ class CheckoutController extends Controller
     	$data['shipping_address'] = $request->shipping_address;
         $data['shipping_city'] = $request->shipping_city;
         $data['shipping_town'] = $request->shipping_town;
+        $data['shipping_village'] = $request->shipping_village;
         $data['user_id'] = Session::get('user_id');
     	$shipping_id = DB::table('shipping')->insertGetId($data);
 
     	Session::put('shipping_id',$shipping_id);
-    
-
-        
-
-    }
-
-    public function orderPlace(Request $request){
         // payment
 
         // $data = array();
@@ -81,7 +75,12 @@ class CheckoutController extends Controller
         }
 
     	return Redirect::to('/payment');
+
+        
+
     }
+
+    
 
     public function payment(){
         return view('payment');
@@ -95,12 +94,19 @@ class CheckoutController extends Controller
     	$email = $request->email;
     	$password = md5($request->password);
     	$result = DB::table('users')->where('email',$email)->where('password',$password)->first();
-    	
-    	
-    	if($result){
+        // dd($result->id);
+    	Session::put('user_id', $result->id);
+        // dd($users_id);
+        $shipping = DB::table('shipping')->where('user_id', Session::get('user_id'))->first();
+    	// dd($shipping);
+    	if($result && $shipping){
            
-    		Session::put('user_id',$result->id);
-    		return Redirect::to('/checkout');
+    		// Session::put('user_id',$result->id);
+            
+            // dd($shipping);
+
+    		return view('/checkout')->with(compact('shipping'));
+            
     	}else{
     		return Redirect::to('/login-checkout');
     	}

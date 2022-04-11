@@ -35,32 +35,46 @@
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
-                               
+                               @if(isset($shipping))
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
-                                    <input type="text" name="shipping_surname" value="">
+                                    <input type="text" name="shipping_surname" value="{{$shipping->shipping_surname}}">
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Tên<span>*</span></p>
-                                    <input type="text" name="shipping_name">
+                                    <input type="text" name="shipping_name" value="{{$shipping->shipping_name}}">
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Địa chỉ<span>*</span></p>
-                            <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
+                            <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết" value="{{$shipping->shipping_address}}">
                         </div>
-                        <div class="checkout__input">
-                            <p>Thành phố/ Tỉnh<span>*</span></p>
-                            <input type="text" name="shipping_city">
+                        <div class="row">
+                            <div class="checkout__input col-lg-4">
+                                <p>Thành phố/ Tỉnh<span>*</span></p>
+                                <input type="text" name="shipping_city" >
+                                {{-- <select name="shipping_city">
+                                    <option value="">Volvo</option>
+                                </select> --}}
+                            </div>
+                            <div class="checkout__input col-lg-4">
+                                <p>Huyện<span>*</span></p>
+                                <input type="text" name="shipping_town">
+                                {{-- <select name="shipping_town">
+                                    <option value="">Volvo</option>
+                                </select> --}}
+                            </div>
+                            <div class="checkout__input col-lg-4">
+                                <p>Xã<span>*</span></p>
+                                <input type="text" name="shipping_village">
+                                {{-- <select name="shipping_village">
+                                    <option value="">Volvo</option>
+                                </select> --}}
+                            </div>
                         </div>
-                        <div class="checkout__input">
-                            <p>Huyện<span>*</span></p>
-                            <input type="text" name="shipping_town">
-                        </div>
-                        
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
@@ -82,6 +96,58 @@
                                 placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
                         </div>
                     </div>
+                    @else
+                    <div class="checkout__input">
+                        <p>Họ<span>*</span></p>
+                        <input type="text" name="shipping_surname ">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="checkout__input">
+                        <p>Tên<span>*</span></p>
+                        <input type="text" name="shipping_name">
+                    </div>
+                </div>
+            </div>
+            <div class="checkout__input">
+                <p>Địa chỉ<span>*</span></p>
+                <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
+            </div>
+            <div class="checkout__input">
+                <p>Thành phố/ Tỉnh<span>*</span></p>
+                <input type="text" name="shipping_city">
+            </div>
+            <div class="checkout__input">
+                <p>Huyện<span>*</span></p>
+                <input type="text" name="shipping_town">
+            </div>
+            <div class="checkout__input">
+                <p>Xã<span>*</span></p>
+                <input type="text" name="shipping_village">
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="checkout__input">
+                        <p>Số điện thoại<span>*</span></p>
+                        <input type="text" name="shipping_phone">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="checkout__input">
+                        <p>Email<span>*</span></p>
+                        <input type="text" name="shipping_email">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="checkout__input">
+                <p>Ghi chú<span>*</span></p>
+                <input type="text" name="shipping_note"
+                    placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
+            </div>
+        </div>
+
+                    @endif
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4>Ghi chú</h4>
