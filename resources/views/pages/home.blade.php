@@ -27,7 +27,7 @@
                         <ul class="featured__item__pic__hover">
                             <li><a href="#"><i class="fa fa-heart"></i></a></li>
                             <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="{{url('/add-to-cart/'.$pro->product_id)}}" data-url="{{url('/add-to-cart/'.$pro->product_id)}}" class="add-to-cart"><i class="fa fa-shopping-cart "></i></a></li>
+                            <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
@@ -312,27 +312,19 @@
 <!-- Blog Section End -->
 @endsection
 
-{{-- <script>
-    function addToCart(event) {
-        event.preventDefault();
-        let urlCart = $(this).data('url');
+<script>
+    function addToCart(id) {
         $.ajax({
             type: "GET",
-            url: urlCart,
-            dataType: 'json',
-            success: function(data){
-
-            },
-            error: function(){
-
-            }
-
+            url: "add-to-cart/"+id,
+            // data: "data",
+            // dataType: "dataType",
+            success: function (response) {
+                alertify.success('Đã thêm sản phẩm vào giỏ hàng');
+        
+        
         }
-
-        )
-
+        });
     }
-    $(function () {
-        $('.add-to-cart').on('click', addToCart)
-    })
-</script> --}}
+   
+</script>

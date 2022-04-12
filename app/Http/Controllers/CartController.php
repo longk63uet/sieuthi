@@ -12,33 +12,33 @@ session_start();
 
 class CartController extends Controller
 {
-    public function saveCart(Request $request){
-        $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
-        $productId = $request->productid_hidden;
-        $quantity = $request->quantity;
-        $product_name = $request->product_name;
-        $product_price = $request->product_price;
-        $product_image = $request->product_image;
-        $cart = Session::get('cart');
-        $product = DB::table('product')->where('product_id', $productId)->get();
+    // public function saveCart(Request $request){
+    //     $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
+    //     $productId = $request->productid_hidden;
+    //     $quantity = $request->quantity;
+    //     $product_name = $request->product_name;
+    //     $product_price = $request->product_price;
+    //     $product_image = $request->product_image;
+    //     $cart = Session::get('cart');
+    //     $product = DB::table('product')->where('product_id', $productId)->get();
     
-       $cart = array();
-       if(isset($cart['id'])){
-        $cart['id']['quantity'] += $quantity; 
-       }
-       else{
-       $cart['id'] = [
-            'name' => $product_name,
-            'price' => $product_price,
-            'quantity' => $quantity,
-            'image' => $product_image
+    //    $cart = array();
+    //    if(isset($cart['id'])){
+    //     $cart['id']['quantity'] += $quantity; 
+    //    }
+    //    else{
+    //    $cart['id'] = [
+    //         'name' => $product_name,
+    //         'price' => $product_price,
+    //         'quantity' => $quantity,
+    //         'image' => $product_image
 
-       ];
-    }
-    Session::put('cart', $cart);
+    //    ];
+    // }
+    // Session::put('cart', $cart);
 
-    return Redirect::to('/show-cart');
-    }
+    // return Redirect::to('/show-cart');
+    // }
 
     
     public function deleteCart(Request $req, $product_id){
@@ -67,7 +67,7 @@ class CartController extends Controller
        
        $req->session()->put('cart', $newCart);
        
-        return Redirect::to('/show-cart');
+        // return Redirect::to('/show-cart');
         
     }
     public function showCart(){
