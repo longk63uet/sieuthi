@@ -35,4 +35,12 @@ class HomeController extends Controller
         return view('search',['search_product' => $search_product]);
 
     }
+
+    public function market(){
+        return view('market');
+    }
+
+    public function contact(){
+        return view('contact');
+    }
 }

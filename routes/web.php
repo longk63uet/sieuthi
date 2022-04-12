@@ -86,6 +86,19 @@ Route::post('/tim-kiem', [HomeController::class, 'search']);
 Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
 Route::get('/chi-tiet/{product_id}', [ProductController::class, 'detailProduct']);
 
+//market
+Route::get('/market', [HomeController::class, 'market']);
+
+
+//Blogs 
+Route::get('/blogs', [BlogController::class, 'blogs']);
+
+
+
+//contact
+Route::get('/contact', [HomeController::class, 'contact']);
+
+
 //Cart
 Route::post('/update-cart-quantity',[CartController::class, 'updateCartQuantity']);
 Route::post('/update-cart',[CartController::class, 'updateCart']);

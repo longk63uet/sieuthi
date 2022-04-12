@@ -305,7 +305,7 @@
 <!-- Blog Section End -->
 @endsection
 
-{{-- <script>
+<script>
     function addToCart(event) {
         event.preventDefault();
         let urlCart = $(this).data('url');
@@ -328,4 +328,4 @@
     $(function () {
         $('.add-to-cart').on('click', addToCart)
     })
-</script> --}}
+</script>

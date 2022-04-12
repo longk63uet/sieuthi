@@ -82,9 +82,9 @@
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="{{route('index')}}">Trang chủ</a></li>
-                            <li><a href="./shop-grid.html">Cửa hàng</a></li>
-                            <li><a href="./blog.html">Tin tức</a></li>
-                            <li><a href="./contact.html">Liên hệ</a></li>
+                            <li><a href="{{url('market')}}">Cửa hàng</a></li>
+                            <li><a href="{{url('blogs')}}">Tin tức</a></li>
+                            <li><a href="{{url('contact')}}">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
