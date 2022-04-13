@@ -52,7 +52,8 @@ class CartController extends Controller
        else{
         $req->session()->forget('cart');
        }       
-        return Redirect::to('/show-cart');
+        // return Redirect::to('/show-cart');
+        return view('show_cart_ajax');
     }
 
     
@@ -67,16 +68,13 @@ class CartController extends Controller
        
        $req->session()->put('cart', $newCart);
        
-        // return Redirect::to('/show-cart');
+       return view('show_cart_ajax');
         
     }
     public function showCart(){
         $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
         $cart = Session::get('cart');
-        // dd($cart);
-    //    foreach($cart->products as $cart){
-    //        dd($cart['quantity']);
-    //    }
+     
         
         
         return view('show_cart',['cate'=>$cate, 'cart'=>$cart]);   

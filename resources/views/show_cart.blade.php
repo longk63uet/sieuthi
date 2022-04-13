@@ -65,7 +65,7 @@ $total = 0;
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-12">
+                <div  id="change-item-cart" class="col-lg-12">
                     <div class="shoping__cart__table">
                         <table>
                             <thead>
@@ -77,11 +77,11 @@ $total = 0;
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 
                                 @if($cart)
                                 @foreach($cart->products as $carts)
-                                <tr>
+                                <tr >
                                     <td class="shoping__cart__item">
                                         <img style="width:150px; hight:150px" src="{{URL('/public/uploads/product/'.$carts['info']->product_image)}}" alt="">
                                         <h5>{{$carts['info']->product_name}}</h5>
@@ -100,8 +100,8 @@ $total = 0;
                                       
                                     </td>
                                     <td class="shoping__cart__item__close">
-                                        <a href="{{url('/delete-cart/'.$carts['info']->product_id)}}">
-                                        <span class="icon_close"></span>
+                                        <a  href="javascript:">
+                                        <span class="icon_close" data-id = "{{$carts['info']->product_id}}"></span>
                                     </a>
                                     </td>
                                 </tr>
@@ -167,3 +167,23 @@ $total = 0;
     </section>
     <!-- Shoping Cart Section End -->
 @include('footer')
+<script>
+    $('#change-item-cart').on("click", ".icon_close", function() {
+        // console.log($(this).data("id"));
+        $.ajax({
+            type: "GET",
+            url: "delete-cart/"+$(this).data("id"),
+            success: function (response) {
+                $('#change-item-cart').empty;
+                $('#change-item-cart').html(response);
+               
+
+                alertify.success('Đã xóa sản phẩm khỏi giỏ hàng');
+                
+        
+        }
+        });
+    });
+    
+   
+</script>

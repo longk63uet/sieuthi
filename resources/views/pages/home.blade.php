@@ -8,13 +8,6 @@
                 <div class="section-title">
                     <h2>Sản phẩm nổi bật</h2>
                 </div>
-                <div class="featured__controls">
-                    <ul>
-                        <li class="active" data-filter="*">All</li>
-                        <li data-filter=".oranges">Oranges</li>
-
-                    </ul>
-                </div>
             </div>
         </div>
         <div class="row featured__filter">
@@ -317,11 +310,12 @@
         $.ajax({
             type: "GET",
             url: "add-to-cart/"+id,
-            // data: "data",
-            // dataType: "dataType",
             success: function (response) {
+                $('#total-quantity').text($('#total-quantity').val());
+                // $('.fa fa-shopping-bag').empty;
+                // $('.fa fa-shopping-bag').html(response);
                 alertify.success('Đã thêm sản phẩm vào giỏ hàng');
-        
+                
         
         }
         });
