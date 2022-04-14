@@ -71,7 +71,6 @@ class CategoryProductController extends Controller
         $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->get();
         $category_name = DB::table('category')->where('category.category_id', $category_id)->limit(1)->get();
         
-         
         return view('pages.show_category',[ 'product'=>$category_by_id, 'cate'=>$cate_product, 'category_name'=>$category_name]);
 
     }

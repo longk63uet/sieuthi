@@ -36,7 +36,7 @@
           </label>
         </th>
         <th>Tên danh mục</th>
-        <th>Mô tả</th>
+        {{-- <th>Mô tả</th> --}}
         <th>Trạng thái</th>
         <th style="width:30px;"></th>
       </tr>
@@ -48,7 +48,7 @@
         <td><label class="i-checks m-b-none"><input type="checkbox" name="post"><i></i></label></td>
         <td>{{$category->category_name}}</td>
 
-        <td><span class="text-ellipsis">{{$category->category_detail}}</span></td>
+        {{-- <td><span class="text-ellipsis">{{$category->category_detail}}</span></td> --}}
         <td><span class="text-ellipsis">
         @php
             

@@ -40,7 +40,21 @@ class CartController extends Controller
     // return Redirect::to('/show-cart');
     // }
 
-    
+    public function saveCartAll(Request $req){
+        dd($req->data);
+        foreach($req->data as $item){
+            $oldCart = Session('cart') ? Session('cart') : null;
+            $newCart = new Cart($oldCart);
+            $newCart->updateItemCart($item['id'], $item['value']);
+            $req->session()->put('cart', $newCart);
+        }
+        
+        
+        
+        // return view('show_cart_ajax');
+
+    }
+
     public function deleteCart(Request $req, $product_id){
        $oldCart = Session('cart') ? Session('cart') : null;
        $newCart = new Cart($oldCart);
@@ -75,8 +89,6 @@ class CartController extends Controller
         $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
         $cart = Session::get('cart');
      
-        
-        
         return view('show_cart',['cate'=>$cate, 'cart'=>$cart]);   
     }
     

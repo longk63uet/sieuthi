@@ -92,12 +92,15 @@ $total = 0;
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
                                             <div class="pro-qty">
-                                                <input type="text" value="{{$carts['quantity']}}">
+                                                <input data-id="{{$carts['info']->product_id}}" type="text" value="{{$carts['quantity']}}">
                                             </div>
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                      
+                                      @php
+                                          $total = $carts['quantity']*$carts['info']->product_price
+                                      @endphp
+                                      {{$total}}
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <a  href="javascript:">
@@ -117,7 +120,7 @@ $total = 0;
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="#" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
+                        <a href="#" class="primary-btn cart-btn cart-btn-right edit-all"><span class="icon_loading"></span>
                             Cập nhật giỏ hàng</a>
                     </div>
                 </div>
@@ -184,6 +187,33 @@ $total = 0;
         }
         });
     });
+
+    $(".edit-all").on("click", function(){
+        var lists = [];
+        $("table tbody tr td").each(function(){
+            $(this).find("input").each(function(){
+                var element = {key: $(this).data("id"), value: $(this).val()};
+                lists.push(element);
+            })
+        })
+        // console.log(list);
+        $.ajax({
+            type: "POST",
+            url: "save-cart-all",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "data": lists
+
+            },
+            // dataType: "dataType",
+            success: function (response) {
+                location.reload();
+               
+
+                alertify.success('Đã cập nhật giỏ hàng');
+            }
+        });
+    })
     
    
 </script>

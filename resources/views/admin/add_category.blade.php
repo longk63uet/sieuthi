@@ -14,11 +14,11 @@
                             <label for="exampleInputEmail1">Tên danh mục</label>
                             <input type="text" class="form-control" name="category" id="exampleInputEmail1" placeholder="Nhập tên danh mục sản phẩm">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleInputEmail1">Mô tả danh mục</label>
                             <textarea type="text" class="form-control" name="category_detail" id="exampleInputEmail1" placeholder="Mô tả danh mục sản phẩm">
                             </textarea>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tùy chọn hiển thị</label>
                             <select name="category_status" class="form-control input-lg m-bot15">

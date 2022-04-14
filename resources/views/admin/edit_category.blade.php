@@ -16,11 +16,11 @@
                             <label for="exampleInputEmail1">Tên danh mục</label>
                             <input type="text" class="form-control" name="category" id="exampleInputEmail1" value={{$category->category_name}}>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="exampleInputEmail1">Mô tả danh mục</label>
                             <textarea type="text" class="form-control" name="category_detail" id="exampleInputEmail1" value={{$category->category_name}}>
                             </textarea>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tùy chọn hiển thị</label>
                             <select name="category_status" value=@php ($category->category_status==1)? "Hiển thị": "Ẩn" @endphp class="form-control input-lg m-bot15">

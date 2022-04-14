@@ -37,7 +37,10 @@ class HomeController extends Controller
     }
 
     public function market(){
-        return view('market');
+        $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
+        $product = DB::table('product')->where('product_status','1')->limit(4)->get();
+        return view('market',['cate'=>$cate,'product'=>$product]);
+
     }
 
     public function contact(){

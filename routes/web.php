@@ -102,7 +102,7 @@ Route::get('/contact', [HomeController::class, 'contact']);
 //Cart
 Route::post('/update-cart-quantity',[CartController::class, 'updateCartQuantity']);
 Route::post('/update-cart',[CartController::class, 'updateCart']);
-// Route::post('/save-cart',[CartController::class, 'saveCart']);
+Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
 Route::post('/check-coupon',[CartController::class, 'checkCoupon']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
