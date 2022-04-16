@@ -29,7 +29,10 @@
                     </div>
                 </td>
                 <td class="shoping__cart__total">
-                  
+                    @php
+                    $total = $carts['quantity']*$carts['info']->product_price
+                @endphp
+                {{$total}}
                 </td>
                 <td class="shoping__cart__item__close">
                     <a  href="javascript:">

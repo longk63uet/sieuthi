@@ -39,7 +39,6 @@ class CategoryProductController extends Controller
     public function updateCategory(Request $request, $category_id ){
         $data = array();
         $data['category_name'] = $request->category;
-        $data['category_detail'] = $request->category_detail;
         $data['category_status'] = $request->category_status;
 
         DB::table('category')->where('category_id', $category_id)->update($data);
@@ -51,7 +50,6 @@ class CategoryProductController extends Controller
     public function saveCategory(Request $request){
         $data = array();
         $data['category_name'] = $request->category;
-        $data['category_detail'] = $request->category_detail;
         $data['category_status'] = $request->category_status;
 
         DB::table('category')->insert($data);

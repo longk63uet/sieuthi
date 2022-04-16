@@ -120,7 +120,7 @@ $total = 0;
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
                         <a href="#" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right edit-all"><span class="icon_loading"></span>
+                        <a href="javascipt:" class="primary-btn cart-btn cart-btn-right edit-all"><span class="icon_loading "></span>
                             Cập nhật giỏ hàng</a>
                     </div>
                 </div>
@@ -141,6 +141,8 @@ $total = 0;
                         <ul>
 
                             <li>Giá tiền<span> VNĐ</span></li>
+                            <li>Phí vận chuyển<span> VNĐ</span></li>
+                            <li>Mã giảm giá<span> VNĐ</span></li>
                             <li>Tổng thanh toán <span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
                         </ul>
                         <?php
@@ -188,32 +190,26 @@ $total = 0;
         });
     });
 
-    $(".edit-all").on("click", function(){
-        var lists = [];
-        $("table tbody tr td").each(function(){
-            $(this).find("input").each(function(){
-                var element = {key: $(this).data("id"), value: $(this).val()};
-                lists.push(element);
-            })
-        })
-        // console.log(list);
-        $.ajax({
-            type: "POST",
-            url: "save-cart-all",
-            data: {
-                "_token": "{{ csrf_token() }}",
-                "data": lists
-
-            },
-            // dataType: "dataType",
-            success: function (response) {
-                location.reload();
-               
-
-                alertify.success('Đã cập nhật giỏ hàng');
-            }
-        });
-    })
+    // $(".edit-all").on("click", function(){
+    //     var lists = [];
+    //     $("table tbody tr td").each(function(){
+    //         $(this).find("input").each(function(){
+    //             var element = {key: $(this).data("id"), value: $(this).val()};
+    //             lists.push(element);
+    //         })
+    //     })
+    //     // console.log(list);
+    //     $.ajax({
+    //         url: "save-cart-all",
+    //         type: "post",
+    //         data: {
+    //             "_token": "{{ csrf_token() }}",
+    //             "data": lists
+    //             }
+    //         }).done(function(){
+    //             location.reload();
+    //         });
+    //     });
     
    
 </script>

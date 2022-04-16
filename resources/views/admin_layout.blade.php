@@ -23,6 +23,10 @@
 <script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
 <script src="{{asset('backend/js/raphael-min.js')}}"></script>
 <script src="{{asset('backend/js/morris.js')}}"></script>
+{{-- <script src="//cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script> --}}
+<script type="text/javascript" src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
+<script src="{{asset('backend/js/jquery.form-validator.min.js')}}"></script>
+
 </head>
 <body>
 <section id="container">
@@ -246,4 +250,12 @@
 	</script>
 	<!-- //calendar -->
 </body>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1' );
+</script>
+<script type="text/javascript">
+    $.validate({
+
+    });
+</script>
 </html>

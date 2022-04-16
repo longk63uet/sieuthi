@@ -51,7 +51,7 @@ class CouponController extends Controller
 
 	//user 
 	
-	public function checkCounpon(Request $request){
+	public function checkCoupon(Request $request){
         $data = $request->all();
         $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
         if($coupon){

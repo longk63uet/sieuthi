@@ -82,6 +82,9 @@ Route::get('/manage-blog', [BlogController::class, 'manageBlog']);
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
 
+//send email
+Route::get('/send-mail', [HomeController::class, 'sendMail']);
+
 //product
 Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
 Route::get('/chi-tiet/{product_id}', [ProductController::class, 'detailProduct']);
@@ -100,8 +103,6 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 
 //Cart
-Route::post('/update-cart-quantity',[CartController::class, 'updateCartQuantity']);
-Route::post('/update-cart',[CartController::class, 'updateCart']);
 Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
 Route::post('/check-coupon',[CartController::class, 'checkCoupon']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
@@ -117,3 +118,5 @@ Route::get('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
 Route::post('/login-user',[CheckoutController::class, 'loginuser']);
 
+//coupon
+Route::post('/check-coupon',[CouponController::class, 'checkCoupon']);

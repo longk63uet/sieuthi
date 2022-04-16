@@ -61,6 +61,7 @@
 <!-- Breadcrumb Section End -->
 
 <!-- Product Details Section Begin -->
+
 <section class="product-details spad">
     <div class="container">
         <div class="row">
@@ -84,7 +85,7 @@
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
-                
+                <div class="fb-like" data-href="" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
                 <div class="product__details__text">
                     <h3>{{$pro->product_name}}</h3>
                     <div class="product__details__rating">
@@ -98,7 +99,7 @@
                 <form action="{{URL('/save-cart')}}" method="POST">
                         @csrf
                     <div class="product__details__price">{{number_format($pro->product_price)}} VNĐ</div>
-                    <p>{{$pro->product_content}}</p>
+                    <p>{{$pro->product_detail}}</p>
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">

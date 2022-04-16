@@ -45,10 +45,6 @@
                                     <textarea style="resize: none" rows="8" class="form-control" name="product_detail" id="ckeditor2">{{$pro->product_detail}}</textarea>
                                 </div>
                                  <div class="form-group">
-                                    <label for="exampleInputPassword1">Nội dung sản phẩm</label>
-                                    <textarea style="resize: none" rows="8" class="form-control" name="product_content" id="ckeditor3" >{{$pro->product_content}}</textarea>
-                                </div>
-                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Danh mục sản phẩm</label>
                                       <select name="product_cate" class="form-control input-sm m-bot15">
                                         @foreach($cate as $cate)
