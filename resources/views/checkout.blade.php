@@ -113,7 +113,7 @@
                 <p>Địa chỉ<span>*</span></p>
                 <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
             </div>
-            <div class="checkout__input">
+            {{-- <div class="checkout__input">
                 <p>Thành phố/ Tỉnh<span>*</span></p>
                 <input type="text" name="shipping_city">
             </div>
@@ -124,7 +124,7 @@
             <div class="checkout__input">
                 <p>Xã<span>*</span></p>
                 <input type="text" name="shipping_village">
-            </div>
+            </div> --}}
             <div class="row">
                 <div class="col-lg-6">
                     <div class="checkout__input">
@@ -139,6 +139,9 @@
                     </div>
                 </div>
             </div>
+            
+
+
             
             <div class="checkout__input">
                 <p>Ghi chú<span>*</span></p>

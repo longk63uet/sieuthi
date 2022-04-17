@@ -129,11 +129,25 @@ $total = 0;
                         <div class="shoping__discount">
                             <h5>Mã giảm giá</h5>
                             <form action="{{url('check-coupon')}}" method="POST">
+                                @csrf
                                 <input type="text" name="coupon" placeholder="Nhập mã giảm giá">
                                 <button type="submit" class="site-btn">Áp dụng</button>
+                                
                             </form>
+                                @if(Session::get('coupon'))
+                                <a href="{{url('/unset-coupon')}}" class = "mt-2">Xóa mã giảm giá</a>
+                                @endif
                         </div>
                     </div>
+                    @if(session()->has('message'))
+                    <div class="alert alert-success mt-2">
+                        {!! session()->get('message') !!}
+                    </div>
+                @elseif(session()->has('error'))
+                     <div class="alert alert-danger mt-2">
+                        {!! session()->get('error') !!}
+                    </div>
+                @endif
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
@@ -141,6 +155,35 @@ $total = 0;
                         <ul>
 
                             <li>Giá tiền<span> VNĐ</span></li>
+                            @if(Session::get('coupon'))
+							<li>
+								
+									@foreach(Session::get('coupon') as $key => $cou)
+										@if($cou['coupon_condition']==1)
+											Mã giảm : {{$cou['coupon_discount']}} %
+											<p>
+												@php 
+												$total_coupon = ($total*$cou['coupon_discount'])/100;
+												echo '<p><li>Tổng giảm:'.number_format($total_coupon,0,',','.').'đ</li></p>';
+												@endphp
+											</p>
+											<p><li>Tổng đã giảm :{{number_format($total-$total_coupon,0,',','.')}}đ</li></p>
+										@elseif($cou['coupon_condition']==2)
+											Mã giảm : {{number_format($cou['coupon_discount'],0,',','.')}} k
+											<p>
+												@php 
+												$total_coupon = $total - $cou['coupon_discount'];
+								
+												@endphp
+											</p>
+											<p><li>Tổng đã giảm :{{number_format($total_coupon,0,',','.')}}đ</li></p>
+										@endif
+									@endforeach
+								
+
+
+							</li>
+                            @endif
                             <li>Phí vận chuyển<span> VNĐ</span></li>
                             <li>Mã giảm giá<span> VNĐ</span></li>
                             <li>Tổng thanh toán <span>{{number_format($cart->totalPrice)}} VNĐ</span></li>

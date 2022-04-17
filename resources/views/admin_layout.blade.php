@@ -105,17 +105,25 @@
                         <span>Quản lý Banner quảng cáo</span>
                     </a>
                 </li>
-				<li>
-                    <a class="active" href="{{url('/manage-blog')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý Blogs</span>
+				<li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Blog nấu ăn</span>
                     </a>
+                    <ul class="sub">
+						<li><a href="{{url('/insert-blog')}}">Thêm Blog</a></li>
+						<li><a href="{{url('/manage-blog')}}">Quản lý Blog</a></li>
+                    </ul>
                 </li>
-				<li>
-                    <a class="active" href="{{url('/manage-coupon')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý mã giảm giá</span>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Mã giảm giá</span>
                     </a>
+                    <ul class="sub">
+						<li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
+						<li><a href="{{url('/manage-coupon')}}">Liệt kê mã giảm giá</a></li>
+                    </ul>
                 </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
@@ -252,6 +260,7 @@
 </body>
 <script type="text/javascript">
     CKEDITOR.replace( 'editor1' );
+    CKEDITOR.replace( 'editor2' );
 </script>
 <script type="text/javascript">
     $.validate({

@@ -57,10 +57,10 @@ Route::get('/print-order/{checkout_code}',[OrderController::class, 'printOrder']
 
 //coupon
 Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);
-Route::get('/unset-coupon','CouponController@unsetCoupon');
-Route::get('/insert-coupon','CouponController@insertCoupon');
-Route::get('/delete-coupon/{coupon_id}','CouponController@deleteCoupon');
-Route::post('/add-coupon','CouponController@addCoupon');
+
+Route::get('/insert-coupon',[CouponController::class, 'insertCoupon']);
+Route::get('/delete-coupon/{coupon_id}',[CouponController::class, 'deleteCoupon']);
+Route::post('/add-coupon',[CouponController::class, 'addCoupon']);
 
 //user
 Route::get('/manage-user', [UserController::class, 'manageUser']);
@@ -70,6 +70,8 @@ Route::get('/manage-banner', [BannerController::class, 'manageBanner']);
 
 //blogs
 Route::get('/manage-blog', [BlogController::class, 'manageBlog']);
+Route::get('/insert-blog', [BlogController::class, 'insertBlog']);
+Route::post('/add-blog', [BlogController::class, 'addBlog']);
 
 
 
@@ -104,7 +106,6 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 //Cart
 Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
-Route::post('/check-coupon',[CartController::class, 'checkCoupon']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
@@ -120,3 +121,4 @@ Route::post('/login-user',[CheckoutController::class, 'loginuser']);
 
 //coupon
 Route::post('/check-coupon',[CouponController::class, 'checkCoupon']);
+Route::get('/unset-coupon',[CouponController::class, 'unsetCoupon']);
