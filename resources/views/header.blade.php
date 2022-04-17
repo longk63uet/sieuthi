@@ -63,7 +63,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="img/language.png" alt="">
+                                <img src="img/vn.png" alt="">
                                 <div>Tiếng Việt</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
@@ -87,7 +87,7 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="{{route('index')}}"><img src="img/logo.png" alt=""></a>
+                        <a href="{{route('index')}}"><img src="img/eco.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">

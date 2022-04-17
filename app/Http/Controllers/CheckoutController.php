@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\City;
+use App\Models\District;
+use App\Models\Village;
+use App\Models\ShippingFee;
 session_start();
 
 class CheckoutController extends Controller
@@ -14,7 +18,8 @@ class CheckoutController extends Controller
         return view('login');
     }
     public function checkout(){
-        return view('checkout');
+        $city = City::orderby('matp','ASC')->get();
+        return view('checkout', compact('city'));
     }
     public function adduser(Request $request){
         $data = array();
@@ -24,6 +29,7 @@ class CheckoutController extends Controller
     	$data['password'] = md5($request->user_password);
 
     	$users_id = DB::table('users')->insertGetId($data);
+        
 
     	Session::put('user_id', $users_id);
     	Session::put('user_name',$request->user_name);
@@ -113,5 +119,33 @@ class CheckoutController extends Controller
         Session::save();
 
     }
+    public function selectDelivery(Request $request){
+        $data = $request->all();
+        if($data['action']){
+            $output = '';
+            if($data['action']=="city"){
+                $select_district = District::where('matp',$data['ma_id'])->orderby('maqh','ASC')->get();
+                    $output.='<option value="" selected>Chọn quận huyện</option>';
+                foreach($select_district as $district){
+                    $output.='<option value="'.$district->maqh.'">'.$district->name.'</option>';
+                }
+                
+
+            }else{
+
+                $select_village = Village::where('maqh',$data['ma_id'])->orderby('xaid','ASC')->get();
+                $output.='<option>Chọn xã phường</option>';
+                foreach($select_village as $village){
+                    $output.='<option value="'.$village->xaid.'">'.$village->name.'</option>';
+                }
+            }
+            
+        }
+        
+        return $output;
+
+    }
+
+    
 	
 }

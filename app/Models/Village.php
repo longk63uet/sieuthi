@@ -11,5 +11,8 @@ class Village extends Model
     protected $table = 'villages';
     public $timestamps = false; 
     protected $primaryKey = 'xa_id';
+    protected $fillable = [
+    	'name', 'type'
+    ];
 
 }

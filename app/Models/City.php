@@ -11,4 +11,7 @@ class City extends Model
     protected $table = 'cities';
     public $timestamps = false; 
     protected $primaryKey = 'ma_tp';
+    protected $fillable = [
+    	'name', 'type'
+    ];
 }

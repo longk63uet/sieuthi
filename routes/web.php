@@ -11,6 +11,7 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
+use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\OrderController;
 
 use Illuminate\Support\Facades\Auth;
@@ -76,8 +77,6 @@ Route::post('/add-blog', [BlogController::class, 'addBlog']);
 
 
 
-
-
 ////////////////////////user/////////////////////////////
 
 //index
@@ -118,6 +117,8 @@ Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);
 Route::get('/payment',[CheckoutController::class, 'payment']);
 Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
 Route::post('/login-user',[CheckoutController::class, 'loginuser']);
+Route::post('/select-delivery',[CheckoutController::class, 'selectDelivery']);
+Route::get('/select-city/{id}',[CheckoutController::class, 'selectCity']);
 
 //coupon
 Route::post('/check-coupon',[CouponController::class, 'checkCoupon']);

@@ -217,7 +217,6 @@ $total = 0;
 @include('footer')
 <script>
     $('#change-item-cart').on("click", ".icon_close", function() {
-        // console.log($(this).data("id"));
         $.ajax({
             type: "GET",
             url: "delete-cart/"+$(this).data("id"),
@@ -233,26 +232,26 @@ $total = 0;
         });
     });
 
-    // $(".edit-all").on("click", function(){
-    //     var lists = [];
-    //     $("table tbody tr td").each(function(){
-    //         $(this).find("input").each(function(){
-    //             var element = {key: $(this).data("id"), value: $(this).val()};
-    //             lists.push(element);
-    //         })
-    //     })
-    //     // console.log(list);
-    //     $.ajax({
-    //         url: "save-cart-all",
-    //         type: "post",
-    //         data: {
-    //             "_token": "{{ csrf_token() }}",
-    //             "data": lists
-    //             }
-    //         }).done(function(){
-    //             location.reload();
-    //         });
-    //     });
+    $(".edit-all").on("click", function(){
+        var lists = [];
+        $("table tbody tr td").each(function(){
+            $(this).find("input").each(function(){
+                var element = {key: $(this).data("id"), value: $(this).val()};
+                lists.push(element);
+            })
+        })
+        // console.log(list);
+        $.ajax({
+            url: "save-cart-all",
+            type: "post",
+            data: {
+                "_token": "{{ csrf_token() }}",
+                "data": lists
+                }
+            }).done(function(){
+                location.reload();
+            });
+        });
     
    
 </script>

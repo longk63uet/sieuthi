@@ -56,9 +56,19 @@
                             <div class="checkout__input col-lg-4">
                                 <p>Thành phố/ Tỉnh<span>*</span></p>
                                 <input type="text" name="shipping_city" >
-                                {{-- <select name="shipping_city">
+                                <select name="shipping_city">
                                     <option value="">Volvo</option>
-                                </select> --}}
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+                                    <option value="">Volvo</option>
+
+                                    
+                                </select>
                             </div>
                             <div class="checkout__input col-lg-4">
                                 <p>Huyện<span>*</span></p>
@@ -113,23 +123,12 @@
                 <p>Địa chỉ<span>*</span></p>
                 <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
             </div>
-            {{-- <div class="checkout__input">
-                <p>Thành phố/ Tỉnh<span>*</span></p>
-                <input type="text" name="shipping_city">
-            </div>
-            <div class="checkout__input">
-                <p>Huyện<span>*</span></p>
-                <input type="text" name="shipping_town">
-            </div>
-            <div class="checkout__input">
-                <p>Xã<span>*</span></p>
-                <input type="text" name="shipping_village">
-            </div> --}}
             <div class="row">
                 <div class="col-lg-6">
                     <div class="checkout__input">
                         <p>Số điện thoại<span>*</span></p>
                         <input type="text" name="shipping_phone">
+                        
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -140,9 +139,38 @@
                 </div>
             </div>
             
+            <div class="row">
+                    <form>
+                        @csrf 
+                        <div class="form-group col-lg-12">
+                            <label for="exampleInputPassword1">Chọn tỉnh, thành phố</label>
+                            <select name="city" id="city" class="form-control input-sm m-bot15 choose city">
+                                <option value="">Chọn tỉnh, thành phố</option>
+                            @foreach($city as $key => $ci)
+                                <option value="{{$ci->matp}}">{{$ci->name}}</option>
+                            @endforeach
+                        </select>
+                        </div>
+                        {{-- <div class="form-group col-lg-4 choosedistrict">
+                            <label for="exampleInputPassword1">Chọn quận, huyện</label>
+                            <select name="district" id="district" class="form-control input-sm m-bot15 choose district">
+                                <option value="">Chọn quận huyện</option>
+                            </select>
+                        </div>
+                    
+                        <div class="form-group col-lg-4">
+                            <label for="exampleInputPassword1">Chọn xã, thị trấn</label>
+                            <select name="village" id="village" class="form-control input-sm m-bot15 village">
+                                <option value="">Chọn xã phường</option>   
+                        </select>
+                        </div> --}}
+                
+           
+                <button type="button" name="calculate_order calculate_delivery" class="btn btn-info add_delivery mt-4 mb-4">Tính phí vận chuyển</button>
+            </form>
+        </div>
 
 
-            
             <div class="checkout__input">
                 <p>Ghi chú<span>*</span></p>
                 <input type="text" name="shipping_note"
@@ -196,3 +224,32 @@
 <!-- Checkout Section End -->
 
 @include('footer')
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.city').on('change',function(){
+        var action = $(this).attr('id');
+        var ma_id = $(this).val();
+        var _token = $('input[name="_token"]').val();
+        var result = '';
+       
+        if(action=='city'){
+            result = 'district';
+        }else{
+            result = 'village';
+        }
+        $.ajax({
+            url : '{{url('/select-delivery')}}',
+            method: 'POST',
+            data:{action:action,ma_id:ma_id,_token:_token},
+            success:function(response){
+                // console.log();
+                $("."+result).empty; 
+                $("."+result).html(response); 
+            }
+        });
+    });
+    });
+
+   
+      
+</script>

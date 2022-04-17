@@ -11,5 +11,8 @@ class District extends Model
     protected $table = 'districts';
     public $timestamps = false; 
     protected $primaryKey = 'ma_qh';
+    protected $fillable = [
+    	'name', 'type'
+    ];
 
 }
