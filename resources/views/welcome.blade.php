@@ -36,12 +36,16 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                    <!-- <div class="hero__item" data-setbg="img/hero/a11.jpg">  -->
+                    <div class="hero__item">
+                        <a href="https://shopee.vn/" target="_blank">
+                            <img src="img/hero/a11.jpg" alt="" class="hero__img set-bg">
+                        </a>
                         <div class="hero__text">
-                            <span>Thực phẩm sạch</span>
+                            <!-- <span>Thực phẩm sạch</span>
                             <h2>Rau củ <br />100% thiên nhiên</h2>
                             <p>Miễn phí giao hàng tận nơi</p>
-                            <a href="#" class="primary-btn">Mua ngay</a>
+                            <a href="#" class="primary-btn">Mua ngay</a> -->
                         </div>
                     </div>
                 </div>

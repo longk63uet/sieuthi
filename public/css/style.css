@@ -408,7 +408,7 @@ ol {
 }
 
 .header__logo {
-	padding: 15px 0;
+	/* padding: 15px 0; */
 }
 
 .header__logo a {
@@ -639,7 +639,7 @@ ol {
 }
 
 .hero__search__form {
-	width: 610px;
+	width: 650px;
 	height: 50px;
 	border: 1px solid #ebebeb;
 	position: relative;
@@ -699,17 +699,19 @@ ol {
 }
 
 .hero__search__phone__icon {
-	font-size: 18px;
+	font-size: 24px;
 	color: #7fad39;
 	height: 50px;
 	width: 50px;
 	background: #f5f5f5;
 	line-height: 50px;
 	text-align: center;
+	padding-top: 13.5px;
 	border-radius: 50%;
 	float: left;
 	margin-right: 20px;
 }
+
 
 .hero__search__phone__text {
 	overflow: hidden;
@@ -727,12 +729,19 @@ ol {
 }
 
 .hero__item {
-	height: 431px;
+	/* height: 431px;
 	display: flex;
 	align-items: center;
 	padding-left: 75px;
+	cursor: pointer; */
 }
-
+.hero__img {
+	height: 431px;
+	display: flex;
+	align-items: center;
+	/* padding-left: 75px; */
+	cursor: pointer;
+}
 .hero__text span {
 	font-size: 14px;
 	text-transform: uppercase;
@@ -853,7 +862,7 @@ ol {
 	margin-bottom: 50px;
 }
 
-.featured__item:hover .featured__item__pic .featured__item__pic__hover {
+.featured__item:hover .featured__item__pic .featured__item__pic__hover{
 	bottom: 20px;
 }
 
@@ -888,8 +897,8 @@ ol {
 }
 
 .featured__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #ec0f0f;
+	border-color: #3dce50;
 }
 
 .featured__item__pic__hover li:hover a i {
@@ -898,15 +907,13 @@ ol {
 }
 
 .featured__item__pic__hover li a {
-	font-size: 16px;
-	color: #1c1c1c;
-	width: 40px;
-	line-height: 40px;
+	font-size: 17px;
+	color: #ec0f0f;
+	width: 42px;
 	text-align: center;
-	border: 1px solid #ebebeb;
 	background: #ffffff;
 	display: block;
-	border-radius: 50%;
+	border-radius: 36%;
 	-webkit-transition: all, 0.5s;
 	-moz-transition: all, 0.5s;
 	-ms-transition: all, 0.5s;
