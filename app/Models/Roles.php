@@ -14,7 +14,7 @@ class Roles extends Model
     ];
  	protected $table = 'roles';
 
- 	public function admin(){
+ 	public function user(){
  		return $this->belongsToMany(User::class);
  	}
 }

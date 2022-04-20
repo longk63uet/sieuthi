@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Comment;
+use App\Models\Rating;
 session_start();
 
 class ProductController extends Controller
@@ -94,7 +96,7 @@ class ProductController extends Controller
     public function allProduct(){
         $all_product = DB::table('product')
         ->join('category','category.category_id','=','product.category_id')
-        ->orderby('product.product_id','desc')->paginate(5);
+        ->orderby('product.product_id','desc')->get();
     	return view('admin.all_product')->with('all_product', $all_product);
     }
     
@@ -114,6 +116,51 @@ class ProductController extends Controller
         ->where('product.category_id',$related)
         ->whereNotIn('product.product_id',[$product_id])
         ->limit(4)->get();
-        return view('pages.detail_product',['cate'=>$cate, 'product'=>$product,'relatedProduct'=>$relatedProduct]);
+
+        $rating = Rating::where('product_id', $product_id)->avg('rating');
+        $rating = round($rating);
+        return view('pages.detail_product',['cate'=>$cate, 'rating'=>$rating,'product'=>$product,'relatedProduct'=>$relatedProduct]);
     }
+
+    public function loadComment(Request $request){
+        $product_id = $request->product_id;
+        // $comments = DB::table('comment')->where('product_id', $product_id)->get();
+        $comments =  Comment::where('product_id', $product_id)->get();
+        $output = '';
+        foreach($comments as $comment){
+            $output .= '<div class="row mt-2 ml-2" style="border: 1px solid #ddd; border-radius: 10px; background:rgb(188, 183, 183)">
+            <div class="col-sm-2">
+                
+                <img width="100%" src="" alt="" class="img img-responsive img-thumbnail">
+            </div>
+            <div class="col-sm-10">
+                <p style="color: blue">' .$comment->name  .'</p>
+                <p>' .  $comment->comment  . '</p> </div> </div> ';
+        }
+        return $output;
+    }
+
+
+        public function sendComment(Request $request){
+            $product_id = $request->product_id;
+            $comment_name = $request->comment_name;
+            $comment_content = $request->comment_content;
+            
+            $comment = new Comment();
+            $comment->product_id = $product_id;
+            $comment->name = $comment_name;
+            $comment->comment = $comment_content;
+            $comment->save();
+
+
+        }
+        public function rating(Request $request){
+            $data = $request->all;
+            $rating = new Rating();
+            $rating->product_id = $data['product_id'];
+            $rating->rating = $data['index'];
+            $rating->save();
+            return 'done';
+        }
+
 }

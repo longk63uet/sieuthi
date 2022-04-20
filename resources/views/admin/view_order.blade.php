@@ -212,17 +212,17 @@
                 </form>
 
                 @endif
-                @endforeach
+                
 
 
             </td>
           </tr>
         </tbody>
       </table>
-      <a target="_blank" href="{{url('/print-order/')}}">In đơn hàng</a>
+      <a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a>
       <a target="_blank" href="{{url('/print-order/')}}">Xác nhận đơn hàng</a>
     </div>
-   
+    @endforeach
   </div>
 </div>
 @endsection

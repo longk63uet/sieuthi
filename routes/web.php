@@ -42,6 +42,9 @@ Route::post('/save-category', [CategoryProductController::class, 'saveCategory']
 Route::post('/update-category/{category_id}', [CategoryProductController::class, 'updateCategory']);
 Route::get('/all-category', [CategoryProductController::class, 'allCategory']);
 
+Route::post('/export-csv',[CategoryProductController::class, 'export_csv']);
+Route::post('/import-csv',[CategoryProductController::class, 'import_csv']);
+
 //product
 Route::get('/add-product', [ProductController::class, 'addProduct']);
 Route::get('/edit-product/{product_id}', [ProductController::class, 'editProduct']);
@@ -50,11 +53,19 @@ Route::post('/save-product', [ProductController::class, 'saveProduct']);
 Route::post('/update-product/{product_id}', [ProductController::class, 'updateProduct']);
 Route::get('/all-product', [ProductController::class, 'allProduct']);
 
+//comment
+Route::post('/load-comment', [ProductController::class, 'loadComment']);
+Route::post('/send-comment', [ProductController::class, 'sendComment']);
+
+//rating
+Route::post('/rating', [ProductController::class, 'rating']);
+
+
 //order
 Route::get('/manage-order', [OrderController::class, 'manageOrder']);
 Route::get('/view-order/{order_id}', [OrderController::class, 'viewOrder']);
 Route::get('/delete-order/{order_id}',[OrderController::class, 'deleteOrder']);
-Route::get('/print-order/{checkout_code}',[OrderController::class, 'printOrder']);
+Route::get('/print-order/{order_detail_id}',[OrderController::class, 'printOrder']);
 
 //coupon
 Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);
@@ -73,6 +84,9 @@ Route::get('/manage-banner', [BannerController::class, 'manageBanner']);
 Route::get('/manage-blog', [BlogController::class, 'manageBlog']);
 Route::get('/insert-blog', [BlogController::class, 'insertBlog']);
 Route::post('/add-blog', [BlogController::class, 'addBlog']);
+
+
+
 
 
 

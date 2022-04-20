@@ -23,10 +23,19 @@
 <script src="{{asset('backend/js/jquery2.0.3.min.js')}}"></script>
 <script src="{{asset('backend/js/raphael-min.js')}}"></script>
 <script src="{{asset('backend/js/morris.js')}}"></script>
-{{-- <script src="//cdn.ckeditor.com/4.18.0/standard/ckeditor.js"></script> --}}
 <script type="text/javascript" src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
 <script src="{{asset('backend/js/jquery.form-validator.min.js')}}"></script>
-
+<link rel="stylesheet" type="text/css" href="{{asset('backend/DataTables/datatables.min.css')}}"/>
+<script type="text/javascript" src="{{asset('backend/DataTables/datatables.min.js')}}"></script>
+<script>
+    $(document).ready( function () {
+        $('#myTable').DataTable( {
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        "paging":         false
+    } );
+    } );
+    </script>
 </head>
 <body>
 <section id="container">
@@ -103,6 +112,13 @@
                     <a class="active" href="{{url('/manage-banner')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Quản lý Banner quảng cáo</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a class="active" href="{{url('/manage-comment')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý, kiểm duyệt bình luận</span>
                     </a>
                 </li>
                 
@@ -268,5 +284,7 @@
 
     });
 </script>
+
+
 
 </html>

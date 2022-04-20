@@ -22,7 +22,8 @@
                         <div class="hero__search__form">
                             <form method="POST" action="{{url('/tim-kiem')}}" >
                                 @csrf
-                                <input type="text" name="keywords_submit" placeholder="Bạn cần tìm gì?">
+                                <input type="text" name="keywords_submit" id="keyword" placeholder="Bạn cần tìm gì?">
+                                <div id="search-ajax"></div>
                                 <button type="submit"  class="site-btn">Tìm kiếm</button>
                             </form>
                         </div>
@@ -54,6 +55,12 @@
 
     @yield('content')
     @include('footer')
+    <script>
+        $(#keyword).keyup(function () { 
+            var query =  $(this).val();
+            alert(query);
+        });
+    </script>
 
    
     

@@ -70,6 +70,64 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('js/mixitup.min.js')}}"></script>
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+<script src="{{asset('js/lightslider.js')}}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#lightSlider").lightSlider({
+            item: 3,
+            autoWidth: false,
+            slideMove: 1, // slidemove will be 1 if loop is true
+            slideMargin: 10,
+     
+            addClass: '',
+            mode: "slide",
+            useCSS: true,
+            cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+            easing: 'linear', //'for jquery animation',////
+     
+            speed: 400, //ms'
+            auto: false,
+            loop: false,
+            slideEndAnimation: true,
+            pause: 2000,
+     
+            keyPress: false,
+            controls: true,
+            prevHtml: '',
+            nextHtml: '',
+     
+            rtl:false,
+            adaptiveHeight:false,
+     
+            vertical:false,
+            verticalHeight:500,
+            vThumbWidth:100,
+     
+            thumbItem:10,
+            pager: true,
+            gallery: false,
+            galleryMargin: 5,
+            thumbMargin: 5,
+            currentPagerPosition: 'middle',
+     
+            enableTouch:true,
+            enableDrag:true,
+            freeMove:true,
+            swipeThreshold: 40,
+     
+            responsive : [],
+     
+            onBeforeStart: function (el) {},
+            onSliderLoad: function (el) {},
+            onBeforeSlide: function (el) {},
+            onAfterSlide: function (el) {},
+            onBeforeNextSlide: function (el) {},
+            onBeforePrevSlide: function (el) {}
+        });
+    });
+    </script>
+    
 <!-- JavaScript -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
@@ -94,6 +152,108 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
             } 
     });
 });
+</script>
+<script>
+    $(document).ready(function () {
+        
+        load_comment();
+        function load_comment() {  
+            var product_id = $('.comment_product_id').val();
+            $.ajax({
+                type: "POST",
+                url: '{{url('/load-comment')}}',
+                data: {
+                    product_id: product_id, "_token": "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    $('#load_comment').html(response);
+                }
+            });
+        }
+
+        $('.send_comment').click(function () { 
+            var product_id = $('.comment_product_id').val();
+           var comment_name = $('.comment_name').val();
+           var comment_content = $('.comment_content').val();
+           $.ajax({
+                type: "POST",
+                url: '{{url('/send-comment')}}',
+                data: {
+                    product_id: product_id, 
+                    comment_name: comment_name, 
+                    comment_content: comment_content, 
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    load_comment();
+                    $('.comment_name').val('');
+                    $('.comment_content').val('');
+
+                }
+            });
+            
+        });
+
+    
+    });
+</script>
+<script>
+
+    function removeBackground(product_id){
+        for(var count =1 ; count<=5; count++){
+            $('#'+product_id+'-'+count).css('color', '#ccc')
+        }
+    }
+    $(document).on('mouseenter', '.rating',function () { 
+        var index = $(this).data("index");
+        var product_id = $(this).data("product_id");
+        removeBackground(product_id);
+        for(var count =1 ; count<=index; count++){
+            $('#'+product_id+'-'+count).css('color', '#ffcc00')
+        }
+        
+    });
+
+    $(document).on('mouseleave', '.rating',function () { 
+        var index = $(this).data("index");
+        var product_id = $(this).data("product_id");
+        var rating = $(this).data("rating");
+        removeBackground(product_id);
+        for(var count =1 ; count<=rating; count++){
+            $('#'+product_id+'-'+count).css('color', '#ffcc00')
+        }
+        
+    });
+
+    $(document).on('click', '.rating',function () { 
+        var index = $(this).data("index");
+        var product_id = $(this).data("product_id");
+        $.ajax({
+                type: "POST",
+                url: '{{url('/rating')}}',
+                data: {
+                    product_id: product_id, 
+                    index: index, 
+                    "_token": "{{ csrf_token() }}"
+                },
+                success: function (response) {
+                    if(data=='done'){
+                        alertify.success("Bạn đã đánh giá thành công");
+                    }
+                    else{
+                        alertify.error("Bạn đã đánh giá thành công");
+                    }
+
+                }
+            });
+        
+        
+    });
+
+
+
+
+
 </script>
 
 

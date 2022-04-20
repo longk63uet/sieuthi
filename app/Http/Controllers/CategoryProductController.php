@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
+use Excel;
+use App\Imports\Imports;
+use App\Exports\Export;
+use Illuminate\Support\Facades\Auth;
+
 session_start();
 class CategoryProductController extends Controller
 {
@@ -60,6 +65,15 @@ class CategoryProductController extends Controller
     public function allCategory(){
         $data = DB::table('category')->get();
         return view('admin.all_category', ['data' => $data]);
+    }
+
+    public function export_csv(){
+        return Excel::download(new Export , 'category_product.xlsx');
+    }
+    public function import_csv(Request $request){
+        $path = $request->file('file')->getRealPath();
+        Excel::import(new Imports, $path);
+        return back();
     }
 
 

@@ -21,7 +21,7 @@
                 <div class="hero__search">
                     <div class="hero__search__form">
                         <form action="#">
-                            <input type="text" placeholder="Bạn cần tìm gì?">
+                            <input type="text"  placeholder="Bạn cần tìm gì?">
                             <button type="submit" class="site-btn">Tìm kiếm</button>
                         </form>
                     </div>
@@ -72,7 +72,7 @@
                         <img class="product__details__pic__item--large"
                             src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
                     </div>
-                    <div class="product__details__pic__slider owl-carousel">
+                    {{-- <div class="product__details__pic__slider owl-carousel">
                         <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
                             src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
                         <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
@@ -81,7 +81,7 @@
                             src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
                         <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
                             src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -124,7 +124,6 @@
                                 <a href="#"><i class="fa fa-facebook"></i></a>
                                 <a href="#"><i class="fa fa-twitter"></i></a>
                                 <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa fa-pinterest"></i></a>
                             </div>
                         </li>
                     </ul>
@@ -140,25 +139,81 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
+                            <a class="nav-link " data-toggle="tab" href="#tabs-2" role="tab"
+                                aria-selected="false">Bình luận <span>(1)</span></a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link " data-toggle="tab" href="#tabs-3" role="tab"
                                 aria-selected="false">Đánh giá <span>(1)</span></a>
                         </li>
+
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6>Thông tin chi tiết sản phẩm</h6>
-                                <p>{{$pro->product_detail}}</p>
+                                <p>{!!$pro->product_detail!!}</p>
+                            </div>
+                        </div>
+                        <div class="tab-pane " id="tabs-3" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <h6>Đánh giá sản phẩm</h6>
+
+                                <ul class="list-inline inline rating">
+                                    @for($count=1; $count<=5; $count++)
+                                    @php
+                                    if ($count<=$rating) {
+                                        $color = 'color:#ffcc00;';
+                                    } else {
+                                        $color = 'color:#ccc;';
+                                    }
+                                    
+                                    @endphp
+                                    <li
+                                        id="{{$pro->product_id}}-{{$count}}"
+                                        data-index="{{$count}}"
+                                        data-product_id="{{$pro->product_id}}"
+                                        data-rating="{{$rating}}"
+                                        class="rating"
+                                        style=" display: inline-block; cursor:pointer;{{$color}} font-size:30px"
+                                        >
+                                        &#9733;
+                                    </li>
+                                    @endfor
+                                </ul>
+
                             </div>
                         </div>
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
-                            <div class="product__details__tab__desc">
-                                <h6>Đánh giá</h6>
-                                <p></p>
-                                <p></p>
+                                <div class="product__details__tab__desc">
+                                    <div class="col-sm-12">
+                                        
+                                        <form >
+                                            @csrf
+                                        <input type="hidden"  name="comment_product_id" class="comment_product_id" value="{{$pro->product_id}}">
+                                        </form>
+                                        <form action="#">
+                                            <p><b>Tên</b></p>
+                                            <input type="text" style="width:100%" class="comment_name" name="name" placeholder="Nhập tên của bạn">
+                                            <p><b>Bình luận</b></p>
+                                            <textarea name="comment"  class="form-control comment_content"  rows="5"> </textarea>
+                                            {{-- <input class="form-control" name="comment" type="text" placeholder="Nhập bình luận của bạn"> --}}
+                                            <button type="button" class="site-btn mt-4 send_comment">Gửi bình luận</button>
+                                        </form>
+                                    </div>
+
+                                    <div id="load_comment">
+                                    
+                                    </div>
+                                </div>
+                            </div>
+
                             </div>
                         </div>
-                        
+                                    
+                                    
+                    
                     </div>
                 </div>
             </div>
