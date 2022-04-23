@@ -13,6 +13,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\OrderController;
+use Illuminate\Support\Facades\App;
 
 use Illuminate\Support\Facades\Auth;
 /*
@@ -44,6 +45,17 @@ Route::get('/all-category', [CategoryProductController::class, 'allCategory']);
 
 Route::post('/export-csv',[CategoryProductController::class, 'export_csv']);
 Route::post('/import-csv',[CategoryProductController::class, 'import_csv']);
+
+//blog category
+Route::get('/add-blog-category', [BlogController::class, 'addBlogCategory']);
+Route::get('/edit-blog-category/{blogcategory_id}', [BlogController::class, 'editBlogCategory']);
+Route::get('/delete-blog-category/{blogcategory_id}', [BlogController::class, 'deleteBlogCategory']);
+Route::post('/save-blog-category', [BlogController::class, 'saveBlogCategory']);
+Route::post('/update-blog-category/{blogcategory_id}', [BlogController::class, 'updateBlogCategory']);
+Route::get('/all-blog-category', [BlogController::class, 'allBlogCategory']);
+
+Route::post('/blogcategory-export-csv',[BlogController::class, 'export_csvBlogCategory']);
+Route::post('/blogcategory-import-csv',[BlogController::class, 'import_csvBlogCategory']);
 
 //product
 Route::get('/add-product', [ProductController::class, 'addProduct']);
@@ -79,6 +91,11 @@ Route::get('/manage-user', [UserController::class, 'manageUser']);
 
 //banner
 Route::get('/manage-banner', [BannerController::class, 'manageBanner']);
+Route::get('/add-banner', [BannerController::class, 'addBanner']);
+Route::post('/insert-banner', [BannerController::class, 'insertBanner']);
+Route::get('/unactive-banner/{banner_id}', [BannerController::class, 'unactiveBanner']);
+Route::get('/active-banner/{banner_id}', [BannerController::class, 'activeBanner']);
+Route::get('/delete-banner/{banner_id}', [BannerController::class, 'deleteBanner']);
 
 //blogs
 Route::get('/manage-blog', [BlogController::class, 'manageBlog']);
@@ -93,9 +110,21 @@ Route::post('/add-blog', [BlogController::class, 'addBlog']);
 
 ////////////////////////user/////////////////////////////
 
+Route::get('/lang/{locale}', function ($locale) {
+    if (! in_array($locale, ['en', 'vi', 'fr'])) {
+        abort(400);
+    }
+ 
+    App::setLocale($locale);
+ 
+    return redirect()->back();
+});
+
 //index
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
+
+Route::get('/add-to-wishlist/{product_id}',[HomeController::class, 'addWishlist'])->name('add-to-wishlist');
 
 //send email
 Route::get('/send-mail', [HomeController::class, 'sendMail']);

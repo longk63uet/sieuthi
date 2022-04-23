@@ -18,8 +18,11 @@
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                            <li><a href="javascript:" onclick="addToWishlist({{$pro->product_id}})"><i class="fa fa-heart"></i></a></li>
+                            <li><a style="cursor: pointer" onclick="compare({{$pro->product_id}})"><i class="fa fa-retweet"></i></a></li>
+                            <div class="container-fluid">
+
+                            </div>
                             <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
                         </ul>
                     </div>
@@ -38,7 +41,24 @@
     </div>
 </section>
 <!-- Featured Section End -->
-
+<!-- Banner Begin -->
+<div class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="img/banner/banner-1.jpg" alt="">
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="banner__pic">
+                    <img src="img/banner/banner-2.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Banner End -->
 <!-- Latest Product Section Begin -->
 <section class="latest-product spad">
     <div class="container">

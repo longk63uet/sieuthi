@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Comment;
+use App\Models\Product;
 use App\Models\Rating;
 session_start();
 
@@ -107,10 +108,14 @@ class ProductController extends Controller
         $product = DB::table('product')
         ->join('category','category.category_id','=','product.category_id')
         ->where('product.product_id',$product_id)->get();
+
         foreach($product as $pro){
+            
             $related = $pro->category_id;
         }
-        
+        $pro = Product::where('product_id', $product_id)->first();
+        $pro->view = $pro->view + 1;
+        $pro->save();
         $relatedProduct = DB::table('product')
         ->join('category','category.category_id','=','product.category_id')
         ->where('product.category_id',$related)
@@ -155,10 +160,9 @@ class ProductController extends Controller
 
         }
         public function rating(Request $request){
-            $data = $request->all;
             $rating = new Rating();
-            $rating->product_id = $data['product_id'];
-            $rating->rating = $data['index'];
+            $rating->product_id = $request->product_id;
+            $rating->rating = $request->index;
             $rating->save();
             return 'done';
         }

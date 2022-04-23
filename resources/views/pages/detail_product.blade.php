@@ -160,7 +160,7 @@
                             <div class="product__details__tab__desc">
                                 <h6>Đánh giá sản phẩm</h6>
 
-                                <ul class="list-inline inline rating">
+                                <ul class="list-inline inline">
                                     @for($count=1; $count<=5; $count++)
                                     @php
                                     if ($count<=$rating) {

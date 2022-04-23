@@ -55,12 +55,7 @@
 
     @yield('content')
     @include('footer')
-    <script>
-        $(#keyword).keyup(function () { 
-            var query =  $(this).val();
-            alert(query);
-        });
-    </script>
+    
 
    
     

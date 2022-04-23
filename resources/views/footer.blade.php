@@ -71,6 +71,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/lightslider.js')}}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -176,7 +178,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
            var comment_name = $('.comment_name').val();
            var comment_content = $('.comment_content').val();
            $.ajax({
-                type: "POST",
+                method: "POST",
                 url: '{{url('/send-comment')}}',
                 data: {
                     product_id: product_id, 
@@ -228,6 +230,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     $(document).on('click', '.rating',function () { 
         var index = $(this).data("index");
         var product_id = $(this).data("product_id");
+        console.log(product_id);
         $.ajax({
                 type: "POST",
                 url: '{{url('/rating')}}',
@@ -237,7 +240,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     "_token": "{{ csrf_token() }}"
                 },
                 success: function (response) {
-                    if(data=='done'){
+                    if(response=='done'){
                         alertify.success("Bạn đã đánh giá thành công");
                     }
                     else{
@@ -255,6 +258,60 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 
 </script>
+<script>
+   function addToWishlist(id) {
+        $.ajax({
+            type: "GET",
+            url: "add-to-wishlist/"+id,
+            success: function (response) {
+                // $('#total-quantity').text($('#total-quantity').val());
+                // $('.fa fa-shopping-bag').empty;
+                // $('.fa fa-shopping-bag').html(response);
+                if (response == 'success') {
+                    alertify.success('Đã thêm sản phẩm vào yêu thích');
+                } else {
+                    alertify.error('Sản phẩm đã được thêm vào yêu thích trước đó');
+                }
+                
+                
+        
+        }
+        });
+    }
+</script>
+
+<script>
+$(document).ready(function(){
+    $('#sort').change(function () { 
+        var url = $(this).val();
+        if(url){
+            window.location = url;
+        }
+        return false;
+        
+    });
+});
+
+</script>
+<script>
+  $( function() {
+    $( "#slider-range" ).slider({
+      orientation: "vertical",
+      range: true,
+      min: 100000,
+      max: 2000000,
+      values: [ 10000, 2000000 ],
+      step: 10000,
+      slide: function( event, ui ) {
+        $( "#amount" ).val( "đ" + ui.values[ 0 ] + " - đ" + ui.values[ 1 ] );
+        $( "#start_price" ).val(ui.values[ 0 ]);
+        $( "#end_price" ).val(ui.values[ 1 ]);
+      }
+    });
+    $( "#amount" ).val( "đ" + $( "#slider-range" ).slider( "values", 0 ) +
+      " - đ" + $( "#slider-range" ).slider( "values", 1 ) );
+  } );
+  </script>
 
 
 </body>

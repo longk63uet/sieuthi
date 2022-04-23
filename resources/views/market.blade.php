@@ -77,10 +77,10 @@
                         </ul>
                     </div>
                     <div class="sidebar__item">
-                        <h4>Price</h4>
-                        <div class="price-range-wrap">
+                        {{-- <h4>Price</h4> --}}
+                        {{-- <div class="price-range-wrap">
                             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="10" data-max="540">
+                                data-min="10000" data-max="500000">
                                 <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
                                 <span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default"></span>
@@ -91,9 +91,21 @@
                                     <input type="text" id="maxamount">
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
+                        <p>
+                        <form >
+                            <label for="amount">Lọc theo giá sản phẩm:</label>
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            <input type="hidden" name="start_price" id="start_price" value="">
+                            <input type="hidden" name="end_price" id="end_price" value="">
+                            <input type="submit" class="btn btn-primary btn-sm" name="filter_price" value="Lọc giá">
+                        </form>
+                          </p>
+
+                           
+                          <div id="slider-range" style="height:250px;"></div>
                     </div>
-                    <div class="sidebar__item sidebar__item__color--option">
+                    {{-- <div class="sidebar__item sidebar__item__color--option">
                         <h4>Colors</h4>
                         <div class="sidebar__item__color sidebar__item__color--white">
                             <label for="white">
@@ -158,7 +170,7 @@
                                 <input type="radio" id="tiny">
                             </label>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">
@@ -195,11 +207,17 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sort By</span>
-                                <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
+                                <h5>Sắp xếp theo</h5>
+                                <form>
+                                    @csrf
+                                <select name="sort" id="sort" class="form-control">
+                                    <option value="{{Request::url()}}?sort=none">Mặc định</option>
+                                    <option value="{{Request::url()}}?sort=up">Giá tăng dần</option>
+                                    <option value="{{Request::url()}}?sort=down">Giá giảm dần</option>
+                                    <option value="{{Request::url()}}?sort=az">Theo tên từ A->Z</option>
+                                    <option value="{{Request::url()}}?sort=za">Theo tên từ Z->A</option>
                                 </select>
+                            </form>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-4">

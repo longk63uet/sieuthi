@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
@@ -39,8 +40,35 @@ class HomeController extends Controller
 
     public function market(){
         $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
-        $product = DB::table('product')->where('product_status','1')->limit(4)->get();
-        return view('market',['cate'=>$cate,'product'=>$product]);
+        $min_price = Product::min('product_price');
+        $max_price = Product::max('product_price');
+
+        if(isset($_GET['sort'])){
+            $sort = $_GET['sort'];
+            if($sort =='up' ){
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query()); //tránh mất code khi chuyển trang
+            }
+            elseif($sort =='down' ){
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+            }
+            elseif($sort =='az' ){
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+            }
+            elseif($sort =='za' ){
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+            }
+            
+        }
+        elseif(isset($_GET['start_price'])){
+            $start_price = $_GET['start_price'];
+            $end_price = $_GET['end_price'];
+
+            $product = DB::table('product')->whereBetween('product_price', [$start_price, $end_price])->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+        }
+        else{
+            $product = DB::table('product')->where('product_status','1')->paginate(15);
+        }
+        return view('market',['cate'=>$cate,'product'=>$product, 'min_price'=>$min_price, 'max_price'=>$max_price]);
 
     }
 
@@ -63,5 +91,20 @@ class HomeController extends Controller
          });
          // return redirect('/')->with('message','');
          //--send mail
+    }
+
+    public function addWishlist($product_id){
+        $wishlist = DB::table('wishlist')->get();
+        foreach($wishlist as $value){
+            if($value->product_id == $product_id){
+                return 'error';
+            }
+        }
+        $data = array();
+        $data['product_id'] = $product_id;
+        DB::table('wishlist')->insert($data);
+        return 'success';
+
+
     }
 }

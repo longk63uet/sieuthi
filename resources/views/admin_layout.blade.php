@@ -108,13 +108,17 @@
                         <span>Quản lý người dùng</span>
                     </a>
                 </li>
-				<li>
-                    <a class="active" href="{{url('/manage-banner')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý Banner quảng cáo</span>
+                <li class="sub-menu">
+                    <a href="javascript:;">
+                        <i class="fa fa-book"></i>
+                        <span>Banner quảng cáo</span>
                     </a>
+                    <ul class="sub">
+						<li><a href="{{url('/add-banner')}}">Thêm Banner quảng cáo</a></li>
+						<li><a href="{{url('/manage-banner')}}">Quản lý Banner quảng cáo</a></li>
+                    </ul>
                 </li>
-
+				
                 <li>
                     <a class="active" href="{{url('/manage-comment')}}">
                         <i class="fa fa-dashboard"></i>
@@ -129,7 +133,9 @@
                     </a>
                     <ul class="sub">
 						<li><a href="{{url('/insert-blog')}}">Thêm Blog</a></li>
+                        <li><a href="{{url('/add-blog-category')}}">Thêm danh mục Blog</a></li>
 						<li><a href="{{url('/manage-blog')}}">Quản lý Blog</a></li>
+                        <li><a href="{{url('/all-blog-category')}}">Quản lý danh mục Blog</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
