@@ -8,7 +8,7 @@
                         <a href="./index.html"><img src="img/eco.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Địa chỉ: Đại học công nghệ</li>
+                        <li>Địa chỉ: Đại học Công nghệ</li>
                         <li>Điện thoại: +84 999 999</li>
                         <li>Email: sieuthixanh@online.com</li>
                     </ul>
@@ -39,10 +39,10 @@
                         <button type="submit" class="site-btn">Đăng ký</button>
                     </form>
                     <div class="footer__widget__social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
+                        <a href="#" class="justify-content-center align-items-center"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="justify-content-center align-items-center"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="justify-content-center align-items-center"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="justify-content-center align-items-center"><i class="fa fa-pinterest"></i></a>
                     </div>
                 </div>
             </div>

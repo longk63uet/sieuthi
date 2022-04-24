@@ -24,8 +24,8 @@
                                 Danh mục
                                 <span class="arrow_carrot-down"></span>
                             </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                            <input type="text" placeholder="Bạn cần tìm gì?">
+                            <button type="submit" class="site-btn">Tìm kiếm</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -33,8 +33,8 @@
                             <i class="fa fa-phone"></i>
                         </div>
                         <div class="hero__search__phone__text">
-                            <h5>+65 11.188.888</h5>
-                            <span>support 24/7 time</span>
+                            <h5>+84 999 999</h5>
+                            <span>Hỗ trợ 24/7</span>
                         </div>
                     </div>
                 </div>
@@ -50,10 +50,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Organi Shop</h2>
+                    <h2>Eco Market</h2>
                     <div class="breadcrumb__option">
                         <a href="./index.html">Home</a>
-                        <span>Shop</span>
+                        <!-- <span>Shop</span> -->
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar__item">
-                        <h4>Department</h4>
+                        <h4>Danh mục sản phẩm</h4>
                         <ul>
                             @foreach ($cate as $category)  
                             <li><a href="{{url('danh-muc/'.$category->category_id)}}">{{$category->category_name}}</a></li>
@@ -77,7 +77,7 @@
                         </ul>
                     </div>
                     <div class="sidebar__item">
-                        <h4>Price</h4>
+                        <h4>Khoảng giá</h4>
                         <div class="price-range-wrap">
                             <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
                                 data-min="10" data-max="540">
@@ -195,10 +195,11 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-5">
                             <div class="filter__sort">
-                                <span>Sort By</span>
+                                <span>Sắp xếp theo</span>
                                 <select>
-                                    <option value="0">Default</option>
-                                    <option value="0">Default</option>
+                                    <option value="0">Mặc định</option>
+                                    <option value="0">Tăng dần</option>
+                                    <option value="0">Giảm dần</option>
                                 </select>
                             </div>
                         </div>
@@ -240,4 +241,6 @@
     </div>
 </section>
 <!-- Product Section End -->
+
+@yield('content')
 @include('footer')

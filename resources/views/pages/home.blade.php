@@ -12,15 +12,15 @@
         </div>
         <div class="row featured__filter">
             @foreach ($product as $pro)
-            <a href="{{url('/chi-tiet/'.$pro->product_id)}}">
+            <!-- <a href="{{url('/chi-tiet/'.$pro->product_id)}}"> -->
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                 
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
                         <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
+                            <li><a href="#" class="d-flex justify-content-center align-items-center"><i class="fa fa-heart"></i></a></li>
+                            <li><a href="#" class="d-flex justify-content-center align-items-center" ><i class="fa fa-retweet"></i></a></li>
+                            <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" class="d-flex justify-content-center align-items-center"><i class="fa fa-shopping-cart "></i></a></li>
                         </ul>
                     </div>
                     <div class="featured__item__text">
