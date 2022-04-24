@@ -50,13 +50,8 @@ class Cart{
     }
 
     public function updateCart($id, $product, $quantity){
-        if($this->products[$id]){
-            $this->products[$id]['quantity'] += $quantity; 
-            $this->products[$id]['price'] = $this->products[$id]['quantity'] * $product->product_price;
-            $this->totalQuantity += $quantity;
-            $this->totalPrice += $this->products[$id]['price'];
-        }
-        else{
+        
+        if(empty($this->products[$id])){
             $newProduct = ['quantity' => $quantity, 'price' => $product->product_price, 'info' => $product];
             $newProduct['price'] = $newProduct['quantity'] * $product->product_price;
             $this->products[$id] = $newProduct;
@@ -64,6 +59,12 @@ class Cart{
             $this->totalQuantity += $quantity;
 
         }
+        else{
+                $this->products[$id]['quantity'] += $quantity; 
+                $this->products[$id]['price'] = $this->products[$id]['quantity'] * $product->product_price;
+                $this->totalQuantity += $quantity;
+                $this->totalPrice += $this->products[$id]['price'];
+            }
     }
 }
 

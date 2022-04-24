@@ -120,7 +120,11 @@
                                    if($user_id!=NULL){ 
                                  ?>
                                  <div class="header__top__right__auth">
-                                  <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a>
+                                    <ul>
+                                        <li> <a href="{{URL::to('/profile')}}"><i class="fa fa-user"></i> Trang cá nhân</a></li>
+                                        <li> <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+                                    </ul>
+                                 
                                 </div>
                                 <?php
                             }else{

@@ -56,33 +56,16 @@
                             <div class="checkout__input col-lg-4">
                                 <p>Thành phố/ Tỉnh<span>*</span></p>
                                 <input type="text" name="shipping_city" >
-                                <select name="shipping_city">
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-                                    <option value="">Volvo</option>
-
-                                    
-                                </select>
+                                
                             </div>
                             <div class="checkout__input col-lg-4">
                                 <p>Huyện<span>*</span></p>
                                 <input type="text" name="shipping_town">
-                                {{-- <select name="shipping_town">
-                                    <option value="">Volvo</option>
-                                </select> --}}
                             </div>
                             <div class="checkout__input col-lg-4">
                                 <p>Xã<span>*</span></p>
                                 <input type="text" name="shipping_village">
-                                {{-- <select name="shipping_village">
-                                    <option value="">Volvo</option>
-                                </select> --}}
+                                
                             </div>
                         </div>
                         <div class="row">

@@ -9,7 +9,7 @@
                     <h2>Blog</h2>
                     <div class="breadcrumb__option">
                         <a href="./index.html">Home</a>
-                        <span>Blog</span>
+                        <span>Kết quả tìm kiếm cho từ khóa "{{$keywords}}"</span>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@
             </div>
             <div class="col-lg-8 col-md-7">
                 <div class="row">
-                    @foreach ($blogs as $item)
+                    @foreach ($search_blog as $item)
                         
                     
                     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -97,7 +97,7 @@
                     
                     <div class="col-lg-12">
                         <div class="product__pagination blog__pagination">
-                            {{ $blogs->links() }}
+                            {{-- {{ $search_blog->links() }} --}}
                         </div>
                     </div>
                 </div>

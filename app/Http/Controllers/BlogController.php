@@ -202,6 +202,15 @@ class BlogController extends Controller
 
         return view('blog_detail',['blogcate'=>$blogcate, 'blog'=>$blog, 'relatedBlog'=>$relatedBlog, 'recentblogs'=>$recentblogs]);
     }
+    public function searchBlog(Request $request){
+        $keywords = $request->blog;
+        $search_blog = DB::table('blogs')->where('title','like','%'.$keywords.'%')->get(); 
+        $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
+        $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
+
+        return view('search_blog',['search_blog' => $search_blog, 'keywords'=>$keywords, 'recentblogs'=>$recentblogs, 'blogcate'=>$blogcate]);
+
+    }
 
     
 

@@ -175,8 +175,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
         $('.send_comment').click(function () { 
             var product_id = $('.comment_product_id').val();
-           var comment_name = $('.comment_name').val();
-           var comment_content = $('.comment_content').val();
+            var comment_name = $('.comment_name').val();
+            var comment_content = $('.comment_content').val();
            $.ajax({
                 method: "POST",
                 url: '{{url('/send-comment')}}',

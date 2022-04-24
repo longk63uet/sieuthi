@@ -142,6 +142,7 @@ Route::get('/market', [HomeController::class, 'market']);
 //Blogs 
 Route::get('/blogs', [BlogController::class, 'blogs']);
 Route::get('/blog/{blog_id}', [BlogController::class, 'blogdetail']);
+Route::post('/tim-kiem-blog', [BlogController::class, 'searchBlog']);
 
 
 
@@ -151,8 +152,7 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 
 //Cart
-Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
-Route::post('/save-cart',[CartController::class, 'saveCart']);
+Route::post('/add-carts',[CartController::class, 'addCarts']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);

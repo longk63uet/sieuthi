@@ -87,19 +87,20 @@
                         <i class="fa fa-star-half-o"></i>
                         <span>(18 reviews)</span>
                     </div>
-                <form action="{{URL('/save-cart')}}" method="POST">
-                        @csrf
+                
                     <div class="product__details__price">{{number_format($pro->product_price)}} VNĐ</div>
-                    <p>{{$pro->product_detail}}</p>
-                    <div class="product__details__quantity">
-                        <div class="quantity">
-                            <div class="pro-qty">
-                                <input name="quantity" type="number" value="1">
-                                <input name="productid_hidden" type="hidden"  value="{{$pro->product_id}}" />
+                    {{-- <p>{!!$pro->product_detail!!}</p> --}}
+                    <form action="{{URL('/add-carts')}}" method="POST">
+                        @csrf
+                        <div class="product__details__quantity">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input name="quantity" type="number" min="1" >
+                                    <input name="productid_hidden" type="hidden" value="{{$pro->product_id}}">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-primary btn-sm add-to-cart" data-id_product="{{$pro->product_id}}" name="add-to-cart">
+                    <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-primary btn-sm">
                 </form>
                     <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                 
@@ -131,10 +132,10 @@
                                 aria-selected="false">Bình luận <span>(1)</span></a>
                         </li>
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#tabs-3" role="tab"
                                 aria-selected="false">Đánh giá <span>(1)</span></a>
-                        </li>
+                        </li> --}}
 
                     </ul>
                     <div class="tab-content">
@@ -144,7 +145,7 @@
                                 <p>{!!$pro->product_detail!!}</p>
                             </div>
                         </div>
-                        <div class="tab-pane " id="tabs-3" role="tabpanel">
+                        {{-- <div class="tab-pane " id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
                                 <h6>Đánh giá sản phẩm</h6>
 
@@ -172,8 +173,35 @@
                                 </ul>
 
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
+                            <div class="product__details__tab__desc">
+                                <h6>Đánh giá sản phẩm</h6>
+
+                                <ul class="list-inline inline">
+                                    @for($count=1; $count<=5; $count++)
+                                    @php
+                                    if ($count<=$rating) {
+                                        $color = 'color:#ffcc00;';
+                                    } else {
+                                        $color = 'color:#ccc;';
+                                    }
+                                    
+                                    @endphp
+                                    <li
+                                        id="{{$pro->product_id}}-{{$count}}"
+                                        data-index="{{$count}}"
+                                        data-product_id="{{$pro->product_id}}"
+                                        data-rating="{{$rating}}"
+                                        class="rating"
+                                        style=" display: inline-block; cursor:pointer;{{$color}} font-size:30px"
+                                        >
+                                        &#9733;
+                                    </li>
+                                    @endfor
+                                </ul>
+
+                            </div>
                                 <div class="product__details__tab__desc">
                                     <div class="col-sm-12">
                                         
