@@ -278,6 +278,26 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         }
         });
     }
+
+    function removeWishlist(id) {
+        $.ajax({
+            type: "GET",
+            url: "remove-wishlist/"+id,
+            success: function (response) {
+                // $('#total-quantity').text($('#total-quantity').val());
+                // $('.fa fa-shopping-bag').empty;
+                // $('.fa fa-shopping-bag').html(response);
+                if (response == 'success') {
+                    alertify.success('Đã thêm sản phẩm vào yêu thích');
+                } else {
+                    alertify.error('Sản phẩm đã được thêm vào yêu thích trước đó');
+                }
+                
+                
+        
+        }
+        });
+    }
 </script>
 
 <script>
@@ -312,7 +332,23 @@ $(document).ready(function(){
       " - đ" + $( "#slider-range" ).slider( "values", 1 ) );
   } );
   </script>
-
+<script>
+    function addToCart(id) {
+        $.ajax({
+            type: "GET",
+            url: "add-to-cart/"+id,
+            success: function (response) {
+                $('#total-quantity').text($('#total-quantity').val());
+                // $('.fa fa-shopping-bag').empty;
+                // $('.fa fa-shopping-bag').html(response);
+                alertify.success('Đã thêm sản phẩm vào giỏ hàng');
+                
+        
+        }
+        });
+    }
+   
+</script>
 
 </body>
 

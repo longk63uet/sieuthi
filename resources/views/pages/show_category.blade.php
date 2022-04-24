@@ -220,8 +220,9 @@
                     </div>
                 </div>
                 <div class="row">
+                    @foreach ($product as $pro)
                     <div class="col-lg-4 col-md-6 col-sm-6">
-                        @foreach ($product as $pro)
+                        
                         <div class="product__item">
                             <div class="product__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
                                 <ul class="product__item__pic__hover">
@@ -235,8 +236,9 @@
                                 <h5>{{$pro->product_price}}</h5>
                             </div>
                         </div>
-                        @endforeach
+                        
                     </div>
+                    @endforeach
             </div>
         </div>
     </div>

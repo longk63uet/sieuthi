@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
@@ -25,7 +27,18 @@ class HomeController extends Controller
     public function index(){
         $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
         $product = DB::table('product')->where('product_status','1')->limit(4)->get();
-        return view('pages.home',['cate'=>$cate,'product'=>$product]);
+        $banner = Banner::all()->take(2);
+        $soldProduct = DB::table('product')->where('product_status','1')->orderBy('sold','desc')->limit(3)->get();
+        $topRating = DB::table('rating')->select(DB::raw('avg(rating) as rate, product_id'))->groupBy('product_id')->limit(3)->get();
+        $topRateProduct = [];
+        foreach($topRating as $value){
+            $topRateProduct[] = $value->product_id;
+        }
+        $ratingProduct = DB::table('product')->whereIn('product_id', $topRateProduct)->get();
+        $viewProduct = DB::table('product')->where('product_status','1')->orderBy('view','desc')->limit(3)->get();
+        $blogs = Blog::all()->take(3);
+        
+        return view('pages.home',['cate'=>$cate,'product'=>$product, 'banner'=>$banner, 'soldProduct'=>$soldProduct, 'ratingProduct'=>$ratingProduct, 'viewProduct'=>$viewProduct, 'blogs'=> $blogs]);
     }
 
     //tim kiem
@@ -106,5 +119,19 @@ class HomeController extends Controller
         return 'success';
 
 
+    }
+
+    public function showWishlist(){
+        $wishlist = DB::table('wishlist')->get();
+        $product_id = [];
+        foreach ($wishlist as $value) {
+            $product_id[] = $value->product_id;
+        }
+        $productwishlist = DB::table('product')->whereIn('product_id',$product_id)->get();
+        return view('wishlist', ['productwishlist'=>$productwishlist]);
+    }
+    public function removeWishlist($product_id ){
+        $data = DB::table('product')->where('product_id', $product_id)->delete();
+        return redirect()->back();
     }
 }

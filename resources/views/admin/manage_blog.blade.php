@@ -20,12 +20,8 @@
   <table class="table table-striped b-t b-light" id="myTable">
     <thead>
       <tr>
-        <th style="width:20px;">
-          <label class="i-checks m-b-none">
-            <input type="checkbox"><i></i>
-          </label>
-        </th>
-        <th>Tiêu đề</th>
+        
+        <th>Tiêu đề Blog</th>
         <th>Hình ảnh minh hoạ</th>
         <th>Nội dung</th>
         <th>Danh mục</th>
@@ -34,31 +30,27 @@
       </tr>
     </thead>
     <tbody>
-      @foreach ($all_product as $product)
+      @foreach ($blogs as $blog)
         
       <tr>
-        <td><label class="i-checks m-b-none"><input type="checkbox" name="post"><i></i></label></td>
-        <td>{{$product->product_name}}</td>
-        <td>{{ $product->product_quantity }}</td>
-        
-         
-            <td>{{ number_format($product->product_price,0,',','.') }}đ</td>
-            <td><img src="public/uploads/product/{{ $product->product_image }}" height="100" width="100"></td>
-            <td>{{ $product->category_name }}</td>
+        <td>{{$blog->title}}</td>
+        <td><img src="public/uploads/blog/{{ $blog->images }}" height="100" width="100"></td>
+        <td>{!! $blog->content !!}</td>
+        <td>{{ $blog->blogcategory_name }}</td>
         <td><span class="text-ellipsis">
         @php
             
-        if ($product->product_status == 1) 
+        if ($blog->status == 1) 
          {echo "Hiển thị" ;}
         else echo "Ẩn";
          
         @endphp
         </span></td>
         <td>
-          <a href="{{url('edit-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
+          <a href="{{url('edit-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
             <i class="fa fa-pencil text-success text-active"></i>
           </a> 
-          <a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" href="{{url('delete-product/'.$product->product_id)}}" class="active" ui-toggle-class="">
+          <a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" href="{{url('delete-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
             <i class="fa fa-times text-danger text"></i>
           </a>
         </td>

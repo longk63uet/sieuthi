@@ -75,7 +75,7 @@ class BlogController extends Controller
     }
 
     public function export_csvBlogCategory(){
-        return Excel::download(new BlogCategoryExport , 'blogcategory_product.xlsx');
+        return Excel::download(new BlogCategoryExport , 'blogcategory_blog.xlsx');
     }
     public function import_csvBlogCategory(Request $request){
         $path = $request->file('file')->getRealPath();
@@ -84,25 +84,31 @@ class BlogController extends Controller
     }
 
     /////////////Quản lý blog/////////////////////
+
     //Tất cả Blog
     public function manageBlog(){
-        $blogs = Blog::all()->paginate(5);
+        $blogs = DB::table('blogs')
+        ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
+        ->get();
         return view('admin.manage_blog')->with(compact('blogs'));  
     }
 
-    public function blogs(){
-        return view('blogs');
+    
+    //Thêm blog mới
+    public function insertBlog(){
+        $blogcate = DB::table('blogcategory')->orderBy('blogcategory_id','desc')->get();
+        return view('admin.add_blog')->with(compact('blogcate'));  
     }
 
-    public function insertBlog(){
-        return view('admin.add_blog');  
-    }
+    //Lưu blog
 
     public function addBlog(Request $request){
         $data = array();
         $data['title'] = $request->title;
         $data['content'] = $request->content;
+        $data['summary'] = $request->summary;
         $data['status'] = $request->status;
+        $data['blogcategory_id'] = $request->blogcategory_id;
         $data['user_id'] = Session::get('user_id') ? Session::get('user_id') : 1;
         
         $get_image = $request->file('images');
@@ -115,12 +121,82 @@ class BlogController extends Controller
             $data['images'] = $new_image;
             DB::table('blogs')->insert($data);
             Session::put('message','Thêm sản phẩm thành công');
-            return Redirect::to('all-product');
+            return Redirect::to('/manage-blog');
         }
         $data['images'] = '';
         DB::table('blogs')->insert($data);
         Session::put('message', "Thêm Blog thành công");
         return Redirect::to('/manage-blog');
     }
+    public function editBlog(Request $request, $blog_id ){
+        $cate = DB::table('category')->orderBy('category_id','desc')->get();
+        $data = DB::table('blog')->where('blog_id', $blog_id)->get();
+        return view('admin.edit_blog',['data' => $data, 'cate'=>$cate] );
+    }
+
+    public function deleteBlog($blog_id ){
+        $data = DB::table('blog')->where('blog_id', $blog_id)->delete();
+        Session::put('message', "Xóa sản phẩm thành công");
+        return Redirect::to('/all-blog');
+    }
+
+    public function updateBlog(Request $request, $blog_id ){
+        $data = array();
+        $data['title'] = $request->title;
+        $data['content'] = $request->content;
+        $data['summary'] = $request->summary;
+        $data['status'] = $request->status;
+        $data['blogcategory_id'] = $request->blogcategory_id;
+        $get_image = $request->file('blog_image');
+        
+        if($get_image){
+                    $get_name_image = $get_image->getClientOriginalName();
+                    $name_image = current(explode('.',$get_name_image));
+                    $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+                    $get_image->move('public/uploads/blog',$new_image);
+                    $data['blog_image'] = $new_image;
+                    DB::table('blog')->where('blog_id',$blog_id)->update($data);
+                    Session::put('message','Cập nhật sản phẩm thành công');
+                    return Redirect::to('all-blog');
+        }
+            
+        DB::table('blog')->where('blog_id',$blog_id)->update($data);
+        Session::put('message','Cập nhật sản phẩm thành công');
+        return Redirect::to('all-blog');
+
+    }
+
+
+    ////////////frontend//////////////
+    //Hiển thị blog trên frontend
+    public function blogs(){
+        $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
+        $blogs = DB::table('blogs')->where('status','1')->orderby('id','desc')->paginate(6); 
+        $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
+        return view('blogs',['blogcate'=>$blogcate, 'blogs'=>$blogs, 'recentblogs'=>$recentblogs]);
+    }
+
+    public function blogdetail($blog_id){
+        $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
+        $blog = DB::table('blogs')
+        ->select('blogs.*', 'users.name', 'blogcategory.blogcategory_id', 'blogcategory.blogcategory_name')
+        ->join('users', 'users.id', 'blogs.user_id')
+        ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
+        ->where('blogs.id',$blog_id)->get();
+        foreach($blog as $blogs){
+            
+            $related = $blogs->blogcategory_id;
+        }
+        $relatedBlog = DB::table('blogs')
+        ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
+        ->where('blogs.blogcategory_id',$related)
+        ->whereNotIn('blogs.id',[$blog_id])
+        ->limit(3)->get();
+        $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
+
+        return view('blog_detail',['blogcate'=>$blogcate, 'blog'=>$blog, 'relatedBlog'=>$relatedBlog, 'recentblogs'=>$recentblogs]);
+    }
+
+    
 
 }

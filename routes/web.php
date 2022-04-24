@@ -11,7 +11,6 @@ use App\Http\Controllers\CouponController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
-use App\Http\Controllers\DeliveryController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\App;
 
@@ -101,6 +100,9 @@ Route::get('/delete-banner/{banner_id}', [BannerController::class, 'deleteBanner
 Route::get('/manage-blog', [BlogController::class, 'manageBlog']);
 Route::get('/insert-blog', [BlogController::class, 'insertBlog']);
 Route::post('/add-blog', [BlogController::class, 'addBlog']);
+Route::get('/delete-blog/{blog_id}', [BlogController::class, 'deleteBlog']);
+Route::get('/edit-blog/{blog_id}', [BlogController::class, 'editBlog']);
+Route::post('/update-blog', [BlogController::class, 'updateBlog']);
 
 
 
@@ -139,6 +141,8 @@ Route::get('/market', [HomeController::class, 'market']);
 
 //Blogs 
 Route::get('/blogs', [BlogController::class, 'blogs']);
+Route::get('/blog/{blog_id}', [BlogController::class, 'blogdetail']);
+
 
 
 
@@ -151,6 +155,10 @@ Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
+
+//wishlist
+Route::get('/show-wishlist',[HomeController::class, 'showWishlist']);
+Route::get('/remove-wishlist/{product_id}',[HomeController::class, 'removeWishlist']);
 
 //Checkout
 Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);

@@ -108,7 +108,7 @@
                             @php
                                $quantity = Session::get('cart') ? Session::get('cart')->totalQuantity : 0
                             @endphp
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="{{url('show-wishlist')}}"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="{{url('show-cart')}}"><i id="total-quantity" class="fa fa-shopping-bag"></i> <span>@php
                                 echo "$quantity"
         
