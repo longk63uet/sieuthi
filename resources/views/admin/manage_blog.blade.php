@@ -50,7 +50,7 @@
           <a href="{{url('edit-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
             <i class="fa fa-pencil text-success text-active"></i>
           </a> 
-          <a onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?')" href="{{url('delete-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
+          <a onclick="return confirm('Bạn có chắc chắn muốn xóa blog này không?')" href="{{url('delete-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
             <i class="fa fa-times text-danger text"></i>
           </a>
         </td>

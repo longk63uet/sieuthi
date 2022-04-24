@@ -72,16 +72,7 @@
                         <img class="product__details__pic__item--large"
                             src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
                     </div>
-                    {{-- <div class="product__details__pic__slider owl-carousel">
-                        <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
-                            src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
-                        <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
-                            src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
-                        <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
-                            src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
-                        <img data-imgbigurl="{{URL('/public/uploads/product/'.$pro->product_image)}}"
-                            src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
-                    </div> --}}
+                 
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -103,11 +94,8 @@
                     <div class="product__details__quantity">
                         <div class="quantity">
                             <div class="pro-qty">
-                                <input name="quantity" type="string" value="1">
+                                <input name="quantity" type="number" value="1">
                                 <input name="productid_hidden" type="hidden"  value="{{$pro->product_id}}" />
-                                <input name="product_name" type="hidden"  value="{{$pro->product_name}}" />
-                                <input name="product_price" type="hidden"  value="{{$pro->product_price}}" />
-                                <input name="product_image" type="hidden"  value="{{$pro->product_image}}" />
                             </div>
                         </div>
                     </div>

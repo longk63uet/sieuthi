@@ -70,16 +70,16 @@ class OrderController extends Controller
 		return $pdf->stream();
 	}
 	public function print_order_convert($order_detail_id){
-		$order_details = OrderDetails::where('order_code',$checkout_code)->get();
+		$order_details = OrderDetail::where('order_code',$checkout_code)->get();
 		$order = Order::where('order_code',$checkout_code)->get();
 		foreach($order as $key => $ord){
 			$customer_id = $ord->customer_id;
 			$shipping_id = $ord->shipping_id;
 		}
-		$customer = Customer::where('customer_id',$customer_id)->first();
+		$customer = User::where('customer_id',$customer_id)->first();
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
 
-		$order_details_product = OrderDetails::with('product')->where('order_code', $checkout_code)->get();
+		$order_details_product = OrderDetail::with('product')->where('order_code', $checkout_code)->get();
 
 		foreach($order_details_product as $key => $order_d){
 

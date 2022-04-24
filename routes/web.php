@@ -102,7 +102,7 @@ Route::get('/insert-blog', [BlogController::class, 'insertBlog']);
 Route::post('/add-blog', [BlogController::class, 'addBlog']);
 Route::get('/delete-blog/{blog_id}', [BlogController::class, 'deleteBlog']);
 Route::get('/edit-blog/{blog_id}', [BlogController::class, 'editBlog']);
-Route::post('/update-blog', [BlogController::class, 'updateBlog']);
+Route::post('/update-blog/{blog_id}', [BlogController::class, 'updateBlog']);
 
 
 
@@ -152,6 +152,7 @@ Route::get('/contact', [HomeController::class, 'contact']);
 
 //Cart
 Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
+Route::post('/save-cart',[CartController::class, 'saveCart']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);

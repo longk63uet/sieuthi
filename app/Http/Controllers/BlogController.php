@@ -128,18 +128,22 @@ class BlogController extends Controller
         Session::put('message', "Thêm Blog thành công");
         return Redirect::to('/manage-blog');
     }
-    public function editBlog(Request $request, $blog_id ){
-        $cate = DB::table('category')->orderBy('category_id','desc')->get();
-        $data = DB::table('blog')->where('blog_id', $blog_id)->get();
+
+    //Chỉnh sửa Blog
+    public function editBlog( $blog_id ){
+        $cate = DB::table('blogcategory')->orderBy('blogcategory_id','desc')->get();
+        $data = DB::table('blogs')->where('id', $blog_id)->get();
         return view('admin.edit_blog',['data' => $data, 'cate'=>$cate] );
     }
 
+    //Xóa blog
     public function deleteBlog($blog_id ){
-        $data = DB::table('blog')->where('blog_id', $blog_id)->delete();
+        $data = DB::table('blogs')->where('id', $blog_id)->delete();
         Session::put('message', "Xóa sản phẩm thành công");
-        return Redirect::to('/all-blog');
+        return Redirect::to('/manage-blog');
     }
 
+    //Cập nhật Blog
     public function updateBlog(Request $request, $blog_id ){
         $data = array();
         $data['title'] = $request->title;
@@ -155,14 +159,14 @@ class BlogController extends Controller
                     $new_image =  $name_image.rand(0,99).'.'.$get_image->getClientOriginalExtension();
                     $get_image->move('public/uploads/blog',$new_image);
                     $data['blog_image'] = $new_image;
-                    DB::table('blog')->where('blog_id',$blog_id)->update($data);
+                    DB::table('blogs')->where('id',$blog_id)->update($data);
                     Session::put('message','Cập nhật sản phẩm thành công');
-                    return Redirect::to('all-blog');
+                    return Redirect::to('manage-blog');
         }
             
-        DB::table('blog')->where('blog_id',$blog_id)->update($data);
+        DB::table('blogs')->where('id',$blog_id)->update($data);
         Session::put('message','Cập nhật sản phẩm thành công');
-        return Redirect::to('all-blog');
+        return Redirect::to('manage-blog');
 
     }
 
@@ -175,6 +179,8 @@ class BlogController extends Controller
         $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
         return view('blogs',['blogcate'=>$blogcate, 'blogs'=>$blogs, 'recentblogs'=>$recentblogs]);
     }
+
+    //Chi tiết blog
 
     public function blogdetail($blog_id){
         $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
