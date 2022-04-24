@@ -16,7 +16,7 @@ class CategoryProductController extends Controller
 {
     //admin
     public function authLogin(){
-        $admin_id = Session::get('user_id');
+        $admin_id = Session::get('admin_id');
         if($admin_id){
             return Redirect::to('dashboard');
         }else{

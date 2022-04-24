@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+session_start();
 
 class HomeController extends Controller
 {
@@ -133,5 +136,44 @@ class HomeController extends Controller
     public function removeWishlist($product_id ){
         $data = DB::table('product')->where('product_id', $product_id)->delete();
         return redirect()->back();
+    }
+
+    public function login(Request $request){
+    	$email = $request->email;
+    	$password = md5($request->password);
+    	$result = DB::table('users')->where('email',$email)->where('password',$password)->where('role', 1)->first();
+        if($result){
+            Session::put('user_id', $result->id);
+    	    return Redirect::to('/');
+        }
+        else{
+            return redirect()->back();
+        }
+    	
+    
+
+    }
+    public function loginUser(){
+        return view('login');
+    }
+    public function logoutUser(){
+    	Session::forget('user_id');
+    	return Redirect::to('/');
+    }
+
+    public function adduser(Request $request){
+        $data = array();
+        $data['name'] = $request->user_name;
+    	$data['user_phone'] = $request->user_phone;
+        $data['user_address'] = $request->user_address;
+    	$data['email'] = $request->user_email;
+    	$data['password'] = md5($request->user_password);
+
+    	$users_id = DB::table('users')->insertGetId($data);
+
+    	Session::put('user_id', $users_id);
+    	Session::put('user_name',$request->user_name);
+
+    	return Redirect::to('/login-user');
     }
 }

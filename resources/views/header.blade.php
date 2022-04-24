@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/lightslider.css')}}" type="text/css">
+    <link rel="stylesheet" href="{{asset('css/login.css')}}" type="text/css">
     
     <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="0tCBQjfG"></script>
@@ -122,7 +123,7 @@
                                  <div class="header__top__right__auth">
                                     <ul>
                                         <li> <a href="{{URL::to('/profile')}}"><i class="fa fa-user"></i> Trang cá nhân</a></li>
-                                        <li> <a href="{{URL::to('/logout-checkout')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
+                                        <li> <a href="{{URL::to('/logout-user')}}"><i class="fa fa-lock"></i> Đăng xuất</a></li>
                                     </ul>
                                  
                                 </div>
@@ -130,7 +131,7 @@
                             }else{
                                  ?>
                                  <div class="header__top__right__auth">
-                                 <a href="{{URL::to('/login-checkout')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
+                                 <a href="{{URL::to('/login-user')}}"><i class="fa fa-lock"></i> Đăng nhập</a>
                                 </div>
                                  <?php 
                              }

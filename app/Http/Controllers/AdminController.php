@@ -13,8 +13,8 @@ class AdminController extends Controller
 {
     //Xác thực đăng nhập
     public function authLogin(){
-        $user_id = Session::get('user_id');
-        if($user_id){
+        $admin_id = Session::get('admin_id');
+        if($admin_id){
             return Redirect::to('dashboard');
         }else{
             return Redirect::to('admin')->send();
@@ -44,7 +44,7 @@ class AdminController extends Controller
         $result = DB::table('users')->where('email', $user_email )->where('password', $user_password )->first();
         if($result->role == 0){
             Session::put('user_name', $result->name);
-            Session::put('user_id', $result->id);
+            Session::put('admin_id', $result->id);
              return Redirect::to('/dashboard');
         }
         else{ 
@@ -56,7 +56,7 @@ class AdminController extends Controller
     //Đăng xuất admin
     public function logOut(){
         Session::put('user_name', null );
-        Session::put('user_id', null );
+        Session::put('admin_id', null );
         return Redirect::to('/admin');
     }
     

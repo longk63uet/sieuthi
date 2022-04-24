@@ -126,6 +126,13 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
 
+//Đăng nhập, đăng ký
+Route::post('/login',[HomeController::class, 'login']);
+Route::get('/login-user',[HomeController::class, 'loginUser']);
+Route::get('/logout-user',[HomeController::class, 'logoutUser']);
+Route::post('/add-user',[HomeController::class, 'addUser']);
+
+
 Route::get('/add-to-wishlist/{product_id}',[HomeController::class, 'addWishlist'])->name('add-to-wishlist');
 
 //send email
@@ -162,13 +169,12 @@ Route::get('/show-wishlist',[HomeController::class, 'showWishlist']);
 Route::get('/remove-wishlist/{product_id}',[HomeController::class, 'removeWishlist']);
 
 //Checkout
-Route::get('/login-checkout',[CheckoutController::class, 'loginCheckout']);
-Route::post('/add-user',[CheckoutController::class, 'adduser']);
+
 Route::get('/checkout',[CheckoutController::class, 'checkout']);
 Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);
 Route::get('/payment',[CheckoutController::class, 'payment']);
-Route::get('/logout-checkout',[CheckoutController::class, 'logoutCheckout']);
-Route::post('/login-user',[CheckoutController::class, 'loginuser']);
+
+
 Route::post('/select-delivery',[CheckoutController::class, 'selectDelivery']);
 Route::get('/select-city/{id}',[CheckoutController::class, 'selectCity']);
 

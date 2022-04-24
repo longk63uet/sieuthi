@@ -14,7 +14,7 @@ class BannerController extends Controller
     /////////////////////Admin/////////////////////////
     //Xác thực đăng nhập
     public function authLogin(){
-        $user_id = Session::get('user_id');
+        $user_id = Session::get('admin_id');
         if($user_id){
             return Redirect::to('dashboard');
         }else{

@@ -14,9 +14,7 @@ session_start();
 
 class CheckoutController extends Controller
 {
-    public function loginCheckout(){
-        return view('login');
-    }
+    
     public function checkout(){
         $city = City::orderby('matp','ASC')->get();
         return view('checkout', compact('city'));
@@ -92,33 +90,8 @@ class CheckoutController extends Controller
         return view('payment');
     }
     
-    public function logoutCheckout(){
-    	Session::forget('user_id');
-    	return Redirect::to('/');
-    }
-    public function loginuser(Request $request){
-    	$email = $request->email;
-    	$password = md5($request->password);
-    	$result = DB::table('users')->where('email',$email)->where('password',$password)->first();
-        // dd($result->id);
-    	Session::put('user_id', $result->id);
-        // dd($users_id);
-        $shipping = DB::table('shipping')->where('user_id', Session::get('user_id'))->first();
-    	// dd($shipping);
-    	if($result && $shipping){
-           
-    		// Session::put('user_id',$result->id);
-            
-            // dd($shipping);
-
-    		return view('/checkout')->with(compact('shipping'));
-            
-    	}else{
-    		return Redirect::to('/login-checkout');
-    	}
-        Session::save();
-
-    }
+   
+    
     public function selectDelivery(Request $request){
         $data = $request->all();
         if($data['action']){
