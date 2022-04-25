@@ -32,12 +32,13 @@ class HomeController extends Controller
         $product = DB::table('product')->where('product_status','1')->limit(4)->get();
         $banner = Banner::all()->take(2);
         $soldProduct = DB::table('product')->where('product_status','1')->orderBy('sold','desc')->limit(3)->get();
-        $topRating = DB::table('rating')->select(DB::raw('avg(rating) as rate, product_id'))->groupBy('product_id')->limit(3)->get();
+        $topRating = DB::table('rating')->select(DB::raw('avg(rating) as rate, product_id'))->groupBy('product_id')->orderByDesc('rate')->limit(3)->get();
         $topRateProduct = [];
         foreach($topRating as $value){
             $topRateProduct[] = $value->product_id;
         }
         $ratingProduct = DB::table('product')->whereIn('product_id', $topRateProduct)->get();
+        // dd($ratingProduct);
         $viewProduct = DB::table('product')->where('product_status','1')->orderBy('view','desc')->limit(3)->get();
         $blogs = Blog::all()->take(3);
         
@@ -175,5 +176,9 @@ class HomeController extends Controller
     	Session::put('user_name',$request->user_name);
 
     	return Redirect::to('/login-user');
+    }
+
+    public function profile(){
+        return view('profile');
     }
 }

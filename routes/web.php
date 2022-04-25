@@ -126,6 +126,9 @@ Route::get('/lang/{locale}', function ($locale) {
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
 
+Route::get('/profile', [HomeController::class, 'profile']);
+
+
 //Đăng nhập, đăng ký
 Route::post('/login',[HomeController::class, 'login']);
 Route::get('/login-user',[HomeController::class, 'loginUser']);

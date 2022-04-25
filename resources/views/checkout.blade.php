@@ -35,7 +35,7 @@
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
-                               @if(isset($shipping))
+                               {{-- @if(isset($shipping))
                                 <div class="checkout__input">
                                     <p>Họ<span>*</span></p>
                                     <input type="text" name="shipping_surname" value="{{$shipping->shipping_surname}}">
@@ -89,7 +89,7 @@
                                 placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
                         </div>
                     </div>
-                    @else
+                    @else --}}
                     <div class="checkout__input">
                         <p>Họ<span>*</span></p>
                         <input type="text" name="shipping_surname ">
@@ -121,9 +121,26 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+            <div class="checkout__input col-lg-6">
+                <p>Thành phố/ Tỉnh<span>*</span></p>
+                <input disabled="disabled" name="shipping_city" value="Hà Nội">
+                
+            </div>
+            <div class="checkout__input col-lg-6">
+                <p>Huyện<span>*</span></p>
+                {{-- <input type="text" name="shipping_town"> --}}
+                <select name="city" id="city" class="form-control input-sm m-bot15 choose city">
+                    <option value="">Chọn tỉnh, thành phố</option>
+                @foreach($city as $key => $ci)
+                    <option value="{{$ci->matp}}">{{$ci->name}}</option>
+                @endforeach
+            </select>
+            </div>
+        </div>
             
             <div class="row">
-                    <form>
+                    {{-- <form>
                         @csrf 
                         <div class="form-group col-lg-12">
                             <label for="exampleInputPassword1">Chọn tỉnh, thành phố</label>
@@ -133,7 +150,7 @@
                                 <option value="{{$ci->matp}}">{{$ci->name}}</option>
                             @endforeach
                         </select>
-                        </div>
+                        </div> --}}
                         {{-- <div class="form-group col-lg-4 choosedistrict">
                             <label for="exampleInputPassword1">Chọn quận, huyện</label>
                             <select name="district" id="district" class="form-control input-sm m-bot15 choose district">
@@ -149,30 +166,34 @@
                         </div> --}}
                 
            
-                <button type="button" name="calculate_order calculate_delivery" class="btn btn-info add_delivery mt-4 mb-4">Tính phí vận chuyển</button>
-            </form>
+                {{-- <button type="button" name="calculate_order calculate_delivery" class="btn btn-info add_delivery mt-4 mb-4">Tính phí vận chuyển</button>
+            </form> --}}
         </div>
 
 
             <div class="checkout__input">
                 <p>Ghi chú<span>*</span></p>
-                <input type="text" name="shipping_note"
+                <input row="7" type="text" name="shipping_note"
                     placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
             </div>
         </div>
 
-                    @endif
+                    {{-- @endif --}}
                     <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
-                            <h4>Ghi chú</h4>
-                            <div class="checkout__order__products">Sản phẩm <span>Tổng tiền</span></div>
-                            <ul>
-                                <li>Rau xanh <span>10 VND</span></li>
-                                
-                            </ul>
-                            <div class="checkout__order__subtotal">Tổng tiền <span>$750.99</span></div>
-                            <div class="checkout__order__total">Thanh toán <span>$750.99</span></div>
-                            
+                            <h4>Đơn hàng của bạn</h4>
+                            <div class="checkout__order__subtotal">Tổng số lượng <span>{{number_format(Session::get('cart')->totalQuantity)}} sản phẩm</span></div>
+                            <div class="checkout__order__subtotal">Tổng tiền <span>{{number_format(Session::get('cart')->totalPrice)}} VNĐ</span></div>
+                            @php
+                                if (Session::get('cart')->totalPrice < 300000) {
+                                    $shipping = 15000;
+                                }
+                                else {
+                                    $shipping = 0;
+                                }
+                            @endphp
+                            <div class="checkout__order__subtotal">Phí vận chuyển<span> {{number_format($shipping)}} VNĐ</span></div>
+                            <div class="checkout__order__total">Thanh toán <span>{{number_format(Session::get('cart')->totalPrice - $shipping)}} VNĐ</span></div>
                             
                             <div class="checkout__input__checkbox">
                                 <label for="payment">

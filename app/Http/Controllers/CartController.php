@@ -19,11 +19,9 @@ class CartController extends Controller
             $product = DB::table('product')->where('product_id', $product_id)->first();
             $oldCart = Session('cart') ? Session('cart') : null;
             $newCart = new Cart($oldCart);
-            // $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get();
             $newCart->updateCart($product_id, $product, $product_quantity);
             $req->session()->put('cart', $newCart);
-            // $cart = Session::get('cart');
-            // return view('show_cart',['cate'=>$cate, 'cart'=>$cart]);
+           
             return redirect()->back();
          
     }
@@ -48,7 +46,6 @@ class CartController extends Controller
     public function addCart(Request $req, $product_id)
     {
        $product = DB::table('product')->where('product_id', $product_id)->first();
-       $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
        $oldCart = Session('cart') ? Session('cart') : null;
        $newCart = new Cart($oldCart);
        $newCart->addCart($product, $product_id);

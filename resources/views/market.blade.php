@@ -7,7 +7,7 @@
                 <div class="hero__categories">
                     <div class="hero__categories__all">
                         <i class="fa fa-bars"></i>
-                        <span>Danh mục sản phẩm</span>
+                        <span>Danh mục</span>
                     </div>
                     <ul>
                         @foreach ($cate as $category)  
@@ -19,13 +19,11 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <div class="hero__search__categories">
-                                Danh mục
-                                <span class="arrow_carrot-down"></span>
-                            </div>
-                            <input type="text" placeholder="What do yo u need?">
-                            <button type="submit" class="site-btn">SEARCH</button>
+                        <form method="POST" action="{{url('/tim-kiem')}}" >
+                            @csrf
+                            <input type="text" name="keywords_submit" id="keyword" placeholder="Bạn cần tìm gì?">
+                            <div id="search-ajax"></div>
+                            <button type="submit"  class="site-btn">Tìm kiếm</button>
                         </form>
                     </div>
                     <div class="hero__search__phone">
@@ -69,7 +67,7 @@
             <div class="col-lg-3 col-md-5">
                 <div class="sidebar">
                     <div class="sidebar__item">
-                        <h4>Department</h4>
+                        <h4>Danh mục nổi bật</h4>
                         <ul>
                             @foreach ($cate as $category)  
                             <li><a href="{{url('danh-muc/'.$category->category_id)}}">{{$category->category_name}}</a></li>

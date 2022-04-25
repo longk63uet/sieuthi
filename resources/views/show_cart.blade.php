@@ -88,7 +88,7 @@ $total = 0;
                                        <a href="{{url('/chi-tiet/'.$carts['info']->product_id)}}"> <h5>{{$carts['info']->product_name}}</h5> </a>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        {{$carts['info']->product_price}}
+                                        {{number_format($carts['info']->product_price)}}
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -101,7 +101,7 @@ $total = 0;
                                       @php
                                           $total = $carts['quantity']*$carts['info']->product_price
                                       @endphp
-                                      {{$total}}
+                                      {{number_format($total)}}
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <a  href="javascript:">
@@ -136,7 +136,7 @@ $total = 0;
                                 
                             </form>
                                 @if(Session::get('coupon'))
-                                <a href="{{url('/unset-coupon')}}" class = "mt-2">Xóa mã giảm giá</a>
+                                <a href="{{url('/unset-coupon')}}" class = "mt-2 btn btn-primary">Xóa mã giảm giá</a>
                                 @endif
                         </div>
                     </div>
@@ -144,7 +144,7 @@ $total = 0;
                     <div class="alert alert-success mt-2">
                         {!! session()->get('message') !!}
                     </div>
-                @elseif(session()->has('error'))
+                    @elseif(session()->has('error'))
                      <div class="alert alert-danger mt-2">
                         {!! session()->get('error') !!}
                     </div>
@@ -154,40 +154,34 @@ $total = 0;
                     <div class="shoping__checkout">
                         <h5>Tổng tiền</h5>
                         <ul>
+                            <li>Giá tiền<span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
 
-                            <li>Giá tiền<span> VNĐ</span></li>
                             @if(Session::get('coupon'))
-							<li>
-								
-									@foreach(Session::get('coupon') as $key => $cou)
-										@if($cou['coupon_condition']==1)
-											Mã giảm : {{$cou['coupon_discount']}} %
-											<p>
+								@foreach(Session::get('coupon') as $key => $cou)
+									@if($cou['coupon_condition']==1)
+
+                                        <li>Mã giảm giá<span> {{$cou['coupon_discount']}} % </span></li>
 												@php 
-												$total_coupon = ($total*$cou['coupon_discount'])/100;
-												echo '<p><li>Tổng giảm:'.number_format($total_coupon,0,',','.').'đ</li></p>';
+												$total_coupon = ($cart->totalPrice*$cou['coupon_discount'])/100;
+												echo '<li>Tổng giảm<span>'.number_format($total_coupon,0,',','.').' VNĐ</span></li>';
+                                                $cart->totalPrice=  $cart->totalPrice-$total_coupon
 												@endphp
-											</p>
-											<p><li>Tổng đã giảm :{{number_format($total-$total_coupon,0,',','.')}}đ</li></p>
-										@elseif($cou['coupon_condition']==2)
-											Mã giảm : {{number_format($cou['coupon_discount'],0,',','.')}} k
-											<p>
+
+										<li>Tổng thanh toán<span>{{number_format($cart->totalPrice,0,',','.')}} VNĐ</span></li>
+
+									@elseif($cou['coupon_condition']==2)
+										<li>Mã giảm giá<span> {{number_format($cou['coupon_discount'],0,',','.')}} VNĐ</span></li>
 												@php 
-												$total_coupon = $total - $cou['coupon_discount'];
-								
+												$cart->totalPrice = $cart->totalPrice - $cou['coupon_discount'];
 												@endphp
-											</p>
-											<p><li>Tổng đã giảm :{{number_format($total_coupon,0,',','.')}}đ</li></p>
+										<li>Tổng thanh toán<span>{{number_format($total_coupon,0,',','.')}} VNĐ</span></li>
 										@endif
 									@endforeach
 								
-
-
 							</li>
-                            @endif
-                            <li>Phí vận chuyển<span> VNĐ</span></li>
-                            <li>Mã giảm giá<span> VNĐ</span></li>
+                            @else
                             <li>Tổng thanh toán <span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
+                            @endif
                         </ul>
                         <?php
                         $user_id = Session::get('user_id');
@@ -200,13 +194,13 @@ $total = 0;
                  }else{
                       ?>
                       <div class="header__top__right__auth">
-                        <a href="{{url('login-checkout')}}" class="primary-btn">Tiếp tục thanh toán</a>
+                        <a href="{{url('login-user')}}" class="primary-btn">Tiếp tục thanh toán</a>
                      </div>
                       <?php 
                   }
                       ?>
                     @else
-                    <h4>Giỏ hàng của bạn đang trống</h4>  
+                    <h4 style="text-align: center;">Giỏ hàng của bạn đang trống</h4>  
                     @endif
                     </div>
                 </div>
