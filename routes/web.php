@@ -130,6 +130,8 @@ Route::get('/profile', [HomeController::class, 'profile']);
 Route::get('/manage-order-user', [HomeController::class, 'manageOrderUser']);
 Route::post('/change-profile', [HomeController::class, 'changeProfile']);
 Route::post('/change-shipping', [HomeController::class, 'changeShipping']);
+Route::get('/change-password', [HomeController::class, 'changePassword']);
+Route::post('/change-pass', [HomeController::class, 'changePass']);
 
 
 //Đăng nhập, đăng ký

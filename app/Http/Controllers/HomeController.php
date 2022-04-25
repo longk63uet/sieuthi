@@ -223,4 +223,15 @@ class HomeController extends Controller
         return redirect()->back();
 
     }
+
+    public function changePassword(){
+        return view('change_password');
+    }
+
+    public function changePass(Request $request){
+        $data = $request->all();
+        $users_id = Session::get('user_id');
+        $user = User::find($users_id);
+
+    }
 }

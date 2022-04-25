@@ -161,18 +161,7 @@
                     </div>
                 </div>
 
-                {{-- <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-pass">Mật khẩu mới</label>
-                        <input class="form-control" type="password" id="account-pass">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="account-confirm-pass">Xác nhận mật khẩu</label>
-                        <input class="form-control" type="password" id="account-confirm-pass">
-                    </div>
-                </div> --}}
+               
 
                 <div class="col-12">
                     <hr class="mt-2 mb-3">
