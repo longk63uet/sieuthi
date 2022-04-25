@@ -71,8 +71,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{{asset('js/owl.carousel.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/lightslider.js')}}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -348,6 +348,13 @@ $(document).ready(function(){
         });
     }
    
+</script>
+<script type="text/javascript" src="{{asset('backend/DataTables/datatables.min.js')}}"></script>
+ 
+<script>
+    $(document).ready( function () {
+    $('#my').DataTable();
+        } );
 </script>
 
 </body>

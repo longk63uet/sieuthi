@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Blog;
+use App\Models\Shipping;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
@@ -179,6 +181,46 @@ class HomeController extends Controller
     }
 
     public function profile(){
-        return view('profile');
+        $users_id = Session::get('user_id');
+        $user = User::find($users_id);
+        $shipping = DB::table('shipping')
+        ->join('users','users.id','=','shipping.user_id')->first();
+        // dd($shipping);
+        return view('profile', ['user'=>$user, 'shipping'=>$shipping]);
+    }
+
+    public function manageOrderUser(){
+        $users_id = Session::get('user_id');
+        $user = User::find($users_id);
+        $orders = DB::table('order')
+        ->where('user_id',$users_id)->get();
+        return view('manage_order_user', ['user'=>$user, 'orders'=>$orders]);
+    }
+
+    public function changeProfile(Request $request){
+        $data = $request->all();
+        $user = User::find(Session::get('user_id'));
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->user_phone = $data['user_phone'];
+        $user->user_address = $data['user_address'];
+        $user->save();
+        return redirect()->back();
+
+    }
+    public function changeShipping(Request $request){
+        $data = $request->all();
+        $shipping = Shipping::find($data['shipping_id']);
+        $shipping->shipping_surname = $data['shipping_surname'];
+        $shipping->shipping_name = $data['shipping_name'];
+        $shipping->shipping_email = $data['shipping_email'];
+        $shipping->shipping_phone = $data['shipping_phone'];
+        $shipping->shipping_city = $data['shipping_city'];
+        $shipping->shipping_town = $data['shipping_town'];
+        $shipping->shipping_village = $data['shipping_village'];
+        $shipping->shipping_address = $data['shipping_address'];
+        $shipping->save();
+        return redirect()->back();
+
     }
 }

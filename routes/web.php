@@ -127,6 +127,9 @@ Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
 
 Route::get('/profile', [HomeController::class, 'profile']);
+Route::get('/manage-order-user', [HomeController::class, 'manageOrderUser']);
+Route::post('/change-profile', [HomeController::class, 'changeProfile']);
+Route::post('/change-shipping', [HomeController::class, 'changeShipping']);
 
 
 //Đăng nhập, đăng ký

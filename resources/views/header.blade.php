@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/lightslider.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/login.css')}}" type="text/css">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/DataTables/datatables.min.css')}}"/>
+   
     
     <div id="fb-root"></div>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="0tCBQjfG"></script>
