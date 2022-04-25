@@ -35,64 +35,9 @@
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
-                               {{-- @if(isset($shipping))
-                                <div class="checkout__input">
-                                    <p>Họ<span>*</span></p>
-                                    <input type="text" name="shipping_surname" value="{{$shipping->shipping_surname}}">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Tên<span>*</span></p>
-                                    <input type="text" name="shipping_name" value="{{$shipping->shipping_name}}">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="checkout__input">
-                            <p>Địa chỉ<span>*</span></p>
-                            <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết" value="{{$shipping->shipping_address}}">
-                        </div>
-                        <div class="row">
-                            <div class="checkout__input col-lg-4">
-                                <p>Thành phố/ Tỉnh<span>*</span></p>
-                                <input type="text" name="shipping_city" >
-                                
-                            </div>
-                            <div class="checkout__input col-lg-4">
-                                <p>Huyện<span>*</span></p>
-                                <input type="text" name="shipping_town">
-                            </div>
-                            <div class="checkout__input col-lg-4">
-                                <p>Xã<span>*</span></p>
-                                <input type="text" name="shipping_village">
-                                
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Số điện thoại<span>*</span></p>
-                                    <input type="text" name="shipping_phone">
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="checkout__input">
-                                    <p>Email<span>*</span></p>
-                                    <input type="text" name="shipping_email">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="checkout__input">
-                            <p>Ghi chú<span>*</span></p>
-                            <input type="text" name="shipping_note"
-                                placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
-                        </div>
-                    </div>
-                    @else --}}
                     <div class="checkout__input">
                         <p>Họ<span>*</span></p>
-                        <input type="text" name="shipping_surname ">
+                        <input type="text" name="shipping_surname">
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -101,74 +46,43 @@
                         <input type="text" name="shipping_name">
                     </div>
                 </div>
-            </div>
-            <div class="checkout__input">
-                <p>Địa chỉ<span>*</span></p>
-                <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="checkout__input">
-                        <p>Số điện thoại<span>*</span></p>
-                        <input type="text" name="shipping_phone">
-                        
-                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="checkout__input">
-                        <p>Email<span>*</span></p>
-                        <input type="text" name="shipping_email">
-                    </div>
+                <div class="checkout__input">
+                    <p>Địa chỉ chi tiết<span>*</span></p>
+                    <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
                 </div>
-            </div>
-            <div class="row">
-            <div class="checkout__input col-lg-6">
-                <p>Thành phố/ Tỉnh<span>*</span></p>
-                <input disabled="disabled" name="shipping_city" value="Hà Nội">
-                
-            </div>
-            <div class="checkout__input col-lg-6">
-                <p>Huyện<span>*</span></p>
-                {{-- <input type="text" name="shipping_town"> --}}
-                <select name="city" id="city" class="form-control input-sm m-bot15 choose city">
-                    <option value="">Chọn tỉnh, thành phố</option>
-                @foreach($city as $key => $ci)
-                    <option value="{{$ci->matp}}">{{$ci->name}}</option>
-                @endforeach
-            </select>
-            </div>
-        </div>
-            
-            <div class="row">
-                    {{-- <form>
-                        @csrf 
-                        <div class="form-group col-lg-12">
-                            <label for="exampleInputPassword1">Chọn tỉnh, thành phố</label>
-                            <select name="city" id="city" class="form-control input-sm m-bot15 choose city">
-                                <option value="">Chọn tỉnh, thành phố</option>
-                            @foreach($city as $key => $ci)
-                                <option value="{{$ci->matp}}">{{$ci->name}}</option>
-                            @endforeach
-                        </select>
-                        </div> --}}
-                        {{-- <div class="form-group col-lg-4 choosedistrict">
-                            <label for="exampleInputPassword1">Chọn quận, huyện</label>
-                            <select name="district" id="district" class="form-control input-sm m-bot15 choose district">
-                                <option value="">Chọn quận huyện</option>
-                            </select>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Số điện thoại<span>*</span></p>
+                            <input type="text" name="shipping_phone">
+                            
                         </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Email<span>*</span></p>
+                            <input type="text" name="shipping_email">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                <div class="checkout__input col-lg-4">
+                    <p>Thành phố/ Tỉnh<span>*</span></p>
+                    <input  type="text" name="shipping_city" value="Hà Nội">
                     
-                        <div class="form-group col-lg-4">
-                            <label for="exampleInputPassword1">Chọn xã, thị trấn</label>
-                            <select name="village" id="village" class="form-control input-sm m-bot15 village">
-                                <option value="">Chọn xã phường</option>   
-                        </select>
-                        </div> --}}
+                </div>
+                <div class="checkout__input col-lg-4">
+                    <p>Thành quận, huyện<span>*</span></p>
+                    <input type="text"  name="shipping_town" >
+                </div>
+                <div class="checkout__input col-lg-4">
+                    <p>Đường<span>*</span></p>
+                    <input type="text" name="shipping_village" >
+                </div>
                 
-           
-                {{-- <button type="button" name="calculate_order calculate_delivery" class="btn btn-info add_delivery mt-4 mb-4">Tính phí vận chuyển</button>
-            </form> --}}
-        </div>
+            </div>
+            
 
 
             <div class="checkout__input">
@@ -194,7 +108,7 @@
                             @endphp
                             <div class="checkout__order__subtotal">Phí vận chuyển<span> {{number_format($shipping)}} VNĐ</span></div>
                             <div class="checkout__order__total">Thanh toán <span>{{number_format(Session::get('cart')->totalPrice - $shipping)}} VNĐ</span></div>
-                            
+                            <input type="hidden" name="feeship" value="{{$shipping}}">
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
                                     Thanh toán chuyển khoản

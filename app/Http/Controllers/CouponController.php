@@ -24,8 +24,6 @@ class CouponController extends Controller
                     Session::get('cart')->totalPrice =  $cou['coupon_discount'] + $total;
                 }
 
-
-
             }
           
             Session::forget('coupon');
@@ -76,6 +74,7 @@ class CouponController extends Controller
                     $is_avaiable = 0;
                     if($is_avaiable==0){
                         $cou[] = array(
+                            'coupon_id' => $coupon->coupon_id,
                             'coupon_code' => $coupon->coupon_code,
                             'coupon_condition' => $coupon->coupon_condition,
                             'coupon_discount' => $coupon->coupon_discount,
@@ -85,10 +84,10 @@ class CouponController extends Controller
                     }
                 }else{
                     $cou[] = array(
+                            'coupon_id' => $coupon->coupon_id,
                             'coupon_code' => $coupon->coupon_code,
                             'coupon_condition' => $coupon->coupon_condition,
                             'coupon_discount' => $coupon->coupon_discount,
-
                         );
                     Session::put('coupon',$cou);
                 }
