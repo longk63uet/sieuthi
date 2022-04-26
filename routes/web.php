@@ -132,6 +132,8 @@ Route::post('/change-profile', [HomeController::class, 'changeProfile']);
 Route::post('/change-shipping', [HomeController::class, 'changeShipping']);
 Route::get('/change-password', [HomeController::class, 'changePassword']);
 Route::post('/change-pass', [HomeController::class, 'changePass']);
+Route::get('/cancel-order/{order_id}', [HomeController::class, 'cancelOrder']);
+Route::get('/confirm-order/{order_id}', [HomeController::class, 'confirmOrder']);
 
 
 //Đăng nhập, đăng ký

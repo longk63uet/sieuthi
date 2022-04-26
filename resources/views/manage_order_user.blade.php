@@ -83,13 +83,14 @@
                 </div> --}}
             </div>
             <div class="table-responsive">
-                <table class="table table-hover mb-0" id="my">
+                <table class="table table-hover mb-0" id="myTable">
                     <thead>
                         <tr>
                             <th>Mã đơn hàng</th>
                             <th>Ngày đặt hàng</th>
                             <th>Trạng thái</th>
                             <th>Tổng tiền</th>
+                            <th>Hành động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,10 +98,26 @@
                             
                        
                         <tr>
-                            <td><a class="navi-link" href="#order-details" data-toggle="modal">{{$item->order_id}}</a></td>
+                            <td><a class="navi-link" href="{{url('view-order-user/'.$item->order_id)}}" data-toggle="modal">{{$item->order_id}}</a></td>
                             <td>{{$item->created_at}}</td>
-                            <td><span class="badge badge-info m-0">{{$item->order_status}}</span></td>
+                            
+                            @if ($item->order_status == 1)
+                            <td><span class="badge badge-info m-0"> Đang xử lý </span></td>
+                            @elseif ($item->order_status == 0)
+                            <td><span class="badge badge-info m-0"> Đơn hàng đã hủy </span></td>
+                            @elseif ($item->order_status == 2)
+                            <td><span class="badge badge-info m-0"> Đang giao hàng </span></td>
+                            @elseif  ($item->order_status == 3)
+                            <td><span class="badge badge-info m-0"> Giao hàng thành công </span></td>
+                            @endif
+                            
                             <td>{{number_format($item->order_total)}} VNĐ</td>
+                            @if ($item->order_status == 1)
+                            <td><a onclick="return confirm('Bạn có muốn hủy đơn hàng này không?')"  href="{{url('cancel-order/'.$item->order_id)}}"><button class="btn btn-danger">Hủy đơn hàng</button></a></td>
+                            @elseif ($item->order_status == 2)
+                            <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-danger">Đã nhận được hàng</button></a></td>
+                            @endif
+
                         </tr>
                         @endforeach
                     </tbody>

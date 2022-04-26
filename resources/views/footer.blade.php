@@ -353,7 +353,7 @@ $(document).ready(function(){
  
 <script>
     $(document).ready( function () {
-    $('#my').DataTable();
+    $('#myTable').DataTable();
         } );
 </script>
 

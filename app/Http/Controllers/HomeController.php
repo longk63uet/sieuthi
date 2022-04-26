@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Blog;
+use App\Models\Order;
 use App\Models\Shipping;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
@@ -229,9 +230,35 @@ class HomeController extends Controller
     }
 
     public function changePass(Request $request){
-        $data = $request->all();
         $users_id = Session::get('user_id');
         $user = User::find($users_id);
+        
+        if($user->password == md5($request->password)){
+            $user->password = md5($request->newpassword);
+            $user->save();
+
+            Session::put('message',"Đổi mật khẩu thành công");
+        }
+        else{
+            Session::put('message',"Mật khẩu không chính xác");
+        }
+        return redirect()->back();
+
+
+    }
+    public function cancelOrder($order_id){
+        $order = Order::find($order_id);
+        $order->order_status = 0;
+        $order->save();
+        return redirect()->back();
+
+    }
+
+    public function confirmOrder($order_id){
+        $order = Order::find($order_id);
+        $order->order_status = 3;
+        $order->save();
+        return redirect()->back();
 
     }
 }
