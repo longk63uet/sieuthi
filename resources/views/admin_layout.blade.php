@@ -125,6 +125,13 @@
                         <span>Quản lý, kiểm duyệt bình luận</span>
                     </a>
                 </li>
+
+                <li>
+                    <a class="active" href="{{url('/manage-comment')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý khiếu nại</span>
+                    </a>
+                </li>
                 
 				<li class="sub-menu">
                     <a href="javascript:;">

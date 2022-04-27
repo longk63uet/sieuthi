@@ -68,14 +68,16 @@ class CheckoutController extends Controller
             foreach(Session::get('coupon') as $cou){
                 $coupon_id = $cou['coupon_id'];
             }
-            $order_data['coupon'] = $coupon_id;
+           
             $coupon = Coupon::find($coupon_id);
             $coupon->coupon_quantity -- ;
             $coupon->save();
         }
+        $order_data['coupon'] = $request->discount;
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_status'] = 1;
+        // dd($request);
         $order_data['order_total'] = $request->price;
         $order_id = DB::table('order')->insertGetId($order_data);
 
@@ -89,7 +91,7 @@ class CheckoutController extends Controller
             $order_detail_data['product_price'] = $carts['info']->product_price;
             DB::table('order_details')->insert($order_detail_data);
         }
-        
+        $request->session()->flush();
 
     	return Redirect::to('/payment');
 

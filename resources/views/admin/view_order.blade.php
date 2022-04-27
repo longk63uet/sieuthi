@@ -66,6 +66,8 @@
            
             <th>Tên người nhận hàng</th>
             <th>Địa chỉ</th>
+            <th>Quận, huyện</th>
+            <th>Đường</th>
             <th>Số điện thoại</th>
             <th>Email</th>
             <th>Ghi chú</th>
@@ -81,6 +83,8 @@
            
             <td>{{$shipping->shipping_name}} {{$shipping->shipping_surname}}</td>
             <td>{{$shipping->shipping_address}}</td>
+            <td>{{$shipping->shipping_town}}</td>
+            <td>{{$shipping->shipping_village}}</td>
              <td>{{$shipping->shipping_phone}}</td>
              <td>{{$shipping->shipping_email}}</td>
              <td>{{$shipping->shipping_note}}</td>
@@ -157,7 +161,7 @@
           <tr>
             <td colspan="2"></td>
             <td>Mã giảm giá:</td>
-            <td>- {{$discount}} VNĐ</td>
+            <td>- {{number_format($or->coupon)}} VNĐ</td>
           </tr>
           <tr>
             <td colspan="2"></td>
@@ -167,9 +171,12 @@
           
         </tbody>
       </table>
-      <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
-      <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">Xác nhận, giao đơn vị vận chuyển</a></button>
-      <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">Hủy đơn hàng</a></button>
+      
+        <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
+        {{-- @if($or->order_status == 1) --}}
+        <button><a href="{{url('/shipping-order/'.$or->order_id)}}">Giao đơn hàng</a></button>
+        <button><a href="{{url('/cancel-order-admin/'.$or->order_id)}}">Hủy đơn hàng</a></button>
+      {{-- @endif --}}
     </div>
     @endforeach
   </div>

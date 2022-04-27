@@ -1,14 +1,9 @@
 @extends('admin_layout')
 @section('content')
-    <div class="table-agile-info">
+<div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
       Liệt kê đơn hàng
-    </div>
-    <div class="row w3-res-tb">
-     
-     
-    
     </div>
     <div class="table-responsive">
                       <?php
@@ -17,8 +12,8 @@
                                 echo '<span class="text-alert">'.$message.'</span>';
                                 Session::put('message',null);
                             }
-                            ?>
-      <table class="table table-striped b-t b-light">
+                      ?>
+      <table class="table table-striped b-t b-light" id="myTable">
         <thead>
           <tr>
            
@@ -39,14 +34,12 @@
             <td>{{ $order->order_id }}</td>
             <td>{{ $order->name }}</td>
             <td>{{ $order->created_at }}</td>
-            <td>{{ $order->order_total }}</td>
-            <td>@if($order->order_status==1)
+            <td>{{ number_format($order->order_total) }}</td>
+            <td>    @if($order->order_status==1)
                      Đơn hàng mới
+
                     @elseif($order->order_status==0)
                       Đơn hàng đã hủy
-                    
-                    @elseif($order->order_status==1)
-                      Đơn hàng đã bị hủy
                     
                     @elseif($order->order_status==2)
                       Đang giao hàng 
@@ -56,8 +49,6 @@
                     
                 @endif
             </td>
-           
-           
             <td>
               <a href="{{URL::to('/view-order/'.$order->order_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-eye text-success text-active"></i></a>

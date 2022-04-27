@@ -146,7 +146,8 @@
                             @endphp
                             <div class="checkout__order__total">Tổng thanh toán <span>{{number_format($totalPrice + $shipping - $discount)}} VNĐ</span></div>
                             <input type="hidden" name="feeship" value="{{$shipping}}">
-                            <input type="hidden" name="feeship" value="{{$price}}">
+                            <input type="hidden" name="price" value="{{$price}}">
+                            <input type="hidden" name="discount" value="{{$discount}}">
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
                                     Thanh toán chuyển khoản
@@ -176,10 +177,10 @@
             </form>
         </div>
     </div>
-    <div class="row">
+    {{-- <div class="row"> --}}
                 <div class="col-lg-6">
                     <div class="shoping__continue">
-                        <div class="shoping__discount">
+                        <div class="shoping__discount  ml-8">
                             <h5>Mã giảm giá</h5>
                             <form action="{{url('check-coupon')}}" method="POST">
                                 @csrf
@@ -202,7 +203,7 @@
                     </div>
                     @endif
                 </div>
-            </div>
+            {{-- </div> --}}
 </section>
 <!-- Checkout Section End -->
 
