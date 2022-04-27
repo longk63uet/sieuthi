@@ -33,7 +33,12 @@
         "scrollY":        "500px",
         "scrollCollapse": true,
         "paging":         false
-    } );
+        } );
+        $('#myTable1').DataTable( {
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        "paging":         false
+        } );
     } );
     </script>
 </head>

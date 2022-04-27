@@ -69,13 +69,13 @@ class HomeController extends Controller
                 $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query()); //tránh mất code khi chuyển trang
             }
             elseif($sort =='down' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'DESC')->paginate(15)->appends(request()->query());
             }
             elseif($sort =='az' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_name', 'ASC')->paginate(15)->appends(request()->query());
             }
             elseif($sort =='za' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_name', 'DESC')->paginate(15)->appends(request()->query());
             }
             
         }

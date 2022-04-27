@@ -6,14 +6,10 @@
       Liệt kê users
     </div>
     <div class="row w3-res-tb">
-      <div class="col-sm-5 m-b-xs">
-      </div>
-      <div class="col-sm-4">
-      </div>
       <div class="col-sm-3">
         <div class="input-group">
           <span class="input-group-btn">
-           <a href="{{url('/add-user/')}}"> <button class="btn btn-sm btn-default" type="button">Thêm người dùng mới</button> </a>
+           <a href="{{url('/add-user/')}}"> <button class="btn btn-primary" type="button">Thêm người dùng mới</button> </a>
           </span>
         </div>
       </div>
@@ -26,48 +22,37 @@
                                 Session::put('message',null);
                             }
                             ?>
-      <table class="table table-striped b-t b-light">
+      <table class="table table-striped b-t b-light" id="myTable">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
-          
+            <th>ID</th>
             <th>Tên user</th>
             <th>Email</th>
-            <th>Phone</th>
-            <th>Author</th>
-            <th>Admin</th>
-            <th>User</th>
+            <th>Số điện thoại</th>
+            <th>Địa chỉ</th>
+            <th>Vai trò</th>
             
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-          @foreach($user as $key => $user)
-            <form action="{{url('/assign-roles')}}" method="POST">
-              @csrf
+          @foreach($user as $user)
               <tr>
-               
-                <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <td>{{ $user->id }}</td>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }} <input type="hidden" name="admin_email" value="{{ $user->admin_email }}"></td>
                 <td>{{ $user->user_phone }}</td>
-                {{-- <td>{{ $user->admin_password }}</td> --}}
-                {{-- <td><input type="checkbox" name="author_role" {{$user->hasRole('author') ? 'checked' : ''}}></td>
-                <td><input type="checkbox" name="admin_role"  {{$user->hasRole('admin') ? 'checked' : ''}}></td>
-                <td><input type="checkbox" name="user_role"  {{$user->hasRole('user') ? 'checked' : ''}}></td> --}}
-                <td><input type="checkbox" name="author_role" Author></td>
-                <td><input type="checkbox" name="admin_role"  Admin></td>
-                <td><input type="checkbox" name="user_role"  User></td>
-                
-
+                <td>{{ $user->user_address }}</td>
+                @if ($user->role == 1)
+                    <td>Khách hàng</td>
+                @else
+                    <td>Admin</td>
+                @endif
               <td>
                   
-                    
-                 <input type="submit" value="Assign roles" class="btn btn-sm btn-default">
+                <a onclick="return confirm('Bạn có muốn xóa người dùng này không?')" href="{{URL::to('/delete-user/'.$user->id)}}" class="active styling-edit" ui-toggle-class="">
+                  <i class="fa fa-times text-danger text"></i>
+                </a>
                 
               </td> 
 

@@ -89,6 +89,10 @@ Route::post('/add-coupon',[CouponController::class, 'addCoupon']);
 
 //user
 Route::get('/manage-user', [UserController::class, 'manageUser']);
+Route::get('/delete-user/{user_id}', [UserController::class, 'deleteUser']);
+Route::get('/add-user', [UserController::class, 'addUser']);
+Route::post('/insert-user', [UserController::class, 'insertUser']);
+
 
 //banner
 Route::get('/manage-banner', [BannerController::class, 'manageBanner']);

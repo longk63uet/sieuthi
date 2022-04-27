@@ -17,14 +17,7 @@
       </div> --}}
       <div class="col-sm-4">
       </div>
-      <div class="col-sm-3">
-        <div class="input-group">
-          <input type="text" class="input-sm form-control" placeholder="Search">
-          <span class="input-group-btn">
-            <button class="btn btn-sm btn-default" type="button">Go!</button>
-          </span>
-        </div>
-      </div>
+      
     </div>
     <div class="table-responsive">
                       <?php
@@ -34,7 +27,7 @@
                                 Session::put('message',null);
                             }
                             ?>
-      <table class="table table-striped b-t b-light">
+      <table class="table table-striped b-t b-light" id="myTable1">
         <thead>
           <tr>
            
@@ -86,7 +79,7 @@
            
             <td>
              
-              <a onclick="return confirm('Bạn có chắc là muốn xóa mã này ko?')" href="{{URL::to('/delete-coupon/'.$cou->coupon_id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có chắc chắn xóa mã giảm giá này không?')" href="{{URL::to('/delete-coupon/'.$cou->coupon_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
             </td>
@@ -97,10 +90,6 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
-        <div class="col-sm-5 text-center">
-          <small class="text-muted inline m-t-sm m-b-sm">showing 20-30 of 50 items</small>
-        </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
              {!!$coupon->links()!!}
