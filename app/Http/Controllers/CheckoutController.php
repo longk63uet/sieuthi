@@ -91,7 +91,8 @@ class CheckoutController extends Controller
             $order_detail_data['product_price'] = $carts['info']->product_price;
             DB::table('order_details')->insert($order_detail_data);
         }
-        $request->session()->flush();
+        $request->session()->forget('coupon');
+        $request->session()->forget('cart');
 
     	return Redirect::to('/payment');
 
