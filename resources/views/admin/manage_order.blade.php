@@ -22,9 +22,8 @@
         <thead>
           <tr>
            
-            <th>Thứ tự</th>
-            <th>Tên người dùng</th>
             <th>Mã đơn hàng</th>
+            <th>Tên người dùng</th>
             <th>Ngày tháng đặt hàng</th>
             <th>Tổng thanh toán</th>
             <th>Tình trạng đơn hàng</th>
@@ -33,23 +32,28 @@
           </tr>
         </thead>
         <tbody>
-          @php 
-          $i = 0;
-          @endphp
+         
           @foreach($all_order as $order)
-            @php 
-            $i++;
-            @endphp
+           
           <tr>
-            <td><i>{{$i}}</i></label></td>
-            <td>{{ $order->name }}</td>
             <td>{{ $order->order_id }}</td>
+            <td>{{ $order->name }}</td>
             <td>{{ $order->created_at }}</td>
             <td>{{ $order->order_total }}</td>
             <td>@if($order->order_status==1)
-                    Đơn hàng mới
-                @else 
-                    Đã xử lý
+                     Đơn hàng mới
+                    @elseif($order->order_status==0)
+                      Đơn hàng đã hủy
+                    
+                    @elseif($order->order_status==1)
+                      Đơn hàng đã bị hủy
+                    
+                    @elseif($order->order_status==2)
+                      Đang giao hàng 
+                    
+                    @elseif($order->order_status==3)
+                      Giao hàng thành công 
+                    
                 @endif
             </td>
            

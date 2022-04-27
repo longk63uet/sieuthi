@@ -33,7 +33,7 @@
             <td>{{$user->name}}</td>
             <td>{{$user->user_phone}}</td>
             <td>{{$user->email}}</td>
-            <td>{{$user->user_adress}}</td>
+            <td>{{$user->user_address}}</td>
           </tr>
      
         </tbody>
@@ -83,7 +83,7 @@
             <td>{{$shipping->shipping_address}}</td>
              <td>{{$shipping->shipping_phone}}</td>
              <td>{{$shipping->shipping_email}}</td>
-             <td>{{$shipping->shipping_notes}}</td>
+             <td>{{$shipping->shipping_note}}</td>
              <td>@if($shipping->shipping_method==0) Chuyển khoản @else Tiền mặt @endif</td>
             
           
@@ -117,18 +117,10 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
+            <th>Số thứ tự</th>
             <th>Tên sản phẩm</th>
-            <th>Số lượng kho còn</th>
-            <th>Mã giảm giá</th>
-            <th>Phí ship hàng</th>
             <th>Số lượng</th>
-            <th>Giá sản phẩm</th>
-            <th>Tổng tiền</th>
+            <th>Giá tiền</th>
             
             <th style="width:30px;"></th>
           </tr>
@@ -139,88 +131,45 @@
           $total = 0;
           @endphp
         @foreach($order_details as $key => $details)
-
-          <tr class="color_qty_{{$details->product_id}}">
-           
+          <tr>
             <td><i>{{$i}}</i></td>
-            @php $i++ @endphp
+            @php
+             $i++ ;
+             $total+= $details->product_price;
+            @endphp
             <td>{{$details->product_name}}</td>
-            <td>{{$details->product->product_quantity}}</td>
-            <td>@if($details->product_coupon!='no')
-                  {{$details->product_coupon}}
-                @else 
-                  Không mã
-                @endif
-            </td>
-            <td>{{number_format($details->product_feeship ,0,',','.')}}đ</td>
-            <td>
-
-              <input type="number" min="1" {{$order_status==2 ? 'disabled' : ''}} class="order_qty_{{$details->product_id}}" value="{{$details->product_sales_quantity}}" name="product_sales_quantity">
-
-              <input type="hidden" name="order_qty_storage" class="order_qty_storage_{{$details->product_id}}" value="{{$details->product->product_quantity}}">
-
-              <input type="hidden" name="order_code" class="order_code" value="{{$details->order_code}}">
-
-              <input type="hidden" name="order_product_id" class="order_product_id" value="{{$details->product_id}}">
-
-             @if($order_status!=2) 
-
-              <button class="btn btn-default update_quantity_order" data-product_id="{{$details->product_id}}" name="update_quantity_order">Cập nhật</button>
-
-            @endif
-
-            </td>
-            <td>{{number_format($details->product_price ,0,',','.')}}đ</td>
-            {{-- <td>{{number_format($subtotal ,0,',','.')}}đ</td> --}}
+            <td>{{$details->product_quantiry}}</td>
+            <td>{{number_format($details->product_price ,0,',','.')}} VNĐ</td>
           </tr>
         @endforeach
-            </td>
+          </tr>
+          @foreach($order as $key => $or)
+          <tr>
+            <td colspan="2"></td>
+            <td>Tổng tiền:</td>
+            <td>{{number_format($total)}} VNĐ</td>
           </tr>
           <tr>
-            <td colspan="6">
-              @foreach($order as $key => $or)
-                @if($or->order_status==1)
-                <form>
-                   @csrf
-                  <select class="form-control order_details">
-                    <option value="">----Chọn hình thức đơn hàng-----</option>
-                    <option id="{{$or->order_id}}" selected value="1">Chưa xử lý</option>
-                    <option id="{{$or->order_id}}" value="2">Đã xử lý-Đã giao hàng</option>
-                    <option id="{{$or->order_id}}" value="3">Hủy đơn hàng-tạm giữ</option>
-                  </select>
-                </form>
-                @elseif($or->order_status==2)
-                <form>
-                  @csrf
-                  <select class="form-control order_details">
-                    <option value="">----Chọn hình thức đơn hàng-----</option>
-                    <option id="{{$or->order_id}}" value="1">Chưa xử lý</option>
-                    <option id="{{$or->order_id}}" selected value="2">Đã xử lý-Đã giao hàng</option>
-                    <option id="{{$or->order_id}}" value="3">Hủy đơn hàng-tạm giữ</option>
-                  </select>
-                </form>
-
-                @else
-                <form>
-                   @csrf
-                  <select class="form-control order_details">
-                    <option value="">----Chọn hình thức đơn hàng-----</option>
-                    <option id="{{$or->order_id}}" value="1">Chưa xử lý</option>
-                    <option id="{{$or->order_id}}"  value="2">Đã xử lý-Đã giao hàng</option>
-                    <option id="{{$or->order_id}}" selected value="3">Hủy đơn hàng-tạm giữ</option>
-                  </select>
-                </form>
-
-                @endif
-                
-
-
-            </td>
+            <td colspan="2"></td>
+            <td>Phí ship:</td>
+            <td>+ {{number_format($or->feeship)}} VNĐ</td>
           </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>Mã giảm giá:</td>
+            <td>- {{$discount}} VNĐ</td>
+          </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>Tổng thanh toán:</td>
+            <td>{{number_format($or->order_total)}} VNĐ</td>
+          </tr>
+          
         </tbody>
       </table>
-      <a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a>
-      <a target="_blank" href="{{url('/print-order/')}}">Xác nhận đơn hàng</a>
+      <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
+      <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">Xác nhận, giao đơn vị vận chuyển</a></button>
+      <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">Hủy đơn hàng</a></button>
     </div>
     @endforeach
   </div>

@@ -125,7 +125,7 @@ $total = 0;
                             Cập nhật giỏ hàng</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
+                {{-- <div class="col-lg-6">
                     <div class="shoping__continue">
                         <div class="shoping__discount">
                             <h5>Mã giảm giá</h5>
@@ -148,52 +148,25 @@ $total = 0;
                      <div class="alert alert-danger mt-2">
                         {!! session()->get('error') !!}
                     </div>
-                @endif
+                @endif --}}
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Tổng tiền</h5>
                         <ul>
-                            <li>Giá tiền<span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
+                            <li>Tạm tính<span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
 
-                            @if(Session::get('coupon'))
-								@foreach(Session::get('coupon') as $key => $cou)
-									@if($cou['coupon_condition']==1)
-
-                                        <li>Mã giảm giá<span> {{$cou['coupon_discount']}} % </span></li>
-												@php 
-												$total_coupon = ($cart->totalPrice*$cou['coupon_discount'])/100;
-												echo '<li>Tổng giảm<span>'.number_format($total_coupon,0,',','.').' VNĐ</span></li>';
-                                                $cart->totalPrice=  $cart->totalPrice-$total_coupon
-												@endphp
-
-										<li>Tổng thanh toán<span>{{number_format($cart->totalPrice,0,',','.')}} VNĐ</span></li>
-
-									@elseif($cou['coupon_condition']==2)
-										<li>Mã giảm giá<span> {{number_format($cou['coupon_discount'],0,',','.')}} VNĐ</span></li>
-												@php 
-												$cart->totalPrice = $cart->totalPrice - $cou['coupon_discount'];
-												@endphp
-										<li>Tổng thanh toán<span>{{number_format($total_coupon,0,',','.')}} VNĐ</span></li>
-										@endif
-									@endforeach
-								
-							</li>
-                            @else
-                            <li>Tổng thanh toán <span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
-                            @endif
-                        </ul>
                         <?php
                         $user_id = Session::get('user_id');
                         if($user_id!=NULL){ 
                       ?>
-                      <div class="header__top__right__auth">
+                      <div class="header__top__right__auth" style="float: right">
                         <a href="{{url('checkout')}}" class="primary-btn">Tiếp tục thanh toán</a>
                      </div>
                      <?php
                  }else{
                       ?>
-                      <div class="header__top__right__auth">
+                      <div class="header__top__right__auth" style="float: right">
                         <a href="{{url('login-user')}}" class="primary-btn">Tiếp tục thanh toán</a>
                      </div>
                       <?php 

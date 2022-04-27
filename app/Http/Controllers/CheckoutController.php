@@ -76,14 +76,14 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_status'] = 1;
-        $order_data['order_total'] = $cart->totalPrice;
+        $order_data['order_total'] = $request->price;
         $order_id = DB::table('order')->insertGetId($order_data);
 
         //insert order details
        
         foreach($cart->products as $carts){
+            $order_detail_data['product_quantity'] = $carts['quantity'];
             $order_detail_data['order_id'] = $order_id;
-            // $order_detail_data['coupon'] = $coupon_id;
             $order_detail_data['product_id'] = $carts['info']->product_id;
             $order_detail_data['product_name'] = $carts['info']->product_name;
             $order_detail_data['product_price'] = $carts['info']->product_price;

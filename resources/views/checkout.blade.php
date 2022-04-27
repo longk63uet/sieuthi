@@ -66,11 +66,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
+            <div class="row">
                 <div class="checkout__input col-lg-4">
                     <p>Thành phố/ Tỉnh<span>*</span></p>
                     <input  type="text" name="shipping_city" value="Hà Nội">
-                    
                 </div>
                 <div class="checkout__input col-lg-4">
                     <p>Thành quận, huyện<span>*</span></p>
@@ -80,16 +79,14 @@
                     <p>Đường<span>*</span></p>
                     <input type="text" name="shipping_village" >
                 </div>
-                
             </div>
-            
-
-
             <div class="checkout__input">
                 <p>Ghi chú<span>*</span></p>
                 <input row="7" type="text" name="shipping_note"
                     placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
             </div>
+            
+            
         </div>
 
                     {{-- @endif --}}
@@ -105,10 +102,51 @@
                                 else {
                                     $shipping = 0;
                                 }
+                                $totalPrice = Session::get('cart')->totalPrice;
                             @endphp
                             <div class="checkout__order__subtotal">Phí vận chuyển<span> {{number_format($shipping)}} VNĐ</span></div>
-                            <div class="checkout__order__total">Thanh toán <span>{{number_format(Session::get('cart')->totalPrice - $shipping)}} VNĐ</span></div>
+
+
+
+                            @if(Session::get('coupon'))
+								@foreach(Session::get('coupon') as $key => $cou)
+									@if($cou['coupon_condition']==1)
+                                    <div class="checkout__order__subtotal">Mã giảm giá<span> {{$cou['coupon_discount']}} % </span></div>
+												@php 
+												$discount = ($totalPrice*$cou['coupon_discount'])/100;
+												echo ' <div class="checkout__order__subtotal">Tổng giảm<span>'.number_format($discount,0,',','.').' VNĐ</span></div>';
+                                                // $cart->totalPrice=  $cart->totalPrice-$total_coupon
+												@endphp
+
+										{{-- <li>Tổng thanh toán<span>{{number_format($cart->totalPrice,0,',','.')}} VNĐ</span></li> --}}
+
+									@elseif($cou['coupon_condition']==2)
+                                                @php 
+												$discount = $cou['coupon_discount'];
+												@endphp
+                                    <div class="checkout__order__subtotal">Mã giảm giá<span> {{number_format($discount,0,',','.')}} VNĐ</span></li>
+												
+										{{-- <li>Tổng thanh toán<span>{{number_format($total_coupon,0,',','.')}} VNĐ</span></li> --}}
+										@endif
+									@endforeach
+								
+							</li>
+                            @else
+                            @php 
+								$discount = 0;
+							@endphp
+                            @endif
+                        
+
+
+
+                            {{-- <div class="checkout__order__subtotal">Mã giảm giá<span> {{number_format()}} VNĐ</span></div> --}}
+                            @php
+                            $price = $totalPrice + $shipping - $discount;
+                            @endphp
+                            <div class="checkout__order__total">Tổng thanh toán <span>{{number_format($totalPrice + $shipping - $discount)}} VNĐ</span></div>
                             <input type="hidden" name="feeship" value="{{$shipping}}">
+                            <input type="hidden" name="feeship" value="{{$price}}">
                             <div class="checkout__input__checkbox">
                                 <label for="payment">
                                     Thanh toán chuyển khoản
@@ -138,6 +176,33 @@
             </form>
         </div>
     </div>
+    <div class="row">
+                <div class="col-lg-6">
+                    <div class="shoping__continue">
+                        <div class="shoping__discount">
+                            <h5>Mã giảm giá</h5>
+                            <form action="{{url('check-coupon')}}" method="POST">
+                                @csrf
+                                <input type="text" name="coupon" placeholder="Nhập mã giảm giá">
+                                <button type="submit" class="site-btn">Áp dụng</button>
+                                
+                            </form>
+                                @if(Session::get('coupon'))
+                                <a href="{{url('/unset-coupon')}}" class = "mt-2 btn btn-primary">Xóa mã giảm giá</a>
+                                @endif
+                        </div>
+                    </div>
+                    @if(session()->has('message'))
+                    <div class="alert alert-success mt-2">
+                        {!! session()->get('message') !!}
+                    </div>
+                    @elseif(session()->has('error'))
+                     <div class="alert alert-danger mt-2">
+                        {!! session()->get('error') !!}
+                    </div>
+                    @endif
+                </div>
+            </div>
 </section>
 <!-- Checkout Section End -->
 

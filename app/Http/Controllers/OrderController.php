@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\App;
 use App\Models\Coupon;
+use App\Models\Payment;
 use PDF;
 
 session_start();
@@ -42,26 +43,25 @@ class OrderController extends Controller
 			$user_id = $ord->user_id;
 			$shipping_id = $ord->shipping_id;
 			$order_status = $ord->order_status;
+			$payment_id = $ord->payment_id;
+			$coupon = $ord->coupon;
+			$order_total = $ord->order_total;
 		}
 		$user = User::where('id',$user_id)->first();
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
-
-		$order_details_product = OrderDetail::with('product')->where('order_id',$orderId)->get();
-
-		// foreach($order_details_product as $key => $order_d){
-
-		// 	$product_coupon = $order_d->product_coupon;
-		// }
-		// if($product_coupon != 'no'){
-		// 	$coupon = Coupon::where('coupon_code',$product_coupon)->first();
-		// 	// $coupon_condition = $coupon->coupon_condition;
-		// 	// $coupon_number = $coupon->coupon_number;
-		// }else{
-		// 	$coupon_condition = 2;
-		// 	$coupon_number = 0;
-		// }
+		$payment = Payment::find($payment_id);
+		$coupon = Coupon::find($coupon);
+		if(!empty($coupon)){
+			if($coupon->coupon_condition == 1){
+				$discount = $order_total * $coupon->coupon_discount;
+			}
+			elseif($coupon->coupon_condition == 2){
+				$discount = $coupon->coupon_discount;
+			}
+		}
+		else $discount = 0;
 		
-		return view('admin.view_order')->with(compact('order_details','user','shipping','order_details','order','order_status'));
+		return view('admin.view_order')->with(compact('order_details','user','shipping','order','order_status', 'payment', 'discount'));
     }
 	public function printOrder($order_detail_id){
 		$pdf = App::make('dompdf.wrapper');
