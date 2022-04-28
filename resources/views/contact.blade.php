@@ -79,21 +79,28 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="contact__form__title">
-                    <h2>Leave Message</h2>
+                    <h2>Gửi khiếu nại</h2>
                 </div>
             </div>
         </div>
-        <form action="#">
+        <form action="{{url('/send-feedback')}}" method="POST">
+            @csrf
             <div class="row">
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Your name">
+                    <input type="text" name="name" placeholder="Nhập tên của bạn">
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" placeholder="Your Email">
+                    <input type="text" name="email" placeholder="Nhập địa chỉ email">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" name="phone" placeholder="Nhập số điện thoại">
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <input type="text" name="order_id" placeholder="Nhập mã đơn hàng cần hỗ trợ">
                 </div>
                 <div class="col-lg-12 text-center">
-                    <textarea placeholder="Your message"></textarea>
-                    <button type="submit" class="site-btn">SEND MESSAGE</button>
+                    <textarea rows="7" name="feedback" placeholder="Nhập ý kiến của bạn"></textarea>
+                    <button type="submit" class="site-btn">Gửi yêu cầu</button>
                 </div>
             </div>
         </form>

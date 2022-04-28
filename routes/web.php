@@ -12,6 +12,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\FeedbackController;
 use Illuminate\Support\Facades\App;
 
 use Illuminate\Support\Facades\Auth;
@@ -112,6 +113,9 @@ Route::get('/delete-blog/{blog_id}', [BlogController::class, 'deleteBlog']);
 Route::get('/edit-blog/{blog_id}', [BlogController::class, 'editBlog']);
 Route::post('/update-blog/{blog_id}', [BlogController::class, 'updateBlog']);
 
+//feedback
+Route::get('/manage-feedback', [FeedbackController::class, 'manageFeedback']);
+
 
 
 
@@ -143,6 +147,9 @@ Route::post('/change-pass', [HomeController::class, 'changePass']);
 Route::get('/cancel-order/{order_id}', [HomeController::class, 'cancelOrder']);
 Route::get('/confirm-order/{order_id}', [HomeController::class, 'confirmOrder']);
 
+
+//Feedback
+Route::post('/send-feedback', [FeedbackController::class, 'sendFeedback']);
 
 //Đăng nhập, đăng ký
 Route::post('/login',[HomeController::class, 'login']);

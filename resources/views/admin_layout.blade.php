@@ -132,7 +132,7 @@
                 </li>
 
                 <li>
-                    <a class="active" href="{{url('/manage-comment')}}">
+                    <a class="active" href="{{url('/manage-feedback')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Quản lý khiếu nại</span>
                     </a>
