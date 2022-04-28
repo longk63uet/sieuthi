@@ -63,6 +63,8 @@ Route::get('/delete-product/{product_id}', [ProductController::class, 'deletePro
 Route::post('/save-product', [ProductController::class, 'saveProduct']);
 Route::post('/update-product/{product_id}', [ProductController::class, 'updateProduct']);
 Route::get('/all-product', [ProductController::class, 'allProduct']);
+Route::post('/export-product-csv',[ProductController::class, 'export_csv']);
+Route::post('/import-product-csv',[ProductController::class, 'import_csv']);
 
 //comment
 Route::post('/load-comment', [ProductController::class, 'loadComment']);

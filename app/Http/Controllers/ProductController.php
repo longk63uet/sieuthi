@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Comment;
 use App\Models\Product;
 use App\Models\Rating;
+use Excel;
+use App\Exports\ProductExport;
+use App\Imports\ProductImport;
 session_start();
 
 class ProductController extends Controller
@@ -165,6 +168,15 @@ class ProductController extends Controller
             $rating->rating = $request->index;
             $rating->save();
             return 'done';
+        }
+
+        public function export_csv(){
+            return Excel::download(new ProductExport , 'product.xlsx');
+        }
+        public function import_csv(Request $request){
+            $path = $request->file('file')->getRealPath();
+            Excel::import(new ProductImport, $path);
+            return back();
         }
 
 }

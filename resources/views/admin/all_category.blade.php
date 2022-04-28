@@ -15,19 +15,10 @@
 		}
 	@endphp
   
-  <div class="col-sm-4">
-  </div>
-  <div class="col-sm-3">
-    <div class="input-group">
-      <input type="text" class="input-sm form-control" placeholder="Tìm kiếm">
-      <span class="input-group-btn">
-        <button class="btn btn-sm btn-default" type="button">Tìm kiếm</button>
-      </span>
-    </div>
-  </div>
+ 
 </div>
 <div class="table-responsive">
-  <table class="table table-striped b-t b-light">
+  <table class="table table-striped b-t b-light" id="myTable1">
     <thead>
       <tr>
         <th style="width:20px;">
