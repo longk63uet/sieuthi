@@ -25,5 +25,12 @@ class FeedbackController extends Controller
         return view('admin.manage_feedback', ['feedbacks' => $feedbacks]);
     }
 
+    public function handleFeedback($feedback_id){
+        $feedback = Feedback::find($feedback_id);
+        $feedback->status = 1;
+        $feedback->save();
+        return redirect()->back();
+    }
+
 
 }

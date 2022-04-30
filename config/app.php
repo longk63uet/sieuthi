@@ -196,7 +196,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Cart' => Gloudemans\Shoppingcart\Facades\Cart::class,
-        'PDF' => Barryvdh\DomPDF\Facade::class,
+        'PDF' => Barryvdh\DomPDF\Facade\PDF::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // ...
     ])->toArray(),

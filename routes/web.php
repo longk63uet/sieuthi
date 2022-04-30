@@ -13,6 +13,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FeedbackController;
+use GuzzleHttp\Middleware;
+use GuzzleHttp\RedirectMiddleware;
 use Illuminate\Support\Facades\App;
 
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +36,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
+
 
 //category
 Route::get('/add-category', [CategoryProductController::class, 'addCategory']);
@@ -115,6 +118,7 @@ Route::post('/update-blog/{blog_id}', [BlogController::class, 'updateBlog']);
 
 //feedback
 Route::get('/manage-feedback', [FeedbackController::class, 'manageFeedback']);
+Route::get('/handle-feedback/{feedback_id}', [FeedbackController::class, 'handleFeedback']);
 
 
 

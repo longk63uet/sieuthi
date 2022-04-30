@@ -20,10 +20,11 @@
   <table class="table table-striped b-t b-light" id="myTable">
     <thead>
       <tr>
-        <th>Mã khiếu nại</th>
+        <th>Mã</th>
         <th>Tên</th>
         <th>Email</th>
         <th>Số điện thoại</th>
+        <th>Nội dung</th>
         <th>Đơn hàng</th>
         <th>Trạng thái</th>
       </tr>
@@ -36,7 +37,8 @@
         <td>{{$feedback->name}}</td>
         <td>{{$feedback->email}}</td>
         <td>{{$feedback->phone}}</td>
-        <td><a href="{{URL::to('/view-order/'.$feedback->order_id)}}"  target="_blank" rel="noopener noreferrer">{{$feedback->order_id}}</a></td>
+        <td>{{$feedback->feedback}}</td>
+        <td><a href="{{url('/view-order/'.$feedback->order_id)}}"  target="_blank" rel="noopener noreferrer">{{$feedback->order_id}}</a></td>
         <td><span class="text-ellipsis">
         @php
             
@@ -46,12 +48,16 @@
          
         @endphp
 
-        </span></td>
+        {{-- </span></td> --}}
+          @if ($feedback->status == 0)
+              
+          
         <td>
           <a onclick="return confirm('Bạn đã xử lý đơn hàng này?')" href="{{url('handle-feedback/'.$feedback->id)}}" class="active" ui-toggle-class="">
-            <i class="fa-check-square-o"></i>
+            <i class="fa fa-check"></i>
           </a>
         </td>
+        @endif
       </tr>
       @endforeach
     </tbody>
