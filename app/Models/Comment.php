@@ -10,6 +10,10 @@ class Comment extends Model
     use HasFactory;
     protected $table = 'comment';
     public $timestamps = true; 
-    protected $fillable = ['comment', 'product_id ', 'name'];
+    protected $fillable = ['comment', 'product_id ', 'name', 'user_id'];
     protected $primaryKey = 'id';
+    public function product(){
+        return $this->belongsTo(Product::class,'product_id');
+    }
+
 }

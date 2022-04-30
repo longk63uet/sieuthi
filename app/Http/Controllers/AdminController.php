@@ -29,6 +29,7 @@ class AdminController extends Controller
     //Hiển thị trang admin dashboard
     public function showDashboard(){
         $this->AuthLogin();
+        
         return view('admin.dashboard');
     }
 

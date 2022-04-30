@@ -92,16 +92,25 @@ class CheckoutController extends Controller
             DB::table('order_details')->insert($order_detail_data);
         }
         $request->session()->forget('coupon');
-        $request->session()->forget('cart');
 
-    	return Redirect::to('/payment');
-
-        
-
+        if ($request->payment_option == 1) {
+            $request->session()->forget('cart');
+            return view('payment.cash');
+        } 
+        elseif($request->payment_option == 2) {
+            return view('payment.momo');
+        }
+        elseif($request->payment_option == 3){
+            return view('payment.paypal');
+        }
+        elseif($request->payment_option == 4){
+            return view('payment.onepay');
+        }
+        elseif($request->payment_option == 5){
+            return view('payment.vnpay');
+        }
     }
-
     
-
     public function payment(){
         return view('payment');
     }

@@ -149,23 +149,37 @@
                             <input type="hidden" name="price" value="{{$price}}">
                             <input type="hidden" name="discount" value="{{$discount}}">
                             <div class="checkout__input__checkbox">
-                                <label for="payment">
-                                    Thanh toán chuyển khoản
-                                    <input type="checkbox" id="payment" name="payment_option" value="1">
+                                <label for="cash">
+                                    Thanh toán khi nhận hàng
+                                    <input type="radio" id="cash" name="payment_option" value="1">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                             <div class="checkout__input__checkbox">
-                                <label for="cash">
-                                    Thanh toán khi nhận hàng
-                                    <input type="checkbox" id="cash" name="payment_option" value="2">
+                                <label for="momo">
+                                    Ví MOMO
+                                    <input type="radio" id="momo" name="payment_option" value="2" >
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
                             <div class="checkout__input__checkbox">
                                 <label for="paypal">
-                                    Paypal
-                                    <input type="checkbox" id="paypal" name="payment_option" value="3">
+                                    Paypal(Đang bảo trì)
+                                    <input type="radio" id="paypal" name="payment_option" value="3">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="onepay">
+                                    Onepay
+                                    <input type="radio" id="onepay" name="payment_option" value="4">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__input__checkbox">
+                                <label for="vnpay">
+                                    VNPAY
+                                    <input type="radio" id="vnpay" name="payment_option" value="5">
                                     <span class="checkmark"></span>
                                 </label>
                             </div>

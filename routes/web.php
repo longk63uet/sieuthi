@@ -13,8 +13,12 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BannerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\PaymentController;
 use GuzzleHttp\Middleware;
 use GuzzleHttp\RedirectMiddleware;
+use App\Http\Controllers\QrCodeController;
+use App\Http\Controllers\CommentController;
+// use QrCode;
 use Illuminate\Support\Facades\App;
 
 use Illuminate\Support\Facades\Auth;
@@ -76,6 +80,10 @@ Route::post('/send-comment', [ProductController::class, 'sendComment']);
 
 //rating
 Route::post('/rating', [ProductController::class, 'rating']);
+
+//comment
+Route::get('/manage-comment', [CommentController::class, 'manageComment']);
+Route::get('/delete-comment/{id}', [CommentController::class, 'deleteComment']);
 
 
 //order
@@ -180,7 +188,7 @@ Route::get('/blogs', [BlogController::class, 'blogs']);
 Route::get('/blog/{blog_id}', [BlogController::class, 'blogdetail']);
 Route::post('/tim-kiem-blog', [BlogController::class, 'searchBlog']);
 
-
+Route::get('/generate-qrcode/{product_id}', [QrCodeController::class, 'generateQrcode']);
 
 
 //contact
@@ -206,6 +214,13 @@ Route::get('/payment',[CheckoutController::class, 'payment']);
 
 Route::post('/select-delivery',[CheckoutController::class, 'selectDelivery']);
 Route::get('/select-city/{id}',[CheckoutController::class, 'selectCity']);
+
+Route::post('/vnpay',[PaymentController::class, 'vnpay']);
+Route::post('/onepay',[PaymentController::class, 'onepay']);
+Route::post('/momo',[PaymentController::class, 'momo']);
+Route::post('/cash',[PaymentController::class, 'cash']);
+Route::post('/paypal',[PaymentController::class, 'paypal']);
+
 
 //coupon
 Route::post('/check-coupon',[CouponController::class, 'checkCoupon']);
