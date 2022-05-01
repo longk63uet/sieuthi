@@ -111,7 +111,7 @@
 						<div class="area-grids-heading">
 							<h3>Daily</h3>
 						</div>
-						<div id="graph8"></div>
+						<div id="graph"></div>
 						<script>
 						var day_data = [
 						  {"period": "2016-10-01", "licensed": 3407, "sorned": 660},
@@ -123,15 +123,16 @@
 						  {"period": "2016-09-17", "licensed": 3171, "sorned": 660},
 						  {"period": "2016-09-16", "licensed": 3171, "sorned": 676},
 						  {"period": "2016-09-15", "licensed": 3201, "sorned": 656},
+              {"period": "2056-09-15", "licensed": 3201, "sorned": 656},
 						  {"period": "2016-09-10", "licensed": 3215, "sorned": 622}
 						];
 						Morris.Bar({
-						  element: 'graph8',
+						  element: 'graph',
 						  data: day_data,
 						  xkey: 'period',
 						  ykeys: ['licensed', 'sorned'],
 						  labels: ['Licensed', 'SORN'],
-						  xLabelAngle: 60
+						  xLabelAngle: 10
 						});
 						</script>
 					</div>
