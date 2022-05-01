@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\User;
+use App\Models\Blog;
+use App\Models\Order;
+use App\Models\Product;
 session_start();
 
 
@@ -29,7 +33,10 @@ class AdminController extends Controller
     //Hiển thị trang admin dashboard
     public function showDashboard(){
         $this->AuthLogin();
-        
+        // $userNumber = User::where('role', 1)->count();
+        // $productNumber = Product::where('role', 1)->count();
+        // $sum = Model::sum('sum_field');
+
         return view('admin.dashboard');
     }
 
