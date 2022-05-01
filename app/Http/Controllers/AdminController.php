@@ -33,11 +33,13 @@ class AdminController extends Controller
     //Hiển thị trang admin dashboard
     public function showDashboard(){
         $this->AuthLogin();
-        // $userNumber = User::where('role', 1)->count();
-        // $productNumber = Product::where('role', 1)->count();
-        // $sum = Model::sum('sum_field');
+        $userNumber = User::where('role', 1)->count();
+        $productNumber = Product::where('product_status', 1)->count();
+        $totalView = Product::sum('view');
+        $totalOrder = Order::count();
+        $totalSale = Order::sum('order_total');
 
-        return view('admin.dashboard');
+        return view('admin.dashboard', ['userNumber' => $userNumber, 'totalView' => $totalView,'totalOrder' => $totalOrder,'totalSale' => $totalSale]);
     }
 
     //Đăng nhập admin dashboard
