@@ -44,6 +44,14 @@
                                 <option value="0">Ẩn</option>
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Sản phẩm đi kèm</label>
+                            <select name="product[]" class="form-control" size="8" multiple="multiple" >
+                                @foreach ($products as $pro)
+                                <option value="{{$pro->product_id}}">{{$pro->product_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         
                         <button type="submit" name="submit" class="btn btn-info">Thêm Blog</button>
                     </form>

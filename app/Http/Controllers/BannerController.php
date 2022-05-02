@@ -5,12 +5,10 @@ use App\Models\Banner;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
-
 use Illuminate\Http\Request;
 
 class BannerController extends Controller
 {
-
     /////////////////////Admin/////////////////////////
     //Xác thực đăng nhập
     public function authLogin(){
@@ -34,10 +32,8 @@ class BannerController extends Controller
     //Lưu banner
     public function insertBanner(Request $request){
         $this->AuthLogin();
-
    		$data = $request->all();
        	$get_image = request('banner_image');
-      
         if($get_image){
             $get_name_image = $get_image->getClientOriginalName();
             $name_image = current(explode('.',$get_name_image));

@@ -10,32 +10,16 @@ session_start();
 
 class CouponController extends Controller
 {
+    //Xóa mã giảm giá
 	public function unsetCoupon(){
-		// $coupon = Session::get('coupon');
-        // $total = Session::get('cart')->totalPrice;
-        // if($coupon==true){
-        //     foreach(Session::get('coupon') as $cou){
-        //         if($cou['coupon_condition']==1){
-        //             $discount = $cou['coupon_discount'];
-        //             Session::get('cart')->totalPrice =  $discount/(100-$discount) * $total  + $total;
-        //         }
-        //         elseif($cou['coupon_condition']==2){
-
-        //             Session::get('cart')->totalPrice =  $cou['coupon_discount'] + $total;
-        //         }
-
-        //     }
-          
-        //     Session::forget('coupon');
-        //     return redirect()->back()->with('message','Xóa mã khuyến mãi thành công');
-        // }
         $coupon = Session::get('coupon');
         if($coupon==true){
-          
             Session::forget('coupon');
             return redirect()->back()->with('message','Xóa mã khuyến mãi thành công');
         }
 	}
+
+    //Thêm mã giảm giá
     public function insertCoupon(){
     	return view('admin.insert_coupon');
     }

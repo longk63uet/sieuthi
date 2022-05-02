@@ -141,7 +141,7 @@ class HomeController extends Controller
         return view('wishlist', ['productwishlist'=>$productwishlist]);
     }
     public function removeWishlist($product_id ){
-        $data = DB::table('product')->where('product_id', $product_id)->delete();
+        $data = DB::table('wishlist')->where('product_id', $product_id)->delete();
         return redirect()->back();
     }
 
@@ -266,8 +266,8 @@ class HomeController extends Controller
     }
 
     public function viewOrderUser($order_id){
-        $order_details = OrderDetail::with('product')->where('order_id',$orderId)->get();
-		$order = Order::where('order_id',$orderId)->get();
+        $order_details = OrderDetail::with('product')->where('order_id',$order_id)->get();
+		$order = Order::where('order_id',$order_id)->get();
 		foreach($order as $key => $ord){
 			$user_id = $ord->user_id;
 			$shipping_id = $ord->shipping_id;
@@ -280,7 +280,7 @@ class HomeController extends Controller
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
 		$payment = Payment::find($payment_id);
 		$coupon = Coupon::find($coupon);
-        return view('view_order_user');
+        return view('view_order_user')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
 
     }
 }

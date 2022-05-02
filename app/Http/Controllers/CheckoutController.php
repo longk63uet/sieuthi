@@ -9,37 +9,31 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\City;
 use App\Models\Coupon;
 use App\Models\District;
+use App\Models\Product;
 use App\Models\Village;
-use App\Models\ShippingFee;
 use Carbon\Carbon;
 
 session_start();
 
 class CheckoutController extends Controller
 {
-    
-    public function checkout(){
-        $city = City::orderby('matp','ASC')->get();
-        return view('checkout', compact('city'));
-    }
+    //Thêm người dùng mới
     public function adduser(Request $request){
         $data = array();
         $data['name'] = $request->user_name;
     	$data['user_phone'] = $request->user_phone;
     	$data['email'] = $request->user_email;
     	$data['password'] = md5($request->user_password);
-
     	$users_id = DB::table('users')->insertGetId($data);
-        
-
     	Session::put('user_id', $users_id);
     	Session::put('user_name',$request->user_name);
+
     	return Redirect::to('/checkout');
     }
 
+    //Lưu đơn hàng
     public function saveCheckout(Request $request){
-        // dd($request->all());
-		//shipping
+        //Lưu thông tin giao hàng
         $data = array();
     	$data['shipping_name'] = $request->shipping_name;
         $data['shipping_surname'] = $request->shipping_surname;
@@ -55,12 +49,12 @@ class CheckoutController extends Controller
 
     	Session::put('shipping_id',$shipping_id);
 
-        // payment
+        // Lưu thông tin thanh toán
         $data = array();
         $data['payment_method'] = $request->payment_option;
         $payment_id = DB::table('payment')->insertGetId($data);
         
-        //insert order
+        //Lưu thông tin đơn h
         $cart = Session::get('cart');
         $order_data = array();
         $order_data['user_id'] = Session::get('user_id');
@@ -69,7 +63,6 @@ class CheckoutController extends Controller
             foreach(Session::get('coupon') as $cou){
                 $coupon_id = $cou['coupon_id'];
             }
-           
             $coupon = Coupon::find($coupon_id);
             $coupon->coupon_quantity -- ;
             $coupon->save();
@@ -79,22 +72,26 @@ class CheckoutController extends Controller
         $order_data['payment_id'] = $payment_id;
         $order_data['order_status'] = 1;
         $order_data['day'] = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-        // dd($request);
         $order_data['order_total'] = $request->price;
         $order_id = DB::table('order')->insertGetId($order_data);
 
-        //insert order details
-       
+        //Lưu thông tin chi tiết đơn hàng
         foreach($cart->products as $carts){
             $order_detail_data['product_quantity'] = $carts['quantity'];
             $order_detail_data['order_id'] = $order_id;
             $order_detail_data['product_id'] = $carts['info']->product_id;
             $order_detail_data['product_name'] = $carts['info']->product_name;
             $order_detail_data['product_price'] = $carts['info']->product_price;
+            $product = Product::find($carts['info']->product_id);
+            //Giảm số lượng sản phẩm trong kho, tăng số lượng sản phẩm đã bán
+            $product->product_quantity -= $carts['quantity'];
+            $product->sold += $carts['quantity'];
+            $product->save();
             DB::table('order_details')->insert($order_detail_data);
         }
         $request->session()->forget('coupon');
-
+        
+        //Hình thức thanh toán
         if ($request->payment_option == 1) {
             $request->session()->forget('cart');
             return view('payment.cash');
@@ -113,39 +110,9 @@ class CheckoutController extends Controller
         }
     }
     
+    //Trang thanh toán thành công
     public function payment(){
         return view('payment');
     }
     
-   
-    
-    public function selectDelivery(Request $request){
-        $data = $request->all();
-        if($data['action']){
-            $output = '';
-            if($data['action']=="city"){
-                $select_district = District::where('matp',$data['ma_id'])->orderby('maqh','ASC')->get();
-                    $output.='<option value="" selected>Chọn quận huyện</option>';
-                foreach($select_district as $district){
-                    $output.='<option value="'.$district->maqh.'">'.$district->name.'</option>';
-                }
-                
-
-            }else{
-
-                $select_village = Village::where('maqh',$data['ma_id'])->orderby('xaid','ASC')->get();
-                $output.='<option>Chọn xã phường</option>';
-                foreach($select_village as $village){
-                    $output.='<option value="'.$village->xaid.'">'.$village->name.'</option>';
-                }
-            }
-            
-        }
-        
-        return $output;
-
-    }
-
-    
-	
 }

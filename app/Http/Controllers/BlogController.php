@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Exports\BlogCategoryExport;
 use App\Imports\BlogCategoryImport;
+use App\Models\Product;
 use Excel;
 session_start();
 
@@ -93,24 +93,24 @@ class BlogController extends Controller
         return view('admin.manage_blog')->with(compact('blogs'));  
     }
 
-    
     //Thêm blog mới
     public function insertBlog(){
         $blogcate = DB::table('blogcategory')->orderBy('blogcategory_id','desc')->get();
-        return view('admin.add_blog')->with(compact('blogcate'));  
+        $products = Product::all();
+        return view('admin.add_blog')->with(compact('blogcate', 'products'));  
     }
 
     //Lưu blog
-
     public function addBlog(Request $request){
         $data = array();
+        $products = implode(',',$request->product);
         $data['title'] = $request->title;
         $data['content'] = $request->content;
         $data['summary'] = $request->summary;
         $data['status'] = $request->status;
+        $data['product'] = $products;
         $data['blogcategory_id'] = $request->blogcategory_id;
         $data['user_id'] = Session::get('user_id') ? Session::get('user_id') : 1;
-        
         $get_image = $request->file('images');
 
         if($get_image){
@@ -171,7 +171,7 @@ class BlogController extends Controller
     }
 
 
-    ////////////frontend//////////////
+    ////////////User//////////////
     //Hiển thị blog trên frontend
     public function blogs(){
         $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
@@ -181,7 +181,6 @@ class BlogController extends Controller
     }
 
     //Chi tiết blog
-
     public function blogdetail($blog_id){
         $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
         $blog = DB::table('blogs')
@@ -192,16 +191,22 @@ class BlogController extends Controller
         foreach($blog as $blogs){
             
             $related = $blogs->blogcategory_id;
+            $products = $blogs->product;
         }
+        $pros = explode(',', $products);
+        $pro = Product::select("*")
+                ->whereIn('product_id', $pros)
+                ->get();
         $relatedBlog = DB::table('blogs')
         ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
         ->where('blogs.blogcategory_id',$related)
         ->whereNotIn('blogs.id',[$blog_id])
         ->limit(3)->get();
         $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
-
-        return view('blog_detail',['blogcate'=>$blogcate, 'blog'=>$blog, 'relatedBlog'=>$relatedBlog, 'recentblogs'=>$recentblogs]);
+        return view('blog_detail',['blogcate'=>$blogcate, 'blog'=>$blog, 'relatedBlog'=>$relatedBlog, 'recentblogs'=>$recentblogs, 'pro'=>$pro]);
     }
+
+    //Tìm kiếm Blog
     public function searchBlog(Request $request){
         $keywords = $request->blog;
         $search_blog = DB::table('blogs')->where('title','like','%'.$keywords.'%')->get(); 

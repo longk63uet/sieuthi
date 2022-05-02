@@ -46,18 +46,17 @@
                         </ul>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Recent News</h4>
+                        <h4>Sản phẩm liên quan</h4>
                         <div class="blog__sidebar__recent">
-                            @foreach ($recentblogs as $item)
+                            @foreach ($pro as $item)
                                 
                            
-                            <a href="{{url('/blog/'.$item->id)}}" class="blog__sidebar__recent__item">
+                            <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
-                                    <img width="100" height="100" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
+                                    <img width="100" height="100" src="{{URL('/public/uploads/product/'.$item->product_image)}}" alt="">
                                 </div>
                                 <div class="blog__sidebar__recent__item__text">
-                                    <h6>{{$item->title}}</h6>
-                                    <span>{{$item->created_at}}</span>
+                                    <h6>{{$item->product_name}}</h6>
                                 </div>
                             </a>
                             @endforeach
@@ -84,6 +83,7 @@
                     <img src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
                     {!! $item->content !!}
                 </div>
+
                 <div class="blog__details__content">
                     <div class="row">
                         <div class="col-lg-6">
@@ -119,6 +119,7 @@
     </div>
 </section>
 <!-- Blog Details Section End -->
+
 
 <!-- Related Blog Section Begin -->
 <section class="related-blog spad">

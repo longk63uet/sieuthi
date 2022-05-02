@@ -11,7 +11,6 @@ use App\Models\Order;
 use App\Models\Product;
 session_start();
 
-
 class AdminController extends Controller
 {
     //Xác thực đăng nhập
@@ -69,9 +68,8 @@ class AdminController extends Controller
         return Redirect::to('/admin');
     }
 
+    //Ajax lấy dữ liệu biểu đồ chart
     public function getChartData(){
-
-
         $order = DB::table('order')
         ->select('day', DB::raw('count(*) as total, sum(order_total) as sum'))
         ->groupBy('day')
@@ -82,14 +80,16 @@ class AdminController extends Controller
                 'total' => $or->total,
                 'sum' => $or->sum
             );
-            }
+        }
         return json_encode($chart);
     }
 
+    //Hàm lấy trạng thái đơn hàng
     public function status($status){
         if ($status == 0) {
            $st = "Đơn hàng đã hủy";
-        } elseif($status == 1) {
+        } 
+        elseif($status == 1) {
             $st = "Đơn hàng mới";
         }
         elseif($status == 2) {
@@ -102,22 +102,18 @@ class AdminController extends Controller
         
     }
 
+    //Hàm lấy dữ liệu biểu đồ tròn cho dashboard
     public function getDonutData(){
-
-        $total = Order::count();
-
         $order = DB::table('order')
         ->select('order_status', DB::raw('count(*) as total'))
         ->groupBy('order_status')
         ->get();
         foreach($order as $or){
             $donut[] = array(
-               
                 'label' => $this->status($or->order_status),
                 'value' => $or->total,
-                
             );
-            }
+        }
         return json_encode($donut);
     }
     
