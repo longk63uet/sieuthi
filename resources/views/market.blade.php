@@ -239,7 +239,7 @@
                             <div class="product__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
                                 <ul class="product__item__pic__hover">
                                     <li><a href="javascript:" onclick="addToWishlist({{$pro->product_id}})"><i class="fa fa-heart"></i></a></li>
-                            <li><a style="cursor: pointer" onclick="compare({{$pro->product_id}})"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a  href="{{url('generate-qrcode/'.$pro->product_id)}}" target="_blank"><i class="fa fa-qrcode"></i></a></li>
                             <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
                                 </ul>
                             </div>

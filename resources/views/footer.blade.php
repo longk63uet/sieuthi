@@ -230,7 +230,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     $(document).on('click', '.rating',function () { 
         var index = $(this).data("index");
         var product_id = $(this).data("product_id");
-        console.log(product_id);
         $.ajax({
                 type: "POST",
                 url: '{{url('/rating')}}',
@@ -244,7 +243,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                         alertify.success("Bạn đã đánh giá thành công");
                     }
                     else{
-                        alertify.error("Bạn đã đánh giá thành công");
+                        alertify.error("Bạn đã đánh giá trước đó");
                     }
 
                 }

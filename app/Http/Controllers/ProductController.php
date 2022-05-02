@@ -153,21 +153,36 @@ class ProductController extends Controller
             $product_id = $request->product_id;
             $comment_name = $request->comment_name;
             $comment_content = $request->comment_content;
+            $user_id = Session::get('user_id');
             
             $comment = new Comment();
             $comment->product_id = $product_id;
             $comment->name = $comment_name;
+            $comment->user_id = $user_id;
             $comment->comment = $comment_content;
             $comment->save();
 
 
         }
         public function rating(Request $request){
-            $rating = new Rating();
-            $rating->product_id = $request->product_id;
-            $rating->rating = $request->index;
-            $rating->save();
-            return 'done';
+           
+            $user_id = Session::get('user_id');
+            $products = Rating::where('user_id', $user_id)->get();
+            $prod = [];
+            foreach($products as $pro){
+                $prod[] = $pro->product_id;
+            }
+            $product_id = $request->product_id;
+            if(!in_array($product_id, $prod)){
+                $rating = new Rating();
+                $rating->product_id = $product_id;
+                $rating->user_id = $user_id;
+                $rating->rating = $request->index;
+                $rating->save();
+                return 'done';
+            }
+            else return 'error';
+            
         }
 
         public function export_csv(){
