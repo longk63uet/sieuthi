@@ -61,18 +61,38 @@ class OrderController extends Controller
 		
 		return $pdf->stream();
 	}
+
+	public function paymentMethod($method){
+		if($method == 1){
+			return "Thanh toán khi nhận hàng";
+		}
+		elseif($method == 2){
+			return "Ví MOMO";
+		}
+		elseif($method == 3){
+			return "Paypal";
+		}
+		elseif($method == 4){
+			return "Onepay";
+		}
+		elseif($method == 5){
+			return "VNPAY";
+		}
+	}
 	public function print_order_convert($order_id){
 		$order_details = OrderDetail::with('product')->where('order_id',$order_id)->get();
 		$order = Order::where('order_id',$order_id)->get();
 		foreach($order as $ord){
 			$user_id = $ord->user_id;
 			$shipping_id = $ord->shipping_id;
+			$payment_id = $ord->payment_id;
 			$total = $ord->order_total;
 			$coupon = $ord->coupon;
 			$feeship = $ord->feeship;
 		}
 		$user = User::where('id',$user_id)->first();
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
+		$payment = Payment::find($payment_id);
 		$output = '';
 		$output.='<style>body{
 			font-family: DejaVu Sans;
@@ -173,6 +193,7 @@ class OrderController extends Controller
 					<p>Tổng giảm: '.number_format($coupon,0,',','.').'VNĐ'.'</p>
 					<p>Phí ship: '.number_format($feeship,0,',','.').'VNĐ'.'</p>
 					<p>Thanh toán : '.number_format($total,0,',','.').'VNĐ'.'</p>
+					<p>Hình thức thanh toán : '.$this->paymentMethod($payment->payment_method).'</p>
 				</td>
 		</tr>';
 		$output.='				

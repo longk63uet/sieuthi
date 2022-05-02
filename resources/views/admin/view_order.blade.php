@@ -174,6 +174,22 @@
             <td>Tổng thanh toán:</td>
             <td>{{number_format($or->order_total)}} VNĐ</td>
           </tr>
+          <tr>
+            <td colspan="2"></td>
+            <td>Hình thức thanh toán:</td>
+            @if ($payment->payment_method == 1)
+                <td>Thanh toán khi nhận hàng </td>
+            @elseif($payment->payment_method == 2)
+            <td>Ví MOMO </td>
+            @elseif($payment->payment_method == 3)
+            <td>Paypal </td>
+            @elseif($payment->payment_method == 4)
+            <td>Onepay </td>
+            @elseif($payment->payment_method == 5)
+            <td> VNPAY</td>
+
+            @endif
+          </tr>
           
           
         </tbody>

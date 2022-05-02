@@ -58,7 +58,6 @@ class CheckoutController extends Controller
         // payment
         $data = array();
         $data['payment_method'] = $request->payment_option;
-        $data['payment_status'] = 'Đang chờ xử lý';
         $payment_id = DB::table('payment')->insertGetId($data);
         
         //insert order
