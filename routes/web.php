@@ -40,6 +40,8 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
+Route::get('/get-chart-data', [AdminController::class, 'getChartData']);
+Route::get('/get-donut-data', [AdminController::class, 'getDonutData']);
 
 
 //category

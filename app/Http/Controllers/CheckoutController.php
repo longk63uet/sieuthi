@@ -11,6 +11,8 @@ use App\Models\Coupon;
 use App\Models\District;
 use App\Models\Village;
 use App\Models\ShippingFee;
+use Carbon\Carbon;
+
 session_start();
 
 class CheckoutController extends Controller
@@ -77,6 +79,7 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_status'] = 1;
+        $order_data['day'] = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
         // dd($request);
         $order_data['order_total'] = $request->price;
         $order_id = DB::table('order')->insertGetId($order_data);

@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Models\Blog;
 use App\Models\Order;
 use App\Models\Product;
+use Carbon\Carbon;
 session_start();
 
 
@@ -34,12 +35,12 @@ class AdminController extends Controller
     public function showDashboard(){
         $this->AuthLogin();
         $userNumber = User::where('role', 1)->count();
-        $productNumber = Product::where('product_status', 1)->count();
+        $product = Product::orderBy('sold', 'desc')->take(5)->get();
         $totalView = Product::sum('view');
         $totalOrder = Order::count();
         $totalSale = Order::sum('order_total');
 
-        return view('admin.dashboard', ['userNumber' => $userNumber, 'totalView' => $totalView,'totalOrder' => $totalOrder,'totalSale' => $totalSale]);
+        return view('admin.dashboard', ['userNumber' => $userNumber, 'totalView' => $totalView,'totalOrder' => $totalOrder,'totalSale' => $totalSale, 'product' => $product]);
     }
 
     //Đăng nhập admin dashboard
@@ -68,6 +69,58 @@ class AdminController extends Controller
         Session::put('user_name', null );
         Session::put('admin_id', null );
         return Redirect::to('/admin');
+    }
+
+    public function getChartData(){
+
+
+        $order = DB::table('order')
+        ->select('day', DB::raw('count(*) as total, sum(order_total) as sum'))
+        ->groupBy('day')
+        ->get();
+        foreach($order as $or){
+            $chart[] = array(
+                'day' => $or->day,
+                'total' => $or->total,
+                'sum' => $or->sum
+            );
+            }
+        return json_encode($chart);
+    }
+
+    public function status($status){
+        if ($status == 0) {
+           $st = "Đơn hàng đã hủy";
+        } elseif($status == 1) {
+            $st = "Đơn hàng mới";
+        }
+        elseif($status == 2) {
+            $st = "Đang giao hàng ";
+        }
+        elseif($status == 3) {
+            $st = "Giao hàng thành công ";
+        }
+        return $st;
+        
+    }
+
+    public function getDonutData(){
+
+        $total = Order::count();
+
+        $order = DB::table('order')
+        ->select('order_status', DB::raw('count(*) as total'))
+        ->groupBy('order_status')
+        ->get();
+        foreach($order as $or){
+            $donut[] = array(
+               
+                'label' => $this->status($or->order_status),
+                'value' => $or->total,
+                
+            );
+            }
+        return json_encode($donut);
     }
     
 }

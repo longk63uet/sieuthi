@@ -53,26 +53,6 @@
 			</div>
 		   <div class="clearfix"> </div>
 		</div>	
-		{{-- <!-- //market-->
-		<div class="row">
-			<div class="panel-body">
-				<div class="col-md-12 w3ls-graph">
-					<!--agileinfo-grap-->
-						<div class="agileinfo-grap">
-							<div class="agileits-box">
-								<header class="agileits-box-header clearfix">
-									<h3>Visitor Statistics</h3>
-										<div class="toolbar">
-											
-											
-										</div>
-								</header>
-								<div class="agileits-box-body clearfix">
-									<div id="hero-area"></div>
-								</div>
-							</div>
-						</div>
-	<!--//agileinfo-grap--> --}}
 
 				</div>
 			</div>
@@ -80,195 +60,89 @@
 		
 			<div class="clearfix"> </div>
 		</div>
-			{{-- <!-- tasks -->
-			<div class="agile-last-grids">
-				<div class="col-md-4 agile-last-left">
-					<div class="agile-last-grid">
-						<div class="area-grids-heading">
-							<h3>Monthly</h3>
-						</div>
-						<div id="graph7"></div>
-						<script>
-						// This crosses a DST boundary in the UK.
-						Morris.Area({
-						  element: 'graph7',
-						  data: [
-							{x: '2013-03-30 22:00:00', y: 3, z: 3},
-							{x: '2013-03-31 00:00:00', y: 2, z: 0},
-							{x: '2013-03-31 02:00:00', y: 0, z: 2},
-							{x: '2013-03-31 04:00:00', y: 4, z: 4}
-						  ],
-						  xkey: 'x',
-						  ykeys: ['y', 'z'],
-						  labels: ['Y', 'Z']
-						});
-						</script>
-
-					</div>
-				</div> --}}
+			
 				<div class="col-md-12 agile-last-left agile-last-middle">
 					<div class="agile-last-grid">
 						<div class="area-grids-heading">
-							<h3>Daily</h3>
+							<h3>Báo cáo theo ngày</h3>
 						</div>
 						<div id="graph"></div>
-						<script>
-						var day_data = [
-						  {"period": "2016-10-01", "licensed": 3407, "sorned": 660},
-						  {"period": "2016-09-30", "licensed": 3351, "sorned": 629},
-						  {"period": "2016-09-29", "licensed": 3269, "sorned": 618},
-						  {"period": "2016-09-20", "licensed": 3246, "sorned": 661},
-						  {"period": "2016-09-19", "licensed": 3257, "sorned": 667},
-						  {"period": "2016-09-18", "licensed": 3248, "sorned": 627},
-						  {"period": "2016-09-17", "licensed": 3171, "sorned": 660},
-						  {"period": "2016-09-16", "licensed": 3171, "sorned": 676},
-						  {"period": "2016-09-15", "licensed": 3201, "sorned": 656},
-              {"period": "2056-09-15", "licensed": 3201, "sorned": 656},
-						  {"period": "2016-09-10", "licensed": 3215, "sorned": 622}
-						];
-						Morris.Bar({
-						  element: 'graph',
-						  data: day_data,
-						  xkey: 'period',
-						  ykeys: ['licensed', 'sorned'],
-						  labels: ['Licensed', 'SORN'],
-						  xLabelAngle: 10
-						});
-						</script>
+						
 					</div>
 				</div>
-				{{-- <div class="col-md-4 agile-last-left agile-last-right">
-					<div class="agile-last-grid">
-						<div class="area-grids-heading">
-							<h3>Yearly</h3>
-						</div>
-						<div id="graph9"></div>
-						<script>
-						var day_data = [
-						  {"elapsed": "I", "value": 34},
-						  {"elapsed": "II", "value": 24},
-						  {"elapsed": "III", "value": 3},
-						  {"elapsed": "IV", "value": 12},
-						  {"elapsed": "V", "value": 13},
-						  {"elapsed": "VI", "value": 22},
-						  {"elapsed": "VII", "value": 5},
-						  {"elapsed": "VIII", "value": 26},
-						  {"elapsed": "IX", "value": 12},
-						  {"elapsed": "X", "value": 19}
-						];
-						Morris.Line({
-						  element: 'graph9',
-						  data: day_data,
-						  xkey: 'elapsed',
-						  ykeys: ['value'],
-						  labels: ['value'],
-						  parseTime: false
-						});
-						</script>
-
-					</div> --}}
-				{{-- </div> --}}
-				<div class="clearfix"> </div>
+				
 			</div>
-		<!-- //tasks -->
-		<div class="agileits-w3layouts-stats">
-					<div class="col-md-4 stats-info widget">
-						<div class="stats-info-agileits">
-							<div class="stats-title">
-								<h4 class="title">Browser Stats</h4>
-							</div>
-							<div class="stats-body">
-								<ul class="list-unstyled">
-									<li>GoogleChrome <span class="pull-right">85%</span>  
-										<div class="progress progress-striped active progress-right">
-											<div class="bar green" style="width:85%;"></div> 
-										</div>
-									</li>
-									<li>Firefox <span class="pull-right">35%</span>  
-										<div class="progress progress-striped active progress-right">
-											<div class="bar yellow" style="width:35%;"></div>
-										</div>
-									</li>
-									<li>Internet Explorer <span class="pull-right">78%</span>  
-										<div class="progress progress-striped active progress-right">
-											<div class="bar red" style="width:78%;"></div>
-										</div>
-									</li>
-									<li>Safari <span class="pull-right">50%</span>  
-										<div class="progress progress-striped active progress-right">
-											<div class="bar blue" style="width:50%;"></div>
-										</div>
-									</li>
-									<li>Opera <span class="pull-right">80%</span>  
-										<div class="progress progress-striped active progress-right">
-											<div class="bar light-blue" style="width:80%;"></div>
-										</div>
-									</li>
-									<li class="last">Others <span class="pull-right">60%</span>  
-										<div class="progress progress-striped active progress-right">
-											<div class="bar orange" style="width:60%;"></div>
-										</div>
-									</li> 
-								</ul>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-8 stats-info stats-last widget-shadow">
-						<div class="stats-last-agile">
-							<table class="table stats-table ">
-								<thead>
-									<tr>
-										<th>S.NO</th>
-										<th>PRODUCT</th>
-										<th>STATUS</th>
-										<th>PROGRESS</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th scope="row">1</th>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-success">In progress</span></td>
-										<td><h5>85% <i class="fa fa-level-up"></i></h5></td>
-									</tr>
-									<tr>
-										<th scope="row">2</th>
-										<td>Aliquam</td>
-										<td><span class="label label-warning">New</span></td>
-										<td><h5>35% <i class="fa fa-level-up"></i></h5></td>
-									</tr>
-									<tr>
-										<th scope="row">3</th>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-danger">Overdue</span></td>
-										<td><h5 class="down">40% <i class="fa fa-level-down"></i></h5></td>
-									</tr>
-									<tr>
-										<th scope="row">4</th>
-										<td>Aliquam</td>
-										<td><span class="label label-info">Out of stock</span></td>
-										<td><h5>100% <i class="fa fa-level-up"></i></h5></td>
-									</tr>
-									<tr>
-										<th scope="row">5</th>
-										<td>Lorem ipsum</td>
-										<td><span class="label label-success">In progress</span></td>
-										<td><h5 class="down">10% <i class="fa fa-level-down"></i></h5></td>
-									</tr>
-									<tr>
-										<th scope="row">6</th>
-										<td>Aliquam</td>
-										<td><span class="label label-warning">New</span></td>
-										<td><h5>38% <i class="fa fa-level-up"></i></h5></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</div>
-					<div class="clearfix"> </div>
-				</div>
-{{-- </section> --}}
 
-  <!-- / footer -->
-<!--main content end-->
+			
+				<div class="col-md-6">
+					<div class="area-grids-heading">
+						<h3>Đơn hàng</h3>
+					</div>
+					<div id="donut"></div>
+					<script>
+						$(document).ready(function () {
+							
+							getData();
+							var chart = Morris.Bar({
+							element: 'graph',
+							xkey: 'day',
+							ykeys: ['total', 'sum'],
+							labels: ['Số đơn hàng', 'Doanh thu'],
+							xLabelAngle: 10
+							});
+
+							function getData(){
+								$.ajax({
+									type: "get",
+									url: "{{url('get-chart-data')}}",
+									dataType: "json",
+									success: function (response) {
+										chart.setData(response);
+									}
+								});
+							};
+							function getDonutData(){
+									$.ajax({
+										type: "get",
+										url: "{{url('get-donut-data')}}",
+										dataType: "json",
+										success: function (response) {
+											donut.setData(response);
+										}
+								});
+							};
+							getDonutData();
+							var donut = Morris.Donut({
+								element: 'donut',
+								data: [{"value":"","label":""}],
+								colors: ['#0b62a4','#A87D8E','#2D619C','#2D619C'],
+							});
+							
+						});
+					</script>
+
+
+
+				</div>
+				<div class="col-md-6 stats-info widget">
+					<div class="stats-info-agileits">
+						<div class="stats-title">
+							<h4 class="title">Sản phẩm bán chạy</h4>
+						</div>
+						<div class="stats-body">
+							<ul class="list-unstyled">
+								@foreach ($product as $item)
+									
+								
+								<li>{{$item->product_name}} <span class="pull-right">{{$item->sold}}</span>  
+									<div class="progress progress-striped active progress-right">
+										<div class="bar green" style="width:{{$item->sold}}%;"></div> 
+									</div>
+								</li>
+								@endforeach
+								
+							</ul>
+						</div>
+					</div>
+				</div>
 @endsection
