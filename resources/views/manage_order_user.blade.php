@@ -98,7 +98,7 @@
                             
                        
                         <tr>
-                            <td><a class="navi-link" href="{{url('view-order-user/'.$item->order_id)}}" data-toggle="modal">{{$item->order_id}}</a></td>
+                            <td><a class="navi-link" href="{{url('view-order-user/'.$item->order_id)}}">{{$item->order_id}} </a></td>
                             <td>{{$item->created_at}}</td>
                             
                             @if ($item->order_status == 1)

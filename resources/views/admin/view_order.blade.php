@@ -71,7 +71,7 @@
             <th>Số điện thoại</th>
             <th>Email</th>
             <th>Ghi chú</th>
-            <th>Hình thức thanh toán</th>
+            {{-- <th>Hình thức thanh toán</th> --}}
           
             
             <th style="width:30px;"></th>
@@ -88,7 +88,13 @@
              <td>{{$shipping->shipping_phone}}</td>
              <td>{{$shipping->shipping_email}}</td>
              <td>{{$shipping->shipping_note}}</td>
-             <td>@if($shipping->shipping_method==0) Chuyển khoản @else Tiền mặt @endif</td>
+             {{-- <td>
+               @if($shipping->shipping_method==0) 
+               Chuyển khoản 
+               @elseif($shipping->shipping_method==1) 
+               Tiền mặt 
+               @endif
+              </td> --}}
             
           
           </tr>
@@ -168,6 +174,7 @@
             <td>Tổng thanh toán:</td>
             <td>{{number_format($or->order_total)}} VNĐ</td>
           </tr>
+          
           
         </tbody>
       </table>

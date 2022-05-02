@@ -8,7 +8,7 @@
       <div class="padding-bottom-3x mb-1">
         <div class="card mb-3">
           <div class="p-4 text-center text-white bg-dark text-lg rounded-top">
-            <a href="#" class="text-uppercase" > Trang chủ </a>
+            <a href="{{url('/')}}" class="text-uppercase" > Trang chủ </a>
             <span class="text-uppercase">- Mã đơn hàng - </span><span class="text-medium">23VTK567D91</span></div>
           <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-medium">Đơn vị vận chuyển:</span> Eco Express</div>

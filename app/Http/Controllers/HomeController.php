@@ -13,6 +13,9 @@ use App\Models\Shipping;
 use App\Models\User;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\Payment;
+use App\Models\Coupon;
+use App\Models\OrderDetail;
 session_start();
 
 class HomeController extends Controller
@@ -259,6 +262,25 @@ class HomeController extends Controller
         $order->order_status = 3;
         $order->save();
         return redirect()->back();
+
+    }
+
+    public function viewOrderUser($order_id){
+        $order_details = OrderDetail::with('product')->where('order_id',$orderId)->get();
+		$order = Order::where('order_id',$orderId)->get();
+		foreach($order as $key => $ord){
+			$user_id = $ord->user_id;
+			$shipping_id = $ord->shipping_id;
+			$order_status = $ord->order_status;
+			$payment_id = $ord->payment_id;
+			$coupon = $ord->coupon;
+			$order_total = $ord->order_total;
+		}
+		$user = User::where('id',$user_id)->first();
+		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
+		$payment = Payment::find($payment_id);
+		$coupon = Coupon::find($coupon);
+        return view('view_order_user');
 
     }
 }
