@@ -27,6 +27,7 @@ class BlogController extends Controller
     //Thêm danh mục Blog
     public function addBlogCategory(){
         $this->AuthLogin();
+
         return view('admin.add_blog_category');
     }
 
@@ -34,6 +35,7 @@ class BlogController extends Controller
     public function editBlogCategory($blogcategory_id){
         $this->AuthLogin();
         $data = DB::table('blogcategory')->where('blogcategory_id', $blogcategory_id)->get();
+
         return view('admin.edit_blog_category',['data' => $data]);
     }
 
@@ -42,6 +44,7 @@ class BlogController extends Controller
         $this->AuthLogin();
         $data = DB::table('blogcategory')->where('blogcategory_id', $blogcategory_id)->delete();
         Session::put('message', "Xóa danh mục sản phẩm thành công");
+
         return Redirect::to('/all-blog-category');
     }
 
@@ -53,6 +56,7 @@ class BlogController extends Controller
 
         DB::table('blogcategory')->where('blogcategory_id', $blogcategory_id)->update($data);
         Session::put('message', "Cập nhật danh mục sản phẩm thành công");
+
         return Redirect::to('/all-blog-category');
 
     }
@@ -65,6 +69,7 @@ class BlogController extends Controller
 
         DB::table('blogcategory')->insert($data);
         Session::put('message', "Thêm danh mục Blog thành công");
+
         return Redirect::to('/all-blog-category');
     }
 
@@ -72,6 +77,7 @@ class BlogController extends Controller
     public function allBlogcategory(){
         $data = DB::table('blogcategory')->paginate(5);
         return view('admin.all_blog_category', ['data' => $data]);
+
     }
 
     public function export_csvBlogCategory(){
@@ -80,7 +86,8 @@ class BlogController extends Controller
     public function import_csvBlogCategory(Request $request){
         $path = $request->file('file')->getRealPath();
         Excel::import(new BlogCategoryImport, $path);
-        return back();
+
+        return redirect()->back();
     }
 
     /////////////Quản lý blog/////////////////////
@@ -90,6 +97,7 @@ class BlogController extends Controller
         $blogs = DB::table('blogs')
         ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
         ->get();
+
         return view('admin.manage_blog')->with(compact('blogs'));  
     }
 
@@ -97,6 +105,7 @@ class BlogController extends Controller
     public function insertBlog(){
         $blogcate = DB::table('blogcategory')->orderBy('blogcategory_id','desc')->get();
         $products = Product::all();
+
         return view('admin.add_blog')->with(compact('blogcate', 'products'));  
     }
 
@@ -121,11 +130,13 @@ class BlogController extends Controller
             $data['images'] = $new_image;
             DB::table('blogs')->insert($data);
             Session::put('message','Thêm sản phẩm thành công');
+
             return Redirect::to('/manage-blog');
         }
         $data['images'] = '';
         DB::table('blogs')->insert($data);
         Session::put('message', "Thêm Blog thành công");
+
         return Redirect::to('/manage-blog');
     }
 
@@ -133,6 +144,7 @@ class BlogController extends Controller
     public function editBlog( $blog_id ){
         $cate = DB::table('blogcategory')->orderBy('blogcategory_id','desc')->get();
         $data = DB::table('blogs')->where('id', $blog_id)->get();
+
         return view('admin.edit_blog',['data' => $data, 'cate'=>$cate] );
     }
 
@@ -166,10 +178,10 @@ class BlogController extends Controller
             
         DB::table('blogs')->where('id',$blog_id)->update($data);
         Session::put('message','Cập nhật sản phẩm thành công');
+
         return Redirect::to('manage-blog');
 
     }
-
 
     ////////////User//////////////
     //Hiển thị blog trên frontend
@@ -177,6 +189,7 @@ class BlogController extends Controller
         $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
         $blogs = DB::table('blogs')->where('status','1')->orderby('id','desc')->paginate(6); 
         $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
+
         return view('blogs',['blogcate'=>$blogcate, 'blogs'=>$blogs, 'recentblogs'=>$recentblogs]);
     }
 
@@ -203,6 +216,7 @@ class BlogController extends Controller
         ->whereNotIn('blogs.id',[$blog_id])
         ->limit(3)->get();
         $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
+        
         return view('blog_detail',['blogcate'=>$blogcate, 'blog'=>$blog, 'relatedBlog'=>$relatedBlog, 'recentblogs'=>$recentblogs, 'pro'=>$pro]);
     }
 

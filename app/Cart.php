@@ -16,6 +16,7 @@ class Cart{
         }
     }
 
+    //Thêm vào giỏ hàng
     public function addCart($products, $id){
         $newProduct = ['quantity' => 0, 'price' => $products->product_price, 'info' => $products];
         if ($this->products) {
@@ -31,6 +32,7 @@ class Cart{
         
     }
 
+    //Xóa giỏ hàng
     public function deleteCart( $id){
         $this->totalQuantity -= $this->products[$id]['quantity'];
         $this->totalPrice -= $this->products[$id]['price'];
@@ -38,17 +40,7 @@ class Cart{
 
     }
 
-    public function updateItemCart($id, $quantity){
-        $this->totalQuantity -= $this->products[$id]['quantity'];
-        $this->totalPrice -= $this->products[$id]['price'];
-
-        $this->products[$id]['quantity'] = $quantity; 
-        $this->products[$id]['price'] = $quantity * $this->products[$id]['info']->price;
-
-        $this->totalQuantity += $this->products[$id]['quantity'];
-        $this->totalPrice += $this->products[$id]['price'];
-    }
-
+    //Thêm nhiều sản phẩm vào giỏ hàng
     public function updateCart($id, $product, $quantity){
         
         if(empty($this->products[$id])){

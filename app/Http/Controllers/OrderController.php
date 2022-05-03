@@ -19,7 +19,7 @@ session_start();
 
 class OrderController extends Controller
 {
-    //admin
+    //Xác thực admin
     public function authLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id){
@@ -28,14 +28,19 @@ class OrderController extends Controller
             return Redirect::to('admin')->send();
         }
     }
+
+	//Quản lý đơn hàng
     public function manageOrder(){
         $this->AuthLogin();
         $all_order = DB::table('order')
         ->join('users','order.user_id','=','users.id')
         ->select('order.*','users.name')
         ->orderby('order.order_id','desc')->paginate(10);
+
         return view('admin.manage_order')->with('all_order',$all_order);
     }
+
+	//Xem chi tiết đơn hàng
     public function viewOrder($orderId){
         $order_details = OrderDetail::with('product')->where('order_id',$orderId)->get();
 		$order = Order::where('order_id',$orderId)->get();
@@ -52,9 +57,10 @@ class OrderController extends Controller
 		$payment = Payment::find($payment_id);
 		$coupon = Coupon::find($coupon);
 		
-		
 		return view('admin.view_order')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
     }
+
+	//In đơn hàng 
 	public function printOrder($order_id){
 		$pdf = App::make('dompdf.wrapper');
 		$pdf->loadHTML($this->print_order_convert($order_id));
@@ -62,6 +68,7 @@ class OrderController extends Controller
 		return $pdf->stream();
 	}
 
+	//Phương thức thanh toán
 	public function paymentMethod($method){
 		if($method == 1){
 			return "Thanh toán khi nhận hàng";
@@ -79,6 +86,8 @@ class OrderController extends Controller
 			return "VNPAY";
 		}
 	}
+
+	//Xuất đơn hàng ra PDF
 	public function print_order_convert($order_id){
 		$order_details = OrderDetail::with('product')->where('order_id',$order_id)->get();
 		$order = Order::where('order_id',$order_id)->get();
@@ -105,7 +114,7 @@ class OrderController extends Controller
 		}
 		</style>
 		<h1><centerSiêu thị xanh</center></h1>
-		<h4><center>Siêu thị online lớn nhất thế giới</center></h4>
+		<h4><center>Siêu thị xanh online </center></h4>
 		<p>Người đặt hàng</p>
 		<table class="table-styling">
 				<thead>
@@ -205,7 +214,7 @@ class OrderController extends Controller
 			<table>
 				<thead>
 					<tr>
-						<th width="200px">Người lập phiếu</th>
+						<th width="200px">Siêu thị xanh</th>
 						<th width="800px">Người nhận</th>
 						
 					</tr>
@@ -219,30 +228,34 @@ class OrderController extends Controller
 
 		';
 
-
 		return $output;
-
 	}
+
+	//Xóa đơn hàng
 	public function deleteOrder(Request $request ,$order_id){
 		$order = Order::where('order_id',$order_id)->delete();
         Session::put('message', "Xóa đơn hàng thành công");
+
         return redirect()->back();
 
 	}
 
+	//Giao đơn hàng
 	public function shippingOrder($order_id){
 		$order = Order::find($order_id);
 		$order->order_status = 2;
 		$order->save();
+
 		return Redirect::to('manage-order');
 
 	}
 
+	//Hủy đơn hàng
 	public function cancelOrderAdmin($order_id){
 		$order = Order::find($order_id);
 		$order->order_status = 0;
 		$order->save();
-		return Redirect::to('manage-order');
 
+		return Redirect::to('manage-order');
 	}
 }

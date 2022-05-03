@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 
 class PaymentController extends Controller
 {
+    //Phương thức thanh toán VNPAY
     public function vnpay(Request $request){
             error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
             date_default_timezone_set('Asia/Ho_Chi_Minh');
@@ -36,7 +38,6 @@ class PaymentController extends Controller
                 "vnp_OrderType" => $vnp_OrderType,
                 "vnp_ReturnUrl" => $vnp_Returnurl,
                 "vnp_TxnRef" => $vnp_TxnRef
-                // "vnp_ExpireDate"=>$vnp_ExpireDate
                 
             );
 
@@ -78,17 +79,21 @@ class PaymentController extends Controller
                 }
         }
 
-        public function cash(Request $request){
+        //Phương thức thanh toán khi nhận hàng
+        public function cash(){
 
+            return Redirect::to('payment');
         }
+
+        //Phương thức thanh toán paypal
         public function paypal(Request $request){
             
         }
+
+        //Phương thức thanh toán Onepay
         public function onepay(Request $request){
             $SECURE_SECRET = "A3EFDFABA8653DF2342E8DAC29B51AF0";
 
-                // add the start of the vpcURL querystring parameters
-                // *****************************Lấy giá trị url cổng thanh toán*****************************
                 $vpcURL = 'https://mtf.onepay.vn/onecomm-pay/vpc.op' . "?";
 
                 // Remove the Virtual Payment Client URL from the parameter hash as we 
@@ -172,6 +177,7 @@ class PaymentController extends Controller
                 // END OF MAIN PROGRAM
         }
 
+        //Hàm hỗ trợ thanh toán MOMO
         public function execPostRequest($url, $data)
                 {
                     $ch = curl_init($url);
@@ -190,8 +196,9 @@ class PaymentController extends Controller
                     curl_close($ch);
                     return $result;
                 }
-        public function momo(Request $request){
 
+        //Phương thức thanh toán MOMO
+        public function momo(Request $request){
 
             $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
             $partnerCode = 'MOMOBKUN20180529';
@@ -203,8 +210,6 @@ class PaymentController extends Controller
             $redirectUrl = "http://localhost:81/sieuthi/public/payment";
             $ipnUrl = "http://localhost:81/sieuthi/public/payment";
             $extraData = "";
-            
-            
             
                 $requestId = time() . "";
                 $requestType = "payWithATM";
@@ -228,6 +233,5 @@ class PaymentController extends Controller
                 $jsonResult = json_decode($result, true);  // decode json
                 //Just a example, please check more in there
                 return redirect()->to($jsonResult['payUrl']);
-                // header('Location: ' . $jsonResult['payUrl']);
         }
 }

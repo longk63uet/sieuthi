@@ -32,7 +32,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    //trang chu
+    //Trang chủ
     public function index(){
         $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
         $product = DB::table('product')->where('product_status','1')->limit(4)->get();
@@ -44,15 +44,13 @@ class HomeController extends Controller
             $topRateProduct[] = $value->product_id;
         }
         $ratingProduct = DB::table('product')->whereIn('product_id', $topRateProduct)->get();
-        // dd($ratingProduct);
         $viewProduct = DB::table('product')->where('product_status','1')->orderBy('view','desc')->limit(3)->get();
         $blogs = Blog::all()->take(3);
         
         return view('pages.home',['cate'=>$cate,'product'=>$product, 'banner'=>$banner, 'soldProduct'=>$soldProduct, 'ratingProduct'=>$ratingProduct, 'viewProduct'=>$viewProduct, 'blogs'=> $blogs]);
     }
 
-    //tim kiem
-    
+    //Tìm kiếm
     public function search(Request $request){
         $keywords = $request->keywords_submit;
         $search_product = DB::table('product')->where('product_name','like','%'.$keywords.'%')->get(); 
@@ -61,11 +59,12 @@ class HomeController extends Controller
 
     }
 
+    //Cửa hàng
     public function market(){
         $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
         $min_price = Product::min('product_price');
         $max_price = Product::max('product_price');
-
+        //Lọc
         if(isset($_GET['sort'])){
             $sort = $_GET['sort'];
             if($sort =='up' ){
@@ -82,6 +81,7 @@ class HomeController extends Controller
             }
             
         }
+        //Lọc theo giá
         elseif(isset($_GET['start_price'])){
             $start_price = $_GET['start_price'];
             $end_price = $_GET['end_price'];
@@ -95,27 +95,12 @@ class HomeController extends Controller
 
     }
 
+    //Trang liên hệ
     public function contact(){
         return view('contact');
     }
 
-    public function sendMail(){
-         //send mail
-         $to_name = "Công ty Siêu Thị Xanh";
-         $to_email = "linhpn2402@gmail.com";//send to this email
-        
-      
-         $data = array("name"=>"Mail từ tài khoản Khách hàng","body"=>'Mail gửi về vấn về khuyến mại'); //body of mail.blade.php
-         
-         Mail::send('pages.send_mail',$data,function($message) use ($to_name,$to_email){
-
-             $message->to($to_email)->subject('Test thử gửi mail google');//send this mail with subject
-             $message->from($to_email,$to_name);//send from this mail
-         });
-         // return redirect('/')->with('message','');
-         //--send mail
-    }
-
+    //Thêm sản phẩm vào yêu thích
     public function addWishlist($product_id){
         $wishlist = DB::table('wishlist')->get();
         foreach($wishlist as $value){
@@ -126,11 +111,11 @@ class HomeController extends Controller
         $data = array();
         $data['product_id'] = $product_id;
         DB::table('wishlist')->insert($data);
+
         return 'success';
-
-
     }
 
+    //Hiển thị danh sách sản phẩm yêu thích
     public function showWishlist(){
         $wishlist = DB::table('wishlist')->get();
         $product_id = [];
@@ -140,11 +125,14 @@ class HomeController extends Controller
         $productwishlist = DB::table('product')->whereIn('product_id',$product_id)->get();
         return view('wishlist', ['productwishlist'=>$productwishlist]);
     }
+
+    //Xóa sản phẩm khỏi danh sách sản phẩm yêu thích
     public function removeWishlist($product_id ){
         $data = DB::table('wishlist')->where('product_id', $product_id)->delete();
         return redirect()->back();
     }
 
+    //Đăng nhập
     public function login(Request $request){
     	$email = $request->email;
     	$password = md5($request->password);
@@ -156,18 +144,20 @@ class HomeController extends Controller
         else{
             return redirect()->back();
         }
-    	
-    
-
     }
+
+    //Trang đăng nhập
     public function loginUser(){
         return view('login');
     }
+
+    //Đăng xuất người dùng
     public function logoutUser(){
     	Session::forget('user_id');
     	return Redirect::to('/');
     }
 
+    //Thêm người dùng mới
     public function adduser(Request $request){
         $data = array();
         $data['name'] = $request->user_name;
@@ -184,23 +174,27 @@ class HomeController extends Controller
     	return Redirect::to('/login-user');
     }
 
+    //Trang cá nhân
     public function profile(){
         $users_id = Session::get('user_id');
         $user = User::find($users_id);
         $shipping = DB::table('shipping')
         ->join('users','users.id','=','shipping.user_id')->first();
-        // dd($shipping);
+
         return view('profile', ['user'=>$user, 'shipping'=>$shipping]);
     }
 
+    //Quản lý đơn hàng của người dùng
     public function manageOrderUser(){
         $users_id = Session::get('user_id');
         $user = User::find($users_id);
         $orders = DB::table('order')
         ->where('user_id',$users_id)->get();
+
         return view('manage_order_user', ['user'=>$user, 'orders'=>$orders]);
     }
 
+    //Thay đổi thông tin người dùng
     public function changeProfile(Request $request){
         $data = $request->all();
         $user = User::find(Session::get('user_id'));
@@ -209,11 +203,15 @@ class HomeController extends Controller
         $user->user_phone = $data['user_phone'];
         $user->user_address = $data['user_address'];
         $user->save();
+
         return redirect()->back();
 
     }
+
+    //Thay đổi thông tin vận chuyển
     public function changeShipping(Request $request){
         $data = $request->all();
+
         $shipping = Shipping::find($data['shipping_id']);
         $shipping->shipping_surname = $data['shipping_surname'];
         $shipping->shipping_name = $data['shipping_name'];
@@ -224,14 +222,17 @@ class HomeController extends Controller
         $shipping->shipping_village = $data['shipping_village'];
         $shipping->shipping_address = $data['shipping_address'];
         $shipping->save();
+
         return redirect()->back();
 
     }
 
+    //Thay đổi mật khẩu
     public function changePassword(){
         return view('change_password');
     }
 
+    //Đổi mật khẩu
     public function changePass(Request $request){
         $users_id = Session::get('user_id');
         $user = User::find($users_id);
@@ -245,26 +246,32 @@ class HomeController extends Controller
         else{
             Session::put('message',"Mật khẩu không chính xác");
         }
+
         return redirect()->back();
 
-
     }
+
+    //Hủy đơn hàng
     public function cancelOrder($order_id){
         $order = Order::find($order_id);
         $order->order_status = 0;
         $order->save();
+
         return redirect()->back();
 
     }
 
+    //Xác nhận đã giao hàng thành công
     public function confirmOrder($order_id){
         $order = Order::find($order_id);
         $order->order_status = 3;
         $order->save();
+
         return redirect()->back();
 
     }
 
+    //Xem chi tiết đơn hàng user
     public function viewOrderUser($order_id){
         $order_details = OrderDetail::with('product')->where('order_id',$order_id)->get();
 		$order = Order::where('order_id',$order_id)->get();
@@ -280,7 +287,7 @@ class HomeController extends Controller
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
 		$payment = Payment::find($payment_id);
 		$coupon = Coupon::find($coupon);
-        return view('view_order_user')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
 
+        return view('view_order_user')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
     }
 }

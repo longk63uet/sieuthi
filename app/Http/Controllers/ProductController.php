@@ -16,7 +16,7 @@ session_start();
 
 class ProductController extends Controller
 {
-    //admin
+    //Xác thực đăng nhập Admin
     public function authLogin(){
         $admin_id = Session::get('admin_id');
         if($admin_id){
@@ -25,24 +25,32 @@ class ProductController extends Controller
             return Redirect::to('admin')->send();
         }
     }
+
+    //Thêm sản phẩm mới
     public function addProduct(){
         $this->AuthLogin();
         $cate = DB::table('category')->orderBy('category_id','desc')->get();
+
         return view('admin.add_product',['cate'=>$cate]);
     }
 
+    //Chỉnh sửa thông tin sản phẩm
     public function editProduct(Request $request, $product_id ){
         $cate = DB::table('category')->orderBy('category_id','desc')->get();
         $data = DB::table('product')->where('product_id', $product_id)->get();
+
         return view('admin.edit_product',['data' => $data, 'cate'=>$cate] );
     }
 
+    //Xóa sản phẩm
     public function deleteProduct($product_id ){
         $data = DB::table('product')->where('product_id', $product_id)->delete();
         Session::put('message', "Xóa sản phẩm thành công");
+
         return Redirect::to('/all-product');
     }
 
+    //Cập nhật sản phẩm
     public function updateProduct(Request $request, $product_id ){
         $data = array();
         $data['product_name'] = $request->product_name;
@@ -67,10 +75,12 @@ class ProductController extends Controller
             
         DB::table('product')->where('product_id',$product_id)->update($data);
         Session::put('message','Cập nhật sản phẩm thành công');
+
         return Redirect::to('all-product');
 
     }
 
+    //Lưu sản phẩm
     public function saveProduct(Request $request){
         $data = array();
         $data['product_name'] = $request->product_name;
@@ -89,23 +99,39 @@ class ProductController extends Controller
             $data['product_image'] = $new_image;
             DB::table('product')->insert($data);
             Session::put('message','Thêm sản phẩm thành công');
+
             return Redirect::to('all-product');
         }
         $data['product_image'] = '';
         DB::table('product')->insert($data);
         Session::put('message', "Thêm sản phẩm thành công");
+
         return Redirect::to('/all-product');
     }
 
+    //Quản lý tất cả sản phẩm
     public function allProduct(){
         $all_product = DB::table('product')
         ->join('category','category.category_id','=','product.category_id')
         ->orderby('product.product_id','desc')->get();
     	return view('admin.all_product')->with('all_product', $all_product);
     }
-    
-    //user
 
+    //Xuất exel
+    public function export_csv(){
+        return Excel::download(new ProductExport , 'product.xlsx');
+    }
+
+    //Nhập exel
+    public function import_csv(Request $request){
+        $path = $request->file('file')->getRealPath();
+        Excel::import(new ProductImport, $path);
+
+        return back();
+    }
+    
+    ////////////////user/////////////////////////
+    //Thông tin chi tiết sản phẩm
     public function detailProduct($product_id){
         $cate = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
         $product = DB::table('product')
@@ -113,7 +139,6 @@ class ProductController extends Controller
         ->where('product.product_id',$product_id)->get();
 
         foreach($product as $pro){
-            
             $related = $pro->category_id;
         }
         $pro = Product::where('product_id', $product_id)->first();
@@ -127,12 +152,13 @@ class ProductController extends Controller
 
         $rating = Rating::where('product_id', $product_id)->avg('rating');
         $rating = round($rating);
+
         return view('pages.detail_product',['cate'=>$cate, 'rating'=>$rating,'product'=>$product,'relatedProduct'=>$relatedProduct]);
     }
 
+    //Hiển thị bình luận
     public function loadComment(Request $request){
         $product_id = $request->product_id;
-        // $comments = DB::table('comment')->where('product_id', $product_id)->get();
         $comments =  Comment::where('product_id', $product_id)->get();
         $output = '';
         foreach($comments as $comment){
@@ -145,10 +171,11 @@ class ProductController extends Controller
                 <p style="color: blue">' .$comment->name  .'</p>
                 <p>' .  $comment->comment  . '</p> </div> </div> ';
         }
+
         return $output;
     }
 
-
+        //Gửi bình luận
         public function sendComment(Request $request){
             $product_id = $request->product_id;
             $comment_name = $request->comment_name;
@@ -162,10 +189,10 @@ class ProductController extends Controller
             $comment->comment = $comment_content;
             $comment->save();
 
-
         }
+
+        //Đánh giá sản phẩm
         public function rating(Request $request){
-           
             $user_id = Session::get('user_id');
             $products = Rating::where('user_id', $user_id)->get();
             $prod = [];
@@ -179,19 +206,10 @@ class ProductController extends Controller
                 $rating->user_id = $user_id;
                 $rating->rating = $request->index;
                 $rating->save();
+
                 return 'done';
             }
+
             else return 'error';
-            
         }
-
-        public function export_csv(){
-            return Excel::download(new ProductExport , 'product.xlsx');
-        }
-        public function import_csv(Request $request){
-            $path = $request->file('file')->getRealPath();
-            Excel::import(new ProductImport, $path);
-            return back();
-        }
-
 }

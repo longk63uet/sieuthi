@@ -10,21 +10,28 @@ use Illuminate\Support\Facades\Redirect;
 
 class UserController extends Controller
 {
+
+    //Quản lý tất cả người dùng khách hàng
    public function manageUser(){
     $user = User::orderBy('id','DESC')->where('role', 1)->paginate(5);
+
     return view('admin.manage_users')->with(compact('user'));
    }
 
+   //Xóa người dùng
    public function deleteUser($user_id){
     $user = User::find($user_id);
     $user->delete();
+
     return redirect()->back();
    }
 
+   //Thêm người dùng mới
    public function addUser(){
        return view('admin.add_user');
    }
 
+   //Lưu người dùng mới
    public function insertUser(Request $request){
     $data = $request->all();
         $user = new User();
@@ -35,33 +42,11 @@ class UserController extends Controller
         $user->password = md5($data['password']);
         $user->save();
         Session::put('message','Thêm người dùng mới thành công');
-        return Redirect::to('manage-user');
-}
 
-   public function index()
-    {
-        
-        $admin = User::with('roles')->orderBy('admin_id','DESC')->paginate(5);
-        return view('admin.users.all_users')->with(compact('admin'));
+        return Redirect::to('manage-user');
     }
-    public function add_users(){
-        return view('admin.users.add_users');
-    }
-    public function assign_roles(Request $request){
-        $data = $request->all();
-        $user = User::where('admin_email',$data['admin_email'])->first();
-        $user->roles()->detach();
-        if($request['author_role']){
-           $user->roles()->attach(Roles::where('name','author')->first());     
-        }
-        if($request['user_role']){
-           $user->roles()->attach(Roles::where('name','user')->first());     
-        }
-        if($request['admin_role']){
-           $user->roles()->attach(Roles::where('name','admin')->first());     
-        }
-        return redirect()->back();
-    }
+
+    //Lưu người dùng mới
     public function store_users(Request $request){
         $data = $request->all();
         $admin = new User();
@@ -72,6 +57,7 @@ class UserController extends Controller
         $admin->save();
         $admin->roles()->attach(Roles::where('name','user')->first());
         Session::put('message','Thêm users thành công');
+        
         return Redirect::to('users');
     }
 

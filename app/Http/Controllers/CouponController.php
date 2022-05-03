@@ -23,36 +23,40 @@ class CouponController extends Controller
     public function insertCoupon(){
     	return view('admin.insert_coupon');
     }
+
+    //Xóa mã giảm giá
     public function deleteCoupon($coupon_id){
     	$coupon = Coupon::find($coupon_id);
     	$coupon->delete();
     	Session::put('message','Xóa mã giảm giá thành công');
+
         return Redirect::to('manage-coupon');
     }
+
+    //Quản lý mã giảm giá
     public function manageCoupon(){
-    	$coupon = Coupon::orderby('coupon_id','DESC')->paginate(2);
+    	$coupon = Coupon::orderby('coupon_id','DESC')->get();
+
     	return view('admin.list_coupon')->with(compact('coupon'));
     }
+
+    //Thêm mã giảm giá vào database
     public function addCoupon(Request $request){
     	$data = $request->all();
-
     	$coupon = new Coupon;
-
     	$coupon->coupon_name = $data['coupon_name'];
     	$coupon->coupon_discount = $data['coupon_discount'];
     	$coupon->coupon_code = $data['coupon_code'];
     	$coupon->coupon_quantity = $data['coupon_quantity'];
     	$coupon->coupon_condition = $data['coupon_condition'];
     	$coupon->save();
-
     	Session::put('message','Thêm mã giảm giá thành công');
+
         return Redirect::to('manage-coupon');
-
-
     }
 
-	//user 
-	
+	/////////////////user//////////////////
+	//Kiểm tra mã giảm giá
 	public function checkCoupon(Request $request){
         $data = $request->all();
         $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
@@ -68,7 +72,6 @@ class CouponController extends Controller
                             'coupon_code' => $coupon->coupon_code,
                             'coupon_condition' => $coupon->coupon_condition,
                             'coupon_discount' => $coupon->coupon_discount,
-
                         );
                         Session::put('coupon',$cou);
                     }
@@ -82,12 +85,13 @@ class CouponController extends Controller
                     Session::put('coupon',$cou);
                 }
                 Session::save();
-                // dd(Session::get('coupon'));
+
                 return redirect()->back()->with('message','Thêm mã giảm giá thành công');
             }
 
         }else{
             $request->session()->forget('coupon');
+
             return redirect()->back()->with('error','Mã giảm giá không đúng');
         }
     }

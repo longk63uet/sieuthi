@@ -6,11 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
-use App\Models\City;
 use App\Models\Coupon;
-use App\Models\District;
 use App\Models\Product;
-use App\Models\Village;
 use Carbon\Carbon;
 
 session_start();

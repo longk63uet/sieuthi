@@ -40,6 +40,7 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
+//Lấy dữ liệu biểu đồ ajax
 Route::get('/get-chart-data', [AdminController::class, 'getChartData']);
 Route::get('/get-donut-data', [AdminController::class, 'getDonutData']);
 
@@ -73,6 +74,7 @@ Route::get('/delete-product/{product_id}', [ProductController::class, 'deletePro
 Route::post('/save-product', [ProductController::class, 'saveProduct']);
 Route::post('/update-product/{product_id}', [ProductController::class, 'updateProduct']);
 Route::get('/all-product', [ProductController::class, 'allProduct']);
+
 Route::post('/export-product-csv',[ProductController::class, 'export_csv']);
 Route::post('/import-product-csv',[ProductController::class, 'import_csv']);
 
@@ -98,7 +100,6 @@ Route::get('/cancel-order-admin/{order_id}',[OrderController::class, 'cancelOrde
 
 //coupon
 Route::get('/manage-coupon', [CouponController::class, 'manageCoupon']);
-
 Route::get('/insert-coupon',[CouponController::class, 'insertCoupon']);
 Route::get('/delete-coupon/{coupon_id}',[CouponController::class, 'deleteCoupon']);
 Route::post('/add-coupon',[CouponController::class, 'addCoupon']);
@@ -108,7 +109,6 @@ Route::get('/manage-user', [UserController::class, 'manageUser']);
 Route::get('/delete-user/{user_id}', [UserController::class, 'deleteUser']);
 Route::get('/add-user', [UserController::class, 'addUser']);
 Route::post('/insert-user', [UserController::class, 'insertUser']);
-
 
 //banner
 Route::get('/manage-banner', [BannerController::class, 'manageBanner']);
@@ -131,36 +131,24 @@ Route::get('/manage-feedback', [FeedbackController::class, 'manageFeedback']);
 Route::get('/handle-feedback/{feedback_id}', [FeedbackController::class, 'handleFeedback']);
 
 
-
-
-
-
-
 ////////////////////////user/////////////////////////////
-
-Route::get('/lang/{locale}', function ($locale) {
-    if (! in_array($locale, ['en', 'vi', 'fr'])) {
-        abort(400);
-    }
- 
-    App::setLocale($locale);
- 
-    return redirect()->back();
-});
 
 //index
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
 
+//Thông tin
 Route::get('/profile', [HomeController::class, 'profile']);
-Route::get('/manage-order-user', [HomeController::class, 'manageOrderUser']);
 Route::post('/change-profile', [HomeController::class, 'changeProfile']);
 Route::post('/change-shipping', [HomeController::class, 'changeShipping']);
 Route::get('/change-password', [HomeController::class, 'changePassword']);
 Route::post('/change-pass', [HomeController::class, 'changePass']);
+
+//Đơn hàng
 Route::get('/cancel-order/{order_id}', [HomeController::class, 'cancelOrder']);
 Route::get('/confirm-order/{order_id}', [HomeController::class, 'confirmOrder']);
 Route::get('/view-order-user/{order_id}', [HomeController::class, 'viewOrderUser']);
+Route::get('/manage-order-user', [HomeController::class, 'manageOrderUser']);
 
 
 //Feedback
@@ -172,59 +160,46 @@ Route::get('/login-user',[HomeController::class, 'loginUser']);
 Route::get('/logout-user',[HomeController::class, 'logoutUser']);
 Route::post('/add-user',[HomeController::class, 'addUser']);
 
-
+//Yêu thích
 Route::get('/add-to-wishlist/{product_id}',[HomeController::class, 'addWishlist'])->name('add-to-wishlist');
-
-//send email
-Route::get('/send-mail', [HomeController::class, 'sendMail']);
+Route::get('/show-wishlist',[HomeController::class, 'showWishlist']);
+Route::get('/remove-wishlist/{product_id}',[HomeController::class, 'removeWishlist']);
 
 //product
 Route::get('/danh-muc/{category_id}', [CategoryProductController::class, 'showCategoryHome']);
 Route::get('/chi-tiet/{product_id}', [ProductController::class, 'detailProduct']);
 
-//market
+//Cửa hàng
 Route::get('/market', [HomeController::class, 'market']);
-
 
 //Blogs 
 Route::get('/blogs', [BlogController::class, 'blogs']);
 Route::get('/blog/{blog_id}', [BlogController::class, 'blogdetail']);
 Route::post('/tim-kiem-blog', [BlogController::class, 'searchBlog']);
 
+//QRCode
 Route::get('/generate-qrcode/{product_id}', [QrCodeController::class, 'generateQrcode']);
 
-
-//contact
+//Liên hệ
 Route::get('/contact', [HomeController::class, 'contact']);
 
-
-//Cart
+//Giỏ hàng
 Route::post('/add-carts',[CartController::class, 'addCarts']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
 
-//wishlist
-Route::get('/show-wishlist',[HomeController::class, 'showWishlist']);
-Route::get('/remove-wishlist/{product_id}',[HomeController::class, 'removeWishlist']);
-
-//Checkout
-
-Route::get('/checkout',[CheckoutController::class, 'checkout']);
+//Đặt hàng
 Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);
 Route::get('/payment',[CheckoutController::class, 'payment']);
 
-
-Route::post('/select-delivery',[CheckoutController::class, 'selectDelivery']);
-Route::get('/select-city/{id}',[CheckoutController::class, 'selectCity']);
-
+//Thanh toán
 Route::post('/vnpay',[PaymentController::class, 'vnpay']);
 Route::post('/onepay',[PaymentController::class, 'onepay']);
 Route::post('/momo',[PaymentController::class, 'momo']);
 Route::post('/cash',[PaymentController::class, 'cash']);
 Route::post('/paypal',[PaymentController::class, 'paypal']);
 
-
-//coupon
+//Mã giảm giá
 Route::post('/check-coupon',[CouponController::class, 'checkCoupon']);
 Route::get('/unset-coupon',[CouponController::class, 'unsetCoupon']);
