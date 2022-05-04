@@ -97,7 +97,8 @@ class HomeController extends Controller
 
     //Trang liên hệ
     public function contact(){
-        return view('contact');
+        $order = Order::all();
+        return view('contact', ['order' => $order]);
     }
 
     //Thêm sản phẩm vào yêu thích

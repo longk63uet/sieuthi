@@ -12,7 +12,7 @@
                             @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên sản phẩm</label>
-                            <input type="text" data-validation="length" data-validation-length="min10" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" class="form-control" name="product_name" id="exampleInputEmail1" placeholder="Nhập tên danh mục sản phẩm">
+                            <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" class="form-control" name="product_name" id="exampleInputEmail1" placeholder="Nhập tên danh mục sản phẩm">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Giá sản phẩm</label>

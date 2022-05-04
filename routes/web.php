@@ -14,8 +14,6 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaymentController;
-use GuzzleHttp\Middleware;
-use GuzzleHttp\RedirectMiddleware;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\CommentController;
 // use QrCode;
