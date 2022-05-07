@@ -12,27 +12,27 @@
 <link href="{{('backend/css/font-awesome.css')}}" rel="stylesheet"> 
 <script src="{{('js/jquery2.0.3.min.js')}}"></script>
 </head>
-<body>
-<div class="log-w3">
-<div class="w3layouts-main">
-	<h2>Đăng nhập</h2>
-	@php
-		$message = Session::get('message');
-		if($message){
-			 echo $message;
-			 Session::put('message','');
-		}
-	@endphp
-		<form action="{{url('/admin-dashboard')}}" method="post">
-            @csrf
-			<input type="email" class="ggg" name="email" placeholder="EMAIL" required="">
-			<input type="password" class="ggg" name="password" placeholder="Mật khẩu" required="">
-			<span><input type="checkbox" />Nhớ mật khẩu</span>
-			<h6><a href="#">Quên mật khẩu?</a></h6>
+<body style="background: #f8f9fa">
+<div class="log-w3" >
+	<div class="w3layouts-main" style="background: #fff; box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.2); }">
+		<h2 style="color: #101010">Đăng nhập</h2>
+		@php
+			$message = Session::get('message');
+			if($message){
+				echo $message;
+				Session::put('message','');
+			}
+		@endphp
+			<form action="{{url('/admin-dashboard')}}" method="post">
+				@csrf
+				<input type="email" style="color: #101010; background: #ECECEC" class="ggg" name="email" placeholder="Email" required="">
+				<input type="password" style="color: #black; background: #ECECEC" class="ggg" name="password" placeholder="Mật khẩu" required="">
+				<span style="color: #101010;"><input type="checkbox" style=" margin-right: 5px" checked/>Nhớ mật khẩu</span>
+				<h6><a href="#" style="color: #101010">Quên mật khẩu?</a></h6>
 				<div class="clearfix"></div>
-				<input type="submit" value="Đăng nhập" name="login">
-		</form>
-</div>
+				<input type="submit" value="Đăng nhập" name="login" style="background: #00C897">
+			</form>
+	</div>
 </div>
 <script src="{{('backend/js/bootstrap.js')}}"></script>
 <script src="{{('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>

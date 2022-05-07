@@ -54,12 +54,12 @@
 		   <div class="clearfix"> </div>
 		</div>	
 
-				</div>
+				<!-- </div>
 			</div>
-		</div>
+		</div> -->
 		
 			<div class="clearfix"> </div>
-		</div>
+		<!-- </div> -->
 			
 				<div class="col-md-12 agile-last-left agile-last-middle">
 					<div class="agile-last-grid">
@@ -71,10 +71,10 @@
 					</div>
 				</div>
 				
-			</div>
+			<!-- </div> -->
 
-			
-				<div class="col-md-6">
+			<div>
+			<div class="col-md-6 stats-info widget" style="margin-top: 33px; ">
 					<div class="area-grids-heading">
 						<h3>Đơn hàng</h3>
 					</div>
@@ -121,8 +121,6 @@
 						});
 					</script>
 
-
-
 				</div>
 				<div class="col-md-6 stats-info widget">
 					<div class="stats-info-agileits">
@@ -145,4 +143,6 @@
 						</div>
 					</div>
 				</div>
+			</div>
+				
 @endsection

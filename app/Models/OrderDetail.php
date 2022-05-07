@@ -13,7 +13,7 @@ class OrderDetail extends Model
     public $timestamps = false; 
     protected $primaryKey = 'order_details_id';
     protected $fillable = [
-       'product_name','product_price'
+       'product_name','product_price', 'product_quantity'
     ];
     public function product(){
         return $this->belongsTo(Product::class,'product_id');

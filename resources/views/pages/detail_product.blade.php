@@ -20,10 +20,12 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text"  placeholder="Bạn cần tìm gì?">
-                            <button type="submit" class="site-btn">Tìm kiếm</button>
-                        </form>
+                    <form method="POST" action="{{url('/tim-kiem')}}" >
+                                @csrf
+                                <input type="text" name="keywords_submit" id="keyword" placeholder="Bạn cần tìm gì?">
+                                <div id="search-ajax"></div>
+                                <button type="submit"  class="site-btn">Tìm kiếm</button>
+                            </form>
                     </div>
                     <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
@@ -124,12 +126,12 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                aria-selected="true">Mô tả</a>
+                                aria-selected="true" style="font-size: 18px">Mô tả</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#tabs-2" role="tab"
-                                aria-selected="false">Bình luận <span>(1)</span></a>
+                                aria-selected="false" style="font-size: 18px">Bình luận <span>(1)</span></a>
                         </li>
 
                         {{-- <li class="nav-item">
@@ -141,13 +143,13 @@
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Thông tin chi tiết sản phẩm</h6>
+                                <h6 style="font-size: 25px">Thông tin chi tiết sản phẩm</h6>
                                 <p>{!!$pro->product_detail!!}</p>
                             </div>
                         </div>
                         {{-- <div class="tab-pane " id="tabs-3" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Đánh giá sản phẩm</h6>
+                                <h6 style="font-size: 25px">Đánh giá sản phẩm</h6>
 
                                 <ul class="list-inline inline">
                                     @for($count=1; $count<=5; $count++)
@@ -176,7 +178,7 @@
                         </div> --}}
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Đánh giá sản phẩm</h6>
+                                <h6 style="font-size: 25px">Đánh giá sản phẩm</h6>
 
                                 <ul class="list-inline inline">
                                     @for($count=1; $count<=5; $count++)

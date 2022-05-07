@@ -19,7 +19,7 @@
                             <input type="file" class="form-control" name="images" id="exampleInputEmail1" >
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Nguyên liệu</label>
+                            <label for="exampleInputEmail1">Tóm tắt</label>
                             <textarea id="editor2" style="resize :none" rows="4" type="text" class="form-control" name="summary"  placeholder="Mô tả ngắn">
                             </textarea>
                         </div>

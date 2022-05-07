@@ -38,6 +38,7 @@
 			</div>
 		</div>
 	</section><!--/form--> --}}
+    
 	<div class="wrapper" style="background-image: url('images/bg-registration-form-3.jpg');">  
         <div class="form-modal">
 

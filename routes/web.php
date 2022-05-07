@@ -190,6 +190,7 @@ Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
 //Đặt hàng
 Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);
 Route::get('/payment',[CheckoutController::class, 'payment']);
+Route::get('/checkout',[CheckoutController::class, 'checkout']);
 
 //Thanh toán
 Route::post('/vnpay',[PaymentController::class, 'vnpay']);

@@ -27,7 +27,7 @@
                     <div class="blog__sidebar__search">
                         <form method="POST" action="{{url('/tim-kiem-blog')}}" >
                             @csrf
-                            <input type="text" name="blog" placeholder="Search...">
+                            <input type="text" name="blog" placeholder="Tìm kiếm...">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
                     </div>
@@ -42,11 +42,10 @@
                         </ul>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Recent News</h4>
+                        <h4>Tin mới</h4>
                         <div class="blog__sidebar__recent">
                             @foreach ($recentblogs as $item)
-                                
-                           
+
                             <a href="{{url('/blog/'.$item->id)}}" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
                                     <img width="100" height="100" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
@@ -59,7 +58,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="blog__sidebar__item">
+                    <!-- <div class="blog__sidebar__item">
                         <h4>Search By</h4>
                         <div class="blog__sidebar__item__tags">
                             <a href="#">Apple</a>
@@ -69,7 +68,7 @@
                             <a href="#">Healthy Food</a>
                             <a href="#">Lifestyle</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="col-lg-8 col-md-7">
@@ -80,15 +79,15 @@
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
-                                <img src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
+                                <img width="300" height="300" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
                             </div>
                             <div class="blog__item__text">
                                 <ul>
-                                    <li><i class="fa fa-calendar-o"></i>{{$item->created_at}}</li>
+                                    <li><i class="fa fa-calendar-o" style="padding-right: 5px"></i>{{$item->created_at}}</li>
                                     <li><i class="fa fa-comment-o"></i> 5</li>
                                 </ul>
                                 <h5><a href="{{url('/blog/'.$item->id)}}">{{$item->title}}</a></h5>
-                                <p>{{$item->summary}}</p>
+                                <p>{!!$item->summary!!}</p>
                                 <a href="{{url('/blog/'.$item->id)}}" class="blog__btn">Đọc thêm... <span class="arrow_right"></span></a>
                             </div>
                         </div>

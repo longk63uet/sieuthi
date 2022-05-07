@@ -18,9 +18,12 @@ return new class extends Migration
             $table->timestamps();
             $table->string('title');
             $table->integer('user_id');
-            $table->integer('customer_id');
+            $table->integer('blogcategory_id');
+            $table->integer('status');
             $table->text('content');
+            $table->text('summary');
             $table->string('images');
+            $table->string('product');
         });
     }
 
@@ -31,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_blogs');
+        Schema::dropIfExists('blogs');
     }
 };

@@ -32,14 +32,14 @@
                                 <i class="fa fa-phone"></i>
                             </div>
                             <div class="hero__search__phone__text">
-                                <h5>+84 999 999</h5>
+                                <h5>+84 29 399 99</h5>
                                 <span>Hỗ trợ 24/7</span>
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+                    <div class="hero__item set-bg" data-setbg="img/hero/br6.png">
                         <div class="hero__text">
-                            <span>Thực phẩm sạch</span>
+                            <!-- <span>Thực phẩm sạch</span> -->
                             <h2>Rau củ <br />100% thiên nhiên</h2>
                             <p>Miễn phí giao hàng tận nơi</p>
                             <a href="#" class="primary-btn">Mua ngay</a>

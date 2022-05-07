@@ -30,8 +30,10 @@ return new class extends Migration
             $table->timestamps();
             $table->integer('product_id');
             $table->integer('user_id');
+            $table->integer('status');
             $table->text('comment');
             $table->integer('star');
+            $table->string('name');
 
         });
     }

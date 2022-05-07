@@ -14,6 +14,11 @@ session_start();
 
 class CheckoutController extends Controller
 {
+    //Hiển thị trang đặt hàng
+    public function checkout(){
+        return view('checkout');
+    }
+
     //Thêm người dùng mới
     public function adduser(Request $request){
         $data = array();
