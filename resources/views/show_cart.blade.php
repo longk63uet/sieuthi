@@ -102,7 +102,7 @@ $total = 0;
                                       @php
                                           $total = $carts['quantity']*$carts['info']->product_price
                                       @endphp
-                                      {{number_format($total)}}
+                                      {{number_format($total)}} VND
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <a  href="javascript:">

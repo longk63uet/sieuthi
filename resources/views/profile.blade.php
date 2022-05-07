@@ -1,25 +1,20 @@
 @include('header')
 <div class="container mt-5">
     <div class="row">
-        <div class="col-lg-4 pb-5">
+        <div class="col-lg-3 pb-5" style="margin-right: 50px">
             <div class="author-card pb-3">
-                <div class="author-card-cover"
+                <!-- <div class="author-card-cover"
                     style="background-image: url(images/bg-food.jpg);">
-                </div>
+                </div> -->
                 <div class="author-card-profile">
-                    <div class="author-card-avatar"><img src="images/avt3.jpg" alt="Linh">
+                    <div class="author-card-avatar"><img src="images/avt3.jpg" alt="">
                     </div>
                     <div class="author-card-details">
-                        <h3>Thông tin cá nhân</h3>
-                        <h5 class="author-card-name text-lg">Tên: {{$user->name}}</h5>
-                        <h5 class="author-card-name text-lg">Email: {{$user->email}}</h5>
-                        <h5 class="author-card-name text-lg">Số điện thoại: {{$user->user_phone}}</h5>
-                        <h5 class="author-card-name text-lg">Địa chỉ: {{$user->user_address}}</h5>
-                        <h5 class="author-card-name text-lg">Ngày tham gia: {{$user->created_at}}</h5>
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Ngày tham gia: {{$user->created_at}}</h5>
                     </div>
                 </div>
             </div>
-            <div class="wizard">
+            <div class="wizard" style="float: left">
                 <nav class="list-group list-group-flush">
                     <a class="list-group-item" href="{{url('profile')}}">
                         <div class="d-flex justify-content-between align-items-center">
@@ -35,7 +30,6 @@
                                 <i class="fa fa-heart mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Mục yêu thích</div>
                             </div>
-                            {{-- <span class="badge badge-secondary">5</span> --}}
                         </div>
                     </a>
                     <a class="list-group-item" href="{{url('manage-order-user')}}" >
@@ -44,7 +38,6 @@
                                 <i class="fa fa-tag mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Quản lý đơn hàng</div>
                             </div>
-                            {{-- <span class="badge badge-secondary">7</span> --}}
                         </div>
                     </a>
                     <a class="list-group-item" href="{{url('change-password')}}" >
@@ -69,9 +62,9 @@
         </div>
         <!-- Profile Settings-->
         <div class="col-lg-8 pb-5">
-            <h3>Thông tin cá nhân</h3>
+            <h3 style="text-align: center; margin-bottom: 15px;">Thông tin cá nhân</h3>
             <form class="row" action="{{url('change-profile')}}" method="POST">
-              @csrf
+            @csrf
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-fn">Tên</label>
@@ -99,13 +92,13 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button class="btn btn-primary" type="submit">Cập nhật thông tin cá nhân</button>
+                    <button class="btn btn-primary" type="submit" style="float: right">Cập nhật thông tin cá nhân</button>
                 </div>
                 </form>
 
-              <h3 class="col-md-12">Thông tin vận chuyển</h3>
+            <h3 class="col-md-12" style="text-align: center; margin-top: 30px; margin-bottom:15px">Thông tin vận chuyển</h3>
             <form class="row" action="{{url('change-shipping')}}" method="POST">
-              @csrf
+            @csrf
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-fn">Họ</label>
@@ -160,8 +153,9 @@
                             required="">
                     </div>
                 </div>
-
-               
+                <div class="col-md-12">
+                    <button class="btn btn-primary" type="submit" style="float: right">Cập nhật thông tin vận chuyển</button>
+                </div>
 
                 <div class="col-12">
                     <hr class="mt-2 mb-3">
@@ -170,10 +164,11 @@
                             <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
                             <label class="custom-control-label" for="subscribe_me">Thông báo qua Email</label>
                         </div> --}}
-                        <button class="btn btn-style-1 btn-primary" type="submit" data-toast=""
+                        <!-- <button class="btn btn-style-1 btn-primary" type="submit" data-toast=""
                             data-toast-position="topRight" data-toast-type="success"
                             data-toast-icon="fe-icon-check-circle" data-toast-title="Success!"
-                            data-toast-message="Your profile updated successfuly.">Cập nhật thông tin vận chuyển</button>
+                            data-toast-message="Your profile updated successfuly."
+                            style="float: right">Cập nhật thông tin vận chuyển</button> -->
                     </div>
                 </div>
                 <input type="hidden" name="shipping_id" value="{{$shipping->shipping_id}}">

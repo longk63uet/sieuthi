@@ -317,7 +317,7 @@ $(document).ready(function(){
     $( "#slider-range" ).slider({
       orientation: "vertical",
       range: true,
-      min: 100000,
+      min: 10000,
       max: 2000000,
       values: [ 10000, 2000000 ],
       step: 10000,

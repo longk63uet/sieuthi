@@ -8,9 +8,9 @@
       <div class="padding-bottom-3x mb-1">
         <div class="card mb-3">
           <div class="p-4 text-center text-white bg-dark text-lg rounded-top">
-            <a href="{{url('/')}}" class="text-uppercase" > Trang chủ </a>
+            <!-- <a href="{{url('/')}}" class="text-uppercase" > Trang chủ </a> -->
             @foreach($order as $or)
-            <span class="text-uppercase">- Mã đơn hàng - </span><span class="text-medium">{{$or->order_id}}</span></div>
+            <span class="text-uppercase">Mã đơn hàng - </span><span class="text-medium">{{$or->order_id}}</span></div>
           <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
             <div class="w-100 text-center py-1 px-2"><span class="text-medium">Đơn vị vận chuyển:</span> Eco Express</div>
             <div class="w-100 text-center py-1 px-2"><span class="text-medium">Trạng thái:</span> 
@@ -70,43 +70,45 @@
         <div class="col-lg-8">
           <!-- Chi tiết -->
           <div class="card mb-3">
-            <div class="card-body">
-@foreach ($order_details as $item)
-    
-
-              <table class="table table-borderless">
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                      <tr>
+                          <th>Tên sản phẩm</th>
+                          <th>Số lượng</th>
+                          <th>Thành tiền</th>
+                      </tr>
+                </thead>
                 <tbody>
+                  @foreach ($order_details as $item)
                   <tr>
                     <td>
                       <div class="d-flex">
-                        <div class="flex-shrink-0">
-                          <img src="image/product-1.jpg" alt="" class="img-fluid" >
-                        </div>
                         <div class="flex-lg-grow-1 ms-3">
-                          <h4 class="mb-0" style="font-size: 17px;"><a href="#" class="text-reset">{{$item->product_name}}</a></h4>
-                          <span class="small">{{$item->product_price}}</span>
+                          <h4 class="mb-0" style="font-size: 17px;"><a href="#" class="text-reset"><b>{{$item->product_name}}</b></a></h4>
+                          <span class="small">{{number_format($item->product_price)}} VND x 1</span>
                         </div>
                       </div>
                     </td>
                     <td>x{{$item->product_quantity}}</td>
-                    <td class="text-end">@php $total = $item->product_price * $item->product_quantity @endphp {{$total}} VND</td>
+                    <td class="text-end">@php $total = $item->product_price * $item->product_quantity @endphp {{number_format($total)}} VND</td>
                   </tr>
+                  @endforeach
                 </tbody>
                 
-        @endforeach
               @foreach($order as $ord)
                 <tfoot>
                   
                   <tr>
-                    <td colspan="2">Phí ship</td>
+                    <td colspan="2"><b>Phí ship</b></td>
                     <td class="text-end">{{number_format($ord->feeship)}} VND</td>
                   </tr>
                   <tr>
-                    <td colspan="2">Mã giảm giá </td>
+                    <td colspan="2"><b>Mã giảm giá </b></td>
                     <td class="text-danger text-end">-{{number_format($ord->coupon)}} VND</td>
                   </tr>
                   <tr class="fw-bold">
-                    <td colspan="2">Tổng tiền</td>
+                    <td colspan="2"><b>Tổng tiền</b></td>
                     <td class="text-end">{{number_format($ord->total)}} VND</td>
                   </tr>
                 </tfoot>
@@ -115,12 +117,13 @@
               <!-- Tong tien -->
             </div>
           </div>
+          
           <!-- Thanh toán -->
           <div class="card mb-3">
             <div class="card-body">
               <div class="row">
                 <div class="col-lg-6">
-                  <h3 class="h6">Phương thức thanh toán</h3>
+                  <h3 class="h6"><b>Phương thức thanh toán</b></h3>
                   @if ($payment->payment_method == 1)
                   <p>Thanh toán khi nhận hàng <br>
                   @elseif($payment->payment_method == 2)
@@ -134,7 +137,7 @@
                   @endif
                 </div>
                 <div class="col-lg-6">
-                  <h3 class="h6">Địa chỉ nhận hàng</h3>
+                  <h3 class="h6"><b>Địa chỉ nhận hàng</b></h3>
                   <address>
                         
                     <strong>{{$shipping->shipping_surname}} {{$shipping->shipping_name}}</strong><br>
@@ -153,17 +156,17 @@
           <!-- Ghi chú -->
           <div class="card mb-3">
             <div class="card-body">
-              <h3 class="h6">Ghi chú</h3>
+              <h3 class="h6"><b>Ghi chú</b></h3>
               <p>{{$shipping->shipping_note}}</p>
             </div>
           </div>
           <div class="card mb-3">
             <!-- Thông tin vận chuyển -->
             <div class="card-body">
-              <h3 class="h6">Thông tin vận chuyển</h3>
-              <strong>Eco Express</strong> <br>
-              <span>Mã vận đơn: <a href="#" class="text-decoration-underline" target="_blank"></a> <i
-                  class="bi bi-box-arrow-up-right"></i> </span>
+              <h3 class="h6"><b>Thông tin vận chuyển</b></h3>
+              <span>Eco Express</span> <br>
+              <span>Mã vận đơn: 32X8345GTR1 <a href="#" class="text-decoration-underline" target="_blank"></a> 
+              <i class="bi bi-box-arrow-up-right"></i> </span>
               <hr>
             </div>
           </div>

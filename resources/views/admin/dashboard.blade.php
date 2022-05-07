@@ -74,7 +74,7 @@
 			<!-- </div> -->
 
 			<div>
-			<div class="col-md-6 stats-info widget" style="margin-top: 33px; ">
+			<div class="col-md-6 stats-info widget" style="margin-top: 35px; ">
 					<div class="area-grids-heading">
 						<h3>Đơn hàng</h3>
 					</div>

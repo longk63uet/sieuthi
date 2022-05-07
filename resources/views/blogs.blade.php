@@ -8,8 +8,8 @@
                 <div class="breadcrumb__text">
                     <h2>Tin tức</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
-                        <span>Blog</span>
+                        <a href="./index.html">Trang chủ</a>
+                        <span>Tin tức</span>
                     </div>
                 </div>
             </div>
@@ -32,7 +32,7 @@
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Danh mục</h4>
+                        <h4>Danh mục tin tức</h4>
                         <ul>
                             @foreach ($blogcate as $item)
                                 

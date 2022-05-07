@@ -1,21 +1,17 @@
 @include('header')
 <div class="container mb-4 main-container">
     <div class="row">
-        <div class="col-lg-4 pb-5">
+        <div class="col-lg-3 pb-5" style="margin-right: 50px">
             <div class="author-card pb-3">
                 <div class="author-card-cover"
                     style="background-image: url(images/bg-food.jpg);">
                 </div>
                 <div class="author-card-profile">
-                    <div class="author-card-avatar"><img src="images/avt3.jpg" alt="Linh">
+                    <div class="author-card-avatar"><img src="images/avt3.jpg" alt="">
                     </div>
                     <div class="author-card-details">
-                        <h3>Thông tin cá nhân</h3>
-                        <h5 class="author-card-name text-lg">Tên: {{$user->name}}</h5>
-                        <h5 class="author-card-name text-lg">Email: {{$user->email}}</h5>
-                        <h5 class="author-card-name text-lg">Số điện thoại: {{$user->user_phone}}</h5>
-                        <h5 class="author-card-name text-lg">Địa chỉ: {{$user->user_address}}</h5>
-                        <h5 class="author-card-name text-lg">Ngày tham gia: {{$user->created_at}}</h5>
+            
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Ngày tham gia: {{$user->created_at}}</h5>
                     </div>
                 </div>
             </div>
@@ -35,7 +31,7 @@
                                 <i class="fa fa-heart mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Mục yêu thích</div>
                             </div>
-                            {{-- <span class="badge badge-secondary">5</span> --}}
+                            
                         </div>
                     </a>
                     <a class="list-group-item" href="{{url('manage-order-user')}}" >
@@ -43,8 +39,7 @@
                             <div>
                                 <i class="fa fa-tag mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Quản lý đơn hàng</div>
-                            </div>
-                            {{-- <span class="badge badge-secondary">7</span> --}}
+                            </div>                  
                         </div>
                     </a>
                     <a class="list-group-item" href="{{url('change-password')}}" >
@@ -53,7 +48,6 @@
                                 <i class="fa fa-tag mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Đổi mật khẩu</div>
                             </div>
-                            {{-- <span class="badge badge-secondary">7</span> --}}
                         </div>
                     </a>
                     <a class="list-group-item" href="{{url('logout-user')}}">
@@ -95,8 +89,6 @@
                     </thead>
                     <tbody>
                         @foreach ($orders as $item)
-                            
-                       
                         <tr>
                             <td><a class="navi-link" href="{{url('view-order-user/'.$item->order_id)}}">{{$item->order_id}} </a></td>
                             <td>{{$item->created_at}}</td>

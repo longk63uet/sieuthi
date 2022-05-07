@@ -172,7 +172,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="{{url('/chi-tiet/'.$pro->product_id)}}">{{$pro->product_name}}</a></h6>
-                                <h5>{{$pro->product_price}}</h5>
+                                <h5>{{number_format($pro->product_price)}} VNĐ</h5>
                             </div>
                         </div>
                         

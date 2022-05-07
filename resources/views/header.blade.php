@@ -55,7 +55,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__left">
                             <ul>
-                                <li><i class="fa fa-envelope"></i> sieuthixanh@online.com</li>
+                                <li><i class="fa fa-envelope"></i> hotro@ecomarket.com</li>
                                 <li>Miễn phí giao hàng cho đơn từ 300k</li>
                             </ul>
                         </div>

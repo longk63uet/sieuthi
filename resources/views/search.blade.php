@@ -58,25 +58,27 @@
     </div>
 </section>
 <!-- Breadcrumb Section End -->
-
-<div class="row featured__filter mt-4">
-@foreach ($search_product as $pro)
-    <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-        <div class="featured__item">
-            <div class="featured__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
-                <ul class="featured__item__pic__hover">
-                    <li><a href="javascript:" onclick="addToWishlist({{$pro->product_id}})"><i class="fa fa-heart"></i></a></li>
-                    <li><a  href="{{url('generate-qrcode/'.$pro->product_id)}}" target="_blank"><i class="fa fa-qrcode"></i></a></li>
-                    <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
-                </ul>
-            </div>
-            <div class="featured__item__text">
-                <h6><a href="{{url('/chi-tiet/'.$pro->product_id)}}">{{$pro->product_name}}</a></h6>
-                <h5>{{number_format($pro->product_price)}} VNĐ</h5>
+<div class="container">
+    <div class="row featured__filter mt-4">
+        @foreach ($search_product as $pro)
+        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+            <div class="featured__item">
+                <div class="featured__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
+                    <ul class="featured__item__pic__hover">
+                        <li><a href="javascript:" onclick="addToWishlist({{$pro->product_id}})"><i class="fa fa-heart"></i></a></li>
+                        <li><a  href="{{url('generate-qrcode/'.$pro->product_id)}}" target="_blank"><i class="fa fa-qrcode"></i></a></li>
+                        <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
+                    </ul>
+                </div>
+                <div class="featured__item__text">
+                    <h6><a href="{{url('/chi-tiet/'.$pro->product_id)}}">{{$pro->product_name}}</a></h6>
+                    <h5>{{number_format($pro->product_price)}} VNĐ</h5>
+                </div>
             </div>
         </div>
+        @endforeach   
     </div>
-    @endforeach   
-</div> 
+</div>
+ 
 
 @include('footer')

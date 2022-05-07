@@ -32,7 +32,7 @@
             </div>
         
             @endforeach
-        </a>
+            </a>
         </div>
     
     </div>

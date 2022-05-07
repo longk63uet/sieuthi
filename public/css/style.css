@@ -22,7 +22,7 @@ body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-smoothing: antialiased;
+	/* font-smoothing: antialiased; */
 }
 
 h1,
@@ -279,7 +279,8 @@ a:hover,
 a:focus {
 	text-decoration: none;
 	outline: none;
-	color: #ffffff;
+	color:#000000;
+	/* color: #15830b; */
 }
 
 ul,
@@ -322,7 +323,7 @@ ol {
 }
 
 .spad {
-	padding-top: 100px;
+	padding-top: 80px;
 	padding-bottom: 100px;
 }
 
@@ -348,7 +349,7 @@ ol {
 	color: #ffffff;
 	text-transform: uppercase;
 	font-weight: 700;
-	background: #7fad39;
+	background: #56ad39;
 	letter-spacing: 2px;
 }
 
@@ -359,7 +360,7 @@ ol {
 	text-transform: uppercase;
 	display: inline-block;
 	padding: 13px 30px 12px;
-	background: #7fad39;
+	background: #56ad39;
 	border: none;
 }
 
@@ -768,7 +769,7 @@ ol {
 }
 
 .hero__categories__all {
-	background: #7fad39;
+	background: #56ad39;
 	position: relative;
 	padding: 10px 25px 10px 40px;
 	cursor: pointer;
@@ -1221,8 +1222,11 @@ ol {
 
 .breadcrumb-section {
 	display: flex;
+	/* height: 180px; */
 	align-items: center;
 	padding: 45px 0 40px;
+	margin-left: 102px;
+	margin-right: 104px;
 }
 
 .breadcrumb__text h2 {
@@ -1979,7 +1983,7 @@ ol {
 }
 
 .product__details__tab {
-	padding-top: 85px;
+	padding-top: 70px;
 }
 
 .product__details__tab .nav-tabs {
@@ -2028,13 +2032,13 @@ ol {
 }
 
 .product__details__tab .product__details__tab__desc {
-	padding-top: 44px;
+	padding-top: 30px;
 }
 
 .product__details__tab .product__details__tab__desc h6 {
 	font-weight: 700;
 	color: #333333;
-	margin-bottom: 26px;
+	margin-bottom: 5px;
 }
 
 .product__details__tab .product__details__tab__desc p {
@@ -2167,14 +2171,14 @@ ol {
 }
 
 .shoping__discount {
-	margin-top: 45px;
+	margin-top: 40px;
 }
 
 .shoping__discount h5 {
 	font-size: 20px;
 	color: #1c1c1c;
 	font-weight: 700;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 }
 
 .shoping__discount form input {
@@ -2186,8 +2190,8 @@ ol {
 	text-align: center;
 	display: inline-block;
 	margin-right: 15px;
-}
 
+}
 .shoping__discount form input::placeholder {
 	color: #b2b2b2;
 }
@@ -2534,20 +2538,21 @@ ol {
 -----------------------*/
 
 .blog__sidebar {
-	padding-top: 50px;
+	padding-top: 10px;
 }
 
 .blog__sidebar__item {
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 
 .blog__sidebar__item h4 {
 	color: #1c1c1c;
 	font-weight: 700;
-	margin-bottom: 25px;
+	margin-bottom: 20px;
 }
 
 .blog__sidebar__item ul li {
+	margin-bottom: 2px;
 	list-style: none;
 }
 
@@ -2555,6 +2560,7 @@ ol {
 	font-size: 16px;
 	color: #666666;
 	line-height: 48px;
+	
 	-webkit-transition: all, 0.3s;
 	-moz-transition: all, 0.3s;
 	-ms-transition: all, 0.3s;
@@ -2563,11 +2569,11 @@ ol {
 }
 
 .blog__sidebar__item ul li a:hover {
-	color: #7fad39;
+	color: #35cf3a;
 }
 
 .blog__sidebar__search {
-	margin-bottom: 50px;
+	margin-bottom: 40px;
 }
 
 .blog__sidebar__search form {
@@ -4440,3 +4446,22 @@ ol {
     }
 
 }
+/* wishlist */
+.wishlist-section{
+	margin-top: 20px;
+}
+
+.shoping__cart__item__close a .icon_close:hover{
+	color: red;
+}
+
+/* commment */
+.thumb-lg{
+	height: 70px;
+    width: 70px;
+}
+.send_comment:hover{
+	background-color: rgb(10, 181, 39);
+}
+
+

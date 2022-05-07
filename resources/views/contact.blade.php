@@ -7,8 +7,8 @@
                 <div class="breadcrumb__text">
                     <h2>Liên hệ</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
-                        <span>Contact</span>
+                        <a href="./index.html">Trang chủ</a>
+                        <span>Liên hệ</span>
                     </div>
                 </div>
             </div>
@@ -87,11 +87,11 @@
             <div class="row">
                     <label for="order">Chọn đơn hàng cần hỗ trợ:</label>
                     <div class="col-lg-6 col-md-6">
-                    <select name="order_id" size="5" >
-                        @foreach ($order as $item)
-                        <option value="{{$item->order_id}}">{{$item->order_id}}</option>
-                        @endforeach
-                      </select>
+                        <select name="order_id" size="5" >
+                            @foreach ($order as $item)
+                            <option value="{{$item->order_id}}">{{$item->order_id}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 <div class="col-lg-6 col-md-6">
                     <input type="text" name="name" placeholder="Nhập tên của bạn">
@@ -105,7 +105,7 @@
                 
                 <div class="col-lg-12 text-center">
                     <textarea rows="7" name="feedback" placeholder="Nhập ý kiến của bạn"></textarea>
-                    <button type="submit" class="site-btn">Gửi yêu cầu</button>
+                    <button type="submit" class="site-btn" onclick="alert('Bạn đã gửi yêu cầu thành công!')">Gửi yêu cầu</button>
                 </div>
             </div>
         </form>

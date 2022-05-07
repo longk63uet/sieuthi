@@ -1,11 +1,9 @@
 @include('header')
 
  <!-- Blog Details Hero Begin -->
- <section class="blog-details-hero set-bg" data-setbg="{{asset('img/blog/details/details-hero.jpg')}}">
+ <section class="breadcrumb-section set-bg" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         @foreach ($blog as $item)
-            
-        
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog__details__hero__text">
@@ -13,7 +11,7 @@
                     <ul>
                         <li>Tác giả: {{$item->name}}</li>
                         <li>{{$item->created_at}}</li>
-                        <li>8 Comments</li>
+                        <li>8 Bình luận</li>
                     </ul>
                 </div>
             </div>
@@ -31,7 +29,7 @@
                 <div class="blog__sidebar">
                     <div class="blog__sidebar__search">
                         <form action="#">
-                            <input type="text" placeholder="Search...">
+                            <input type="text" placeholder="Tìm kiếm...">
                             <button type="submit"><span class="icon_search"></span></button>
                         </form>
                     </div>
@@ -62,7 +60,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="blog__sidebar__item">
+                    <!-- <div class="blog__sidebar__item">
                         <h4>Search By</h4>
                         <div class="blog__sidebar__item__tags">
                             <a href="#">Apple</a>
@@ -72,7 +70,7 @@
                             <a href="#">Healthy Food</a>
                             <a href="#">Lifestyle</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             @foreach ($blog as $item)
@@ -89,7 +87,7 @@
                         <div class="col-lg-6">
                             <div class="blog__details__author">
                                 <div class="blog__details__author__pic">
-                                    <img src="{{asset('img/blog/details/details-author.jpg')}}" alt="">
+                                    <img src="{{asset('img/blog/details/details-author.png')}}" alt="">
                                 </div>
                                 <div class="blog__details__author__text">
                                     <h6>{{$item->name}}</h6>
@@ -100,7 +98,7 @@
                             <div class="blog__details__widget">
                                 <ul>
                                     <li><span>Danh mục:</span> {{$item->blogcategory_name}}</li>
-                                    <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
+                                    <li><span>Tags:</span> Tất cả, Nấu ăn, Món ngon</li>
                                 </ul>
                                 <div class="blog__details__social">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
@@ -145,11 +143,10 @@
                             <li><i class="fa fa-comment-o"></i> 5</li>
                         </ul>
                         <h5><a href="{{url('/blog/'.$item->id)}}">{{$item->title}}</a></h5>
-                        <p>{{$item->summary}}</p>
+                        <p>{!!$item->summary!!}</p>
                     </div>
                 </div>
             </div>
-
             @endforeach
         </div>
     </div>

@@ -48,10 +48,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Eko Market</h2>
+                    <h2>Eco Market</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
-                        <span>Shop</span>
+                        <a href="./index.html">Trang chủ</a>
+                        <span>Cửa hàng</span>
                     </div>
                 </div>
             </div>
@@ -175,12 +175,12 @@
                                 <ul class="product__item__pic__hover">
                                     <li><a href="javascript:" onclick="addToWishlist({{$pro->product_id}})"><i class="fa fa-heart"></i></a></li>
                                     <li><a  href="{{url('generate-qrcode/'.$pro->product_id)}}" target="_blank"><i class="fa fa-qrcode"></i></a></li>
-                            <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
+                                    <li><a onclick="addToCart({{$pro->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
                                 <h6><a href="{{url('/chi-tiet/'.$pro->product_id)}}">{{$pro->product_name}}</a></h6>
-                                <h5>{{$pro->product_price}}</h5>
+                                <h5>{{number_format($pro->product_price)}} VNĐ</h5>
                             </div>
                         </div>
                     </div>

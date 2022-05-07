@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Blog</h2>
+                    <h2>Tin tức</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Home</a>
+                        <a href="./index.html">Cửa hàng</a>
                         <span>Kết quả tìm kiếm cho từ khóa "{{$keywords}}"</span>
                     </div>
                 </div>
