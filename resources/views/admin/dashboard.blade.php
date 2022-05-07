@@ -34,7 +34,7 @@
 					</div>
 					<div class="col-md-8 market-update-left">
 						<h4>Doanh thu</h4>
-						<h4>{{$totalSale}} VNĐ</h4>
+						<h4 style="font-size: 15px">{{number_format($totalSale)}} VNĐ</h4>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
