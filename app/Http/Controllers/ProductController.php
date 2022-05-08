@@ -162,13 +162,14 @@ class ProductController extends Controller
         $comments =  Comment::where('product_id', $product_id)->get();
         $output = '';
         foreach($comments as $comment){
-            $output .= '<div class="row mt-2 ml-2" style="border: 1px solid #ddd; border-radius: 10px; background:rgb(188, 183, 183)">
-            <div class="col-sm-2">
-                
-                <img width="100%" src="" alt="" class="img img-responsive img-thumbnail">
+            $output .= '
+            <div class="row mt-2 ml-2" style="border: 1px solid #ddd; border-radius: 10px; background:#EEEEEE">
+            <div class="" style="margin-right: 50px; margin-left: 5px; margin-top: 8px">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYqfZBDYOPW8hB6ZYxcx3UZ0mvR-mxH8MABg&usqp=CAU" alt="" 
+                    class="thumb-lg set-bg rounded-circle img-responsive img-thumbnail">
             </div>
-            <div class="col-sm-10">
-                <p style="color: blue">' .$comment->name  .'</p>
+            <div class="">
+                <p style="color: blue; margin-top: 10px; margin-bottom: 8px">' .$comment->name  .'</p>
                 <p>' .  $comment->comment  . '</p> </div> </div> ';
         }
 

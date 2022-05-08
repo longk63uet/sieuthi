@@ -20,8 +20,10 @@ return new class extends Migration
             $table->text('product_detail');
             $table->string('product_price');
             $table->string('product_image');
+            $table->string('product_quantity');
             $table->integer('product_status');
-            $table->text('product_content');
+            $table->integer('sold');
+            $table->integer('view');
             $table->timestamps();
         });
     }

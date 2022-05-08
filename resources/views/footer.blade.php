@@ -5,7 +5,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div class="footer__about">
                     <div class="footer__about__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="./index.html"><img src="img/eco.png" alt=""></a>
                     </div>
                     <ul>
                         <li>Địa chỉ: Đại học công nghệ</li>
@@ -317,7 +317,7 @@ $(document).ready(function(){
     $( "#slider-range" ).slider({
       orientation: "vertical",
       range: true,
-      min: 100000,
+      min: 10000,
       max: 2000000,
       values: [ 10000, 2000000 ],
       step: 10000,

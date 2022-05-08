@@ -10,6 +10,6 @@ class Rating extends Model
     use HasFactory;
     protected $table = 'rating';
     public $timestamps = false; 
-    protected $fillable = ['rating', 'product_id '];
+    protected $fillable = ['rating', 'product_id', 'user_id'];
     protected $primaryKey = 'id';
 }

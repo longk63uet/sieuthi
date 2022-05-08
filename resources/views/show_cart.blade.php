@@ -19,10 +19,11 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-                                
-                                <input type="text" placeholder="Bạn cần tìm gì?">
-                                <button type="submit" class="site-btn">Tìm kiếm</button>
+                        <form method="POST" action="{{url('/tim-kiem')}}" >
+                                @csrf
+                                <input type="text" name="keywords_submit" id="keyword" placeholder="Bạn cần tìm gì?">
+                                <div id="search-ajax"></div>
+                                <button type="submit"  class="site-btn">Tìm kiếm</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -101,7 +102,7 @@ $total = 0;
                                       @php
                                           $total = $carts['quantity']*$carts['info']->product_price
                                       @endphp
-                                      {{number_format($total)}}
+                                      {{number_format($total)}} VND
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <a  href="javascript:">

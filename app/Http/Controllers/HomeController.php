@@ -53,9 +53,11 @@ class HomeController extends Controller
     //Tìm kiếm
     public function search(Request $request){
         $keywords = $request->keywords_submit;
+        $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
+
         $search_product = DB::table('product')->where('product_name','like','%'.$keywords.'%')->get(); 
 
-        return view('search',['search_product' => $search_product]);
+        return view('search',['search_product' => $search_product, 'cate' => $cate]);
 
     }
 

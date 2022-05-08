@@ -12,7 +12,7 @@
         </div>
         <div class="row featured__filter">
             @foreach ($product as $pro)
-            <a href="{{url('/chi-tiet/'.$pro->product_id)}}">
+            <!-- <a href="{{url('/chi-tiet/'.$pro->product_id)}}"> -->
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                 
                 <div class="featured__item">
@@ -32,7 +32,7 @@
             </div>
         
             @endforeach
-        </a>
+            </a>
         </div>
     
     </div>
@@ -43,11 +43,11 @@
     <div class="container">
         <div class="row">
             @foreach ($banner as $banner)
-                
-           
             <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="banner__pic">
-                    <img src="{{URL('public/uploads/banner/'.$banner->banner_image)}}" alt="">
+                <div class="banner__pic" >
+                    <a href="https://mediamart.vn/ctkm-thang5" target="_blank">
+                        <img src="{{URL('public/uploads/banner/'.$banner->banner_image)}}" alt="">
+                    </a>
                 </div>
             </div>
             @endforeach
@@ -145,7 +145,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="blog__item">
                     <div class="blog__item__pic">
-                        <img src="{{URL('public/uploads/blog/'.$item->images)}}" alt="Blog Images">
+                        <img width="300" height="300" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
                     </div>
                     <div class="blog__item__text">
                         <ul>
@@ -153,7 +153,8 @@
                             <li><i class="fa fa-comment-o"></i> 5</li>
                         </ul>
                         <h5><a href="{{url('/blog/'.$item->id)}}">{{$item->title}}</a></h5>
-                        <p>{{$item->summary}}</p>
+                        <p>{!!$item->summary!!}</p>
+                        <a href="{{url('/blog/'.$item->id)}}" class="blog__btn">Đọc thêm... <span class="arrow_right"></span></a>
                     </div>
                 </div>
             </div>

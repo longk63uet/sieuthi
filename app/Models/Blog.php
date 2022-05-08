@@ -10,5 +10,6 @@ class Blog extends Model
     use HasFactory;
     protected $table = 'blogs';
     public $timestamps = true; 
-    protected $fillable = ['title', 'content', 'images'];
+    protected $primaryKey = 'id';
+    protected $fillable = ['title', 'content', 'images', 'status', 'product', 'summary'];
 }

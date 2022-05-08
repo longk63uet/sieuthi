@@ -35,62 +35,85 @@
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Họ<span>*</span></p>
+                                    <input type="text" name="shipping_surname">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Tên<span>*</span></p>
+                                    <input type="text" name="shipping_name">
+                                </div>
+                            </div>
+                        </div>
                     <div class="checkout__input">
-                        <p>Họ<span>*</span></p>
-                        <input type="text" name="shipping_surname">
+                        <p>Địa chỉ chi tiết<span>*</span></p>
+                        <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
                     </div>
-                </div>
-                <div class="col-lg-6">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Số điện thoại<span>*</span></p>
+                                <input type="text" name="shipping_phone">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Email<span>*</span></p>
+                                <input type="text" name="shipping_email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkout__input col-lg-4">
+                            <p>Thành phố/ Tỉnh<span>*</span></p>
+                            <input  type="text" name="shipping_city" value="Hà Nội">
+                        </div>
+                        <div class="checkout__input col-lg-4">
+                            <p>Thành quận, huyện<span>*</span></p>
+                            <input type="text"  name="shipping_town" >
+                        </div>
+                        <div class="checkout__input col-lg-4">
+                            <p>Đường<span>*</span></p>
+                            <input type="text" name="shipping_village" >
+                        </div>
+                    </div>
                     <div class="checkout__input">
-                        <p>Tên<span>*</span></p>
-                        <input type="text" name="shipping_name">
+                        <p>Ghi chú<span>*</span></p>
+                        <input row="7" type="text" name="shipping_note"
+                            placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
                     </div>
-                </div>
-                </div>
-                <div class="checkout__input">
-                    <p>Địa chỉ chi tiết<span>*</span></p>
-                    <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết">
-                </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="checkout__input">
-                            <p>Số điện thoại<span>*</span></p>
-                            <input type="text" name="shipping_phone">
+
+                    <div class="row col-lg-6">
+                                <div class="shoping__discount">
+                                    <h5>Mã giảm giá</h5>
+                                    <form action="{{url('check-coupon')}}" method="POST">
+                                        @csrf
+                                        <input type="text" name="coupon" placeholder="Nhập mã giảm giá">
+                                        <button type="submit" class="site-btn">Áp dụng</button>
+                                    </form>
+                                        @if(Session::get('coupon'))
+                                        <a href="{{url('/unset-coupon')}}" class = "mt-2 btn btn-primary">Xóa mã giảm giá</a>
+                                        @endif
+                                </div>
                             
-                        </div>
+                            @if(session()->has('message'))
+                            <div class="alert alert-success mt-2">
+                                {!! session()->get('message') !!}
+                            </div>
+                            @elseif(session()->has('error'))
+                            <div class="alert alert-danger mt-2">
+                                {!! session()->get('error') !!}
+                            </div>
+                            @endif
                     </div>
-                    <div class="col-lg-6">
-                        <div class="checkout__input">
-                            <p>Email<span>*</span></p>
-                            <input type="text" name="shipping_email">
-                        </div>
-                    </div>
+
+        
                 </div>
-            <div class="row">
-                <div class="checkout__input col-lg-4">
-                    <p>Thành phố/ Tỉnh<span>*</span></p>
-                    <input  type="text" name="shipping_city" value="Hà Nội">
-                </div>
-                <div class="checkout__input col-lg-4">
-                    <p>Thành quận, huyện<span>*</span></p>
-                    <input type="text"  name="shipping_town" >
-                </div>
-                <div class="checkout__input col-lg-4">
-                    <p>Đường<span>*</span></p>
-                    <input type="text" name="shipping_village" >
-                </div>
-            </div>
-            <div class="checkout__input">
-                <p>Ghi chú<span>*</span></p>
-                <input row="7" type="text" name="shipping_note"
-                    placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
-            </div>
-            
-            
-        </div>
 
                     {{-- @endif --}}
-                    <div class="col-lg-4 col-md-6">
+                <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4>Đơn hàng của bạn</h4>
                             <div class="checkout__order__subtotal">Tổng số lượng <span>{{number_format(Session::get('cart')->totalQuantity)}} sản phẩm</span></div>
@@ -191,10 +214,10 @@
             </form>
         </div>
     </div>
-    {{-- <div class="row"> --}}
+    <div class="container">
                 <div class="col-lg-6">
                     <div class="shoping__continue">
-                        <div class="shoping__discount  ml-8">
+                        <div class="shoping__discount ml-8">
                             <h5>Mã giảm giá</h5>
                             <form action="{{url('check-coupon')}}" method="POST">
                                 @csrf
@@ -217,7 +240,7 @@
                     </div>
                     @endif
                 </div>
-            {{-- </div> --}}
+    </div>
 </section>
 <!-- Checkout Section End -->
 

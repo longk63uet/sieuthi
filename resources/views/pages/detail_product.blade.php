@@ -20,10 +20,12 @@
             <div class="col-lg-9">
                 <div class="hero__search">
                     <div class="hero__search__form">
-                        <form action="#">
-                            <input type="text"  placeholder="Bạn cần tìm gì?">
-                            <button type="submit" class="site-btn">Tìm kiếm</button>
-                        </form>
+                    <form method="POST" action="{{url('/tim-kiem')}}" >
+                                @csrf
+                                <input type="text" name="keywords_submit" id="keyword" placeholder="Bạn cần tìm gì?">
+                                <div id="search-ajax"></div>
+                                <button type="submit"  class="site-btn">Tìm kiếm</button>
+                            </form>
                     </div>
                     <div class="hero__search__phone">
                         <div class="hero__search__phone__icon">
@@ -124,61 +126,28 @@
                     <ul class="nav nav-tabs" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                aria-selected="true">Mô tả</a>
+                                aria-selected="true" style="font-size: 18px">Mô tả</a>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#tabs-2" role="tab"
-                                aria-selected="false">Bình luận <span>(1)</span></a>
+                                aria-selected="false" style="font-size: 18px">Bình luận <span>(5)</span></a>
                         </li>
-
-                        {{-- <li class="nav-item">
-                            <a class="nav-link " data-toggle="tab" href="#tabs-3" role="tab"
-                                aria-selected="false">Đánh giá <span>(1)</span></a>
-                        </li> --}}
 
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Thông tin chi tiết sản phẩm</h6>
+                                <h6 style="font-size: 25px">Thông tin chi tiết sản phẩm</h6>
                                 <p>{!!$pro->product_detail!!}</p>
                             </div>
                         </div>
-                        {{-- <div class="tab-pane " id="tabs-3" role="tabpanel">
-                            <div class="product__details__tab__desc">
-                                <h6>Đánh giá sản phẩm</h6>
 
-                                <ul class="list-inline inline">
-                                    @for($count=1; $count<=5; $count++)
-                                    @php
-                                    if ($count<=$rating) {
-                                        $color = 'color:#ffcc00;';
-                                    } else {
-                                        $color = 'color:#ccc;';
-                                    }
-                                    
-                                    @endphp
-                                    <li
-                                        id="{{$pro->product_id}}-{{$count}}"
-                                        data-index="{{$count}}"
-                                        data-product_id="{{$pro->product_id}}"
-                                        data-rating="{{$rating}}"
-                                        class="rating"
-                                        style=" display: inline-block; cursor:pointer;{{$color}} font-size:30px"
-                                        >
-                                        &#9733;
-                                    </li>
-                                    @endfor
-                                </ul>
-
-                            </div>
-                        </div> --}}
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6>Đánh giá sản phẩm</h6>
+                                <h6 style="font-size: 25px; margin-bottom: 5px">Đánh giá sản phẩm</h6>
 
-                                <ul class="list-inline inline">
+                                <ul class="list-inline inline" >
                                     @for($count=1; $count<=5; $count++)
                                     @php
                                     if ($count<=$rating) {
@@ -202,24 +171,23 @@
                                 </ul>
 
                             </div>
-                                <div class="product__details__tab__desc">
-                                    <div class="col-sm-12">
-                                        
-                                        <form >
+                            <div class="product__details__tab__desc">
+                                    <div class="">
+                                        <form>
                                             @csrf
                                         <input type="hidden"  name="comment_product_id" class="comment_product_id" value="{{$pro->product_id}}">
                                         </form>
                                         <form action="#">
-                                            <p><b>Tên</b></p>
-                                            <input type="text" style="width:100%" class="comment_name" name="name" placeholder="Nhập tên của bạn">
-                                            <p><b>Bình luận</b></p>
-                                            <textarea name="comment"  class="form-control comment_content"  rows="5"> </textarea>
-                                            {{-- <input class="form-control" name="comment" type="text" placeholder="Nhập bình luận của bạn"> --}}
-                                            <button type="button" class="site-btn mt-4 send_comment">Gửi bình luận</button>
+                                            <p style="font-size: 18px; margin-bottom: 10px"><b>Họ tên</b></p>
+                                            <input type="text" style="width:100%; margin-bottom: 25px" class="comment_name" name="name" placeholder="">
+                                            <p style="font-size: 18px; margin-bottom: 10px"><b>Bình luận</b></p>
+                                            <textarea name="comment"  class="form-control comment_content" rows="4"> </textarea>
+                                            
+                                            <button type="button" class="site-btn mt-4 send_comment" style="margin-bottom: 15px">Gửi bình luận</button>
                                         </form>
                                     </div>
 
-                                    <div id="load_comment">
+                                    <div id="load_comment" >
                                     
                                     </div>
                                 </div>

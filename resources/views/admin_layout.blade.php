@@ -45,25 +45,25 @@
 <body>
 <section id="container">
 <!--header start-->
-<header class="header fixed-top clearfix">
+<header class="header fixed-top clearfix" style="background: #eef9f0">
 <!--logo start-->
-<div class="brand">
+<div class="brand" style="background: black">
     <a href="{{url('/dashboard')}}" class="logo">
         DashBoard
     </a>
-    <div class="sidebar-toggle-box">
-        <div class="fa fa-bars"></div>
+    <div class="sidebar-toggle-box" style="background: #383838">
+        <div class="fa fa-bars" ></div>
     </div>
 </div>
 <!--logo end-->
 
-<div class="top-nav clearfix">
+<div class="top-nav clearfix" style="background: #eef9f0">
     <!--search & user info start-->
-    <ul class="nav pull-right top-menu">
+    <ul class="nav pull-right top-menu" >
         
         <!-- user login dropdown start-->
         <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+            <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="background: black;">
                 <img alt="" src="images/2.png">
                 <span class="username">
 					@php
@@ -76,7 +76,7 @@
 				</span>
                 <b class="caret"></b>
             </a>
-            <ul class="dropdown-menu extended logout">
+            <ul class="dropdown-menu extended logout" >
                 <li><a href="#"><i class=" fa fa-suitcase"></i>Thông tin cá nhân</a></li>
                 <li><a href="#"><i class="fa fa-cog"></i> Thiết lập</a></li>
                 <li><a href="{{url('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
@@ -91,7 +91,7 @@
 <!--header end-->
 <!--sidebar start-->
 <aside>
-    <div id="sidebar" class="nav-collapse">
+    <div id="sidebar" class="nav-collapse" style="background: #383838">
         <!-- sidebar menu start-->
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">

@@ -10,6 +10,6 @@ class Feedback extends Model
     use HasFactory;
     protected $table = 'feedback';
     public $timestamps = true; 
-    protected $fillable = ['name', 'email', 'phone', 'feedback', 'order_id'];
+    protected $fillable = ['name', 'email', 'phone', 'feedback', 'order_id', 'status'];
     protected $primaryKey = 'id';
 }
