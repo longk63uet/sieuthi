@@ -4,7 +4,7 @@
     <div class="table-agile-info">
 <div class="panel panel-default">
 <div class="panel-heading">
-  Liệt kê danh mục sản phẩm
+  Quản lý danh mục sản phẩm
 </div>
 <div class="row w3-res-tb">
   @php
@@ -14,39 +14,25 @@
 			 Session::put('message','');
 		}
 	@endphp
-  
- 
 </div>
 <div class="table-responsive">
   <table class="table table-striped b-t b-light" id="myTable1">
     <thead>
       <tr>
-        <th style="width:20px;">
-          <label class="i-checks m-b-none">
-            <input type="checkbox"><i></i>
-          </label>
-        </th>
         <th>Tên danh mục</th>
-        {{-- <th>Mô tả</th> --}}
         <th>Trạng thái</th>
         <th style="width:30px;"></th>
       </tr>
     </thead>
     <tbody>
       @foreach ($data as $category)
-        
       <tr>
-        <td><label class="i-checks m-b-none"><input type="checkbox" name="post"><i></i></label></td>
         <td>{{$category->category_name}}</td>
-
-        {{-- <td><span class="text-ellipsis">{{$category->category_detail}}</span></td> --}}
         <td><span class="text-ellipsis">
         @php
-            
         if ($category->category_status == 1) 
          {echo "Hiển thị" ;}
         else echo "Ẩn";
-         
         @endphp
         </span></td>
         <td>
@@ -63,13 +49,9 @@
   </table>
   <form action="{{url('import-csv')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    
   <input type="file" name="file" accept=".xlsx"><br>
-
  <input type="submit" value="Import file Excel" name="import_csv" class="btn btn-warning">
 </form>
-
-<!-----export data---->
  <form action="{{url('export-csv')}}" method="POST">
     @csrf
  <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">

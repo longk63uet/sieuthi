@@ -70,16 +70,16 @@ class HomeController extends Controller
         if(isset($_GET['sort'])){
             $sort = $_GET['sort'];
             if($sort =='up' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query()); //tránh mất code khi chuyển trang
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'ASC')->simplePaginate(15)->appends(request()->query()); //tránh mất code khi chuyển trang
             }
             elseif($sort =='down' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'DESC')->paginate(15)->appends(request()->query());
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_price', 'DESC')->simplePaginate(15)->appends(request()->query());
             }
             elseif($sort =='az' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_name', 'ASC')->paginate(15)->appends(request()->query());
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_name', 'ASC')->simplePaginate(15)->appends(request()->query());
             }
             elseif($sort =='za' ){
-                $product = DB::table('product')->where('product_status','1')->orderBy('product_name', 'DESC')->paginate(15)->appends(request()->query());
+                $product = DB::table('product')->where('product_status','1')->orderBy('product_name', 'DESC')->simplePaginate(15)->appends(request()->query());
             }
             
         }
@@ -91,7 +91,7 @@ class HomeController extends Controller
             $product = DB::table('product')->whereBetween('product_price', [$start_price, $end_price])->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
         }
         else{
-            $product = DB::table('product')->where('product_status','1')->paginate(15);
+            $product = DB::table('product')->where('product_status','1')->simplePaginate(15);
         }
         return view('market',['cate'=>$cate,'product'=>$product, 'min_price'=>$min_price, 'max_price'=>$max_price]);
 
@@ -112,7 +112,9 @@ class HomeController extends Controller
             }
         }
         $data = array();
+        $user_id = Session::get('user_id');
         $data['product_id'] = $product_id;
+        $data['user_id'] = $user_id;
         DB::table('wishlist')->insert($data);
 
         return 'success';
@@ -120,7 +122,8 @@ class HomeController extends Controller
 
     //Hiển thị danh sách sản phẩm yêu thích
     public function showWishlist(){
-        $wishlist = DB::table('wishlist')->get();
+        $user_id = Session::get('user_id');
+        $wishlist = DB::table('wishlist')->where('user_id', $user_id)->get();
         $product_id = [];
         foreach ($wishlist as $value) {
             $product_id[] = $value->product_id;
@@ -232,7 +235,8 @@ class HomeController extends Controller
 
     //Thay đổi mật khẩu
     public function changePassword(){
-        return view('change_password');
+        $user = User::find(Session::get('user_id'));
+        return view('change_password', ['user' => $user]);
     }
 
     //Đổi mật khẩu

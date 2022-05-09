@@ -4,7 +4,7 @@
     <div class="table-agile-info">
 <div class="panel panel-default">
 <div class="panel-heading">
-  Liệt kê danh mục blog
+  Quản lý danh mục blog
 </div>
 <div class="row w3-res-tb">
   @php
@@ -31,11 +31,9 @@
         <td>{{$blogcate->blogcategory_name}}</td>
         <td><span class="text-ellipsis">
         @php
-            
         if ($blogcate->blogcategory_status == 1) 
          {echo "Hiển thị" ;}
         else echo "Ẩn";
-         
         @endphp
         </span></td>
         <td>
@@ -52,17 +50,13 @@
   </table>
   <form action="{{url('blogcategory-import-csv')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    
-  <input  type="file" name="file" accept=".xlsx"><br>
-
- <input type="submit" value="Import file Excel" name="import_csv" class="btn btn-warning">
-</form>
-
-<!-----export data---->
- <form action="{{url('blogcategory-export-csv')}}" method="POST">
-    @csrf
- <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">
-</form>
-</div>
+    <input  type="file" name="file" accept=".xlsx"><br>
+    <input type="submit" value="Import file Excel" name="import_csv" class="btn btn-warning">
+  </form>
+  <form action="{{url('blogcategory-export-csv')}}" method="POST">
+      @csrf
+    <input type="submit" value="Export file Excel" name="export_csv" class="btn btn-success">
+  </form>
+  </div>
 </div>
 @endsection

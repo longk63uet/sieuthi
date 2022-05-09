@@ -3,21 +3,11 @@
     <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Liệt kê mã giảm giá
+      Quản lý mã giảm giá
     </div>
     <div class="row w3-res-tb">
-      {{-- <div class="col-sm-5 m-b-xs">
-        <select class="input-sm form-control w-sm inline v-middle">
-          <option value="0">Bulk action</option>
-          <option value="1">Delete selected</option>
-          <option value="2">Bulk edit</option>
-          <option value="3">Export</option>
-        </select>
-        <button class="btn btn-sm btn-default">Apply</button>                
-      </div> --}}
       <div class="col-sm-4">
       </div>
-      
     </div>
     <div class="table-responsive">
                       <?php
@@ -30,22 +20,16 @@
       <table class="table table-striped b-t b-light" id="myTable1">
         <thead>
           <tr>
-           
-
             <th>Tên mã giảm giá</th>
             <th>Mã giảm giá</th>
-            <th>Số lượng giảm giá</th>
+            <th>Số lượng mã</th>
             <th>Điều kiện giảm giá</th>
             <th>Số giảm</th>
-          
-            
-           
           </tr>
         </thead>
         <tbody>
           @foreach($coupon as $key => $cou)
           <tr>
-          
             <td>{{ $cou->coupon_name }}</td>
             <td>{{ $cou->coupon_code }}</td>
             <td>{{ $cou->coupon_quantity }}</td>
@@ -76,9 +60,7 @@
                }
               ?>
             </span></td>
-           
             <td>
-             
               <a onclick="return confirm('Bạn có chắc chắn xóa mã giảm giá này không?')" href="{{URL::to('/delete-coupon/'.$cou->coupon_id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>

@@ -4,7 +4,7 @@
     <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Thêm sản phẩm
+                    Thêm sản phẩm mới
                 </header>
                 <div class="panel-body">
                     <div class="position-center">
@@ -18,7 +18,6 @@
                             <label for="exampleInputEmail1">Giá sản phẩm</label>
                             <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số tiền" class="form-control" name="product_price" id="exampleInputEmail1" placeholder="Nhập tên giá tiền sản phẩm">
                         </div>
-                        
                          <div class="form-group">
                             <label for="exampleInputEmail1">Số lượng sản phẩm</label>
                             <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="exampleInputEmail1" placeholder="Điền số lượng">
@@ -36,7 +35,6 @@
                             <label for="exampleInputEmail1">Danh mục sản phẩm</label>
                             <select name="category_id" class="form-control input-lg m-bot15">
                                 @foreach ($cate as $cate)
-                                
                                 <option value="{{$cate->category_id}}">{{$cate->category_name}}</option>
                                 @endforeach
                             </select>
@@ -48,14 +46,11 @@
                                 <option value="0">Ẩn</option>
                             </select>
                         </div>
-                        
                         <button type="submit" name="submit" class="btn btn-info">Thêm sản phẩm</button>
                     </form>
                     </div>
-
                 </div>
             </section>
-
     </div>
 </div>
 @endsection

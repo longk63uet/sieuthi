@@ -12,9 +12,7 @@
         </div>
         <div class="row featured__filter">
             @foreach ($product as $pro)
-            <!-- <a href="{{url('/chi-tiet/'.$pro->product_id)}}"> -->
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                
                 <div class="featured__item">
                     <div class="featured__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
                         <ul class="featured__item__pic__hover">
@@ -28,24 +26,19 @@
                         <h5>{{number_format($pro->product_price)}} VNĐ</h5>
                     </div>
                 </div>
-            
             </div>
-        
             @endforeach
             </a>
         </div>
-    
     </div>
 </section>
-<!-- Featured Section End -->
-<!-- Banner Begin -->
 <div class="banner">
     <div class="container">
         <div class="row">
             @foreach ($banner as $banner)
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="banner__pic" >
-                    <a href="https://mediamart.vn/ctkm-thang5" target="_blank">
+                    <a href="url('market')" target="_blank">
                         <img src="{{URL('public/uploads/banner/'.$banner->banner_image)}}" alt="">
                     </a>
                 </div>
@@ -54,8 +47,6 @@
         </div>
     </div>
 </div>
-<!-- Banner End -->
-<!-- Latest Product Section Begin -->
 <section class="latest-product spad">
     <div class="container">
         <div class="row">
@@ -86,8 +77,6 @@
                     <div class="latest-product__slider owl-carousel">
                         <div class="latest-prdouct__slider__item">
                             @foreach ($viewProduct as $item)
-                                
-                            
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
                                     <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="">
@@ -126,9 +115,6 @@
         </div>
     </div>
 </section>
-<!-- Latest Product Section End -->
-
-<!-- Blog Section Begin -->
 <section class="from-blog spad">
     <div class="container">
         <div class="row">
@@ -140,8 +126,6 @@
         </div>
         <div class="row">
             @foreach ($blogs as $item)
-                
-            
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="blog__item">
                     <div class="blog__item__pic">
@@ -150,7 +134,7 @@
                     <div class="blog__item__text">
                         <ul>
                             <li><i class="fa fa-calendar-o"></i> {{$item->created_at}}</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
+                            <li><i class="fa fa-comment-o"></i> </li>
                         </ul>
                         <h5><a href="{{url('/blog/'.$item->id)}}">{{$item->title}}</a></h5>
                         <p>{!!$item->summary!!}</p>
@@ -162,6 +146,5 @@
         </div>
     </div>
 </section>
-<!-- Blog Section End -->
 @endsection
 

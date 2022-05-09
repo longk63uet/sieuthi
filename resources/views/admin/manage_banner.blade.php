@@ -16,7 +16,6 @@
       <table class="table table-striped b-t b-light" id="myTable">
         <thead>
           <tr>
-            
             <th>Tên Banner</th>
             <th>Hình ảnh</th>
             <th>Mô tả</th>
@@ -44,11 +43,9 @@
               ?>
             </span></td>
             <td>
-             
-              <a onclick="return confirm('Bạn có chắc là muốn xóa banner này không?')" href="{{URL::to('/delete-banner/'.$banner->id)}}" class="active styling-edit" ui-toggle-class="">
+              <a onclick="return confirm('Bạn có muốn xóa banner này không?')" href="{{URL::to('/delete-banner/'.$banner->id)}}" class="active styling-edit" ui-toggle-class="">
                 <i class="fa fa-times text-danger text"></i>
               </a>
-
             </td>
           </tr>
           @endforeach
@@ -57,12 +54,10 @@
     </div>
     <footer class="panel-footer">
       <div class="row">
-        
         <div class="col-sm-5 text-center">
         </div>
         <div class="col-sm-7 text-right text-center-xs">                
           <ul class="pagination pagination-sm m-t-none m-b-none">
-              {{ $banners->links() }}
           </ul>
         </div>
       </div>

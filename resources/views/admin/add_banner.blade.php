@@ -5,7 +5,7 @@
         <section class="panel">
             <header class="panel-heading">
                 Thêm Banner quảng cáo
-                </header>
+            </header>
                 <?php
                 $message = Session::get('message');
                 if($message){
@@ -18,7 +18,7 @@
                                 <form role="form" action="{{URL::to('/insert-banner')}}" method="post" enctype="multipart/form-data">
                                     @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên banner quảng cáo</label>
+                                    <label for="exampleInputEmail1">Tên banner</label>
                                     <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" name="banner_name" class="form-control" id="exampleInputEmail1" placeholder="Tên banner">
                                 </div>
                                 <div class="form-group">
@@ -30,11 +30,10 @@
                                     <textarea data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" style="resize: none" rows="8" class="form-control" name="banner_desc" id="exampleInputPassword1" placeholder="Mô tả banner"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1">Hiển thị</label>
+                                    <label for="exampleInputPassword1">Trạng thái</label>
                                       <select name="banner_status" class="form-control input-sm m-bot15">
                                            <option value="1">Hiển thị</option>
                                             <option value="0">Ẩn</option>
-                                            
                                     </select>
                                 </div>
                             <button type="submit" name="add_banner" class="btn btn-primary">Thêm banner</button>
@@ -42,5 +41,5 @@
                     </div>
                 </div>
             </section>
-            </div>
+        </div>
 @endsection

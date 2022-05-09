@@ -16,7 +16,7 @@
             <tr >
                 <td class="shoping__cart__item">
                     <img style="width:150px; hight:150px" src="{{URL('/public/uploads/product/'.$carts['info']->product_image)}}" alt="">
-                    <h5>{{number_format($carts['info']->product_name)}}</h5>
+                    <h5>{{$carts['info']->product_name}}</h5>
                 </td>
                 <td class="shoping__cart__price">
                     {{$carts['info']->product_price}}

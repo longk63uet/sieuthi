@@ -14,7 +14,6 @@
                             }
                             ?>
                         <div class="panel-body">
-
                             <div class="position-center">
                                 @foreach($data as $pro)
                                 <form role="form" action="{{URL::to('/update-product/'.$pro->product_id)}}" method="post" enctype="multipart/form-data">
@@ -24,7 +23,7 @@
                                     <input type="text" name="product_name" class="form-control" onkeyup="ChangeToSlug();" id="slug" value="{{$pro->product_name}}">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">SL sản phẩm</label>
+                                    <label for="exampleInputEmail1">Số lượng sản phẩm</label>
                                     <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="convert_slug" value="{{$pro->product_quantity}}">
                                 </div>
                                      <div class="form-group">
@@ -53,23 +52,18 @@
                                             
                                     </select>
                                 </div>
-                                 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Hiển thị</label>
                                       <select name="product_status" value=@php ($pro->product_status==1)? "Hiển thị": "Ẩn" @endphp  class="form-control input-sm m-bot15">
                                             <option value="0">Ẩn</option>
                                             <option value="1">Hiển thị</option>
-                                            
                                     </select>
                                 </div>
-                               
                                 <button type="submit" name="add_product" class="btn btn-info">Cập nhật sản phẩm</button>
                                 </form>
                                 @endforeach
                             </div>
-
                         </div>
                     </section>
-
             </div>
 @endsection

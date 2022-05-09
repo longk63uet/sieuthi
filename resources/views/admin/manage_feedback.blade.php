@@ -31,7 +31,6 @@
     </thead>
     <tbody>
       @foreach ($feedbacks as $feedback)
-        
       <tr>
         <td>{{$feedback->id}}</td>
         <td>{{$feedback->name}}</td>
@@ -41,19 +40,13 @@
         <td><a href="{{url('/view-order/'.$feedback->order_id)}}"  target="_blank" rel="noopener noreferrer">{{$feedback->order_id}}</a></td>
         <td><span class="text-ellipsis">
         @php
-            
         if ($feedback->status == 0) 
          {echo "Chưa xử lý" ;}
         else echo "Đã xử lý";
-         
         @endphp
-
-        {{-- </span></td> --}}
           @if ($feedback->status == 0)
-              
-          
         <td>
-          <a onclick="return confirm('Bạn đã xử lý đơn hàng này?')" href="{{url('handle-feedback/'.$feedback->id)}}" class="active" ui-toggle-class="">
+          <a onclick="return confirm('Bạn đã xử lý khiếu nại này?')" href="{{url('handle-feedback/'.$feedback->id)}}" class="active" ui-toggle-class="">
             <i class="fa fa-check"></i>
           </a>
         </td>

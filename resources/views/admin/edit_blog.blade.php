@@ -4,13 +4,11 @@
     <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Thêm Blog mới
+                    Cập nhật blog
                 </header>
                 <div class="panel-body">
                     <div class="position-center">
                         @foreach ($data as $item)
-                            
-                        
                         <form role="form" method="POST" action="{{url('/update-blog/'.$item->id)}}" enctype="multipart/form-data">
                             @csrf
                         <div class="form-group">
@@ -53,12 +51,10 @@
                                 <option value="0">Ẩn</option>
                             </select>
                         </div>
-                        
                         <button type="submit" name="submit" class="btn btn-info">Cập nhật Blog</button>
                     </form>
                     @endforeach
                     </div>
-
                 </div>
             </section>
     </div>

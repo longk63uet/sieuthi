@@ -4,7 +4,7 @@
     <div class="col-lg-12">
             <section class="panel">
                 <header class="panel-heading">
-                    Thêm Blog mới
+                    Thêm Blog nấu ăn mới
                 </header>
                 <div class="panel-body">
                     <div class="position-center">
@@ -45,21 +45,18 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Sản phẩm đi kèm</label>
+                            <label for="exampleInputEmail1">Sản phẩm giới thiệu</label>
                             <select name="product[]" class="form-control" size="8" multiple="multiple" >
                                 @foreach ($products as $pro)
                                 <option value="{{$pro->product_id}}">{{$pro->product_name}}</option>
                                 @endforeach
                             </select>
                         </div>
-                        
                         <button type="submit" name="submit" class="btn btn-info">Thêm Blog</button>
                     </form>
                     </div>
-
                 </div>
             </section>
-
     </div>
 </div>
 @endsection

@@ -1,7 +1,5 @@
 @extends('admin_layout')
 @section('content')
-	{{-- <section class="wrapper"> --}}
-		<!-- //market-->
 		<div class="market-updates">
 			<div class="col-md-3 market-update-gd">
 				<div class="market-update-block clr-block-2">
@@ -53,26 +51,15 @@
 			</div>
 		   <div class="clearfix"> </div>
 		</div>	
-
-				<!-- </div>
-			</div>
-		</div> -->
-		
 			<div class="clearfix"> </div>
-		<!-- </div> -->
-			
 				<div class="col-md-12 agile-last-left agile-last-middle">
 					<div class="agile-last-grid">
 						<div class="area-grids-heading">
 							<h3>Báo cáo theo ngày</h3>
 						</div>
 						<div id="graph"></div>
-						
 					</div>
 				</div>
-				
-			<!-- </div> -->
-
 			<div>
 			<div class="col-md-6 stats-info widget" style="margin-top: 35px; ">
 					<div class="area-grids-heading">
@@ -81,7 +68,6 @@
 					<div id="donut"></div>
 					<script>
 						$(document).ready(function () {
-							
 							getData();
 							var chart = Morris.Bar({
 							element: 'graph',
@@ -90,7 +76,6 @@
 							labels: ['Số đơn hàng', 'Doanh thu'],
 							xLabelAngle: 10
 							});
-
 							function getData(){
 								$.ajax({
 									type: "get",
@@ -115,34 +100,28 @@
 							var donut = Morris.Donut({
 								element: 'donut',
 								data: [{"value":"","label":""}],
-								colors: ['#0b62a4','#A87D8E','#2D619C','#2D619C'],
+								colors: ['#ff00bd','#ff0000','#ffd8bd','#2D619C'],
 							});
-							
 						});
 					</script>
-
 				</div>
 				<div class="col-md-6 stats-info widget">
 					<div class="stats-info-agileits">
 						<div class="stats-title">
-							<h4 class="title">Sản phẩm bán chạy</h4>
+							<h4 class="title">Top sản phẩm bán chạy</h4>
 						</div>
 						<div class="stats-body">
 							<ul class="list-unstyled">
 								@foreach ($product as $item)
-									
-								
 								<li>{{$item->product_name}} <span class="pull-right">{{$item->sold}}</span>  
 									<div class="progress progress-striped active progress-right">
 										<div class="bar green" style="width:{{$item->sold}}%;"></div> 
 									</div>
 								</li>
 								@endforeach
-								
 							</ul>
 						</div>
 					</div>
 				</div>
 			</div>
-				
 @endsection

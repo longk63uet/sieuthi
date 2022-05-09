@@ -1,5 +1,4 @@
 @include('header')
-<!-- Hero Section Begin -->
 <section class="hero hero-normal">
     <div class="container">
         <div class="row">
@@ -13,7 +12,6 @@
                         @foreach ($cate as $category)  
                             <li><a href="{{url('danh-muc/'.$category->category_id)}}">{{$category->category_name}}</a></li>
                         @endforeach
-                        
                     </ul>
                 </div>
             </div>
@@ -41,29 +39,21 @@
         </div>
     </div>
 </section>
-<!-- Hero Section End -->
-
-<!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="{{asset('img/breadcrumb.jpg')}}">
+<section class="breadcrumb-section set-bg" data-setbg="{{asset('img/bread.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Thực phẩm sạch</h2>
+                    <h2>Thực phẩm sạch từ thiên nhiên</h2>
                     <div class="breadcrumb__option">
                         <a href="{{route('index')}}">Trang chủ</a>
-                        <a href="./index.html">Cửa hàng</a>
-                        <span>Stay Healthy</span>
+                        <a href="{{url('market')}}">Cửa hàng</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
-
-<!-- Product Details Section Begin -->
-
 <section class="product-details spad">
     <div class="container">
         <div class="row">
@@ -74,24 +64,13 @@
                         <img class="product__details__pic__item--large"
                             src="{{URL('/public/uploads/product/'.$pro->product_image)}}" alt="">
                     </div>
-                 
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
                 <div class="fb-like" data-href="" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div>
                 <div class="product__details__text">
-                    <h3>{{$pro->product_name}}</h3>
-                    <div class="product__details__rating">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star-half-o"></i>
-                        <span>(18 reviews)</span>
-                    </div>
-                
+                    <h2>{{$pro->product_name}}</h2>
                     <div class="product__details__price">{{number_format($pro->product_price)}} VNĐ</div>
-                    {{-- <p>{!!$pro->product_detail!!}</p> --}}
                     <form action="{{URL('/add-carts')}}" method="POST">
                         @csrf
                         <div class="product__details__quantity">
@@ -104,12 +83,9 @@
                         </div>
                     <input type="submit" value="Thêm vào giỏ hàng" class="btn btn-primary btn-sm">
                 </form>
-                    <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
-                
                     <ul>
                         <li><b>Tình trạng</b> <span>Còn hàng</span></li>
                         <li><b>Giao hàng</b> <span>Trong vòng 1 tiếng. <samp></samp></span></li>
-                        <li><b>Khối lượng</b> <span>0.5 kg</span></li>
                         <li><b>Chia sẻ</b>
                             <div class="share">
                                 <a href="#"><i class="fa fa-facebook"></i></a>
@@ -128,12 +104,10 @@
                             <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
                                 aria-selected="true" style="font-size: 18px">Mô tả</a>
                         </li>
-
                         <li class="nav-item">
                             <a class="nav-link " data-toggle="tab" href="#tabs-2" role="tab"
-                                aria-selected="false" style="font-size: 18px">Bình luận <span>(5)</span></a>
+                                aria-selected="false" style="font-size: 18px">Bình luận, đánh giá <span></span></a>
                         </li>
-
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tabs-1" role="tabpanel">
@@ -142,11 +116,9 @@
                                 <p>{!!$pro->product_detail!!}</p>
                             </div>
                         </div>
-
                         <div class="tab-pane" id="tabs-2" role="tabpanel">
                             <div class="product__details__tab__desc">
-                                <h6 style="font-size: 25px; margin-bottom: 5px">Đánh giá sản phẩm</h6>
-
+                                <h6 style="font-size: 25px; margin-bottom: 5px">Bình luận, đánh giá sản phẩm</h6>
                                 <ul class="list-inline inline" >
                                     @for($count=1; $count<=5; $count++)
                                     @php
@@ -155,7 +127,6 @@
                                     } else {
                                         $color = 'color:#ccc;';
                                     }
-                                    
                                     @endphp
                                     <li
                                         id="{{$pro->product_id}}-{{$count}}"
@@ -169,7 +140,6 @@
                                     </li>
                                     @endfor
                                 </ul>
-
                             </div>
                             <div class="product__details__tab__desc">
                                     <div class="">
@@ -182,31 +152,21 @@
                                             <input type="text" style="width:100%; margin-bottom: 25px" class="comment_name" name="name" placeholder="">
                                             <p style="font-size: 18px; margin-bottom: 10px"><b>Bình luận</b></p>
                                             <textarea name="comment"  class="form-control comment_content" rows="4"> </textarea>
-                                            
                                             <button type="button" class="site-btn mt-4 send_comment" style="margin-bottom: 15px">Gửi bình luận</button>
                                         </form>
                                     </div>
-
                                     <div id="load_comment" >
-                                    
                                     </div>
                                 </div>
                             </div>
-
                             </div>
                         </div>
-                                    
-                                    
-                    
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Product Details Section End -->
-
-<!-- Related Product Section Begin -->
 <section class="related-product">
     <div class="container">
         <div class="row">
@@ -222,13 +182,13 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="{{URL('/public/uploads/product/'.$relatedProduct->product_image)}}">
                         <ul class="product__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                            <li><a href="javascript:" onclick="addToWishlist({{$relatedProduct->product_id}})"><i class="fa fa-heart"></i></a></li>
+                                    <li><a  href="{{url('generate-qrcode/'.$relatedProduct->product_id)}}" target="_blank"><i class="fa fa-qrcode"></i></a></li>
+                                    <li><a onclick="addToCart({{$relatedProduct->product_id}})" href="javascript:" ><i class="fa fa-shopping-cart "></i></a></li>
                         </ul>
                     </div>
                     <div class="product__item__text">
-                        <h6><a href="#">{{$relatedProduct->product_name}}</a></h6>
+                        <h6><a href="{{url('/chi-tiet/'.$relatedProduct->product_id)}}">{{$relatedProduct->product_name}}</a></h6>
                         <h5>{{number_format($relatedProduct->product_price) }} VNĐ</h5>
                     </div>
                 </div>
@@ -237,5 +197,4 @@
         </div>
     </div>
 </section>
-<!-- Related Product Section End -->
 @include('footer')

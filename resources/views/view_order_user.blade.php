@@ -71,7 +71,7 @@
           <!-- Chi tiết -->
           <div class="card mb-3">
             <div class="table-responsive">
-              <table class="table table-hover mb-0">
+              <table class="table table-hover mb-0" id="myTable">
                 <thead>
                       <tr>
                           <th>Tên sản phẩm</th>
@@ -109,7 +109,7 @@
                   </tr>
                   <tr class="fw-bold">
                     <td colspan="2"><b>Tổng tiền</b></td>
-                    <td class="text-end">{{number_format($ord->total)}} VND</td>
+                    <td class="text-end">{{number_format($ord->order_total)}} VND</td>
                   </tr>
                 </tfoot>
               @endforeach

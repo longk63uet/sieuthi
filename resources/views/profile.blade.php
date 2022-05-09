@@ -95,6 +95,9 @@
                     <button class="btn btn-primary" type="submit" style="float: right">Cập nhật thông tin cá nhân</button>
                 </div>
                 </form>
+                @if (!empty($shipping))
+                    
+                
 
             <h3 class="col-md-12" style="text-align: center; margin-top: 30px; margin-bottom:15px">Thông tin vận chuyển</h3>
             <form class="row" action="{{url('change-shipping')}}" method="POST">
@@ -160,21 +163,12 @@
                 <div class="col-12">
                     <hr class="mt-2 mb-3">
                     <div class="d-flex flex-wrap justify-content-between align-items-center">
-                        {{-- <div class="custom-control custom-checkbox d-block">
-                            <input class="custom-control-input" type="checkbox" id="subscribe_me" checked="">
-                            <label class="custom-control-label" for="subscribe_me">Thông báo qua Email</label>
-                        </div> --}}
-                        <!-- <button class="btn btn-style-1 btn-primary" type="submit" data-toast=""
-                            data-toast-position="topRight" data-toast-type="success"
-                            data-toast-icon="fe-icon-check-circle" data-toast-title="Success!"
-                            data-toast-message="Your profile updated successfuly."
-                            style="float: right">Cập nhật thông tin vận chuyển</button> -->
                     </div>
                 </div>
                 <input type="hidden" name="shipping_id" value="{{$shipping->shipping_id}}">
-                {{-- @endforeach --}}
             </form>
         </div>
     </div>
+    @endif
 </div>
 @include('footer')

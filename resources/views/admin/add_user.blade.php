@@ -14,37 +14,33 @@
                             }
                             ?>
                         <div class="panel-body">
-
                             <div class="position-center">
                                 <form role="form" action="{{URL::to('insert-user')}}" method="POST">
                                    @csrf
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Tên</label>
-                                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Tên danh mục">
+                                    <label for="exampleInputEmail1">Tên người dùng</label>
+                                    <input type="text" name="name" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Email</label>
-                                    <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="Slug">
+                                    <label for="exampleInputEmail1">Địa chỉ email</label>
+                                    <input type="text" name="email" class="form-control">
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Số điện thoại</label>
-                                    <input type="text" name="phone" class="form-control" id="exampleInputEmail1" placeholder="Slug">
+                                    <input type="text" name="phone" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">Địa chỉ</label>
-                                    <input type="text" name="address" class="form-control" id="exampleInputEmail1" placeholder="Slug">
+                                    <label for="exampleInputEmail1">Địa chỉ người dùng</label>
+                                    <input type="text" name="address" class="form-control">
                                 </div>
                                     <div class="form-group">
-                                    <label for="exampleInputEmail1">Password</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputEmail1" placeholder="Slug">
+                                    <label for="exampleInputEmail1">Mật khẩu</label>
+                                    <input type="password" name="password" class="form-control">
                                 </div>
-                             
                                 <button type="submit"  class="btn btn-info">Thêm người dùng mới</button>
                                 </form>
                             </div>
-
                         </div>
                     </section>
-
             </div>
 @endsection

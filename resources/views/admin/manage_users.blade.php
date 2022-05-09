@@ -26,12 +26,10 @@
         <thead>
           <tr>
             <th>ID</th>
-            <th>Tên user</th>
+            <th>Tên</th>
             <th>Email</th>
             <th>Số điện thoại</th>
             <th>Địa chỉ</th>
-            <th>Vai trò</th>
-            
             <th style="width:30px;"></th>
           </tr>
         </thead>
@@ -43,36 +41,17 @@
                 <td>{{ $user->email }} <input type="hidden" name="admin_email" value="{{ $user->admin_email }}"></td>
                 <td>{{ $user->user_phone }}</td>
                 <td>{{ $user->user_address }}</td>
-                @if ($user->role == 1)
-                    <td>Khách hàng</td>
-                @else
-                    <td>Admin</td>
-                @endif
-              <td>
-                  
+                <td>
                 <a onclick="return confirm('Bạn có muốn xóa người dùng này không?')" href="{{URL::to('/delete-user/'.$user->id)}}" class="active styling-edit" ui-toggle-class="">
                   <i class="fa fa-times text-danger text"></i>
                 </a>
-                
               </td> 
-
               </tr>
             </form>
           @endforeach
         </tbody>
       </table>
     </div>
-    <footer class="panel-footer">
-      <div class="row">
-        
-        
-        <div class="col-sm-7 text-right text-center-xs">                
-          <ul class="pagination pagination-sm m-t-none m-b-none">
-            {{-- {!!$user->links()!!} --}}
-          </ul>
-        </div>
-      </div>
-    </footer>
   </div>
 </div>
 @endsection

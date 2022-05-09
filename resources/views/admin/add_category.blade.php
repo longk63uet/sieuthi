@@ -22,14 +22,11 @@
                                 <option value="0">Ẩn</option>
                             </select>
                         </div>
-                        
                         <button type="submit" name="submit" class="btn btn-info">Thêm danh mục</button>
                     </form>
                     </div>
-
                 </div>
             </section>
-
+        </div>
     </div>
-</div>
 @endsection
