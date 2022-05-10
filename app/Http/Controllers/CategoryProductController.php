@@ -90,32 +90,29 @@ class CategoryProductController extends Controller
     //Hiển thị danh mục sản phẩm
     public function showCategoryHome($category_id){
         $cate_product = DB::table('category')->where('category_status','1')->orderby('category_id','desc')->get(); 
-        
         $category_name = DB::table('category')->where('category.category_id', $category_id)->limit(1)->get();
-                      
         //Lọc
         if(isset($_GET['sort'])){
             $sort = $_GET['sort'];
             if($sort =='up' ){
-                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product_price', 'ASC')->simplePaginate(15)->appends(request()->query()); //tránh mất code khi chuyển trang
+                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product.product_price', 'ASC')->simplePaginate(15)->appends(request()->query()); //tránh mất code khi chuyển trang
             }
             elseif($sort =='down' ){
-                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product_price', 'DESC')->simplePaginate(15)->appends(request()->query());
+                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product.product_price', 'DESC')->simplePaginate(15)->appends(request()->query());
             }
             elseif($sort =='az' ){
-                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product_name', 'ASC')->simplePaginate(15)->appends(request()->query());
+                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product.product_name', 'ASC')->simplePaginate(15)->appends(request()->query());
             }
             elseif($sort =='za' ){
-                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product_name', 'DESC')->simplePaginate(15)->appends(request()->query());
+                $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->orderBy('product.product_name', 'DESC')->simplePaginate(15)->appends(request()->query());
             }
-            
         }
         //Lọc theo giá
         elseif(isset($_GET['start_price'])){
             $start_price = $_GET['start_price'];
             $end_price = $_GET['end_price'];
 
-            $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->whereBetween('product_price', [$start_price, $end_price])->orderBy('product_price', 'ASC')->paginate(15)->appends(request()->query());
+            $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->whereBetween('product_price', [$start_price, $end_price])->orderBy('product.product_price', 'ASC')->simplePaginate(15)->appends(request()->query());
         }
         else{
             $category_by_id = DB::table('product')->join('category','product.category_id','category.category_id')->where('category.category_id', $category_id)->simplePaginate(15);

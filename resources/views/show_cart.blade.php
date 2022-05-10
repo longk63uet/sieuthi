@@ -1,5 +1,4 @@
 @include('header')
-
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
@@ -40,9 +39,6 @@
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
-
-    <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
@@ -58,11 +54,9 @@
             </div>
         </div>
     </section>
-    <!-- Breadcrumb Section End -->
 @php
 $total = 0;
 @endphp
-    <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
@@ -79,7 +73,6 @@ $total = 0;
                                 </tr>
                             </thead>
                             <tbody >
-                                
                                 @if($cart)
                                 @foreach($cart->products as $carts)
                                 <tr >
@@ -111,7 +104,6 @@ $total = 0;
                                     </td>
                                 </tr>
                                 </tr>
-                                
                                 @endforeach 
                             </tbody>
                         </table>
@@ -121,42 +113,17 @@ $total = 0;
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
-                        <a href="javascipt:" class="primary-btn cart-btn cart-btn-right edit-all"><span class="icon_loading "></span>
+                        <a href="{{url('market')}}" class="primary-btn cart-btn">Tiếp tục mua sắm</a>
+                        <a href="javascript:void(0)" onclick="updateCart()" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading "></span>
                             Cập nhật giỏ hàng</a>
                     </div>
                 </div>
-                {{-- <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Mã giảm giá</h5>
-                            <form action="{{url('check-coupon')}}" method="POST">
-                                @csrf
-                                <input type="text" name="coupon" placeholder="Nhập mã giảm giá">
-                                <button type="submit" class="site-btn">Áp dụng</button>
-                                
-                            </form>
-                                @if(Session::get('coupon'))
-                                <a href="{{url('/unset-coupon')}}" class = "mt-2 btn btn-primary">Xóa mã giảm giá</a>
-                                @endif
-                        </div>
-                    </div>
-                    @if(session()->has('message'))
-                    <div class="alert alert-success mt-2">
-                        {!! session()->get('message') !!}
-                    </div>
-                    @elseif(session()->has('error'))
-                     <div class="alert alert-danger mt-2">
-                        {!! session()->get('error') !!}
-                    </div>
-                @endif --}}
                 </div>
                 <div class="col-lg-6">
                     <div class="shoping__checkout">
                         <h5>Tổng tiền</h5>
                         <ul>
                             <li>Tạm tính<span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
-
                         <?php
                         $user_id = Session::get('user_id');
                         if($user_id!=NULL){ 
@@ -182,7 +149,6 @@ $total = 0;
            
         </div>
     </section>
-    <!-- Shoping Cart Section End -->
 @include('footer')
 <script>
     $('#change-item-cart').on("click", ".icon_close", function() {
@@ -192,16 +158,11 @@ $total = 0;
             success: function (response) {
                 $('#change-item-cart').empty;
                 $('#change-item-cart').html(response);
-               
-
                 alertify.success('Đã xóa sản phẩm khỏi giỏ hàng');
-                
-        
         }
         });
     });
-
-    $(".edit-all").on("click", function(){
+    function updateCart(){
         var lists = [];
         $("table tbody tr td").each(function(){
             $(this).find("input").each(function(){
@@ -209,7 +170,6 @@ $total = 0;
                 lists.push(element);
             })
         })
-        // console.log(list);
         $.ajax({
             url: "save-cart-all",
             type: "post",
@@ -220,7 +180,5 @@ $total = 0;
             }).done(function(){
                 location.reload();
             });
-        });
-    
-   
+        }  
 </script>

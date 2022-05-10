@@ -19,7 +19,7 @@
 <!-- Breadcrumb Section End -->
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 text-center mt-5">
             <h3 class="text-center">Bạn đã đặt hàng thành công</h3>
         </div>
     </div>

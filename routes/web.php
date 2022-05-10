@@ -175,6 +175,7 @@ Route::get('/market', [HomeController::class, 'market']);
 Route::get('/blogs', [BlogController::class, 'blogs']);
 Route::get('/blog/{blog_id}', [BlogController::class, 'blogdetail']);
 Route::post('/tim-kiem-blog', [BlogController::class, 'searchBlog']);
+Route::get('/danh-muc-blog/{cateblog_id}', [BlogController::class, 'categoryBlog']);
 
 //QRCode
 Route::get('/generate-qrcode/{product_id}', [QrCodeController::class, 'generateQrcode']);
@@ -187,6 +188,7 @@ Route::post('/add-carts',[CartController::class, 'addCarts']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
+Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);
 
 //Đặt hàng
 Route::post('/save-checkout-user',[CheckoutController::class, 'saveCheckout']);

@@ -149,6 +149,7 @@
                     @endforeach
             </div>
         </div>
+        {{ $product->links() }}
     </div>
 </section>
 @include('footer')

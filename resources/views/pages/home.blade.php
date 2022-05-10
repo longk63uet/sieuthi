@@ -38,7 +38,7 @@
             @foreach ($banner as $banner)
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="banner__pic" >
-                    <a href="url('market')" target="_blank">
+                    <a href="{{url('market')}}" target="_blank">
                         <img src="{{URL('public/uploads/banner/'.$banner->banner_image)}}" alt="">
                     </a>
                 </div>

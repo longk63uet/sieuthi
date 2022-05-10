@@ -16,11 +16,16 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
             <h3 class="text-center">Bạn đã đặt hàng thành công</h3>
+            <a href="{{url('/')}}">
+            <button>Tiếp tục mua sắm</button>
+            </a>
+            <a href="{{url('manage-order-user')}}">
+            <button>Xem lại đơn hàng</button>
+            </a>
         </div>
     </div>
 </div>

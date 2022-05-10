@@ -39,9 +39,6 @@
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
-
-<!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
@@ -57,7 +54,6 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
 <div class="container">
     <div class="row featured__filter mt-4">
         @foreach ($search_product as $pro)
@@ -79,6 +75,5 @@
         @endforeach   
     </div>
 </div>
- 
 
 @include('footer')

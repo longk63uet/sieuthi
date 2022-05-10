@@ -187,7 +187,7 @@ class BlogController extends Controller
     //Hiển thị blog trên frontend
     public function blogs(){
         $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
-        $blogs = DB::table('blogs')->where('status','1')->orderby('id','desc')->paginate(6); 
+        $blogs = DB::table('blogs')->where('status','1')->orderby('id','desc')->simplePaginate(6); 
         $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
 
         return view('blogs',['blogcate'=>$blogcate, 'blogs'=>$blogs, 'recentblogs'=>$recentblogs]);
@@ -231,6 +231,14 @@ class BlogController extends Controller
 
     }
 
-    
 
+    public function categoryBlog($cateblog_id){
+        $blogcate = DB::table('blogcategory')->where('blogcategory_status','1')->orderby('blogcategory_id','desc')->get(); 
+        $category_name = DB::table('blogcategory')->where('blogcategory.blogcategory_id', $cateblog_id)->first();
+        $blogs = DB::table('blogs')->join('blogcategory','blogs.blogcategory_id','blogcategory.blogcategory_id')->where('blogcategory.blogcategory_id', $cateblog_id)->simplePaginate(6);
+        $recentblogs = DB::table('blogs')->where('status','1')->orderby('created_at','desc')->limit(3)->get(); 
+
+        return view('category_blog', ['blogs' => $blogs, 'category_name' => $category_name,'blogcate' => $blogcate, 'recentblogs' => $recentblogs]);
+
+    }
 }

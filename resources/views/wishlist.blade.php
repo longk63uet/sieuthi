@@ -34,11 +34,18 @@
                             @foreach($productwishlist as $item)
                             <tr >
                                 <td class="shoping__cart__item">
+                                    <a href="{{url('chi-tiet'.$item->product_id)}}">
                                     <img style="width:120px; hight:120px" src="{{URL('/public/uploads/product/'.$item->product_image)}}" alt="">
                                     <h5>{{$item->product_name}}</h5>
+                                </a>
                                 </td>
                                 <td class="shoping__cart__price">
                                     {{number_format($item->product_price)}}
+                                </td>
+                                <td>
+                                    <a href="javascript:" onclick="addToCart({{$item->product_id}})">
+                                    <button class="btn btn-primary">Thêm vào giỏ hàng</button>
+                                    </a>
                                 </td>
                                 <td class="shoping__cart__item__close">
                                     <a  href="{{url('/remove-wishlist/'.$item->product_id)}}">
@@ -46,8 +53,6 @@
                                     </a>
                                 </td>
                             </tr>
-                            
-                            
                             @endforeach 
                         </tbody>
                     </table>

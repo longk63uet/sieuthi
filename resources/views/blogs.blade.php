@@ -1,7 +1,5 @@
 @include('header')
-
-<!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -16,9 +14,6 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
-
-<!-- Blog Section Begin -->
 <section class="blog spad">
     <div class="container">
         <div class="row">
@@ -35,9 +30,7 @@
                         <h4>Danh mục tin tức</h4>
                         <ul>
                             @foreach ($blogcate as $item)
-                                
-                            <li><a href="#">{{$item->blogcategory_name}}</a></li>
-                            
+                            <li><a href="{{url('danh-muc-blog/'.$item->blogcategory_id)}}">{{$item->blogcategory_name}}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -45,8 +38,6 @@
                         <h4>Tin mới</h4>
                         <div class="blog__sidebar__recent">
                             @foreach ($recentblogs as $item)
-                                
-                           
                             <a href="{{url('/blog/'.$item->id)}}" class="blog__sidebar__recent__item">
                                 <div class="blog__sidebar__recent__item__pic">
                                     <img width="100" height="100" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
@@ -59,24 +50,11 @@
                             @endforeach
                         </div>
                     </div>
-                    <!-- <div class="blog__sidebar__item">
-                        <h4>Search By</h4>
-                        <div class="blog__sidebar__item__tags">
-                            <a href="#">Apple</a>
-                            <a href="#">Beauty</a>
-                            <a href="#">Vegetables</a>
-                            <a href="#">Fruit</a>
-                            <a href="#">Healthy Food</a>
-                            <a href="#">Lifestyle</a>
-                        </div>
-                    </div> -->
                 </div>
             </div>
             <div class="col-lg-8 col-md-7">
                 <div class="row">
                     @foreach ($blogs as $item)
-                        
-                    
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
@@ -94,16 +72,10 @@
                         </div>
                     </div>
                     @endforeach
-                    
-                    <!-- <div class="col-lg-12">
-                        <div class="product__pagination blog__pagination">
                             {{ $blogs->links() }}
-                        </div>
-                    </div> -->
                 </div>
             </div>
         </div>
     </div>
 </section>
-<!-- Blog Section End -->
 @include('footer')

@@ -42,7 +42,6 @@
                         <a href="#"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-instagram"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-pinterest"></i></a>
                     </div>
                 </div>
             </div>
@@ -59,7 +58,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         </div>
     </div>
 </footer>
-<!-- Footer Section End -->
 
 <!-- Js Plugins -->
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
@@ -74,63 +72,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#lightSlider").lightSlider({
-            item: 3,
-            autoWidth: false,
-            slideMove: 1, // slidemove will be 1 if loop is true
-            slideMargin: 10,
-     
-            addClass: '',
-            mode: "slide",
-            useCSS: true,
-            cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
-            easing: 'linear', //'for jquery animation',////
-     
-            speed: 400, //ms'
-            auto: false,
-            loop: false,
-            slideEndAnimation: true,
-            pause: 2000,
-     
-            keyPress: false,
-            controls: true,
-            prevHtml: '',
-            nextHtml: '',
-     
-            rtl:false,
-            adaptiveHeight:false,
-     
-            vertical:false,
-            verticalHeight:500,
-            vThumbWidth:100,
-     
-            thumbItem:10,
-            pager: true,
-            gallery: false,
-            galleryMargin: 5,
-            thumbMargin: 5,
-            currentPagerPosition: 'middle',
-     
-            enableTouch:true,
-            enableDrag:true,
-            freeMove:true,
-            swipeThreshold: 40,
-     
-            responsive : [],
-     
-            onBeforeStart: function (el) {},
-            onSliderLoad: function (el) {},
-            onBeforeSlide: function (el) {},
-            onAfterSlide: function (el) {},
-            onBeforeNextSlide: function (el) {},
-            onBeforePrevSlide: function (el) {}
-        });
-    });
-    </script>
-    
-<!-- JavaScript -->
 <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
 <script type="text/javascript">

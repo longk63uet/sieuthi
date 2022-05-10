@@ -1,6 +1,4 @@
 @include('header')
-
-<!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
@@ -16,7 +14,6 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
 <div class="container">
     @php
         $total = Session::get('cart')->totalPrice;
@@ -32,7 +29,6 @@
         </form>
         <a href="{{url('manage-order-user')}}"><button class="btn btn-primary">Xem lại đơn hàng </button></a>
         <a href="{{url('/')}}"><button class="btn btn-primary">Quay lại trang chủ </button></a>
-
     </div>
 </div>
 @include('footer')

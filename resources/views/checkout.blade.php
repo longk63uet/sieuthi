@@ -1,6 +1,4 @@
 @include('header')
-
-<!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
@@ -16,9 +14,6 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
-
-<!-- Checkout Section Begin -->
 <section class="checkout spad">
     <div class="container">
         <div class="row">
@@ -81,38 +76,10 @@
                     </div>
                     <div class="checkout__input">
                         <p>Ghi chú<span>*</span></p>
-                        <input row="7" type="text" name="shipping_note"
-                            placeholder="Bạn muốn nhắn nhủ gì tới người bán?">
+                        <textarea type="text" name="shipping_note" cols="73" rows="7" >
+                        </textarea>
                     </div>
-
-                    <div class="row col-lg-6">
-                                <div class="shoping__discount">
-                                    <h5>Mã giảm giá</h5>
-                                    <form action="{{url('check-coupon')}}" method="POST">
-                                        @csrf
-                                        <input type="text" name="coupon" placeholder="Nhập mã giảm giá">
-                                        <button type="submit" class="site-btn">Áp dụng</button>
-                                    </form>
-                                        @if(Session::get('coupon'))
-                                        <a href="{{url('/unset-coupon')}}" class = "mt-2 btn btn-primary">Xóa mã giảm giá</a>
-                                        @endif
-                                </div>
-                            
-                            @if(session()->has('message'))
-                            <div class="alert alert-success mt-2">
-                                {!! session()->get('message') !!}
-                            </div>
-                            @elseif(session()->has('error'))
-                            <div class="alert alert-danger mt-2">
-                                {!! session()->get('error') !!}
-                            </div>
-                            @endif
-                    </div>
-
-        
                 </div>
-
-                    {{-- @endif --}}
                 <div class="col-lg-4 col-md-6">
                         <div class="checkout__order">
                             <h4>Đơn hàng của bạn</h4>
@@ -128,9 +95,6 @@
                                 $totalPrice = Session::get('cart')->totalPrice;
                             @endphp
                             <div class="checkout__order__subtotal">Phí vận chuyển<span> {{number_format($shipping)}} VNĐ</span></div>
-
-
-
                             @if(Session::get('coupon'))
 								@foreach(Session::get('coupon') as $key => $cou)
 									@if($cou['coupon_condition']==1)
@@ -138,32 +102,20 @@
 												@php 
 												$discount = ($totalPrice*$cou['coupon_discount'])/100;
 												echo ' <div class="checkout__order__subtotal">Tổng giảm<span>'.number_format($discount,0,',','.').' VNĐ</span></div>';
-                                                // $cart->totalPrice=  $cart->totalPrice-$total_coupon
 												@endphp
-
-										{{-- <li>Tổng thanh toán<span>{{number_format($cart->totalPrice,0,',','.')}} VNĐ</span></li> --}}
-
 									@elseif($cou['coupon_condition']==2)
                                                 @php 
 												$discount = $cou['coupon_discount'];
 												@endphp
                                     <div class="checkout__order__subtotal">Mã giảm giá<span> {{number_format($discount,0,',','.')}} VNĐ</span></li>
-												
-										{{-- <li>Tổng thanh toán<span>{{number_format($total_coupon,0,',','.')}} VNĐ</span></li> --}}
 										@endif
 									@endforeach
-								
 							</li>
                             @else
                             @php 
 								$discount = 0;
 							@endphp
                             @endif
-                        
-
-
-
-                            {{-- <div class="checkout__order__subtotal">Mã giảm giá<span> {{number_format()}} VNĐ</span></div> --}}
                             @php
                             $price = $totalPrice + $shipping - $discount;
                             @endphp
@@ -242,35 +194,4 @@
                 </div>
     </div>
 </section>
-<!-- Checkout Section End -->
-
 @include('footer')
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('.city').on('change',function(){
-        var action = $(this).attr('id');
-        var ma_id = $(this).val();
-        var _token = $('input[name="_token"]').val();
-        var result = '';
-       
-        if(action=='city'){
-            result = 'district';
-        }else{
-            result = 'village';
-        }
-        $.ajax({
-            url : '{{url('/select-delivery')}}',
-            method: 'POST',
-            data:{action:action,ma_id:ma_id,_token:_token},
-            success:function(response){
-                // console.log();
-                $("."+result).empty; 
-                $("."+result).html(response); 
-            }
-        });
-    });
-    });
-
-   
-      
-</script>

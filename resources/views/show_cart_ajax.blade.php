@@ -10,7 +10,6 @@
             </tr>
         </thead>
         <tbody >
-            
             @if(Session::get('cart'))
             @foreach(Session::get('cart')->products as $carts)
             <tr >
@@ -41,7 +40,6 @@
                 </td>
             </tr>
             </tr>
-            
             @endforeach 
         </tbody>
         @endif

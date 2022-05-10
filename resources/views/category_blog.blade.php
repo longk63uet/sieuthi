@@ -1,13 +1,13 @@
 @include('header')
-<section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+<section class="breadcrumb-section set-bg" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Tin tức</h2>
+                    <h2>Blog nấu ăn</h2>
                     <div class="breadcrumb__option">
-                        <a href="./index.html">Cửa hàng</a>
-                        <span>Kết quả tìm kiếm cho từ khóa "{{$keywords}}"</span>
+                        <a href="./index.html">Trang chủ</a>
+                        <span>Danh mục: {{$category_name->blogcategory_name}}</span>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Danh mục</h4>
+                        <h4>Danh mục tin tức</h4>
                         <ul>
                             @foreach ($blogcate as $item)
                             <li><a href="{{url('danh-muc-blog/'.$item->blogcategory_id)}}">{{$item->blogcategory_name}}</a></li>
@@ -54,7 +54,7 @@
             </div>
             <div class="col-lg-8 col-md-7">
                 <div class="row">
-                    @foreach ($search_blog as $item)
+                    @foreach ($blogs as $item)
                     <div class="col-lg-6 col-md-6 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
@@ -72,10 +72,7 @@
                         </div>
                     </div>
                     @endforeach
-                    <div class="col-lg-12">
-                        <div class="product__pagination blog__pagination">
-                        </div>
-                    </div>
+                            {{ $blogs->links() }}
                 </div>
             </div>
         </div>
