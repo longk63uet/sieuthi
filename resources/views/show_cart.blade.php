@@ -1,6 +1,6 @@
 @include('header')
 
-    <section class="hero hero-normal">
+    <section class="hero hero-normal container">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -43,7 +43,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg container" data-setbg="img/breadcrumb.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -174,7 +174,7 @@ $total = 0;
                   }
                       ?>
                     @else
-                    <h4 style="text-align: center;">Giỏ hàng của bạn đang trống</h4>  
+                    <h4 style="text-align: center; margin-bottom: 35px;">Giỏ hàng của bạn đang trống</h4>  
                     @endif
                     </div>
                 </div>
