@@ -123,7 +123,8 @@ $total = 0;
                     <div class="shoping__checkout">
                         <h5>Tổng tiền</h5>
                         <ul>
-                            <li>Tạm tính<span>{{number_format($cart->totalPrice)}} VNĐ</span></li>
+                            <li >Tạm tính<span id="total">{{number_format($cart->totalPrice)}} VNĐ </span></li>
+                        </ul>
                         <?php
                         $user_id = Session::get('user_id');
                         if($user_id!=NULL){ 
@@ -158,10 +159,21 @@ $total = 0;
             success: function (response) {
                 $('#change-item-cart').empty;
                 $('#change-item-cart').html(response);
+                reloadTotal();
                 alertify.success('Đã xóa sản phẩm khỏi giỏ hàng');
         }
         });
     });
+    function reloadTotal(){
+        $.ajax({
+            type: "GET",
+            url: "reload-total",
+            success: function (response) {
+                $('#total').empty;
+                $('#total').html(response);
+        }
+        });
+    }
     function updateCart(){
         var lists = [];
         $("table tbody tr td").each(function(){

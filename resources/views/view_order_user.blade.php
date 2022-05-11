@@ -1,14 +1,9 @@
 @include('header')
-<!--  Chi tiet don hang-->
 <div class="container-fluid">
-
     <div class="container">
-
-      <!-- Thong tin van chuyen -->
       <div class="padding-bottom-3x mb-1">
         <div class="card mb-3">
           <div class="p-4 text-center text-white bg-dark text-lg rounded-top">
-            <!-- <a href="{{url('/')}}" class="text-uppercase" > Trang chủ </a> -->
             @foreach($order as $or)
             <span class="text-uppercase">Mã đơn hàng - </span><span class="text-medium">{{$or->order_id}}</span></div>
           <div class="d-flex flex-wrap flex-sm-nowrap justify-content-between py-3 px-2 bg-secondary">
@@ -65,10 +60,8 @@
         </div>
       </div>
       @endforeach
-      <!-- Main -->
       <div class="row">
         <div class="col-lg-8">
-          <!-- Chi tiết -->
           <div class="card mb-3">
             <div class="table-responsive">
               <table class="table table-hover mb-0" id="myTable">
@@ -114,11 +107,8 @@
                 </tfoot>
               @endforeach
               </table>
-              <!-- Tong tien -->
             </div>
           </div>
-          
-          <!-- Thanh toán -->
           <div class="card mb-3">
             <div class="card-body">
               <div class="row">
@@ -139,14 +129,11 @@
                 <div class="col-lg-6">
                   <h3 class="h6"><b>Địa chỉ nhận hàng</b></h3>
                   <address>
-                        
                     <strong>{{$shipping->shipping_surname}} {{$shipping->shipping_name}}</strong><br>
                     {{$shipping->shipping_address}}<br>
                     {{$shipping->shipping_town}}<br>
                     Số điện thoại: {{$shipping->shipping_phone}}
                   </address>
-
-                 
                 </div>
               </div>
             </div>

@@ -27,7 +27,7 @@
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Danh mục tin tức</h4>
+                        <h4>Danh mục Blog nấu ăn</h4>
                         <ul>
                             @foreach ($blogcate as $item)
                             <li><a href="{{url('danh-muc-blog/'.$item->blogcategory_id)}}">{{$item->blogcategory_name}}</a></li>

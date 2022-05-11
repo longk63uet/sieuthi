@@ -4,10 +4,10 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Tin tức</h2>
+                    <h2>Blog nấu ăn</h2>
                     <div class="breadcrumb__option">
                         <a href="./index.html">Trang chủ</a>
-                        <span>Tin tức</span>
+                        <span>Blog nấu ăn</span>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                         </form>
                     </div>
                     <div class="blog__sidebar__item">
-                        <h4>Danh mục tin tức</h4>
+                        <h4>Danh mục Blog nấu ăn</h4>
                         <ul>
                             @foreach ($blogcate as $item)
                             <li><a href="{{url('danh-muc-blog/'.$item->blogcategory_id)}}">{{$item->blogcategory_name}}</a></li>

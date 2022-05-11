@@ -1,5 +1,4 @@
 @include('header')
-<!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
     <div class="container">
         <div class="row">
@@ -15,7 +14,6 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
 <section class="wishlist-section">
     <div class="container">
         <div class="row">

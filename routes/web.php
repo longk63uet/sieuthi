@@ -186,6 +186,7 @@ Route::get('/contact', [HomeController::class, 'contact']);
 //Giỏ hàng
 Route::post('/add-carts',[CartController::class, 'addCarts']);
 Route::get('/show-cart',[CartController::class, 'showCart']);
+Route::get('/reload-total',[CartController::class, 'reloadTotal']);
 Route::get('/add-to-cart/{product_id}',[CartController::class, 'addCart'])->name('add-to-cart');
 Route::get('/delete-cart/{product_id}',[CartController::class, 'deleteCart']);
 Route::post('/save-cart-all',[CartController::class, 'saveCartAll']);

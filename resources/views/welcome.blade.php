@@ -1,6 +1,4 @@
 @include('header')
-
-    <!-- Hero Section Begin -->
     <section class="hero">
         <div class="container">
             <div class="row">
@@ -39,20 +37,15 @@
                     </div>
                     <div class="hero__item set-bg" data-setbg="img/hero/br6.png">
                         <div class="hero__text">
-                            <!-- <span>Thực phẩm sạch</span> -->
                             <h2>Rau củ <br />100% thiên nhiên</h2>
                             <p>Miễn phí giao hàng tận nơi</p>
-                            <a href="#" class="primary-btn">Mua ngay</a>
+                            <a href="{{url('market')}}" class="primary-btn">Mua ngay</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Hero Section End -->
-
-    
-
     @yield('content')
     @include('footer')
     

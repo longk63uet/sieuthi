@@ -78,7 +78,7 @@
                         <ul>
                             <li><a href="{{route('index')}}">Trang chủ</a></li>
                             <li><a href="{{url('market')}}">Cửa hàng</a></li>
-                            <li><a href="{{url('blogs')}}">Tin tức</a></li>
+                            <li><a href="{{url('blogs')}}">Blog nấu ăn</a></li>
                             <li><a href="{{url('contact')}}">Liên hệ</a></li>
                         </ul>
                     </nav>

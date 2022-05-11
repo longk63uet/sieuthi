@@ -36,8 +36,8 @@ class CartController extends Controller
        else{
         $req->session()->forget('cart');
        }       
-
         return view('show_cart_ajax');
+      
     }
 
     //Thêm 1 sản phẩm vào giỏ hàng
@@ -75,6 +75,10 @@ class CartController extends Controller
         }
         
     }
+
+    public function reloadTotal(){
+        $total = number_format(Session::get('cart')->totalPrice);
+        return $total." VNĐ";
     
-    
+    }
 }
