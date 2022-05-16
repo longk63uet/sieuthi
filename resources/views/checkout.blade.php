@@ -26,7 +26,57 @@
             <h4>Hóa đơn</h4>
             <form action="{{url('save-checkout-user')}}" method="POST">
                 @csrf
-                <div class="row">
+                 @if (!empty($shipping))
+                 <div class="row">
+                    <div class="col-lg-8 col-md-6">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Họ<span>*</span></p>
+                                    <input type="text" name="shipping_surname" value="{{$shipping->shipping_surname}}">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Tên<span>*</span></p>
+                                    <input type="text" name="shipping_name" value="{{$shipping->shipping_name}}">
+                                </div>
+                            </div>
+                        </div>
+                    <div class="checkout__input">
+                        <p>Địa chỉ chi tiết<span>*</span></p>
+                        <input type="text" name="shipping_address" placeholder="Địa chỉ chi tiết" value="{{$shipping->shipping_address}}">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Số điện thoại<span>*</span></p>
+                                <input type="text" name="shipping_phone" value="{{$shipping->shipping_phone}}">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="checkout__input">
+                                <p>Email<span>*</span></p>
+                                <input type="text" name="shipping_email" value="{{$shipping->shipping_email}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="checkout__input col-lg-4">
+                            <p>Thành phố/ Tỉnh<span>*</span></p>
+                            <input  type="text" name="shipping_city" value="Hà Nội">
+                        </div>
+                        <div class="checkout__input col-lg-4">
+                            <p>Thành quận, huyện<span>*</span></p>
+                            <input type="text"  name="shipping_town" value="{{$shipping->shipping_town}}">
+                        </div>
+                        <div class="checkout__input col-lg-4">
+                            <p>Đường<span>*</span></p>
+                            <input type="text" name="shipping_village" value="{{$shipping->shipping_village}}">
+                        </div>
+                    </div>
+                 @else
+                 <div class="row">
                     <div class="col-lg-8 col-md-6">
                         <div class="row">
                             <div class="col-lg-6">
@@ -74,6 +124,8 @@
                             <input type="text" name="shipping_village" >
                         </div>
                     </div>
+                 @endif   
+                    
                     <div class="checkout__input">
                         <p>Ghi chú<span>*</span></p>
                         <textarea type="text" name="shipping_note" cols="73" rows="7" >

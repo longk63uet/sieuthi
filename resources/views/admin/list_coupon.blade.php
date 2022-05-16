@@ -17,13 +17,15 @@
                                 Session::put('message',null);
                             }
                             ?>
-      <table class="table table-striped b-t b-light" id="myTable1">
+      <table class="table table-striped b-t b-light" id="myTable2">
         <thead>
           <tr>
             <th>Tên mã giảm giá</th>
             <th>Mã giảm giá</th>
-            <th>Số lượng mã</th>
-            <th>Điều kiện giảm giá</th>
+            <th>Số lượng</th>
+            <th>Ngày bắt đầu</th>
+            <th>Ngày kết thúc</th>
+            <th>Loại mã</th>
             <th>Số giảm</th>
           </tr>
         </thead>
@@ -33,6 +35,8 @@
             <td>{{ $cou->coupon_name }}</td>
             <td>{{ $cou->coupon_code }}</td>
             <td>{{ $cou->coupon_quantity }}</td>
+            <td>{{ $cou->coupon_start }}</td>
+            <td>{{ $cou->coupon_end }}</td>
             <td><span class="text-ellipsis">
               <?php
                if($cou->coupon_condition==1){

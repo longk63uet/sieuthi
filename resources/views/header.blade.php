@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="vn">
-
 <head>
     <meta charset="UTF-8">
     <meta name="description" content="Siêu thị xanh Online">
@@ -10,13 +9,13 @@
     <link rel="stylesheet" href="{{asset('css/bootstrap.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/elegant-icons.css')}}" type="text/css">
-    <link rel="stylesheet" href="{{asset('css/nice-select.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/jquery-ui.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/owl.carousel.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/style.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/lightslider.css')}}" type="text/css">
     <link rel="stylesheet" href="{{asset('css/login.css')}}" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
     <link rel="stylesheet" type="text/css" href="{{asset('backend/DataTables/datatables.min.css')}}"/>
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v13.0" nonce="0tCBQjfG"></script>

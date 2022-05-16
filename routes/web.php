@@ -16,6 +16,7 @@ use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\EmployeeController;
 // use QrCode;
 use Illuminate\Support\Facades\App;
 
@@ -38,6 +39,14 @@ Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/dashboard', [AdminController::class, 'showDashboard']);
 Route::get('/logout', [AdminController::class, 'logout']);
 Route::post('/admin-dashboard', [AdminController::class, 'loginDashboard']);
+
+//Nhân viên
+
+Route::get('/manage-employee', [EmployeeController::class, 'manageEmployee']);
+Route::get('/add-employee', [EmployeeController::class, 'addEmployee']);
+Route::post('/insert-employee', [EmployeeController::class, 'insertEmployee']);
+Route::get('/delete-employee/{id}', [EmployeeController::class, 'deleteEmployee']);
+
 
 //Lấy dữ liệu biểu đồ ajax
 Route::get('/get-chart-data', [AdminController::class, 'getChartData']);
@@ -62,6 +71,8 @@ Route::get('/delete-blog-category/{blogcategory_id}', [BlogController::class, 'd
 Route::post('/save-blog-category', [BlogController::class, 'saveBlogCategory']);
 Route::post('/update-blog-category/{blogcategory_id}', [BlogController::class, 'updateBlogCategory']);
 Route::get('/all-blog-category', [BlogController::class, 'allBlogCategory']);
+
+Route::get('/check-blog', [BlogController::class, 'checkBlog']);
 
 Route::post('/blogcategory-export-csv',[BlogController::class, 'export_csvBlogCategory']);
 Route::post('/blogcategory-import-csv',[BlogController::class, 'import_csvBlogCategory']);
@@ -125,6 +136,9 @@ Route::get('/delete-blog/{blog_id}', [BlogController::class, 'deleteBlog']);
 Route::get('/edit-blog/{blog_id}', [BlogController::class, 'editBlog']);
 Route::post('/update-blog/{blog_id}', [BlogController::class, 'updateBlog']);
 
+Route::get('/view-blog/{blog_id}', [BlogController::class, 'viewBlog']);
+Route::get('/pass-blog/{blog_id}', [BlogController::class, 'passBlog']);
+
 //feedback
 Route::get('/manage-feedback', [FeedbackController::class, 'manageFeedback']);
 Route::get('/handle-feedback/{feedback_id}', [FeedbackController::class, 'handleFeedback']);
@@ -142,6 +156,10 @@ Route::post('/change-profile', [HomeController::class, 'changeProfile']);
 Route::post('/change-shipping', [HomeController::class, 'changeShipping']);
 Route::get('/change-password', [HomeController::class, 'changePassword']);
 Route::post('/change-pass', [HomeController::class, 'changePass']);
+
+//Đổi quà
+Route::get('/exchange-gift', [HomeController::class, 'exchangeGift']);
+Route::get('/exchange-gift/{id}', [HomeController::class, 'exchange']);
 
 //Đơn hàng
 Route::get('/cancel-order/{order_id}', [HomeController::class, 'cancelOrder']);
@@ -176,6 +194,8 @@ Route::get('/blogs', [BlogController::class, 'blogs']);
 Route::get('/blog/{blog_id}', [BlogController::class, 'blogdetail']);
 Route::post('/tim-kiem-blog', [BlogController::class, 'searchBlog']);
 Route::get('/danh-muc-blog/{cateblog_id}', [BlogController::class, 'categoryBlog']);
+Route::get('/share-blog', [BlogController::class, 'shareBlog']);
+
 
 //QRCode
 Route::get('/generate-qrcode/{product_id}', [QrCodeController::class, 'generateQrcode']);

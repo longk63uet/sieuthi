@@ -14,10 +14,16 @@
         </div>
     </div>
 </section>
+
 <section class="blog spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-5">
+                <div style="mb-4">
+                    <a href="{{url('share-blog')}}">
+                    <button class="btn btn-primary">Chia sẻ công thức nấu ăn ngon</button>
+                    </a>
+                </div>
                 <div class="blog__sidebar">
                     <div class="blog__sidebar__search">
                         <form method="POST" action="{{url('/tim-kiem-blog')}}" >

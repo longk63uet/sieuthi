@@ -16,7 +16,10 @@ class CheckoutController extends Controller
 {
     //Hiển thị trang đặt hàng
     public function checkout(){
-        return view('checkout');
+        $user_id = Session::get('user_id');
+        $shipping = DB::table('shipping')->join('users', 'users.id', 'shipping.user_id')->where('shipping.user_id', $user_id)->first();
+
+        return view('checkout', ['shipping' => $shipping] );
     }
 
     //Thêm người dùng mới

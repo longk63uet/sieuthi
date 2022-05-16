@@ -153,9 +153,9 @@
           </tr>
         </tbody>
       </table>
-        <button><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
-        <button><a href="{{url('/shipping-order/'.$or->order_id)}}">Giao đơn hàng</a></button>
-        <button><a href="{{url('/cancel-order-admin/'.$or->order_id)}}">Hủy đơn hàng</a></button>
+        <button class="btn btn-warning"><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
+        <button class="btn btn-success"><a href="{{url('/shipping-order/'.$or->order_id)}}">Giao đơn hàng</a></button>
+        <button class="btn btn-danger"><a href="{{url('/cancel-order-admin/'.$or->order_id)}}">Hủy đơn hàng</a></button>
     </div>
     @endforeach
   </div>

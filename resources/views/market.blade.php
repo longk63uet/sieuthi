@@ -44,7 +44,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Eco Market</h2>
+                    <h2>Eko Market</h2>
                     <div class="breadcrumb__option">
                         <a href="./index.html">Trang chủ</a>
                         <span>Cửa hàng</span>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="col-lg-4 col-md-4">
                             <div class="filter__found">
-                                <h6><span>{{count($product)}}</span> Sản phẩm</h6>
+                                <h6><span>{{$totalProduct}}</span> Sản phẩm</h6>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-3">

@@ -93,14 +93,24 @@ class HomeController extends Controller
         else{
             $product = DB::table('product')->where('product_status','1')->simplePaginate(15);
         }
-        return view('market',['cate'=>$cate,'product'=>$product, 'min_price'=>$min_price, 'max_price'=>$max_price]);
+        $totalProduct = DB::table('product')->where('product_status','1')->count();
+
+        return view('market',['cate'=>$cate,'product'=>$product, 'min_price'=>$min_price, 'max_price'=>$max_price, 'totalProduct'=>$totalProduct]);
 
     }
 
     //Trang liên hệ
     public function contact(){
-        $order = Order::all();
-        return view('contact', ['order' => $order]);
+        $user = Session::get('user_id');
+        $order = DB::table('order')->where('order.user_id', $user)->get();
+        $issues = array(
+            0 => "Vấn đề khác",
+            1 => "Giao hàng chậm",
+            2 => "Thất lạc hàng hóa",
+            3 => "Giao thiếu hàng",
+            4 => "Hàng hóa hư hại",
+        );
+        return view('contact', ['order' => $order, 'issues' => $issues]);
     }
 
     //Thêm sản phẩm vào yêu thích
@@ -296,5 +306,20 @@ class HomeController extends Controller
 		$coupon = Coupon::find($coupon);
 
         return view('view_order_user')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
+    }
+
+    //Đổi quà
+    public function exchangeGift(){
+        $users_id = Session::get('user_id');
+        $user = User::find($users_id);
+        $gifts = DB::table('gift')->get();
+        return view('exchange_gift', ['user' => $user, 'gifts' => $gifts]);
+    }
+
+    public function exchange($gift_id){
+        $users_id = Session::get('user_id');
+
+        $gifts = DB::table('gift')->get();
+        return view('exchange_gift');
     }
 }

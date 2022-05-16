@@ -19,6 +19,8 @@
 <script src="{{asset('backend/js/jquery.form-validator.min.js')}}"></script>
 <link rel="stylesheet" type="text/css" href="{{asset('backend/DataTables/datatables.min.css')}}"/>
 <script type="text/javascript" src="{{asset('backend/DataTables/datatables.min.js')}}"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
+ 
 <script>
     $(document).ready( function () {
         $('#myTable').DataTable( {
@@ -31,8 +33,46 @@
         "scrollCollapse": true,
         "paging":         false
         } );
+        $('#myTable2').DataTable( {
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        "paging":         false
+        } );
     } );
-    </script>
+</script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+<script>
+$( function() {
+  $( "#datepicker1" ).datepicker(
+      {
+          dateFormat: "dd-mm-yy" ,
+          onSelect: function (date) {
+              var dt1 = $('#datepicker1').datepicker('getDate');
+              var dt2 = $('#datepicker2').datepicker('getDate');
+              if (dt1 > dt2) {
+                  $('#datepicker2').datepicker('setDate', dt1);
+              }
+              $('#datepicker2').datepicker('option', 'minDate', dt1);
+          }
+      }
+  );
+  $( "#datepicker2" ).datepicker(
+      {
+          dateFormat: "dd-mm-yy" ,
+          minDate: $('#datepicker1').datepicker('getDate'),
+          onClose: function () {
+              var dt1 = $('#datepicker1').datepicker('getDate');
+              var dt2 = $('#datepicker2').datepicker('getDate');
+              //check to prevent a user from entering a date below date of dt1
+              if (dt2 <= dt1) {
+                  var minDate = $('#datepicker2').datepicker('option', 'minDate');
+                  $('#datepicker2').datepicker('setDate', minDate);
+              }
+          }
+  });
+} );
+
+</script>
 </head>
 <body>
 <section id="container">
@@ -91,7 +131,7 @@
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/add-category')}}">Thêm danh mục sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-category')}}">Liệt kê danh mục sản phẩm</a></li>
+						<li><a href="{{URL::to('/all-category')}}">Quản lý danh mục sản phẩm</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
@@ -101,13 +141,25 @@
                     </a>
                     <ul class="sub">
 						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-product')}}">Liệt kê sản phẩm</a></li>
+						<li><a href="{{URL::to('/all-product')}}">Quản lý sản phẩm</a></li>
                     </ul>
                 </li>
 				<li>
                     <a class="active" href="{{url('/manage-user')}}">
                         <i class="fa fa-dashboard"></i>
                         <span>Quản lý người dùng</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="active" href="{{url('/manage-employee')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý nhân viên</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="active" href="{{url('/check-blog')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Kiểm duyệt Blog</span>
                     </a>
                 </li>
                 <li class="sub-menu">
@@ -151,7 +203,7 @@
                     </a>
                     <ul class="sub">
 						<li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
-						<li><a href="{{url('/manage-coupon')}}">Liệt kê mã giảm giá</a></li>
+						<li><a href="{{url('/manage-coupon')}}">Quản lý mã giảm giá</a></li>
                     </ul>
                 </li>
             </ul>          

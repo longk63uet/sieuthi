@@ -14,6 +14,7 @@ class FeedbackController extends Controller
         $feedback->email = $request->email;
         $feedback->phone = $request->phone;
         $feedback->order_id = $request->order_id;
+        $feedback->issue = $request->issue;
         $feedback->feedback = $request->feedback;
         $feedback->save();
 
@@ -23,8 +24,9 @@ class FeedbackController extends Controller
     //Quản lý feedback
     public function manageFeedback(){
         $feedbacks = Feedback::orderBy('status', 'DESC')->get();
+        $issues = array("Vấn đề khác", "Giao hàng chậm", "Thất lạc hàng hóa", "Giao thiếu hàng", "Hàng hóa hư hại");
 
-        return view('admin.manage_feedback', ['feedbacks' => $feedbacks]);
+        return view('admin.manage_feedback', ['feedbacks' => $feedbacks, 'issues' => $issues]);
     }
 
     //Xử lý feedback

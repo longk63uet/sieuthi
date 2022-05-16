@@ -1,4 +1,6 @@
+
 @extends('admin_layout')
+
 @section('content')
 <div class="row">
             <div class="col-lg-12">
@@ -29,6 +31,14 @@
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Số lượng mã</label>
                                       <input type="text" name="coupon_quantity" class="form-control" id="exampleInputEmail1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Ngày bắt đầu</label>
+                                      <input type="text" name="coupon_start" class="form-control" id="datepicker1" >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputPassword1">Ngày hết hạn</label>
+                                      <input type="text" name="coupon_end" class="form-control" id="datepicker2" >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Loại giảm giá(mức giảm)</label>

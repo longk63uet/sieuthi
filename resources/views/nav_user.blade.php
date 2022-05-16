@@ -10,6 +10,10 @@
                     </div>
                     <div class="author-card-details">
             
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Điểm Eko Point: {{$user->point}}</h5>
+                    </div>
+                    <div class="author-card-details">
+            
                         <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Ngày tham gia: {{$user->created_at}}</h5>
                     </div>
                 </div>
@@ -28,7 +32,16 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa fa-heart mr-1 text-muted"></i>
-                                <div class="light d-inline-block font-weight-medium text-uppercase">Mục yêu thích</div>
+                                <div class="light d-inline-block font-weight-medium text-uppercase">Yêu thích</div>
+                            </div>
+                            
+                        </div>
+                    </a>
+                    <a class="list-group-item" href="{{url('exchange-gift')}}">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa fa-gift mr-1 text-muted"></i>
+                                <div class="light d-inline-block font-weight-medium text-uppercase">Đổi quà</div>
                             </div>
                             
                         </div>
@@ -44,7 +57,7 @@
                     <a class="list-group-item" href="{{url('change-password')}}" >
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <i class="fa fa-tag mr-1 text-muted"></i>
+                                <i class="fa fa-key mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Đổi mật khẩu</div>
                             </div>
                         </div>

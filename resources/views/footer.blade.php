@@ -62,7 +62,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <!-- Js Plugins -->
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/jquery.nice-select.min.js')}}"></script>
 <script src="{{asset('js/jquery-ui.min.js')}}"></script>
 <script src="{{asset('js/jquery.slicknav.js')}}"></script>
 <script src="{{asset('js/mixitup.min.js')}}"></script>
@@ -273,14 +272,35 @@ $(document).ready(function(){
     }
    
 </script>
+<script>
+    function exchangepoint(id) {
+        $.ajax({
+            type: "GET",
+            url: "/exchange/" + id,
+            success: function (response) {
+                $(selector).empty();
+                $(selector).html(response);
+                
+            }
+        });
+    }
+</script>
 <script type="text/javascript" src="{{asset('backend/DataTables/datatables.min.js')}}"></script>
  
 <script>
     $(document).ready( function () {
     $('#myTable').DataTable();
         } );
+        
 </script>
-
+<script type="text/javascript" src="{{asset('backend/ckeditor/ckeditor.js')}}"></script>
+<script type="text/javascript">
+    CKEDITOR.replace( 'editor1' );
+    CKEDITOR.replace( 'editor2' );
+    CKEDITOR.replace( 'editor3' );
+    CKEDITOR.replace( 'editor4' );
+    CKEDITOR.replace( 'editor5' );
+</script>
 </body>
 
 </html>

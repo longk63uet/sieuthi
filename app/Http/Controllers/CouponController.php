@@ -48,6 +48,8 @@ class CouponController extends Controller
     	$coupon->coupon_discount = $data['coupon_discount'];
     	$coupon->coupon_code = $data['coupon_code'];
     	$coupon->coupon_quantity = $data['coupon_quantity'];
+        $coupon->coupon_start = $data['coupon_start'];
+        $coupon->coupon_end = $data['coupon_end'];
     	$coupon->coupon_condition = $data['coupon_condition'];
     	$coupon->save();
     	Session::put('message','Thêm mã giảm giá thành công');

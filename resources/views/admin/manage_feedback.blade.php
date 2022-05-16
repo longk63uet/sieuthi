@@ -24,6 +24,7 @@
         <th>Tên</th>
         <th>Email</th>
         <th>Số điện thoại</th>
+        <th>Vấn đề</th>
         <th>Nội dung</th>
         <th>Đơn hàng</th>
         <th>Trạng thái</th>
@@ -36,6 +37,7 @@
         <td>{{$feedback->name}}</td>
         <td>{{$feedback->email}}</td>
         <td>{{$feedback->phone}}</td>
+        <td>{{$issues[$feedback->issue]}}</td>
         <td>{{$feedback->feedback}}</td>
         <td><a href="{{url('/view-order/'.$feedback->order_id)}}"  target="_blank" rel="noopener noreferrer">{{$feedback->order_id}}</a></td>
         <td><span class="text-ellipsis">

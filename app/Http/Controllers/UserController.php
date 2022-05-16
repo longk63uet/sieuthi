@@ -13,7 +13,7 @@ class UserController extends Controller
 
     //Quản lý tất cả người dùng khách hàng
    public function manageUser(){
-    $user = User::orderBy('id','DESC')->where('role', 1)->paginate(5);
+    $user = User::orderBy('id','DESC')->where('role', 1)->get();
 
     return view('admin.manage_users')->with(compact('user'));
    }
@@ -44,21 +44,6 @@ class UserController extends Controller
         Session::put('message','Thêm người dùng mới thành công');
 
         return Redirect::to('manage-user');
-    }
-
-    //Lưu người dùng mới
-    public function store_users(Request $request){
-        $data = $request->all();
-        $admin = new User();
-        $admin->admin_name = $data['admin_name'];
-        $admin->admin_phone = $data['admin_phone'];
-        $admin->admin_email = $data['admin_email'];
-        $admin->admin_password = md5($data['admin_password']);
-        $admin->save();
-        $admin->roles()->attach(Roles::where('name','user')->first());
-        Session::put('message','Thêm users thành công');
-        
-        return Redirect::to('users');
     }
 
 }

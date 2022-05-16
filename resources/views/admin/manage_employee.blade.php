@@ -3,13 +3,13 @@
     <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">
-      Quản lý người dùng
+      Quản lý nhân viên
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-3">
         <div class="input-group">
           <span class="input-group-btn">
-           <a href="{{url('/add-user/')}}"> <button class="btn btn-primary" type="button">Thêm người dùng mới</button> </a>
+           <a href="{{url('/add-employee/')}}"> <button class="btn btn-primary" type="button">Thêm nhân viên mới</button> </a>
           </span>
         </div>
       </div>
@@ -30,19 +30,21 @@
             <th>Email</th>
             <th>Số điện thoại</th>
             <th>Địa chỉ</th>
+            <th>Chức vụ</th>
             <th style="width:30px;"></th>
           </tr>
         </thead>
         <tbody>
-          @foreach($user as $user)
+          @foreach($employee as $employee)
               <tr>
-                <td>{{ $user->id }}</td>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }} <input type="hidden" name="admin_email" value="{{ $user->admin_email }}"></td>
-                <td>{{ $user->user_phone }}</td>
-                <td>{{ $user->user_address }}</td>
+                <td>{{ $employee->id }}</td>
+                <td>{{ $employee->employee_name }}</td>
+                <td>{{ $employee->employee_email }} <input type="hidden" name="admin_email" value="{{ $employee->admin_email }}"></td>
+                <td>{{ $employee->employee_phone }}</td>
+                <td>{{ $employee->employee_address }}</td>
+                <td>{{ $employee->employee_job }}</td>
                 <td>
-                <a onclick="return confirm('Bạn có muốn xóa người dùng này không?')" href="{{URL::to('/delete-user/'.$user->id)}}" class="active styling-edit" ui-toggle-class="">
+                <a onclick="return confirm('Bạn có muốn xóa thông tin nhân viên này không?')" href="{{URL::to('/delete-employee/'.$employee->id)}}" class="active styling-edit" ui-toggle-class="">
                   <i class="fa fa-times text-danger text"></i>
                 </a>
               </td> 

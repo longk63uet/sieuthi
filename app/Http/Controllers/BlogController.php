@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Exports\BlogCategoryExport;
 use App\Imports\BlogCategoryImport;
+use App\Models\Blog;
 use App\Models\Product;
 use Excel;
 session_start();
@@ -58,6 +59,14 @@ class BlogController extends Controller
         Session::put('message', "Cập nhật danh mục sản phẩm thành công");
 
         return Redirect::to('/all-blog-category');
+
+    }
+
+    //Xem trước blog
+    public function viewBlog($blog_id){
+        $blog = Blog::find($blog_id);
+
+        return view('admin.view_blog', ['blog' => $blog]);
 
     }
 
@@ -116,10 +125,15 @@ class BlogController extends Controller
         $data['title'] = $request->title;
         $data['content'] = $request->content;
         $data['summary'] = $request->summary;
-        $data['status'] = $request->status;
         $data['product'] = $products;
         $data['blogcategory_id'] = $request->blogcategory_id;
         $data['user_id'] = Session::get('user_id') ? Session::get('user_id') : 1;
+        if($data['user_id'] == 1){
+            $data['status'] = $request->status;
+        }
+        else{
+            $data['status'] = 0;
+        }
         $get_image = $request->file('images');
 
         if($get_image){
@@ -131,13 +145,24 @@ class BlogController extends Controller
             DB::table('blogs')->insert($data);
             Session::put('message','Thêm sản phẩm thành công');
 
-            return Redirect::to('/manage-blog');
+            if($data['user_id'] == 1){
+                return redirect()->back();
+            }
+            else{
+                return view('share_blog_success');
+            }
+            
         }
         $data['images'] = '';
         DB::table('blogs')->insert($data);
         Session::put('message', "Thêm Blog thành công");
 
-        return Redirect::to('/manage-blog');
+        if($data['user_id'] == 1){
+            return redirect()->back();
+        }
+        else{
+            return view('share_blog_success');
+        }
     }
 
     //Chỉnh sửa Blog
@@ -152,7 +177,7 @@ class BlogController extends Controller
     public function deleteBlog($blog_id ){
         $data = DB::table('blogs')->where('id', $blog_id)->delete();
         Session::put('message', "Xóa sản phẩm thành công");
-        return Redirect::to('/manage-blog');
+        return redirect()->back();
     }
 
     //Cập nhật Blog
@@ -202,7 +227,7 @@ class BlogController extends Controller
         ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
         ->where('blogs.id',$blog_id)->get();
         foreach($blog as $blogs){
-            
+            $blogs->view = $blogs->view + 1;            
             $related = $blogs->blogcategory_id;
             $products = $blogs->product;
         }
@@ -241,4 +266,32 @@ class BlogController extends Controller
         return view('category_blog', ['blogs' => $blogs, 'category_name' => $category_name,'blogcate' => $blogcate, 'recentblogs' => $recentblogs]);
 
     }
+
+    public function shareBlog(){
+        $blogcate = DB::table('blogcategory')->orderBy('blogcategory_id','desc')->get();
+        $products = Product::all();
+
+        return view('share_blog')->with(compact('blogcate', 'products'));  
+    }
+
+    public function checkBlog(){
+        $blogs = DB::table('blogs')
+        ->select('blogs.*', 'users.name', 'blogcategory.blogcategory_name')
+        ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
+        ->join('users','users.id','=','blogs.user_id')
+        ->where('blogs.user_id', '<>', 1)
+        ->get();
+
+        return view('admin.check_blog')->with(compact('blogs'));  
+    }
+
+    public function passBlog($blog_id){
+        $data =Blog::find($blog_id);
+        $data->status = 1;
+        $data->save();
+
+        return Redirect::to('/check-blog');;
+    }
+
+    
 }
