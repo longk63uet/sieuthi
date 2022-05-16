@@ -162,6 +162,12 @@ $( function() {
                         <span>Kiểm duyệt Blog</span>
                     </a>
                 </li>
+                <li>
+                    <a class="active" href="{{url('/manage-gift')}}">
+                        <i class="fa fa-dashboard"></i>
+                        <span>Quản lý quà tặng</span>
+                    </a>
+                </li>
                 <li class="sub-menu">
                     <a href="javascript:;">
                         <i class="fa fa-book"></i>

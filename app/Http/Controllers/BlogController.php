@@ -293,5 +293,7 @@ class BlogController extends Controller
         return Redirect::to('/check-blog');;
     }
 
+   
+
     
 }

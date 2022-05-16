@@ -308,18 +308,5 @@ class HomeController extends Controller
         return view('view_order_user')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
     }
 
-    //Đổi quà
-    public function exchangeGift(){
-        $users_id = Session::get('user_id');
-        $user = User::find($users_id);
-        $gifts = DB::table('gift')->get();
-        return view('exchange_gift', ['user' => $user, 'gifts' => $gifts]);
-    }
-
-    public function exchange($gift_id){
-        $users_id = Session::get('user_id');
-
-        $gifts = DB::table('gift')->get();
-        return view('exchange_gift');
-    }
+    
 }

@@ -10,9 +10,9 @@
                     </div>
                     <div class="author-card-details">
             
-                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Điểm Eko Point: {{$user->point}}</h5>
+                        <h5 class="author-card-name text-lg point" style="margin-top: 10px; font-size: 15px">Điểm Eko Point: {{$user->point}}</h5>
                     </div>
-                    <div class="author-card-details">
+                    <div class="author-card-details"> 
             
                         <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Ngày tham gia: {{$user->created_at}}</h5>
                     </div>

@@ -272,19 +272,7 @@ $(document).ready(function(){
     }
    
 </script>
-<script>
-    function exchangepoint(id) {
-        $.ajax({
-            type: "GET",
-            url: "/exchange/" + id,
-            success: function (response) {
-                $(selector).empty();
-                $(selector).html(response);
-                
-            }
-        });
-    }
-</script>
+
 <script type="text/javascript" src="{{asset('backend/DataTables/datatables.min.js')}}"></script>
  
 <script>

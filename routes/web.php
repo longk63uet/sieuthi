@@ -17,6 +17,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\GiftController;
 // use QrCode;
 use Illuminate\Support\Facades\App;
 
@@ -52,6 +53,11 @@ Route::get('/delete-employee/{id}', [EmployeeController::class, 'deleteEmployee'
 Route::get('/get-chart-data', [AdminController::class, 'getChartData']);
 Route::get('/get-donut-data', [AdminController::class, 'getDonutData']);
 
+//Quà tặng
+Route::get('/manage-gift', [GiftController::class, 'manageGift']);
+Route::get('/add-gift', [GiftController::class, 'addGift']);
+Route::post('/insert-gift', [GiftController::class, 'insertGift']);
+Route::get('/delete-gift/{gift_id}', [GiftController::class, 'deleteGift']);
 
 //category
 Route::get('/add-category', [CategoryProductController::class, 'addCategory']);
@@ -158,8 +164,8 @@ Route::get('/change-password', [HomeController::class, 'changePassword']);
 Route::post('/change-pass', [HomeController::class, 'changePass']);
 
 //Đổi quà
-Route::get('/exchange-gift', [HomeController::class, 'exchangeGift']);
-Route::get('/exchange-gift/{id}', [HomeController::class, 'exchange']);
+Route::get('/exchange-gift', [GiftController::class, 'exchangeGift']);
+Route::get('/exchange-gift/{point}', [GiftController::class, 'exchange']);
 
 //Đơn hàng
 Route::get('/cancel-order/{order_id}', [HomeController::class, 'cancelOrder']);

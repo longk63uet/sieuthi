@@ -1,6 +1,10 @@
 @include('header')
 @include('nav_user')
+
         <div class="col-lg-8 pb-5">
+            <div class="gift card">
+
+            </div>
             <div class="d-flex justify-content-end pb-3">
             </div>
             <div class="table-responsive">
@@ -20,7 +24,7 @@
                             <td>{{$gift->point}}</td>
                             <td>{{$gift->gift}}</td>
                             <td>
-                                <a href="javascript:" onclick="exchangepoint({{$gift->id}})">
+                                <a href="javascript:" onclick="exchangepoint({{$gift->point}})">
                                     <button class="btn btn-primary">Đổi quà</button>
                                 </a>
                             </td>
@@ -33,4 +37,20 @@
     </div>
 </div>
 @include('footer')
+<script>
+    function reloadPoint(){
+        $ajax
+    }
+    function exchangepoint(point) {
+        $.ajax({
+            type: "GET",
+            url: "exchange-gift/" + point,
+            success: function (response) {
+                $('.gift').empty();
+                $('.gift').html(response);
+
+            }
+        });
+    }
+</script>
 
