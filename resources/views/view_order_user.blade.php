@@ -105,7 +105,7 @@
                     <td class="text-end">{{number_format($ord->order_total)}} VND</td>
                   </tr>
                 </tfoot>
-              @endforeach
+              
               </table>
             </div>
           </div>
@@ -149,16 +149,24 @@
           </div>
           <div class="card mb-3">
             <!-- Thông tin vận chuyển -->
+            @if (!empty($ord->order_code))
             <div class="card-body">
               <h3 class="h6"><b>Thông tin vận chuyển</b></h3>
-              <span>Eco Express</span> <br>
-              <span>Mã vận đơn: 32X8345GTR1 <a href="#" class="text-decoration-underline" target="_blank"></a> 
+              <span>Eko Express</span> <br>
+              <span>Mã vận đơn: {{$ord->order_code}} <a href="#" class="text-decoration-underline" target="_blank"></a> 
               <i class="bi bi-box-arrow-up-right"></i> </span>
               <hr>
+              <h3 class="h6">Thông tin người giao hàng</h3>
+              <address>
+                <strong>{{$ord->shipper_name}}</strong><br>
+                Liên hệ: {{$ord->shipper_phone}}
+              </address>
             </div>
+            @endif
           </div>
         </div>
       </div>
+      @endforeach
     </div>
   </div>
   @include('footer');

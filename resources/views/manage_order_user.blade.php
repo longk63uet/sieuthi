@@ -34,7 +34,7 @@
                             @if ($item->order_status == 1)
                             <td><a onclick="return confirm('Bạn có muốn hủy đơn hàng này không?')"  href="{{url('cancel-order/'.$item->order_id)}}"><button class="btn btn-danger">Hủy đơn hàng</button></a></td>
                             @elseif ($item->order_status == 2)
-                            <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-danger">Đã nhận được hàng</button></a></td>
+                            <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-primary">Đã nhận được hàng</button></a></td>
                             @endif
 
                         </tr>

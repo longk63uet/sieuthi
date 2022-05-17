@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Shipping;
 use Illuminate\Support\Facades\App;
 use App\Models\Coupon;
+use App\Models\Employee;
 use App\Models\Payment;
 use PDF;
 
@@ -56,8 +57,9 @@ class OrderController extends Controller
 		$shipping = Shipping::where('shipping_id',$shipping_id)->first();
 		$payment = Payment::find($payment_id);
 		$coupon = Coupon::find($coupon);
+		$shippers = Employee::where('employee_job', 'Shipper')->get();
 		
-		return view('admin.view_order')->with(compact('order_details','user','shipping','order','order_status', 'payment'));
+		return view('admin.view_order')->with(compact('order_details','user','shipping','order','order_status', 'payment', 'shippers'));
     }
 
 	//In đơn hàng 
@@ -232,7 +234,7 @@ class OrderController extends Controller
 	}
 
 	//Xóa đơn hàng
-	public function deleteOrder(Request $request ,$order_id){
+	public function deleteOrder($order_id){
 		$order = Order::where('order_id',$order_id)->delete();
         Session::put('message', "Xóa đơn hàng thành công");
 
@@ -241,9 +243,13 @@ class OrderController extends Controller
 	}
 
 	//Giao đơn hàng
-	public function shippingOrder($order_id){
-		$order = Order::find($order_id);
+	public function shippingOrder(Request $request){
+		$shipper = Employee::find($request->shipper_id);
+		$order = Order::find($request->order_id);
 		$order->order_status = 2;
+		$order->shipper_name = $shipper->employee_name;
+		$order->shipper_phone = $shipper->employee_phone;
+		$order->order_code = rand(0,9999999);
 		$order->save();
 
 		return Redirect::to('manage-order');

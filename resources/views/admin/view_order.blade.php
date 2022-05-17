@@ -111,7 +111,7 @@
             @endphp
             <td>{{$details->product_name}}</td>
             <td>{{$details->product_quantity}}</td>
-            <td>{{number_format($details->product_price ,0,',','.')}} VNĐ</td>
+            <td>{{number_format($details->product_price)}} VNĐ</td>
           </tr>
         @endforeach
           </tr>
@@ -153,10 +153,39 @@
           </tr>
         </tbody>
       </table>
-        <button class="btn btn-warning"><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
-        <button class="btn btn-success"><a href="{{url('/shipping-order/'.$or->order_id)}}">Giao đơn hàng</a></button>
-        <button class="btn btn-danger"><a href="{{url('/cancel-order-admin/'.$or->order_id)}}">Hủy đơn hàng</a></button>
+        
     </div>
+
+    @if ($or->order_status == 1)
+    
+    <form action="{{url('shipping-order')}}" method="POST">
+      @csrf
+      <input type="hidden" name="order_id" value="{{$or->order_id}}">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Chọn nhân viên giao hàng</label>
+        <select type="text" name="shipper_id" class="form-control">
+          @foreach ($shippers as $shipper)
+            <option value="{{$shipper->id}}"> {{$shipper->employee_name}}</option>
+            @endforeach
+        </select>
+      </div>
+      <button type="submit"  class="btn btn-success" style="margin-bottom: 7px">Giao đơn hàng</button>
+    </form>
+
+    @elseif($or->order_status == 2 || $or->order_status == 3)
+    <div class="card" style="width: 18rem;">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Mã vận đơn: {{$or->order_code}}</li>
+        <li class="list-group-item">Tên Shipper: {{$or->shipper_name}}</li>
+        <li class="list-group-item">Số điện thoại: {{$or->shipper_phone}}</li>
+      </ul>
+    </div>  
+
+    @endif
+    <button class="btn btn-warning"><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
+    @if ($or->order_status == 1)
+    <button class="btn btn-danger"><a href="{{url('/cancel-order-admin/'.$or->order_id)}}">Hủy đơn hàng</a></button>
+    @endif
     @endforeach
   </div>
 </div>
