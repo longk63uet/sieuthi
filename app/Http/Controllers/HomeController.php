@@ -115,7 +115,8 @@ class HomeController extends Controller
 
     //Thêm sản phẩm vào yêu thích
     public function addWishlist($product_id){
-        $wishlist = DB::table('wishlist')->get();
+        $user_id = Session::get('user_id');
+        $wishlist = DB::table('wishlist')->where('user_id', $user_id)->get();
         foreach($wishlist as $value){
             if($value->product_id == $product_id){
                 return 'error';
