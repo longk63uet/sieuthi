@@ -63,9 +63,10 @@ class Cart{
     public function updateCart($id, $product, $quantity){
         $this->totalQuantity = $this->totalQuantity - $this->products[$id]['quantity'] + $quantity;
         $this->products[$id]['quantity'] = $quantity; 
+        $this->totalPrice = $this->totalPrice -  $this->products[$id]['price'];
         $this->products[$id]['price'] = $this->products[$id]['quantity'] * $product->product_price;
         
-        $this->totalPrice += $this->products[$id]['price'];
+        $this->totalPrice = $this->totalPrice  + $this->products[$id]['price'];
     }
 }
 
