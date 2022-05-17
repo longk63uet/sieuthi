@@ -69,7 +69,7 @@
                             <div class="blog__item__text">
                                 <ul>
                                     <li><i class="fa fa-calendar-o" style="padding-right: 5px"></i>{{$item->created_at}}</li>
-                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                    <li><i class="fa fa-eye"></i> {{$item->view}}</li>
                                 </ul>
                                 <h5><a href="{{url('/blog/'.$item->id)}}">{{$item->title}}</a></h5>
                                 <p>{!!$item->summary!!}</p>

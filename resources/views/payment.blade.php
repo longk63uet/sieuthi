@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
-            <h3 class="text-center">Bạn đã đặt hàng thành công</h3>
+            <h3 class="text-center mb-4">Bạn đã đặt hàng thành công</h3>
             <a href="{{url('/')}}">
             <button>Tiếp tục mua sắm</button>
             </a>
