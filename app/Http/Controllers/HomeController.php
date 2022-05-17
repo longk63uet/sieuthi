@@ -285,6 +285,12 @@ class HomeController extends Controller
         $order->order_status = 3;
         $order->save();
 
+        //Thêm point
+        $user_id = Session::get('user_id');
+        $user = User::find($user_id);
+        $user->point += $order->order_total/200000;
+        $user->save();
+
         return redirect()->back();
 
     }

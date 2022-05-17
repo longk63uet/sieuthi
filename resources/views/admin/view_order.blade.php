@@ -110,7 +110,7 @@
              $total+= $details->product_price;
             @endphp
             <td>{{$details->product_name}}</td>
-            <td>{{$details->product_quantiry}}</td>
+            <td>{{$details->product_quantity}}</td>
             <td>{{number_format($details->product_price ,0,',','.')}} VNĐ</td>
           </tr>
         @endforeach

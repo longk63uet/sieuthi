@@ -67,21 +67,6 @@
                             @endforeach
                         </ul>
                     </div>
-                    <div class="sidebar__item">
-                        <h4>Lọc theo giá</h4>
-                        <div class="price-range-wrap">
-                            <div class="price-range ui-slider ui-corner-all ui-slider-horizontal ui-widget ui-widget-content"
-                                data-min="100" data-max="2000">
-                                <div class="ui-slider-range ui-corner-all ui-widget-header"></div>
-                            </div>
-                            <div class="range-slider">
-                                <div class="price-input">
-                                    <input type="text" id="minamount">
-                                    <input type="text" id="maxamount">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-lg-9 col-md-7">

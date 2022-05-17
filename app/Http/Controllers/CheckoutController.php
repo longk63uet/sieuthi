@@ -83,10 +83,7 @@ class CheckoutController extends Controller
         $order_data['order_total'] = $request->price;
         $order_id = DB::table('order')->insertGetId($order_data);
 
-        //Thêm point
-        $user = User::find($user_id);
-        $user->point += $order_data['order_total']/200000;
-        $user->save();
+        
 
         //Lưu thông tin chi tiết đơn hàng
         foreach($cart->products as $carts){

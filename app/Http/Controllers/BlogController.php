@@ -227,9 +227,12 @@ class BlogController extends Controller
         ->join('users', 'users.id', 'blogs.user_id')
         ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
         ->where('blogs.id',$blog_id)->get();
+        $blog_view = Blog::find($blog_id);
+        $blog_view->view ++;
+        $blog_view->save();
+
         foreach($blog as $blogs){
             //Tăng view
-            $blogs->view = $blogs->view + 1;            
             $related = $blogs->blogcategory_id;
             $products = $blogs->product;
             //Tăng point cho tác giả bài viết
@@ -296,6 +299,10 @@ class BlogController extends Controller
         $data =Blog::find($blog_id);
         $data->status = 1;
         $data->save();
+
+        $user = User::find($data->user_id);
+        $user->point += 5;
+        $user->save();
 
         return Redirect::to('/check-blog');;
     }

@@ -54,7 +54,7 @@ class GiftController extends Controller
 
         return $reponse;
         }
-        else return "Bạn không đủ điểm Eko Point";
+        else return "Bạn không đủ điểm Eko Point, hãy mua thêm hàng hoặc chia sẻ công thức nấu ăn để nhận point nhé";
     }
 
     public function manageGift(){
