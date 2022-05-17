@@ -1,7 +1,7 @@
 @include('header')
 <div class="container mb-4 main-container">
     <div class="row">
-        <div class="col-lg-3 pb-5" style="margin-right: 40px">
+        <div class="col-lg-3 pb-5" style="margin-right: 40px; margin-top: 40px">
             <div class="author-card pb-3">
                 <div class="author-card-profile">
                     <div class="author-card-avatar">
