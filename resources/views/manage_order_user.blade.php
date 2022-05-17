@@ -21,13 +21,13 @@
                             <td>{{$item->created_at}}</td>
                             
                             @if ($item->order_status == 1)
-                            <td><span class="badge badge-info m-0"> Đang xử lý </span></td>
+                            <td><span class="badge badge-primary m-0"> Đang xử lý </span></td>
                             @elseif ($item->order_status == 0)
-                            <td><span class="badge badge-info m-0"> Đơn hàng đã hủy </span></td>
+                            <td><span class="badge badge-danger m-0"> Đơn hàng đã hủy </span></td>
                             @elseif ($item->order_status == 2)
                             <td><span class="badge badge-info m-0"> Đang giao hàng </span></td>
                             @elseif  ($item->order_status == 3)
-                            <td><span class="badge badge-info m-0"> Giao hàng thành công </span></td>
+                            <td><span class="badge badge-success m-0"> Giao hàng thành công </span></td>
                             @endif
                             
                             <td>{{number_format($item->order_total)}} VNĐ</td>
