@@ -1,5 +1,5 @@
 @include('header')
-<section class="breadcrumb-section set-bg" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
+<section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -21,7 +21,7 @@
             <div class="col-lg-4 col-md-5">
                 <div style="mb-4">
                     <a href="{{url('share-blog')}}">
-                    <button class="btn btn-primary">Chia sẻ công thức nấu ăn ngon</button>
+                    <button class="btn btn-color">Hãy chia sẻ công thức nấu ăn ngon của bạn</button>
                     </a>
                 </div>
                 <div class="blog__sidebar">

@@ -1225,8 +1225,8 @@ ol {
 	/* height: 180px; */
 	align-items: center;
 	padding: 45px 0 40px;
-	margin-left: 102px;
-	margin-right: 104px;
+	/* margin-left: 102px;
+	margin-right: 104px; */
 }
 
 .breadcrumb__text h2 {
@@ -3046,8 +3046,8 @@ ol {
 }
 
 .contact-form {
-	padding-top: 80px;
-	padding-bottom: 80px;
+	padding-top: 60px;
+	padding-bottom: 30px;
 }
 
 .contact-form form input {
@@ -4464,4 +4464,42 @@ ol {
 	background-color: rgb(10, 181, 39);
 }
 
+/* scroll up */
+#scrollUp {
+	display: none;
+	position: fixed;
+	bottom: 15px;
+	right: 20px;
+	z-index: 99;
+	font-size: 18px;
+	border: none;
+	outline: none;
+	background-color: #56ad39;
+	color: white;
+	cursor: pointer;
+	padding: 10px;
+	border-radius: 4px;
+}
 
+#scrollUp:hover {
+	background-color: rgb(113, 112, 112);
+}
+
+/* payment */
+.pynt-form{
+	margin-right: 20px;
+	
+}
+.center-form{
+	margin: 0 auto;
+	width: 550px;
+}
+.btn-color{
+	background-color: #56ad39;
+	color: white;
+}
+
+/* share blog */
+.share-cook{
+	
+}

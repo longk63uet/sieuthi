@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button class="btn btn-primary" type="submit" style="float: right">Cập nhật thông tin cá nhân</button>
+                    <button class="btn btn-success" type="submit" style="float: right">Cập nhật thông tin cá nhân</button>
                 </div>
                 </form>
                 @if (!empty($shipping))
@@ -98,7 +98,7 @@
                     </div>
                 </div>
                 <div class="col-md-12">
-                    <button class="btn btn-primary" type="submit" style="float: right">Cập nhật thông tin vận chuyển</button>
+                    <button class="btn btn-success" type="submit" style="float: right">Cập nhật thông tin vận chuyển</button>
                 </div>
 
                 <div class="col-12">

@@ -8,7 +8,7 @@
                         <a href="./index.html"><img src="img/eco.png" alt=""></a>
                     </div>
                     <ul>
-                        <li>Địa chỉ: Đại học công nghệ</li>
+                        <li>Địa chỉ: Xuân Thủy, Cầu Giấy</li>
                         <li>Điện thoại: +84 999 999</li>
                         <li>Email: sieuthixanh@online.com</li>
                     </ul>
@@ -56,6 +56,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 </div>
             </div>
         </div>
+
+        <button onclick="topFunction()" id="scrollUp" title="Go to top">
+            <i class="fa fa-angle-up"></i>
+        </button>
     </div>
 </footer>
 
@@ -191,11 +195,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
         
         
     });
-
-
-
-
-
 </script>
 <script>
    function addToWishlist(id) {
@@ -288,6 +287,26 @@ $(document).ready(function(){
     CKEDITOR.replace( 'editor3' );
     CKEDITOR.replace( 'editor4' );
     CKEDITOR.replace( 'editor5' );
+</script>
+
+<!-- scroll up -->
+<script>
+    //Get the button
+    var mybutton = document.getElementById("scrollUp");
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
 </script>
 </body>
 

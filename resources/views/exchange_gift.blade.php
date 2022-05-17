@@ -25,7 +25,7 @@
                             <td>{{$gift->gift}}</td>
                             <td>
                                 <a href="javascript:" onclick="exchangepoint({{$gift->point}})">
-                                    <button class="btn btn-primary">Đổi quà</button>
+                                    <button class="btn btn-success">Đổi quà</button>
                                 </a>
                             </td>
                           </tr>

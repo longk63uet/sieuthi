@@ -39,12 +39,12 @@
         </div>
     </div>
 </section>
-<section class="breadcrumb-section set-bg" data-setbg="img/bread.jpg">
+<section class="breadcrumb-section set-bg container" data-setbg="img/bread.jpg">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <div class="breadcrumb__text">
-                    <h2>Eko Market</h2>
+                    <h2>Eco Market</h2>
                     <div class="breadcrumb__option">
                         <a href="./index.html">Trang chủ</a>
                         <span>Cửa hàng</span>

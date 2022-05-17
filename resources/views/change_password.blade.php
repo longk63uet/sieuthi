@@ -21,7 +21,7 @@
                         <input class="form-control" name="newpassword" type="password" >
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-7 ">Cập nhật mật khẩu</button>
+                    <button type="submit" class="btn btn-success mb-7 ">Cập nhật mật khẩu</button>
                 </form>
             </div>
         </div>
