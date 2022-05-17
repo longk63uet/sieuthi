@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Coupon;
+use App\Models\User;
+use Carbon\Carbon;
 session_start();
 
 class CouponController extends Controller
@@ -61,7 +63,14 @@ class CouponController extends Controller
 	//Kiểm tra mã giảm giá
 	public function checkCoupon(Request $request){
         $data = $request->all();
-        $coupon = Coupon::where('coupon_code',$data['coupon'])->first();
+        $user_id = Session::get('user_id');
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
+        $coupon = Coupon::where('coupon_code',$data['coupon'])
+                ->where('coupon_quantity', '>', 0)
+                ->where('coupon_end', '>=', $today)
+                ->where('user_id', 1)
+                ->orWhere('user_id', $user_id)
+                ->first();
         if($coupon){
             $count_coupon = $coupon->count();
             if($count_coupon>0){
@@ -94,7 +103,7 @@ class CouponController extends Controller
         }else{
             $request->session()->forget('coupon');
 
-            return redirect()->back()->with('error','Mã giảm giá không đúng');
+            return redirect()->back()->with('error','Mã giảm giá không đúng hoặc không thể sử dụng');
         }
     }
 }

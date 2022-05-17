@@ -37,7 +37,7 @@ class EmployeeController extends Controller
             $employee->employee_phone = $data['phone'];
             $employee->employee_address = $data['address'];
             $employee->employee_email = $data['email'];
-            $employee->employee_job = md5($data['job']);
+            $employee->employee_job = $data['job'];
             $employee->save();
             Session::put('message','Thêm nhân viên mới thành công');
     

@@ -28,8 +28,8 @@ class GiftController extends Controller
         if($user->point > $point){
         $user->point -= $point;
         $user->save();
-        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
-        $tomorrow = Carbon::tomorrow('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
+        $tomorrow = Carbon::tomorrow('Asia/Ho_Chi_Minh')->format('d-m-Y');
         $discount = $point * 1000;
 
         $gift = Coupon::insertGetId([
@@ -83,6 +83,25 @@ class GiftController extends Controller
         Session::put('message','Xóa quà tặng thành công');
         return redirect()->back();
 
+    }
+
+    public function getPoint(){
+        $user_id = Session::get('user_id');
+        $point = User::find($user_id)->point;
+        $reponse = 'Điểm Eko Point: ' . $point ;
+
+        return $reponse;
+    }
+
+    public function showGift(){
+        $user_id = Session::get('user_id');
+        $user = User::find($user_id);
+
+        $gift_coupon = DB::table('coupon')->where('user_id', $user->id)->orderBy('coupon_end', 'DESC')->get();
+        $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
+
+
+        return view('show_gift', ['user' => $user, 'gift_coupon' => $gift_coupon, 'today' => $today]);
     }
 
 }

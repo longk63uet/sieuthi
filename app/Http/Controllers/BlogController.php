@@ -10,6 +10,7 @@ use App\Exports\BlogCategoryExport;
 use App\Imports\BlogCategoryImport;
 use App\Models\Blog;
 use App\Models\Product;
+use App\Models\User;
 use Excel;
 session_start();
 
@@ -227,9 +228,15 @@ class BlogController extends Controller
         ->join('blogcategory','blogcategory.blogcategory_id','=','blogs.blogcategory_id')
         ->where('blogs.id',$blog_id)->get();
         foreach($blog as $blogs){
+            //Tăng view
             $blogs->view = $blogs->view + 1;            
             $related = $blogs->blogcategory_id;
             $products = $blogs->product;
+            //Tăng point cho tác giả bài viết
+            $user = User::find($blogs->user_id);
+            $user->point += 0.1;
+            $user->save();
+
         }
         $pros = explode(',', $products);
         $pro = Product::select("*")

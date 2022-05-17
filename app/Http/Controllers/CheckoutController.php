@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Coupon;
 use App\Models\Product;
 use Carbon\Carbon;
+use App\Models\User;
 
 session_start();
 
@@ -38,6 +39,7 @@ class CheckoutController extends Controller
 
     //Lưu đơn hàng
     public function saveCheckout(Request $request){
+        $user_id = Session::get('user_id');
         //Lưu thông tin giao hàng
         $data = array();
     	$data['shipping_name'] = $request->shipping_name;
@@ -49,7 +51,7 @@ class CheckoutController extends Controller
         $data['shipping_city'] = $request->shipping_city;
         $data['shipping_town'] = $request->shipping_town;
         $data['shipping_village'] = $request->shipping_village;
-        $data['user_id'] = Session::get('user_id');
+        $data['user_id'] = $user_id;
     	$shipping_id = DB::table('shipping')->insertGetId($data);
 
     	Session::put('shipping_id',$shipping_id);
@@ -59,7 +61,7 @@ class CheckoutController extends Controller
         $data['payment_method'] = $request->payment_option;
         $payment_id = DB::table('payment')->insertGetId($data);
         
-        //Lưu thông tin đơn h
+        //Lưu thông tin đơn hàng
         $cart = Session::get('cart');
         $order_data = array();
         $order_data['user_id'] = Session::get('user_id');
@@ -68,6 +70,7 @@ class CheckoutController extends Controller
             foreach(Session::get('coupon') as $cou){
                 $coupon_id = $cou['coupon_id'];
             }
+            //Sau khi dùng giảm số lượng mã giảm giá
             $coupon = Coupon::find($coupon_id);
             $coupon->coupon_quantity -- ;
             $coupon->save();
@@ -76,9 +79,14 @@ class CheckoutController extends Controller
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_status'] = 1;
-        $order_data['day'] = Carbon::now('Asia/Ho_Chi_Minh')->format('Y-m-d');
+        $order_data['day'] = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
         $order_data['order_total'] = $request->price;
         $order_id = DB::table('order')->insertGetId($order_data);
+
+        //Thêm point
+        $user = User::find($user_id);
+        $user->point += $order_data['order_total']/200000;
+        $user->save();
 
         //Lưu thông tin chi tiết đơn hàng
         foreach($cart->products as $carts){

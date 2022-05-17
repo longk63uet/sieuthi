@@ -39,7 +39,15 @@
 @include('footer')
 <script>
     function reloadPoint(){
-        $ajax
+        $.ajax({
+            type: "GET",
+            url: "get-point",
+            success: function (response) {
+                $('.point').empty();
+                $('.point').html(response);
+
+            }
+        });
     }
     function exchangepoint(point) {
         $.ajax({
@@ -48,6 +56,7 @@
             success: function (response) {
                 $('.gift').empty();
                 $('.gift').html(response);
+                reloadPoint();
 
             }
         });

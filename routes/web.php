@@ -166,6 +166,9 @@ Route::post('/change-pass', [HomeController::class, 'changePass']);
 //Đổi quà
 Route::get('/exchange-gift', [GiftController::class, 'exchangeGift']);
 Route::get('/exchange-gift/{point}', [GiftController::class, 'exchange']);
+Route::get('/get-point', [GiftController::class, 'getPoint']);
+Route::get('/show-gift', [GiftController::class, 'showGift']);
+
 
 //Đơn hàng
 Route::get('/cancel-order/{order_id}', [HomeController::class, 'cancelOrder']);

@@ -8,6 +8,22 @@
                 <div class="author-card-profile">
                     <div class="author-card-avatar"><img src="images/avt3.jpg" alt="">
                     </div>
+                    <div class="author-card-details"> 
+            
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Tên: {{$user->name}}</h5>
+                    </div>
+                    <div class="author-card-details"> 
+            
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Số điện thoại: {{$user->user_phone}}</h5>
+                    </div>
+                    <div class="author-card-details"> 
+            
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Email: {{$user->email}}</h5>
+                    </div>
+                    <div class="author-card-details"> 
+            
+                        <h5 class="author-card-name text-lg" style="margin-top: 10px; font-size: 15px">Địa chỉ: {{$user->user_address}}</h5>
+                    </div>
                     <div class="author-card-details">
             
                         <h5 class="author-card-name text-lg point" style="margin-top: 10px; font-size: 15px">Điểm Eko Point: {{$user->point}}</h5>
@@ -28,20 +44,21 @@
                             </div>
                         </div>
                     </a>
-                    <a class="list-group-item" href="{{url('show-wishlist')}}">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div>
-                                <i class="fa fa-heart mr-1 text-muted"></i>
-                                <div class="light d-inline-block font-weight-medium text-uppercase">Yêu thích</div>
-                            </div>
-                            
-                        </div>
-                    </a>
+                    
                     <a class="list-group-item" href="{{url('exchange-gift')}}">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <i class="fa fa-gift mr-1 text-muted"></i>
                                 <div class="light d-inline-block font-weight-medium text-uppercase">Đổi quà</div>
+                            </div>
+                            
+                        </div>
+                    </a>
+                    <a class="list-group-item" href="{{url('show-gift')}}">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <i class="fa fa-heart mr-1 text-muted"></i>
+                                <div class="light d-inline-block font-weight-medium text-uppercase">Danh sách quà</div>
                             </div>
                             
                         </div>
