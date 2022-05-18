@@ -21,20 +21,21 @@
                             <td>{{$item->created_at}}</td>
                             
                             @if ($item->order_status == 1)
-                            <td><span class="badge badge-info m-0"> Đang xử lý </span></td>
+                            <td><span class="badge badge-primary m-0"> Đang xử lý </span></td>
                             @elseif ($item->order_status == 0)
-                            <td><span class="badge badge-info m-0"> Đơn hàng đã hủy </span></td>
+                            <td><span class="badge badge-danger m-0"> Đơn hàng đã hủy </span></td>
                             @elseif ($item->order_status == 2)
                             <td><span class="badge badge-info m-0"> Đang giao hàng </span></td>
                             @elseif  ($item->order_status == 3)
-                            <td><span class="badge badge-info m-0"> Giao hàng thành công </span></td>
+                            <td><span class="badge badge-success m-0"> Giao hàng thành công </span></td>
                             @endif
                             
                             <td>{{number_format($item->order_total)}} VNĐ</td>
                             @if ($item->order_status == 1)
                             <td><a onclick="return confirm('Bạn có muốn hủy đơn hàng này không?')"  href="{{url('cancel-order/'.$item->order_id)}}"><button class="btn btn-danger">Hủy đơn hàng</button></a></td>
                             @elseif ($item->order_status == 2)
-                            <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-success">Đã nhận được hàng</button></a></td>
+
+                            <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-primary">Đã nhận được hàng</button></a></td>
                             @endif
 
                         </tr>

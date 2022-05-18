@@ -111,7 +111,7 @@ Route::get('/manage-order', [OrderController::class, 'manageOrder']);
 Route::get('/view-order/{order_id}', [OrderController::class, 'viewOrder']);
 Route::get('/delete-order/{order_id}',[OrderController::class, 'deleteOrder']);
 Route::get('/print-order/{order_id}',[OrderController::class, 'printOrder']);
-Route::get('/shipping-order/{order_id}',[OrderController::class, 'shippingOrder']);
+Route::post('/shipping-order',[OrderController::class, 'shippingOrder']);
 Route::get('/cancel-order-admin/{order_id}',[OrderController::class, 'cancelOrderAdmin']);
 
 //coupon
