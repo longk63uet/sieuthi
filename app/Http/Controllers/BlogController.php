@@ -237,7 +237,7 @@ class BlogController extends Controller
             $products = $blogs->product;
             //Tăng point cho tác giả bài viết
             $user = User::find($blogs->user_id);
-            $user->point += 0.1;
+            $user->point += 0.01;
             $user->save();
 
         }

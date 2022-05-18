@@ -17,7 +17,7 @@
                                 Session::put('message',null);
                             }
                             ?>
-      <table class="table table-striped b-t b-light" id="myTable2">
+      <table class="table table-striped b-t b-light" id="myTable">
         <thead>
           <tr>
             <th>Tên mã giảm giá</th>

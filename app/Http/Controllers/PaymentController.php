@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class PaymentController extends Controller
 {
@@ -71,7 +72,7 @@ class PaymentController extends Controller
                 , 'message' => 'success'
                 , 'data' => $vnp_Url);
                 if (isset($_POST['redirect'])) {
-                    $request->session()->forget('cart');
+                    
                     header('Location: ' . $vnp_Url);
                     die();
                 } else {

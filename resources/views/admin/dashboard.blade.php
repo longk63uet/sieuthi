@@ -113,11 +113,13 @@
 						<div class="stats-body">
 							<ul class="list-unstyled">
 								@foreach ($product as $item)
+								<a href="{{url('/chi-tiet/'.$item->product_id)}}">
 								<li>{{$item->product_name}} <span class="pull-right">{{$item->sold}}</span>  
 									<div class="progress progress-striped active progress-right">
 										<div class="bar green" style="width:{{$item->sold}}%;"></div> 
 									</div>
 								</li>
+								</a>
 								@endforeach
 							</ul>
 						</div>

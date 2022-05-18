@@ -206,7 +206,9 @@ class HomeController extends Controller
         $users_id = Session::get('user_id');
         $user = User::find($users_id);
         $orders = DB::table('order')
-        ->where('user_id',$users_id)->get();
+        ->where('user_id',$users_id)
+        ->orderBy('order_id', 'desc')
+        ->get();
 
         return view('manage_order_user', ['user'=>$user, 'orders'=>$orders]);
     }
