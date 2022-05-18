@@ -39,7 +39,7 @@
         </div>
     </div>
 </section>
-<section class="breadcrumb-section set-bg" data-setbg="{{asset('img/bread.jpg')}}">
+<section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/bread.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">

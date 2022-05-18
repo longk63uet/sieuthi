@@ -1,5 +1,5 @@
 @include('header')
- <section class="breadcrumb-section set-bg" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
+ <section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         @foreach ($blog as $item)
         <div class="row">
