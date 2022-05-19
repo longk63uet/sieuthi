@@ -1,5 +1,6 @@
 @include('header')
- <section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
+<!-- chi tiet blog nau an -->
+<section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         @foreach ($blog as $item)
         <div class="row">
@@ -51,7 +52,7 @@
                                 </div>
                             </a>
                             <a href="javascript:" onclick="addToCart({{$item->product_id}})">
-                            <button class="btn btn-light mb-4">Mua ngay</button>
+                            <button class="btn btn-light mb-4" style="background: #B8F1B0">Mua ngay</button>
                             </a>
                             @endforeach
                         </div>

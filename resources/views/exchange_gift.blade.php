@@ -1,6 +1,6 @@
 @include('header')
 @include('nav_user')
-
+<!-- doi qua -->
         <div class="col-lg-8 pb-5">
             <div class="gift card">
 

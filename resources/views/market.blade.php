@@ -1,4 +1,5 @@
 @include('header')
+<!-- cua hang -->
 <section class="hero hero-normal">
     <div class="container">
         <div class="row">

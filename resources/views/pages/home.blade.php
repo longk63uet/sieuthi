@@ -1,6 +1,6 @@
 @extends('welcome')
 @section('content')
-<!-- Featured Section Begin -->
+<!-- san pham noi bat -->
 <section class="featured spad">
     <div class="container">
         <div class="row">

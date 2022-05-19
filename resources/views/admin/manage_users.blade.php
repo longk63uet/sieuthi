@@ -1,5 +1,6 @@
 @extends('admin_layout')
 @section('content')
+<!-- quan ly nguoi dung -->
     <div class="table-agile-info">
   <div class="panel panel-default">
     <div class="panel-heading">

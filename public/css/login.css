@@ -6,7 +6,7 @@
 }
 
 body{
-    background:#fff; 
+    background:f8f9fa; 
     margin: 0; 
 }
 
@@ -137,7 +137,6 @@ body{
 }
 
 #login-form span{
-  /* font-weight: bold; */
   width: 50%;
   margin-bottom:0.6em;
   float: left;
@@ -148,7 +147,6 @@ body{
 #login-form h6{
   font-size: 1em;
   float: right;
-  /* width: 38%;   */
   margin-top: 8px;
   margin-bottom: 0.6em;
 }
@@ -159,10 +157,6 @@ body{
 .form-modal input::-webkit-input-placeholder{
     color:rgb(11, 11, 11);
 }
-
-/* .fa-facebook {
-  background: #3b5998;
-} */
 
 .fa-google{
     color:#dd4b39;

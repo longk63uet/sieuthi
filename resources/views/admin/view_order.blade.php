@@ -1,5 +1,6 @@
 @extends('admin_layout')
 @section('content')
+<!-- xem thong tin don hang  -->
 <div class="table-agile-info">
   
   <div class="panel panel-default">

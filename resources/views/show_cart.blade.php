@@ -1,4 +1,5 @@
 @include('header')
+<!-- gio hang -->
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">

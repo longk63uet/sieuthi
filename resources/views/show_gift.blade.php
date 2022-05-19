@@ -1,5 +1,6 @@
 @include('header')
 @include('nav_user')
+<!-- xem qua tang -->
         <div class="col-lg-8 pb-5">
             <div class="d-flex justify-content-end pb-3">
             </div>

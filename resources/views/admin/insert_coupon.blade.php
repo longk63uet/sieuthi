@@ -2,6 +2,7 @@
 @extends('admin_layout')
 
 @section('content')
+<!-- them ma giam gia -->
 <div class="row">
             <div class="col-lg-12">
                     <section class="panel">

@@ -1,7 +1,7 @@
 @include('header')
 @include('nav_user')
 
-        <!-- Profile Settings-->
+<!-- trang ca nhan nguoi dung -->
         <div class="col-lg-8 pb-5">
             <h3 style="text-align: center; margin-bottom: 15px;">Thông tin cá nhân</h3>
             <form class="row" action="{{url('change-profile')}}" method="POST">

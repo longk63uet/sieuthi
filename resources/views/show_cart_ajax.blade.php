@@ -1,3 +1,4 @@
+<!-- chi tiet spham gio hang -->
 <div class="shoping__cart__table">
     <table>
         <thead>

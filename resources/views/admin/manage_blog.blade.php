@@ -1,5 +1,6 @@
 @extends('admin_layout')
 @section('content')
+<!-- quan ly blog nau an -->
 <section class="wrapper">
     <div class="table-agile-info">
 <div class="panel panel-default">

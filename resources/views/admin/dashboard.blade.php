@@ -1,8 +1,9 @@
 @extends('admin_layout')
 @section('content')
-		<div class="market-updates">
-			<div class="col-md-3 market-update-gd">
-				<div class="market-update-block clr-block-2">
+<!-- tong quan admin -->
+		<div class="row market-updates">
+			<div class="col-md-3 market-update-gd" >
+				<div class="market-update-block clr-block-2 dash-hov" style ="width: 245px; height: 128px; background: #F32424">
 					<div class="col-md-4 market-update-right">
 						<i class="fa fa-eye"> </i>
 					</div>
@@ -14,9 +15,9 @@
 				</div>
 			</div>
 			<div class="col-md-3 market-update-gd">
-				<div class="market-update-block clr-block-1">
+				<div class="market-update-block clr-block-1" style ="width: 247px; height: 128px; background: #56ad39">
 					<div class="col-md-4 market-update-right">
-						<i class="fa fa-users" ></i>
+						<i class="fa fa-users"></i>
 					</div>
 					<div class="col-md-8 market-update-left">
 					<h4>Người dùng</h4>
@@ -26,19 +27,19 @@
 				</div>
 			</div>
 			<div class="col-md-3 market-update-gd">
-				<div class="market-update-block clr-block-3">
+				<div class="market-update-block clr-block-3" style ="width: 249px; height: 128px; background: orange">
 					<div class="col-md-4 market-update-right">
 						<i class="fa fa-usd"></i>
 					</div>
 					<div class="col-md-8 market-update-left">
 						<h4>Doanh thu</h4>
-						<h4 style="font-size: 15px">{{number_format($totalSale)}} VNĐ</h4>
+						<h4 style="font-size: 16px">{{number_format($totalSale)}} VNĐ</h4>
 					</div>
 				  <div class="clearfix"> </div>
 				</div>
 			</div>
 			<div class="col-md-3 market-update-gd">
-				<div class="market-update-block clr-block-4">
+				<div class="market-update-block clr-block-4" style ="width: 245px; height: 128px; background: #0AA1DD">
 					<div class="col-md-4 market-update-right">
 						<i class="fa fa-shopping-cart" aria-hidden="true"></i>
 					</div>
