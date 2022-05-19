@@ -236,10 +236,11 @@ class BlogController extends Controller
             $related = $blogs->blogcategory_id;
             $products = $blogs->product;
             //Tăng point cho tác giả bài viết
+            if($blogs->view % 100 == 0){
             $user = User::find($blogs->user_id);
-            $user->point += 0.01;
+            $user->point = $user->point + 2;
             $user->save();
-
+            }
         }
         $pros = explode(',', $products);
         $pro = Product::select("*")
