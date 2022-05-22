@@ -1,4 +1,5 @@
 @include('header')
+<!-- xem chi tiet don hang -->
 <div class="container-fluid">
     <div class="container">
       <div class="padding-bottom-3x mb-1">

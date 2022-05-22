@@ -1,5 +1,6 @@
 @include('header')
- <section class="breadcrumb-section set-bg" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
+<!-- xem blog -->
+ <section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}" style="margin-bottom: 10px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -15,10 +16,21 @@
         </div>
     </div>
 </section>
+<div style="margin-top: 30px; margin-bottom: -30px; text-align: center">
+                <a onclick="return confirm('Bạn có xác nhận phê duyệt blog này không?')" href="{{url('pass-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
+                    <button class="btn btn-success" style="margin-right: 10px">Phê duyệt</button>
+                </a>
+                <a onclick="return confirm('Bạn có muốn xóa blog này không?')" href="{{url('delete-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
+                    <button class="btn btn-danger">Xóa</button>
+                </a>
+</div>
 <section class="blog-details spad">
-    <div class="container">
+    <div class="container">   
         <div class="row">
             <div class="col-lg-12 col-md-12 ">
+            
+            
+
                 <div class="blog__details__text">
                     <img src="{{URL('/public/uploads/blog/'.$blog->images)}}" alt="">
                     {!! $blog->content !!}
@@ -47,12 +59,8 @@
                                 </div>
                             </div>
                         </div>
-                        <a onclick="return confirm('Bạn có xác nhận phê duyệt blog này không?')" href="{{url('pass-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
-                        <button class="btn btn-primary">Phê duyệt</button>
-                        </a>
-                        <a onclick="return confirm('Bạn có muốn xóa blog này không?')" href="{{url('delete-blog/'.$blog->id)}}" class="active" ui-toggle-class="">
-                            <button class="btn btn-danger">Xóa</button>
-                        </a>
+                        
+                        <!--  -->
                     </div>
                 </div>
             </div>

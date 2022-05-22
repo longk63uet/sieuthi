@@ -1,5 +1,6 @@
 @extends('admin_layout')
 @section('content')
+<!-- xem thong tin don hang  -->
 <div class="table-agile-info">
   
   <div class="panel panel-default">
@@ -182,9 +183,9 @@
     </div>  
 
     @endif
-    <button class="btn btn-warning"><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}">In đơn hàng</a></button>
+    <button class="btn btn-warning"><a target="_blank" href="{{url('/print-order/'.$or->order_id)}}" style="color: white">In đơn hàng</a></button>
     @if ($or->order_status == 1)
-    <button class="btn btn-danger"><a href="{{url('/cancel-order-admin/'.$or->order_id)}}">Hủy đơn hàng</a></button>
+    <button class="btn btn-danger"><a href="{{url('/cancel-order-admin/'.$or->order_id)}}" style="color: white">Hủy đơn hàng</a></button>
     @endif
     @endforeach
   </div>

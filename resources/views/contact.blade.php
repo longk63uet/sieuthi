@@ -1,5 +1,5 @@
 @include('header')
-<!-- Breadcrumb Section Begin -->
+<!-- thong tin lien he - khieu nai -->
 <section class="breadcrumb-section set-bg container" data-setbg="img/bread.jpg">
     <div class="container">
         <div class="row">
@@ -15,9 +15,7 @@
         </div>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
 
-<!-- Contact Form Begin -->
 <div class="contact-form spad">
     <div class="container">
         <div class="row">
@@ -64,9 +62,7 @@
         </form>
     </div>
 </div>
-<!-- Contact Form End -->
-
-<!-- Contact Section Begin -->
+<!-- thong tin lien he -->
 <section class="contact spad">
     <div class="container">
         <div class="row">
@@ -117,7 +113,5 @@
         </div>
     </div>
 </div>
-<!-- Map End -->
-
 
 @include('footer')

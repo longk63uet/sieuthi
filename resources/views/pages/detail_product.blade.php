@@ -1,4 +1,5 @@
 @include('header')
+<!-- chi tiet san pham -->
 <section class="hero hero-normal">
     <div class="container">
         <div class="row">

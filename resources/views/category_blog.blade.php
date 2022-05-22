@@ -1,4 +1,5 @@
 @include('header')
+<!-- danh muc blog nau an -->
 <section class="breadcrumb-section set-bg container" data-setbg="{{asset('img/blog/details/breadcrumb.jpg')}}">
     <div class="container">
         <div class="row">

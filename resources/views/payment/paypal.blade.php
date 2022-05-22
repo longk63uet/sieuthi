@@ -1,4 +1,5 @@
 @include('header')
+<!-- phan dau muc -->
 <section class="breadcrumb-section set-bg container" data-setbg="img/bread.jpg">
     <div class="container">
         <div class="row">
@@ -14,6 +15,7 @@
         </div>
     </div>
 </section>
+<!-- thanh toan paypal -->
 <div class="container">
     <div class="row">
         <div class="col-lg-12 text-center" style="margin-top: 20px; margin-bottom: 20px">

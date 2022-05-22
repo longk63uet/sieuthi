@@ -1,4 +1,5 @@
 @include('header')
+<!-- phan dau muc -->
 <section class="breadcrumb-section set-bg container" data-setbg="img/bread.jpg">
     <div class="container">
         <div class="row">
@@ -14,6 +15,8 @@
         </div>
     </div>
 </section>
+
+<!-- thanh toan vnpay -->
 <div class="container">
     @php
         $total = Session::get('cart')->totalPrice;

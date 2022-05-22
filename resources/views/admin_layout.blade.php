@@ -63,7 +63,7 @@ $( function() {
           onClose: function () {
               var dt1 = $('#datepicker1').datepicker('getDate');
               var dt2 = $('#datepicker2').datepicker('getDate');
-              //check to prevent a user from entering a date below date of dt1
+              
               if (dt2 <= dt1) {
                   var minDate = $('#datepicker2').datepicker('option', 'minDate');
                   $('#datepicker2').datepicker('setDate', minDate);
@@ -75,175 +75,176 @@ $( function() {
 </script>
 </head>
 <body>
-<section id="container">
-<header class="header fixed-top clearfix" style="background: #eef9f0">
-<div class="brand" style="background: rgb(196, 234, 130)">
-    <a href="{{url('/dashboard')}}" class="logo">
-        DashBoard
-    </a>
-    <div class="sidebar-toggle-box" style="background: #c7d089">
-        <div class="fa fa-bars" ></div>
-    </div>
-</div>
-<div class="top-nav clearfix" style="background: #b1bed8">
-    <ul class="nav pull-right top-menu" >
-        <li class="dropdown">
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="background: rgb(196, 223, 130);">
-                <img alt="" src="images/2.png">
-                <span class="username">
-					@php
-						$name = Session::get('admin_name');
-						if($name){
-							echo $name;
-							Session::put('name','');
-						}
-					@endphp
-				</span>
-                <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu extended logout" >
-                <li><a href="{{url('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
-</header>
-<aside>
-    <div id="sidebar" class="nav-collapse" style="background: hsl(198, 40%, 38%)">
-        <div class="leftside-navigation">
-            <ul class="sidebar-menu" id="nav-accordion">
-                <li>
-                    <a class="active" href="{{url('/dashboard')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Tổng quan</span>
-                    </a>
-                </li>
-				<li>
-                    <a class="active" href="{{url('/manage-order')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý đơn hàng</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Danh mục sản phẩm</span>
-                    </a>
-                    <ul class="sub">
-						<li><a href="{{URL::to('/add-category')}}">Thêm danh mục sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-category')}}">Quản lý danh mục sản phẩm</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Quản lý sản phẩm</span>
-                    </a>
-                    <ul class="sub">
-						<li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
-						<li><a href="{{URL::to('/all-product')}}">Quản lý sản phẩm</a></li>
-                    </ul>
-                </li>
-				<li>
-                    <a class="active" href="{{url('/manage-user')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý người dùng</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="{{url('/manage-employee')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý nhân viên</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="{{url('/check-blog')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Kiểm duyệt Blog</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="{{url('/manage-gift')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý quà tặng</span>
-                    </a>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Banner quảng cáo</span>
-                    </a>
-                    <ul class="sub">
-						<li><a href="{{url('/add-banner')}}">Thêm Banner quảng cáo</a></li>
-						<li><a href="{{url('/manage-banner')}}">Quản lý Banner quảng cáo</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="active" href="{{url('/manage-comment')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý, kiểm duyệt bình luận</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="active" href="{{url('/manage-feedback')}}">
-                        <i class="fa fa-dashboard"></i>
-                        <span>Quản lý khiếu nại</span>
-                    </a>
-                </li>
-				<li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Blog nấu ăn</span>
-                    </a>
-                    <ul class="sub">
-						<li><a href="{{url('/insert-blog')}}">Thêm Blog</a></li>
-                        <li><a href="{{url('/add-blog-category')}}">Thêm danh mục Blog</a></li>
-						<li><a href="{{url('/manage-blog')}}">Quản lý Blog</a></li>
-                        <li><a href="{{url('/all-blog-category')}}">Quản lý danh mục Blog</a></li>
-                    </ul>
-                </li>
-                <li class="sub-menu">
-                    <a href="javascript:;">
-                        <i class="fa fa-book"></i>
-                        <span>Mã giảm giá</span>
-                    </a>
-                    <ul class="sub">
-						<li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
-						<li><a href="{{url('/manage-coupon')}}">Quản lý mã giảm giá</a></li>
-                    </ul>
-                </li>
-            </ul>          
+<!-- navbar ben trai + tren -->
+    <section id="container">
+    <header class="header fixed-top clearfix" style="background: #EEF2FF">
+    <div class="brand" style="background: #21325E">
+        <a href="{{url('/dashboard')}}" class="logo">
+            DashBoard
+        </a>
+        <div class="sidebar-toggle-box" style="background: #2F86A6">
+            <div class="fa fa-bars" ></div>
         </div>
     </div>
-</aside>
-<section id="main-content">
-	<section class="wrapper">
-            @yield('content')
+    <div class="top-nav clearfix" style="background: #EEF2FF">
+        <ul class="nav pull-right top-menu" >
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" href="#" style="background: #DBF6E9;">
+                    <img alt="" src="images/2.png">
+                    <span class="username">
+                        @php
+                            $name = Session::get('admin_name');
+                            if($name){
+                                echo $name;
+                                Session::put('name','');
+                            }
+                        @endphp
+                    </span>
+                    <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu extended logout" >
+                    <li><a href="{{url('/logout')}}"><i class="fa fa-key"></i> Đăng xuất</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    </header>
+    <aside>
+        <div id="sidebar" class="nav-collapse" style="background: hsl(198, 40%, 38%)">
+            <div class="leftside-navigation">
+                <ul class="sidebar-menu" id="nav-accordion">
+                    <li>
+                        <a class="active" href="{{url('/dashboard')}}">
+                            <i class="fa fa-home"></i>
+                            <span>Tổng quan</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/manage-order')}}">
+                            <i class="fa fa-cogs"></i>
+                            <span>Quản lý đơn hàng</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-folder-o"></i>
+                            <span>Danh mục sản phẩm</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{URL::to('/add-category')}}">Thêm danh mục sản phẩm</a></li>
+                            <li><a href="{{URL::to('/all-category')}}">Quản lý danh mục sản phẩm</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-folder-open-o"></i>
+                            <span>Quản lý sản phẩm</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{URL::to('/add-product')}}">Thêm sản phẩm</a></li>
+                            <li><a href="{{URL::to('/all-product')}}">Quản lý sản phẩm</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/manage-user')}}">
+                            <i class="fa fa-users"></i>
+                            <span>Quản lý người dùng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/manage-employee')}}">
+                            <i class="fa fa-user"></i>
+                            <span>Quản lý nhân viên</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/check-blog')}}">
+                            <i class="fa fa-paw"></i>
+                            <span>Blog người dùng</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/manage-gift')}}">
+                            <i class="fa fa-gift"></i>
+                            <span>Quản lý quà tặng</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-hourglass-o"></i>
+                            <span>Banner quảng cáo</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{url('/add-banner')}}">Thêm Banner quảng cáo</a></li>
+                            <li><a href="{{url('/manage-banner')}}">Quản lý Banner quảng cáo</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/manage-comment')}}">
+                            <i class="fa fa-comments-o"></i>
+                            <span>Quản lý, kiểm duyệt bình luận</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="active" href="{{url('/manage-feedback')}}">
+                            <i class="fa fa-history"></i>
+                            <span>Quản lý khiếu nại</span>
+                        </a>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-star-o"></i>
+                            <span>Blog nấu ăn</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{url('/insert-blog')}}">Thêm Blog</a></li>
+                            <li><a href="{{url('/add-blog-category')}}">Thêm danh mục Blog</a></li>
+                            <li><a href="{{url('/manage-blog')}}">Quản lý Blog</a></li>
+                            <li><a href="{{url('/all-blog-category')}}">Quản lý danh mục Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-percent"></i>
+                            <span>Mã giảm giá</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
+                            <li><a href="{{url('/manage-coupon')}}">Quản lý mã giảm giá</a></li>
+                        </ul>
+                    </li>
+                </ul>          
+            </div>
+        </div>
+    </aside>
+    <section id="main-content">
+        <section class="wrapper">
+                @yield('content')
+        </section>
     </section>
-</section>
-<script src="{{asset('backend/js/bootstrap.js')}}"></script>
-<script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
-<script src="{{asset('backend/js/scripts.js')}}"></script>
-<script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
-<script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
-<script src="js/jquery.scrollTo.js"></script>
-<script>
-	$(document).ready(function() {
-	   jQuery('.small-graph-box').hover(function() {
-		  jQuery(this).find('.box-button').fadeIn('fast');
-	   }, function() {
-		  jQuery(this).find('.box-button').fadeOut('fast');
-	   });
-	   jQuery('.small-graph-box .box-close').click(function() {
-		  jQuery(this).closest('.small-graph-box').fadeOut(200);
-		  return false;
-	   });
-	    function gd(year, day, month) {
-			return new Date(year, month - 1, day).getTime();
-		}
-	});
-	</script>
-	<script type="text/javascript" src="{{asset('backend/js/monthly.js')}}"></script>
+    <script src="{{asset('backend/js/bootstrap.js')}}"></script>
+    <script src="{{asset('backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
+    <script src="{{asset('backend/js/scripts.js')}}"></script>
+    <script src="{{asset('backend/js/jquery.slimscroll.js')}}"></script>
+    <script src="{{asset('backend/js/jquery.nicescroll.js')}}"></script>
+    <script src="js/jquery.scrollTo.js"></script>
+    <script>
+        $(document).ready(function() {
+        jQuery('.small-graph-box').hover(function() {
+            jQuery(this).find('.box-button').fadeIn('fast');
+        }, function() {
+            jQuery(this).find('.box-button').fadeOut('fast');
+        });
+        jQuery('.small-graph-box .box-close').click(function() {
+            jQuery(this).closest('.small-graph-box').fadeOut(200);
+            return false;
+        });
+            function gd(year, day, month) {
+                return new Date(year, month - 1, day).getTime();
+            }
+        });
+        </script>
+        <script type="text/javascript" src="{{asset('backend/js/monthly.js')}}"></script>
 </body>
 <script type="text/javascript">
     CKEDITOR.replace( 'editor1' );

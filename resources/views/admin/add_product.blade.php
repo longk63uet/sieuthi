@@ -1,5 +1,6 @@
 @extends('admin_layout')
 @section('content')
+<!-- them san pham  -->
 <div class="row">
     <div class="col-lg-12">
             <section class="panel">

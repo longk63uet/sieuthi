@@ -1,4 +1,4 @@
-<!-- Footer Section Begin -->
+<!-- footer -->
 <footer class="footer spad">
     <div class="container">
         <div class="row">
@@ -63,7 +63,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     </div>
 </footer>
 
-<!-- Js Plugins -->
 <script src="{{asset('js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/jquery-ui.min.js')}}"></script>
@@ -291,9 +290,7 @@ $(document).ready(function(){
 
 <!-- scroll up -->
 <script>
-    //Get the button
     var mybutton = document.getElementById("scrollUp");
-    // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
     function scrollFunction() {
         if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -302,7 +299,6 @@ $(document).ready(function(){
             mybutton.style.display = "none";
         }
     }
-    // When the user clicks on the button, scroll to the top of the document
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;

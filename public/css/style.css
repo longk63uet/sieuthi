@@ -1,28 +1,8 @@
-/*------------------------------------------------------------------
-[Table of contents]
-
-1.  Template default CSS
-	1.1	Variables
-	1.2	Mixins
-	1.3	Flexbox
-	1.4	Reset
-2.  Helper Css
-3.  Header Section
-4.  Hero Section
-5.  Service Section
-6.  Categories Section
-7.  Featured Section
-8.  Latest Product Section
-9.  Contact
-10.  Footer Style
--------------------------------------------------------------------*/
-
 html,
 body {
 	height: 100%;
 	font-family: "Cairo", sans-serif;
 	-webkit-font-smoothing: antialiased;
-	/* font-smoothing: antialiased; */
 }
 
 h1,
@@ -77,7 +57,6 @@ img {
 .pop-sucess {
     width: 100%;
     height: 100vh;
-    /* background: #fff; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -141,7 +120,6 @@ body{
 .steps .step {
     display: block;
     width: 100%;
-    /* margin-bottom: 20px; */
     text-align: center
 }
 
@@ -280,7 +258,6 @@ a:focus {
 	text-decoration: none;
 	outline: none;
 	color:#000000;
-	/* color: #15830b; */
 }
 
 ul,
@@ -289,9 +266,9 @@ ol {
 	margin: 0;
 }
 
-/*---------------------
-  Helper CSS
------------------------*/
+
+
+/* kich thuoc anh */
 
 .section-title {
 	margin-bottom: 50px;
@@ -340,7 +317,7 @@ ol {
 	color: #fff;
 }
 
-/* buttons */
+/* button */
 
 .primary-btn {
 	display: inline-block;
@@ -364,7 +341,7 @@ ol {
 	border: none;
 }
 
-/* Preloder */
+/* loader */
 
 #preloder {
 	position: fixed;
@@ -428,9 +405,7 @@ ol {
 	}
 }
 
-/*---------------------
-  Header
------------------------*/
+/* header */
 
 .header__top {
 	background: #f5f5f5;
@@ -738,9 +713,7 @@ ol {
 	display: none;
 }
 
-/*---------------------
-  Hero
------------------------*/
+/* trang chu */
 
 .hero {
 	padding-bottom: 50px;
@@ -882,7 +855,7 @@ ol {
 
 .hero__search__phone__icon {
 	font-size: 18px;
-	color: #7fad39;
+	color: #56ad39;
 	height: 50px;
 	width: 50px;
 	background: #f5f5f5;
@@ -920,7 +893,7 @@ ol {
 	text-transform: uppercase;
 	font-weight: 700;
 	letter-spacing: 4px;
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .hero__text h2 {
@@ -933,12 +906,9 @@ ol {
 
 .hero__text p {
 	margin-bottom: 10px;
-	/* color: #ffffff; */
 }
 
-/*---------------------
-  Categories
------------------------*/
+/* danh muc */
 
 .categories__item {
 	height: 270px;
@@ -980,7 +950,6 @@ ol {
 	position: absolute;
 	left: -35px;
 	top: 50%;
-	-webkit-transform: translateY(-35px);
 	background: #ffffff;
 }
 
@@ -989,9 +958,7 @@ ol {
 	right: -35px;
 }
 
-/*---------------------
-  Featured
------------------------*/
+/* tung san pham */
 
 .featured {
 	padding-top: 80px;
@@ -1023,7 +990,7 @@ ol {
 	bottom: -2px;
 	width: 100%;
 	height: 2px;
-	background: #7fad39;
+	background: #56ad39;
 	content: "";
 	opacity: 0;
 }
@@ -1071,8 +1038,8 @@ ol {
 }
 
 .featured__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #56ad39;
+	border-color: #56ad39;
 }
 
 .featured__item__pic__hover li:hover a i {
@@ -1125,9 +1092,7 @@ ol {
 	font-weight: 700;
 }
 
-/*---------------------
-  Latest Product
------------------------*/
+/* xep hang san pham ơ trang chu */
 
 .latest-product {
 	padding-top: 80px;
@@ -1199,9 +1164,7 @@ ol {
 	font-weight: 700;
 }
 
-/*---------------------
-  Form BLog
------------------------*/
+/* blog nau an*/
 
 .from-blog {
 	padding-top: 50px;
@@ -1216,17 +1179,12 @@ ol {
 	margin-bottom: 70px;
 }
 
-/*---------------------
-  Breadcrumb
------------------------*/
+/* phần nền đầu mục */
 
 .breadcrumb-section {
 	display: flex;
-	/* height: 180px; */
 	align-items: center;
 	padding: 45px 0 40px;
-	/* margin-left: 102px;
-	margin-right: 104px; */
 }
 
 .breadcrumb__text h2 {
@@ -1260,9 +1218,7 @@ ol {
 	color: #ffffff;
 }
 
-/*---------------------
-  Sidebar
------------------------*/
+/* sidebar */
 
 .sidebar__item {
 	margin-bottom: 35px;
@@ -1434,9 +1390,7 @@ ol {
 	visibility: hidden;
 }
 
-/*---------------------
-  Shop Grid
------------------------*/
+/* san pham - cua hang */
 
 .product {
 	padding-top: 80px;
@@ -1509,8 +1463,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #56ad39;
+	border-color: #56ad39;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1708,7 +1662,7 @@ ol {
 }
 
 .filter__option span:hover {
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .product__item {
@@ -1749,8 +1703,8 @@ ol {
 }
 
 .product__item__pic__hover li:hover a {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #56ad39;
+	border-color: #56ad39;
 }
 
 .product__item__pic__hover li:hover a i {
@@ -1830,8 +1784,8 @@ ol {
 
 .product__pagination a:hover,
 .blog__pagination a:hover {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #56ad39;
+	border-color: #56ad39;
 	color: #ffffff;
 }
 
@@ -1840,9 +1794,7 @@ ol {
 	margin-right: 0;
 }
 
-/*---------------------
-  Shop Details
------------------------*/
+/* chi tiet san pham - cua hang */
 
 .product-details {
 	padding-top: 80px;
@@ -2045,9 +1997,7 @@ ol {
 	color: #666666;
 }
 
-/*---------------------
-  Shop Details
------------------------*/
+/* cua hang */
 
 .related-product {
 	padding-bottom: 30px;
@@ -2057,9 +2007,7 @@ ol {
 	margin-bottom: 70px;
 }
 
-/*---------------------
-  Shop Cart
------------------------*/
+/* gio hang */
 
 .shoping-cart {
 	padding-top: 80px;
@@ -2249,9 +2197,7 @@ ol {
 	text-align: center;
 }
 
-/*---------------------
-  Checkout
------------------------*/
+/* thanh toan */
 
 .checkout {
 	padding-top: 80px;
@@ -2339,8 +2285,8 @@ ol {
 }
 
 .checkout__input__checkbox label input:checked~.checkmark {
-	background: #7fad39;
-	border-color: #7fad39;
+	background: #56ad39;
+	border-color: #56ad39;
 }
 
 .checkout__input__checkbox label input:checked~.checkmark:after {
@@ -2454,9 +2400,7 @@ ol {
 	margin-top: 10px;
 }
 
-/*---------------------
-  Blog
------------------------*/
+/* blog nau an */
 
 .blog__item {
 	margin-bottom: 60px;
@@ -2533,9 +2477,7 @@ ol {
 	content: "";
 }
 
-/*---------------------
-  Blog Sidebar
------------------------*/
+/* sidebar của blog nau an */
 
 .blog__sidebar {
 	padding-top: 10px;
@@ -2651,9 +2593,7 @@ ol {
 	margin-bottom: 10px;
 }
 
-/*---------------------
-  Blog Details Hero
------------------------*/
+/* chi tiet tung blog */
 
 .blog-details-hero {
 	height: 350px;
@@ -2696,10 +2636,6 @@ ol {
 	display: none;
 }
 
-/*---------------------
-  Blog Details
------------------------*/
-
 .related-blog {
 	padding-top: 70px;
 	padding-bottom: 10px;
@@ -2710,7 +2646,7 @@ ol {
 }
 
 .blog-details {
-	padding-bottom: 75px;
+	padding-bottom: 70px;
 	border-bottom: 1px solid #e1e1e1;
 }
 
@@ -2789,16 +2725,14 @@ ol {
 }
 
 .blog__details__widget .blog__details__social a:hover {
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .blog__details__widget .blog__details__social a:last-child {
 	margin-right: 0;
 }
 
-/*---------------------
-  Footer
------------------------*/
+/* footer */
 
 .footer {
 	background: #F3F6FA;
@@ -2907,7 +2841,7 @@ ol {
 }
 
 .footer__widget .footer__widget__social a:hover {
-	background: #7fad39;
+	background: #56ad39;
 	color: #ffffff;
 	border-color: #ffffff;
 }
@@ -2930,9 +2864,7 @@ ol {
 	float: right;
 }
 
-/*---------------------
-  Contact
------------------------*/
+/* lien he */
 
 .contact {
 	padding-top: 80px;
@@ -2960,9 +2892,7 @@ ol {
 	margin-bottom: 0;
 }
 
-/*---------------------
-  Map
------------------------*/
+/* ban do */
 
 .map {
 	height: 500px;
@@ -2984,7 +2914,7 @@ ol {
 
 .map .map-inside i {
 	font-size: 48px;
-	color: #7fad39;
+	color: #56ad39;
 	position: absolute;
 	bottom: -75px;
 	left: 50%;
@@ -3031,9 +2961,7 @@ ol {
 	line-height: 26px;
 }
 
-/*---------------------
-  Contact Form
------------------------*/
+/* form khieu nai */
 
 .contact__form__title {
 	margin-bottom: 50px;
@@ -3087,7 +3015,7 @@ ol {
 	letter-spacing: 2px;
 }
 
-/*--------------------------------- Responsive Media Quaries -----------------------------*/
+/* reponsive */
 
 @media only screen and (min-width: 1200px) {
 	.container {
@@ -3095,7 +3023,7 @@ ol {
 	}
 }
 
-/* Medium Device = 1200px */
+/*1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.header__menu ul li {
@@ -3124,7 +3052,7 @@ ol {
 	}
 }
 
-/* Tablet Device = 768px */
+/* 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.hero__categories {
@@ -3241,7 +3169,7 @@ ol {
 	.humberger__menu__cart ul li a span {
 		height: 13px;
 		width: 13px;
-		background: #7fad39;
+		background: #56ad39;
 		font-size: 10px;
 		color: #ffffff;
 		line-height: 13px;
@@ -3307,7 +3235,7 @@ ol {
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		background: transparent;
-		color: #7fad39;
+		color: #56ad39;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_row,
 	.humberger__menu__wrapper .slicknav_nav a {
@@ -3347,7 +3275,7 @@ ol {
 	}
 }
 
-/* Wide Mobile = 480px */
+/* 480px */
 
 @media only screen and (max-width: 767px) {
 	.hero__categories {
@@ -3377,7 +3305,6 @@ ol {
 		position: relative;
 		left: 0;
 		top: 0;
-		-webkit-transform: translateY(0);
 	}
 	.categories__slider.owl-carousel .owl-nav button.owl-next {
 		right: -10px;
@@ -3499,7 +3426,7 @@ ol {
 	.humberger__menu__cart ul li a span {
 		height: 13px;
 		width: 13px;
-		background: #7fad39;
+		background: #56ad39;
 		font-size: 10px;
 		color: #ffffff;
 		line-height: 13px;
@@ -3605,7 +3532,7 @@ ol {
 	}
 }
 
-/* Small Device = 320px */
+/* 320px */
 
 @media only screen and (max-width: 479px) {
 	.hero__search__form form .hero__search__categories {
@@ -4446,7 +4373,7 @@ ol {
     }
 
 }
-/* wishlist */
+/* yeu thich */
 .wishlist-section{
 	margin-top: 20px;
 }
@@ -4455,7 +4382,7 @@ ol {
 	color: red;
 }
 
-/* commment */
+/* binh luan */
 .thumb-lg{
 	height: 70px;
     width: 70px;
@@ -4485,7 +4412,7 @@ ol {
 	background-color: rgb(113, 112, 112);
 }
 
-/* payment */
+/* phuong thuc thanh toan */
 .pynt-form{
 	margin-right: 20px;
 	
@@ -4497,9 +4424,4 @@ ol {
 .btn-color{
 	background-color: #56ad39;
 	color: white;
-}
-
-/* share blog */
-.share-cook{
-	
 }

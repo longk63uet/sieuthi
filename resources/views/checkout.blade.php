@@ -1,4 +1,5 @@
 @include('header')
+<!-- thanh toan -->
 <section class="breadcrumb-section set-bg container" data-setbg="img/bread.jpg">
     <div class="container">
         <div class="row">
@@ -14,6 +15,7 @@
         </div>
     </div>
 </section>
+<!-- thong tin nguoi nhan hang -->
 <section class="checkout spad">
     <div class="container">
         <div class="row">
@@ -183,6 +185,13 @@
                                 </label>
                             </div>
                             <div class="checkout__input__checkbox">
+                                <label for="vnpay">
+                                    VNPAY
+                                    <input type="radio" id="vnpay" name="payment_option" value="5">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                            <div class="checkout__input__checkbox">
                                 <label for="momo">
                                     Ví MOMO
                                     <input type="radio" id="momo" name="payment_option" value="2" >
@@ -203,13 +212,7 @@
                                     <span class="checkmark"></span>
                                 </label>
                             </div>
-                            <div class="checkout__input__checkbox">
-                                <label for="vnpay">
-                                    VNPAY
-                                    <input type="radio" id="vnpay" name="payment_option" value="5">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </div>
+                            
                             <button type="submit" name="send_order" class="site-btn">Đặt hàng</button>
                         </div>
                     </div>
@@ -239,7 +242,7 @@
                         {!! session()->get('message') !!}
                     </div>
                     @elseif(session()->has('error'))
-                     <div class="alert alert-danger mt-2">
+                    <div class="alert alert-danger mt-2">
                         {!! session()->get('error') !!}
                     </div>
                     @endif

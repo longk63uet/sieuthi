@@ -1,4 +1,5 @@
 @include('header')
+<!-- trang chia se blog cua nguoi dung -->
 <div class="container mb-4 main-container">
     <div class="row">
         <div class="col-lg-3 pb-5" style="margin-right: 40px; margin-top: 40px">
@@ -13,7 +14,7 @@
                         <strong style="color:red">Khi 1 bài đăng được chia sẻ ^-^</strong>
                         <ul>
                             <li><b>Bạn sẽ được nhận ngay 5 point </b></li>
-                            <li><b>Cứ 1 view bạn sẽ được 0.1 point </b></li>
+                            <li><b>Cứ 100 view bạn sẽ được 1 point </b></li>
                         </ul>
                     </div>
                 </div>

@@ -1,3 +1,4 @@
+<!-- thanh navbar trai trong Trang ca nhan nguoi dung -->
 <div class="container mb-4 main-container">
     <div class="row">
         <div class="col-lg-3 pb-5" style="margin-right: 50px">
