@@ -55,7 +55,11 @@ class HomeController extends Controller
         $keywords = $request->keywords_submit;
         $cate = DB::table('category')->where('category_status','1')->orderBy('category_id','desc')->get();
 
-        $search_product = DB::table('product')->where('product_name','like','%'.$keywords.'%')->get(); 
+        
+        $search_product = Product::whereRaw(
+	        "MATCH(product_name) AGAINST(?)", 
+	        array($keywords))->get();
+        // $search_product = DB::table('product')->where('product_name','like binary','%'.$keywords.'%')->get(); 
 
         return view('search',['search_product' => $search_product, 'cate' => $cate]);
 
