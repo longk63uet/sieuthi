@@ -38,6 +38,8 @@ class UserController extends Controller
         $user->name = $data['name'];
         $user->user_phone = $data['phone'];
         $user->user_address = $data['address'];
+        $user->role = 1;
+        $user->point = 1;
         $user->email = $data['email'];
         $user->password = md5($data['password']);
         $user->save();

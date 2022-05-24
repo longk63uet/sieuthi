@@ -1,7 +1,7 @@
 <!-- footer -->
-<div class="zalo-chat-widget" data-oaid="1247350748129031789" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
+{{-- <div class="zalo-chat-widget" data-oaid="1247350748129031789" data-welcome-message="Rất vui khi được hỗ trợ bạn!" data-autopopup="0" data-width="" data-height=""></div>
 
-<script src="https://sp.zalo.me/plugins/sdk.js"></script>
+<script src="https://sp.zalo.me/plugins/sdk.js"></script> --}}
 <footer class="footer spad">
     <div class="container">
         <div class="row">
