@@ -185,6 +185,7 @@ class HomeController extends Controller
     	$data['user_phone'] = $request->user_phone;
         $data['user_address'] = $request->user_address;
     	$data['email'] = $request->user_email;
+        $data['role'] = 1;
     	$data['password'] = md5($request->user_password);
 
     	$users_id = DB::table('users')->insertGetId($data);

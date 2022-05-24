@@ -24,6 +24,7 @@
             <th>Tên mã giảm giá</th>
             <th>Mã giảm giá</th>
             <th>Số lượng</th>
+            <th>Đơn hàng tối thiểu</th>
             <th>Ngày bắt đầu</th>
             <th>Ngày kết thúc</th>
             <th>Loại mã</th>
@@ -36,6 +37,7 @@
             <td>{{ $cou->coupon_name }}</td>
             <td>{{ $cou->coupon_code }}</td>
             <td>{{ $cou->coupon_quantity }}</td>
+            <td>{{ $cou->coupon_min }}</td>
             <td>{{ $cou->coupon_start }}</td>
             <td>{{ $cou->coupon_end }}</td>
             <td><span class="text-ellipsis">

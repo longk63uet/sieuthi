@@ -34,6 +34,10 @@
                                       <input type="text" name="coupon_quantity" class="form-control" id="exampleInputEmail1" >
                                 </div>
                                 <div class="form-group">
+                                    <label for="exampleInputPassword1">Đơn hàng tối thiểu</label>
+                                      <input type="text" name="coupon_min" class="form-control" id="exampleInputEmail1" >
+                                </div>
+                                <div class="form-group">
                                     <label for="exampleInputPassword1">Ngày bắt đầu</label>
                                       <input type="text" name="coupon_start" class="form-control" id="datepicker1" >
                                 </div>
