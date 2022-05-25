@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('user_address');
             $table->string('user_phone');
             $table->integer('role');
+            $table->integer('point');
             $table->rememberToken();
             $table->timestamps();
         });
