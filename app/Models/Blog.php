@@ -11,5 +11,5 @@ class Blog extends Model
     protected $table = 'blogs';
     public $timestamps = true; 
     protected $primaryKey = 'id';
-    protected $fillable = ['title', 'content', 'images', 'status', 'product', 'summary'];
+    protected $fillable = ['title', 'content', 'images', 'status', 'product', 'summary', 'view'];
 }

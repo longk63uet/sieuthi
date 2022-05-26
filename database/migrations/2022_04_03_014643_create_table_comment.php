@@ -32,7 +32,6 @@ return new class extends Migration
             $table->integer('user_id');
             $table->integer('status');
             $table->text('comment');
-            $table->integer('star');
             $table->string('name');
 
         });

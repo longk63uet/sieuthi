@@ -19,10 +19,13 @@ return new class extends Migration
             $table->integer('shipping_id');
             $table->integer('payment_id');
             $table->float('order_total');
+            $table->integer('order_code');
             $table->integer('order_status');
             $table->integer('coupon');
             $table->string('day');
             $table->integer('feeship');
+            $table->string('shipper_name');
+            $table->integer('shipper_phone');
             $table->timestamps();
         });
     }

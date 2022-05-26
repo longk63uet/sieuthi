@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('banner_desc');
             $table->string('banner_name');
             $table->string('banner_image');
-            $table->integer('status');
+            $table->integer('banner_status');
         });
     }
 
