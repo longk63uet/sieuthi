@@ -127,7 +127,7 @@
 <div id="fb-root"></div>
 
 <!-- Your Plugin chat code -->
-<div id="fb-customer-chat" class="fb-customerchat">
+<div id="fb-customer-chat" class="fb-customerchat mr-5">
 </div>
 
 <script>
