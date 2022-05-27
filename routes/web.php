@@ -18,6 +18,7 @@ use App\Http\Controllers\QrCodeController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\GiftController;
+use App\Http\Controllers\MailController;
 // use QrCode;
 use Illuminate\Support\Facades\App;
 
@@ -155,6 +156,10 @@ Route::get('/handle-feedback/{feedback_id}', [FeedbackController::class, 'handle
 //index
 Route::get('/', [HomeController::class, 'index'])->name('index');
 Route::post('/tim-kiem', [HomeController::class, 'search']);
+
+
+Route::post('/send-mail', [MailController::class, 'sendMail']);
+Route::get('/send-coupon', [MailController::class, 'sendCoupon']);
 
 //Thông tin
 Route::get('/profile', [HomeController::class, 'profile']);

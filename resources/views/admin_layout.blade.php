@@ -211,6 +211,7 @@ $( function() {
                         <ul class="sub">
                             <li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
                             <li><a href="{{url('/manage-coupon')}}">Quản lý mã giảm giá</a></li>
+                            <li><a href="{{url('/send-coupon')}}">Gửi mã giảm giá cho khách</a></li>
                         </ul>
                     </li>
                 </ul>          

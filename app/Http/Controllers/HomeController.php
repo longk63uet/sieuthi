@@ -50,6 +50,8 @@ class HomeController extends Controller
         return view('pages.home',['cate'=>$cate,'product'=>$product, 'banner'=>$banner, 'soldProduct'=>$soldProduct, 'ratingProduct'=>$ratingProduct, 'viewProduct'=>$viewProduct, 'blogs'=> $blogs]);
     }
 
+    
+
     //Tìm kiếm
     public function search(Request $request){
         $keywords = $request->keywords_submit;

@@ -144,7 +144,7 @@ class BlogController extends Controller
             $get_image->move('public/uploads/blog',$new_image);
             $data['images'] = $new_image;
             DB::table('blogs')->insert($data);
-            Session::put('message','Thêm sản phẩm thành công');
+            Session::put('message','Thêm blog thành công');
 
             if($data['user_id'] == 1){
                 return redirect()->back();
