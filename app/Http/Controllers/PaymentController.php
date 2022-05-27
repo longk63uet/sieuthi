@@ -72,6 +72,7 @@ class PaymentController extends Controller
                 , 'message' => 'success'
                 , 'data' => $vnp_Url);
                 if (isset($_POST['redirect'])) {
+                    $request->session()->forget('cart');
                     
                     header('Location: ' . $vnp_Url);
                     die();
@@ -233,6 +234,7 @@ class PaymentController extends Controller
                 $result = $this->execPostRequest($endpoint, json_encode($data));
                 $jsonResult = json_decode($result, true);  // decode json
                 //Just a example, please check more in there
+                $request->session()->forget('cart');
                 return redirect()->to($jsonResult['payUrl']);
         }
 }

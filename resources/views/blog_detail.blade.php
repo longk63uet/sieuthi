@@ -89,7 +89,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="fb-comments" data-href="https://developers.facebook.com/docs/plugins/comments#configurator" data-width="" data-numposts="5"></div>
                     </div>
                 </div>
             </div>

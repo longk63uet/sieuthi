@@ -17,13 +17,13 @@
 </section>
 <div class="container">
     <div class="row">
-        <div class="col-lg-12 text-center">
+        <div class="col-lg-12 text-center mb-5 mt-5">
             <h3 class="text-center mb-4">Bạn đã đặt hàng thành công</h3>
             <a href="{{url('/')}}">
-            <button>Tiếp tục mua sắm</button>
+            <button class="btn btn-primary">Tiếp tục mua sắm</button>
             </a>
             <a href="{{url('manage-order-user')}}">
-            <button>Xem lại đơn hàng</button>
+            <button class="btn btn-primary">Xem lại đơn hàng</button>
             </a>
         </div>
     </div>

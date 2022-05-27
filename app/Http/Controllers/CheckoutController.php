@@ -107,19 +107,19 @@ class CheckoutController extends Controller
             return view('payment.cash');
         } 
         elseif($request->payment_option == 2) {
-            $request->session()->forget('cart');
+            // $request->session()->forget('cart');
             return view('payment.momo');
         }
         elseif($request->payment_option == 3){
-            $request->session()->forget('cart');
+            // $request->session()->forget('cart');
             return view('payment.paypal');
         }
         elseif($request->payment_option == 4){
-            $request->session()->forget('cart');
+            // $request->session()->forget('cart');
             return view('payment.onepay');
         }
         elseif($request->payment_option == 5){
-            $request->session()->forget('cart');
+            // $request->session()->forget('cart');
             return view('payment.vnpay');
         }
     }
