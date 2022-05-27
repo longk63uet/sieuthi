@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'user_address' => 'ha noi',
             'user_phone' => 1234567,
             'role' => 0,
+            'point' => 0,
 
         ]);
 
