@@ -25,15 +25,5 @@ class UserSeeder extends Seeder
             'point' => 0,
 
         ]);
-
-        DB::table('users')->insert([
-            'name' => 'User',
-            'email' => 'user@gmail.com',
-            'password' => md5(12345678),
-            'user_address' => 'ha noi',
-            'user_phone' => 1234567,
-            'role' => 1,
-
-        ]);
     }
 }
