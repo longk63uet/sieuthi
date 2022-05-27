@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('payment', function (Blueprint $table) {
             $table->bigIncrements('payment_id');
             $table->string('payment_method');
-            $table->integer('payment_status');
             $table->timestamps();
         });
     }

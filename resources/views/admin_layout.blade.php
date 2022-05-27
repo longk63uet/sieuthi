@@ -160,7 +160,7 @@ $( function() {
                     <li>
                         <a class="active" href="{{url('/check-blog')}}">
                             <i class="fa fa-paw"></i>
-                            <span>Blog người dùng</span>
+                            <span>Blog người mua</span>
                         </a>
                     </li>
                     <li>
