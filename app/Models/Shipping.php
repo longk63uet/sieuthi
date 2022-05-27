@@ -18,7 +18,8 @@ class Shipping extends Model
         'shipping_method',
         'shipping_city', 
         'shipping_town', 
-        'shipping_village'
+        'shipping_village',
+        'user_id'
     ];
     protected $primaryKey = 'shipping_id';
  	protected $table = 'shipping';
