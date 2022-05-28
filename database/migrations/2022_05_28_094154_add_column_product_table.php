@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('product', function (Blueprint $table) {
-            $table->integer('sold')->default(0);
-            $table->integer('view')->default(0);
+            $table->integer('sold')->default(0)->change();
+            $table->integer('view')->default(0)->change();
         });
     }
 
