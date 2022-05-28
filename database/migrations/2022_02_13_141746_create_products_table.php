@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('product_image');
             $table->string('product_quantity');
             $table->integer('product_status');
-            $table->integer('sold');
-            $table->integer('view');
+            $table->integer('sold')->default(0);
+            $table->integer('view')->default(0);
             $table->timestamps();
         });
     }

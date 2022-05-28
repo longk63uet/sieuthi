@@ -85,7 +85,7 @@ class BlogController extends Controller
 
     //Quản lý tất cả danh mục blog
     public function allBlogcategory(){
-        $data = DB::table('blogcategory')->paginate(5);
+        $data = DB::table('blogcategory')->get();
         return view('admin.all_blog_category', ['data' => $data]);
 
     }
