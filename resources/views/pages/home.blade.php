@@ -59,7 +59,7 @@
                             
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="">
+                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6>{{$item->product_name}}</h6>
@@ -79,7 +79,7 @@
                             @foreach ($viewProduct as $item)
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="">
+                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6>{{$item->product_name}}</h6>
@@ -100,7 +100,7 @@
                             
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="">
+                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6>{{$item->product_name}}</h6>
@@ -129,7 +129,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="blog__item">
                     <div class="blog__item__pic">
-                        <img width="300" height="300" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="">
+                        <img width="300" height="300" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
                     </div>
                     <div class="blog__item__text">
                         <ul>
