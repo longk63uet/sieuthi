@@ -14,7 +14,7 @@
             @foreach ($product as $pro)
             <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
                 <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="{{URL('public/uploads/product/'.$pro->product_image)}}">
+                    <div class="featured__item__pic set-bg" data-setbg="https://suckhoedoisong.qltns.mediacdn.vn/Images/quangcao/2020/01/13/hi21.jpg">
                         <ul class="featured__item__pic__hover">
                             <li><a href="javascript:" onclick="addToWishlist({{$pro->product_id}})"><i class="fa fa-heart"></i></a></li>
                             <li><a  href="{{url('generate-qrcode/'.$pro->product_id)}}" target="_blank"><i class="fa fa-qrcode"></i></a></li>
@@ -39,7 +39,7 @@
             <div class="col-lg-6 col-md-6 col-sm-6">
                 <div class="banner__pic" >
                     <a href="{{url('market')}}" target="_blank">
-                        <img src="{{URL('public/uploads/banner/'.$banner->banner_image)}}" alt="">
+                        <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/quangcao/2020/01/13/hi21.jpg" alt="">
                     </a>
                 </div>
             </div>
@@ -59,7 +59,7 @@
                             
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
+                                    <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/quangcao/2020/01/13/hi21.jpg" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6>{{$item->product_name}}</h6>
@@ -79,7 +79,7 @@
                             @foreach ($viewProduct as $item)
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
+                                    <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/quangcao/2020/01/13/hi21.jpg" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6>{{$item->product_name}}</h6>
@@ -100,7 +100,7 @@
                             
                             <a href="{{url('/chi-tiet/'.$item->product_id)}}" class="latest-product__item">
                                 <div class="latest-product__item__pic">
-                                    <img src="{{URL('public/uploads/product/'.$item->product_image)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
+                                    <img src="https://suckhoedoisong.qltns.mediacdn.vn/Images/quangcao/2020/01/13/hi21.jpg" alt="">
                                 </div>
                                 <div class="latest-product__item__text">
                                     <h6>{{$item->product_name}}</h6>
@@ -129,7 +129,7 @@
             <div class="col-lg-4 col-md-4 col-sm-6">
                 <div class="blog__item">
                     <div class="blog__item__pic">
-                        <img width="300" height="300" src="{{URL('/public/uploads/blog/'.$item->images)}}" alt="https://images.squarespace-cdn.com/content/v1/53883795e4b016c956b8d243/1551438228969-H0FPV1FO3W5B0QL328AS/chup-anh-thuc-an-1.jpg">
+                        <img width="300" height="300" src="https://suckhoedoisong.qltns.mediacdn.vn/Images/quangcao/2020/01/13/hi21.jpg" alt="">
                     </div>
                     <div class="blog__item__text">
                         <ul>
