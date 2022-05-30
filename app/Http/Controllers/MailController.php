@@ -9,13 +9,14 @@ use App\Models\User;
 
 class MailController extends Controller
 {
-    //
+    //Gửi coupon
     public function sendCoupon(){
         $coupon = Coupon::where('user_id', 1)->get();
         $user = User::where('role', 1)->get();
         return view('admin.send_coupon', compact('coupon', 'user'));
     }
 
+    //Gửi mail
     public function sendMail(Request $request){
         $coupon = Coupon::find($request->coupon);
         $user = $request->user;

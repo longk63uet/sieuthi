@@ -68,6 +68,7 @@ class BannerController extends Controller
         return Redirect::to('manage-banner');
 
     }
+    
     //Xóa banner
     public function deleteBanner($banner_id){
         $banner = Banner::find($banner_id);

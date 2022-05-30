@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Coupon;
-use App\Models\User;
 use Carbon\Carbon;
 session_start();
 
