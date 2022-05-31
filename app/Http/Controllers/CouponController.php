@@ -62,16 +62,14 @@ class CouponController extends Controller
 	/////////////////user//////////////////
 	//Kiểm tra mã giảm giá
 	public function checkCoupon(Request $request){
-        $data = $request->all();
         $user_id = Session::get('user_id');
         $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
-        $coupon = Coupon::where('coupon_code',$data['coupon'])
+        $coupon = Coupon::where('coupon_code',$request->coupon)
                 ->where('coupon_quantity', '>', 0)
-                ->where('coupon_end', '>=', $today)
-                ->where('user_id', 1)
-                ->orWhere('user_id', $user_id)
+                ->whereIn('user_id', array(1, $user_id))
                 ->first();
-        if($coupon){
+        
+        if(!empty($coupon) && (strtotime($coupon->coupon_end) >= strtotime($today))){
             $count_coupon = $coupon->count();
             if($count_coupon>0){
                 $coupon_session = Session::get('coupon');
