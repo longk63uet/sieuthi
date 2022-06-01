@@ -91,8 +91,8 @@ img {
 }
 
 .popup a {
-    margin-top: 50px;
-    padding: 10px 0;
+    margin-top: 51px;
+    padding: 11px 0;
     background: #6fd649;
     color: #fff;
     border: 0;
@@ -266,8 +266,6 @@ ol {
 	margin: 0;
 }
 
-
-
 /* kich thuoc anh */
 
 .section-title {
@@ -288,7 +286,7 @@ ol {
 	right: 0;
 	height: 4px;
 	width: 80px;
-	background: #7fad39;
+	background: #56ad39;
 	content: "";
 	margin: 0 auto;
 }
@@ -470,10 +468,10 @@ ol {
 }
 
 .header__top__right__social a {
-	font-size: 14px;
+	font-size: 15px;
 	display: inline-block;
 	color: #1c1c1c;
-	margin-right: 20px;
+	margin-right:21px;
 }
 
 .header__top__right__social a:last-child {
@@ -497,7 +495,7 @@ ol {
 	position: absolute;
 	right: -21px;
 	top: 1px;
-	height: 20px;
+	height: 21px;
 	width: 1px;
 	background: #000000;
 	opacity: 0.1;
@@ -606,7 +604,7 @@ ol {
 }
 
 .header__menu ul li .header__menu__dropdown li:hover>a {
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .header__menu ul li .header__menu__dropdown li a {
@@ -617,7 +615,7 @@ ol {
 }
 
 .header__menu ul li.active a {
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .header__menu ul li:hover .header__menu__dropdown {
@@ -627,7 +625,7 @@ ol {
 }
 
 .header__menu ul li:hover>a {
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .header__menu ul li:last-child {
@@ -656,13 +654,13 @@ ol {
 
 .header__cart ul {
 	display: inline-block;
-	margin-right: 25px;
+	margin-right: 24px;
 }
 
 .header__cart ul li {
 	list-style: none;
 	display: inline-block;
-	margin-right: 15px;
+	margin-right: 14px;
 }
 
 .header__cart ul li:last-child {
@@ -681,7 +679,7 @@ ol {
 .header__cart ul li a span {
 	height: 13px;
 	width: 13px;
-	background: #7fad39;
+	background: #56ad39;
 	font-size: 10px;
 	color: #ffffff;
 	line-height: 13px;
@@ -2877,7 +2875,7 @@ ol {
 
 .contact__widget span {
 	font-size: 36px;
-	color: #7fad39;
+	color: #56ad39;
 }
 
 .contact__widget h4 {
@@ -3492,7 +3490,7 @@ ol {
 		-webkit-border-radius: 0;
 		border-radius: 0;
 		background: transparent;
-		color: #7fad39;
+		color: #56ad39;
 	}
 	.humberger__menu__wrapper .slicknav_nav .slicknav_row,
 	.humberger__menu__wrapper .slicknav_nav a {
@@ -3958,7 +3956,7 @@ ol {
     }
 
     .product-card .product-title>a:hover {
-        color: #ac32e4;
+        color: #e47f32;
     }
 
     .product-card .product-price {
@@ -4015,7 +4013,7 @@ ol {
     }
 
     .product-card .product-button>a:hover {
-        background-color: #ac32e4;
+        background-color: #e47f32;
         color: #fff;
     }
 
@@ -4085,7 +4083,7 @@ ol {
     }
 
     .product-category-card:hover .product-category-card-title {
-        color: #ac32e4;
+        color: #e47f32;
     }
 
     .product-gallery {
@@ -4150,7 +4148,7 @@ ol {
     }
 
     .product-gallery .product-thumbnails>li.active>a {
-        border-color: #ac32e4;
+        border-color: #e47f32;
         cursor: default;
         opacity: 1;
     }
@@ -4241,7 +4239,7 @@ ol {
     }
 
     .cart-item .cart-item-product:hover .cart-item-product-title {
-        color: #ac32e4;
+        color: #e47f32;
     }
 
     .cart-item .count-input {
@@ -4338,7 +4336,7 @@ ol {
     }
 
     .comparison-table .comparison-item .comparison-item-title:hover {
-        color: #ac32e4;
+        color: #e47f32;
     }
 
     .remove-item {

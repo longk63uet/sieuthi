@@ -91,7 +91,7 @@
                 <div class="contact__widget">
                     <span class="icon_mail_alt"></span>
                     <h4>Email</h4>
-                    <p>hotro@ecomarket.com</p>
+                    <p>hotro@ekomarket.com</p>
                 </div>
             </div>
         </div>
@@ -108,7 +108,7 @@
             <h4>Hà Nội</h4>
             <ul>
                 <li>Điện thoại: 029 399 999</li>
-                <li>Siêu thị xanh Eco Market</li>
+                <li>Siêu thị xanh Eko Market</li>
             </ul>
         </div>
     </div>
