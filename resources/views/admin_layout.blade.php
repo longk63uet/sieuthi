@@ -38,6 +38,11 @@
         "scrollCollapse": true,
         "paging":         false
         } );
+        $('#myTable3').DataTable( {
+        "scrollY":        "500px",
+        "scrollCollapse": true,
+        "paging":         false
+        } );
     } );
 </script>
 <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>

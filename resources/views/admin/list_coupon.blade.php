@@ -18,7 +18,7 @@
                                 Session::put('message',null);
                             }
                             ?>
-      <table class="table table-striped b-t b-light" id="myTable2">
+      <table class="table table-striped b-t b-light" id="myTable3">
         <thead>
           <tr>
             <th>Tên mã giảm giá</th>
@@ -29,6 +29,7 @@
             <th>Ngày kết thúc</th>
             <th>Loại mã</th>
             <th>Số giảm</th>
+            <th>Hành động</th>
           </tr>
         </thead>
         <tbody>
@@ -77,14 +78,6 @@
         </tbody>
       </table>
     </div>
-    <footer class="panel-footer">
-      <div class="row">
-        <div class="col-sm-7 text-right text-center-xs">                
-          <ul class="pagination pagination-sm m-t-none m-b-none">
-          </ul>
-        </div>
-      </div>
-    </footer>
   </div>
 </div>
 @endsection

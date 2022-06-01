@@ -26,6 +26,7 @@
         <th>Thời gian</th>
         <th>Sản phẩm</th>
         <th>Trạng thái</th>
+        <th>Xóa</th>
       </tr>
     </thead>
     <tbody>
