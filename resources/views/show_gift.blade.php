@@ -11,23 +11,19 @@
                             <th>Mã</th>
                             <th>Khuyến mãi</th>
                             <th>Số lượng</th>
-                            <th>Tình trạng</th>
+                            <th>Hạn sử dụng</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($gift_coupon as $coupon)
+                        @if (strtotime($coupon->coupon_end) >= strtotime($today))
                         <tr>
                             <td>{{$coupon->coupon_code}}</td>
                             <td>{{$coupon->coupon_name}}</td>
                             <td>{{$coupon->coupon_quantity}}</td>
-                            <td>
-                                @if ($coupon->coupon_end > $today && $coupon->coupon_quantity >= 1)
-                                    Mã giảm giá có thể sử dụng    
-                                @else
-                                  Mã giảm giá không khả dụng                                 
-                                @endif
-                            </td>
+                            <td>{{$coupon->coupon_end}}</td>
                           </tr>
+                          @endif
                           @endforeach
                     </tbody>
                 </table>

@@ -97,9 +97,8 @@ class GiftController extends Controller
         $user_id = Session::get('user_id');
         $user = User::find($user_id);
 
-        $gift_coupon = DB::table('coupon')->where('user_id', $user->id)->orderBy('coupon_end', 'DESC')->get();
+        $gift_coupon = DB::table('coupon')->where('user_id', $user->id)->where('coupon_quantity', 1)->orderBy('coupon_end', 'DESC')->get();
         $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
-
 
         return view('show_gift', ['user' => $user, 'gift_coupon' => $gift_coupon, 'today' => $today]);
     }
