@@ -193,7 +193,7 @@ class OrderController extends Controller
 						<td>'.$product->product_name.'</td>
 						<td>'.$product->product_quantity.'</td>
 						<td>'.number_format($product->product_price,0,',','.').' VNĐ'.'</td>
-						<td>'.number_format($product->product_quantity * $product->product_price,0,',','.').'đ'.'</td>
+						<td>'.number_format($product->product_quantity * $product->product_price,0,',','.').' VNĐ'.'</td>
 						
 					</tr>';
 				}
