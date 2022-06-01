@@ -192,7 +192,7 @@ class OrderController extends Controller
 					<tr>
 						<td>'.$product->product_name.'</td>
 						<td>'.$product->product_quantity.'</td>
-						<td>'.number_format($product->product_price,0,',','.').'đ'.'</td>
+						<td>'.number_format($product->product_price,0,',','.').' VNĐ'.'</td>
 						<td>'.number_format($product->product_quantity * $product->product_price,0,',','.').'đ'.'</td>
 						
 					</tr>';
@@ -201,9 +201,9 @@ class OrderController extends Controller
 				
 		$output.= '<tr>
 				<td colspan="2">
-					<p>Tổng giảm: '.number_format($coupon,0,',','.').'VNĐ'.'</p>
-					<p>Phí ship: '.number_format($feeship,0,',','.').'VNĐ'.'</p>
-					<p>Thanh toán : '.number_format($total,0,',','.').'VNĐ'.'</p>
+					<p>Tổng giảm: '.number_format($coupon,0,',','.').' VNĐ'.'</p>
+					<p>Phí ship: '.number_format($feeship,0,',','.').' VNĐ'.'</p>
+					<p>Thanh toán : '.number_format($total,0,',','.').' VNĐ'.'</p>
 					<p>Hình thức thanh toán : '.$this->paymentMethod($payment->payment_method).'</p>
 				</td>
 		</tr>';
