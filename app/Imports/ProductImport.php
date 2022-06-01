@@ -20,6 +20,9 @@ class ProductImport implements ToModel
             'product_price' => $row[2],
             'product_image' => $row[3],
             'product_status' => $row[4],
+            'category_id' => $row[5],
+            'product_quantity' => $row[6],
+            
         ]);
     }
 }
