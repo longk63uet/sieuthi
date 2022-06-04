@@ -162,6 +162,18 @@ $( function() {
                             <span>Quản lý nhân viên</span>
                         </a>
                     </li>
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-star-o"></i>
+                            <span>Blog nấu ăn</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{url('/insert-blog')}}">Thêm Blog</a></li>
+                            <li><a href="{{url('/add-blog-category')}}">Thêm danh mục Blog</a></li>
+                            <li><a href="{{url('/manage-blog')}}">Quản lý Blog</a></li>
+                            <li><a href="{{url('/all-blog-category')}}">Quản lý danh mục Blog</a></li>
+                        </ul>
+                    </li>
                     <li>
                         <a class="active" href="{{url('/check-blog')}}">
                             <i class="fa fa-paw"></i>
@@ -176,14 +188,16 @@ $( function() {
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-hourglass-o"></i>
-                            <span>Banner quảng cáo</span>
+                            <i class="fa fa-percent"></i>
+                            <span>Mã giảm giá</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{url('/add-banner')}}">Thêm Banner quảng cáo</a></li>
-                            <li><a href="{{url('/manage-banner')}}">Quản lý Banner quảng cáo</a></li>
+                            <li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
+                            <li><a href="{{url('/manage-coupon')}}">Quản lý mã giảm giá</a></li>
+                            <li><a href="{{url('/send-coupon')}}">Gửi mã giảm giá cho khách</a></li>
                         </ul>
                     </li>
+                    
                     <li>
                         <a class="active" href="{{url('/manage-comment')}}">
                             <i class="fa fa-comments-o"></i>
@@ -198,27 +212,15 @@ $( function() {
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
-                            <i class="fa fa-star-o"></i>
-                            <span>Blog nấu ăn</span>
+                            <i class="fa fa-hourglass-o"></i>
+                            <span>Banner quảng cáo</span>
                         </a>
                         <ul class="sub">
-                            <li><a href="{{url('/insert-blog')}}">Thêm Blog</a></li>
-                            <li><a href="{{url('/add-blog-category')}}">Thêm danh mục Blog</a></li>
-                            <li><a href="{{url('/manage-blog')}}">Quản lý Blog</a></li>
-                            <li><a href="{{url('/all-blog-category')}}">Quản lý danh mục Blog</a></li>
+                            <li><a href="{{url('/add-banner')}}">Thêm Banner quảng cáo</a></li>
+                            <li><a href="{{url('/manage-banner')}}">Quản lý Banner quảng cáo</a></li>
                         </ul>
                     </li>
-                    <li class="sub-menu">
-                        <a href="javascript:;">
-                            <i class="fa fa-percent"></i>
-                            <span>Mã giảm giá</span>
-                        </a>
-                        <ul class="sub">
-                            <li><a href="{{url('/insert-coupon')}}">Thêm mã giảm giá</a></li>
-                            <li><a href="{{url('/manage-coupon')}}">Quản lý mã giảm giá</a></li>
-                            <li><a href="{{url('/send-coupon')}}">Gửi mã giảm giá cho khách</a></li>
-                        </ul>
-                    </li>
+                    
                 </ul>          
             </div>
         </div>
