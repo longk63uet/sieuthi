@@ -11,15 +11,7 @@ session_start();
 
 class CouponController extends Controller
 {
-    //Xóa mã giảm giá
-	public function unsetCoupon(){
-        $coupon = Session::get('coupon');
-        if($coupon==true){
-            Session::forget('coupon');
-            return redirect()->back()->with('message','Xóa mã khuyến mãi thành công');
-        }
-	}
-
+    
     //Thêm mã giảm giá
     public function insertCoupon(){
     	return view('admin.insert_coupon');
@@ -64,44 +56,66 @@ class CouponController extends Controller
 	public function checkCoupon(Request $request){
         $user_id = Session::get('user_id');
         $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
-        $coupon = Coupon::where('coupon_code',$request->coupon)
+        $total_price = Session::get('cart')->totalPrice;
+        $coupon = Coupon::where('coupon_code', $request->coupon)
                 ->where('coupon_quantity', '>', 0)
+                ->where('coupon_min', '<', $total_price)
                 ->whereIn('user_id', array(1, $user_id))
                 ->first();
-        
+        $output = '';
         if(!empty($coupon) && (strtotime($coupon->coupon_end) >= strtotime($today))){
-            $count_coupon = $coupon->count();
-            if($count_coupon>0){
-                $coupon_session = Session::get('coupon');
-                if($coupon_session==true){
-                    $is_avaiable = 0;
-                    if($is_avaiable==0){
-                        $cou[] = array(
-                            'coupon_id' => $coupon->coupon_id,
-                            'coupon_code' => $coupon->coupon_code,
-                            'coupon_condition' => $coupon->coupon_condition,
-                            'coupon_discount' => $coupon->coupon_discount,
-                        );
-                        Session::put('coupon',$cou);
-                    }
-                }else{
-                    $cou[] = array(
-                            'coupon_id' => $coupon->coupon_id,
-                            'coupon_code' => $coupon->coupon_code,
-                            'coupon_condition' => $coupon->coupon_condition,
-                            'coupon_discount' => $coupon->coupon_discount,
-                        );
-                    Session::put('coupon',$cou);
-                }
-                Session::save();
-
-                return redirect()->back()->with('message','Thêm mã giảm giá thành công');
-            }
-
-        }else{
-            $request->session()->forget('coupon');
-
-            return redirect()->back()->with('error','Mã giảm giá không đúng hoặc không thể sử dụng');
+            $output .= '<div class="checkout__order__subtotal">Mã <span> ' . $coupon->coupon_code
+            . ' </span></div>';
+           if($coupon->coupon_condition == 1 ){
+            $discount = ($total_price * $coupon->coupon_discount) / 100;
+            $output .= '<div class="checkout__order__subtotal">Giảm <span> ' . number_format($coupon->coupon_discount)
+            . '  % </span></div>';
+           }
+           else{
+            $discount = $coupon->coupon_discount;
+            $output .= '<div class="checkout__order__subtotal">Giảm <span> ' . number_format($coupon->coupon_discount)
+            . '  VNĐ </span></div>';
+           }
+        //    $output .= '<div class="btn btn-primary mb-3" id="unset-coupon">Xóa mã</div>';
+        //    $output .= '<div class="checkout__order__subtotal">Tổng giảm <span>' . number_format($discount,0,',','.') . ' VNĐ</span></div>';
+           $request->session()->put('coupon', $coupon->coupon_id);
         }
+
+        else{
+            $discount = 0;
+            $output .= '';
+        }
+        $request->session()->put('discount', $discount);
+        $response = [
+            'output' =>  $output,
+            'discount' =>  number_format($discount) . ' VNĐ'
+        ];
+
+        return $response;
     }
+
+    //Xóa mã giảm giá
+	public function unsetCoupon(){
+        // $coupon = Session::get('coupon');
+        // if($coupon==true){
+        //     Session::forget('coupon');
+        //     return redirect()->back()->with('message','Xóa mã khuyến mãi thành công');
+        // }
+        Session::forget('coupon');
+        Session::put('discount', 0);
+        
+	}
+
+    public function loadTotal(){
+        $discount = Session::get('discount');
+        $total_price = Session::get('cart')->totalPrice;
+        $feeship = Session::get('feeship');
+        $total = $total_price + $feeship - $discount;
+        Session::put('total', $total);
+        $output = '';
+        $output .= number_format($total) . ' VNĐ';
+
+        return $output;
+    }
+
 }

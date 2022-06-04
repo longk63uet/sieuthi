@@ -18,7 +18,7 @@
 <!-- thanh toan momo -->
 <div class="container">
     @php
-        $total = Session::get('cart')->totalPrice;
+        $total = Session::get('total');
     @endphp
     <div class="row text-center">
         <div class="col-lg-12 text-center" style="margin-top: 20px; margin-bottom: 20px">

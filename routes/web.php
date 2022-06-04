@@ -240,3 +240,4 @@ Route::post('/paypal',[PaymentController::class, 'paypal']);
 //Mã giảm giá
 Route::post('/check-coupon',[CouponController::class, 'checkCoupon']);
 Route::get('/unset-coupon',[CouponController::class, 'unsetCoupon']);
+Route::get('/load_total',[CouponController::class, 'loadTotal']);

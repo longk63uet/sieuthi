@@ -19,8 +19,25 @@ class CheckoutController extends Controller
     public function checkout(){
         $user_id = Session::get('user_id');
         $shipping = DB::table('shipping')->join('users', 'users.id', 'shipping.user_id')->where('shipping.user_id', $user_id)->first();
+        $total_price = Session::get('cart')->totalPrice;
 
-        return view('checkout', ['shipping' => $shipping] );
+        if($total_price < 300000){
+            $shipping_fee = 15000;
+        }
+        else{
+            $shipping_fee = 0;
+        }
+        Session::put('feeship', $shipping_fee);
+        if(Session::get('discount')){
+            $discount = Session::get('discount');
+        }
+        else {
+            $discount = 0;
+        }
+
+        $total = $total_price + $shipping_fee - $discount;
+        Session::put('total', $total);
+        return view('checkout', ['shipping' => $shipping, 'shipping_fee' => $shipping_fee, 'total_price' => $total_price, 'discount' => $discount, 'total' => $total] );
     }
 
     //Thêm người dùng mới
@@ -65,22 +82,20 @@ class CheckoutController extends Controller
         $cart = Session::get('cart');
         $order_data = array();
         $order_data['user_id'] = Session::get('user_id');
-        $order_data['feeship'] = $request->feeship;
+        $order_data['feeship'] = Session::get('feeship');
         if(Session::get('coupon')){
-            foreach(Session::get('coupon') as $cou){
-                $coupon_id = $cou['coupon_id'];
-            }
+            $coupon_id = Session::get('coupon');
             //Sau khi dùng giảm số lượng mã giảm giá
             $coupon = Coupon::find($coupon_id);
             $coupon->coupon_quantity -- ;
             $coupon->save();
         }
-        $order_data['coupon'] = $request->discount;
+        $order_data['coupon'] = Session::get('discount');
         $order_data['shipping_id'] = Session::get('shipping_id');
         $order_data['payment_id'] = $payment_id;
         $order_data['order_status'] = 1;
         $order_data['day'] = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');
-        $order_data['order_total'] = $request->price;
+        $order_data['order_total'] = Session::get('total');
         $order_id = DB::table('order')->insertGetId($order_data);
 
         
@@ -100,9 +115,11 @@ class CheckoutController extends Controller
             DB::table('order_details')->insert($order_detail_data);
         }
         $request->session()->forget('coupon');
-        
+        $request->session()->forget('discount');
+        $request->session()->forget('feeship');
         //Hình thức thanh toán
         if ($request->payment_option == 1) {
+            
             $request->session()->forget('cart');
             return view('payment.cash');
         } 
