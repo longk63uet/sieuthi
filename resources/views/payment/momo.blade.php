@@ -21,19 +21,20 @@
         $total = Session::get('total');
     @endphp
     <div class="row text-center">
-        <div class="col-lg-12 text-center" style="margin-top: 20px; margin-bottom: 20px">
+        <div class="col-lg-12 text-center" style="margin-top: 20px; margin-bottom: 10px">
             <h3 class="text-center" style="font-size: 30px">Bạn đang chọn hình thức thanh toán MOMO</h3>
-        </div>
-    </div>
-    <div class="row center-form" style="margin-bottom: 30px;">
-            <form action="{{url('momo')}}" method="post" class="ml-15">
+            <form action="{{url('momo')}}" method="post" class="ml-15" style="margin-top: 30px;">
                 @csrf
                 <input type="hidden" name="total" value="{{$total}}">
                 <button class="btn btn-color" type="submit" name="payUrl">Tiếp tục thanh toán</button>
             </form>
-            {{-- <div>
-            <a href="{{url('manage-order-user')}}"><button class="btn btn-color">Xem lại đơn hàng </button></a>
-            <a href="{{url('/')}}"><button class="btn btn-color">Quay lại trang chủ </button></a>
-    </div> --}}
+        </div>
+    </div>
+    <div class="row center-form" style="margin-bottom: 30px;">
+            
+            <!-- <div>
+                <a href="{{url('manage-order-user')}}"><button class="btn btn-color">Xem lại đơn hàng </button></a>
+                <a href="{{url('/')}}"><button class="btn btn-color">Quay lại trang chủ </button></a>
+            </div> -->
 </div>
 @include('footer')
