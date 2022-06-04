@@ -10,6 +10,7 @@ class PaymentController extends Controller
 {
     //Phương thức thanh toán VNPAY
     public function vnpay(Request $request){
+            
             error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
             date_default_timezone_set('Asia/Ho_Chi_Minh');
             $order_id = rand(0,9999);
@@ -73,10 +74,12 @@ class PaymentController extends Controller
                 , 'data' => $vnp_Url);
                 if (isset($_POST['redirect'])) {
                     $request->session()->forget('cart');
-                    
+                    $request->session()->forget('discount');
+                    $request->session()->forget('feeship');
                     header('Location: ' . $vnp_Url);
                     die();
                 } else {
+                    
                     echo json_encode($returnData);
                 }
         }
@@ -235,6 +238,8 @@ class PaymentController extends Controller
                 $jsonResult = json_decode($result, true);  // decode json
                 //Just a example, please check more in there
                 $request->session()->forget('cart');
+                $request->session()->forget('discount');
+                $request->session()->forget('feeship');
                 return redirect()->to($jsonResult['payUrl']);
         }
 }

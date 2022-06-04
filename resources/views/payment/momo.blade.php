@@ -26,13 +26,14 @@
         </div>
     </div>
     <div class="row center-form" style="margin-bottom: 30px;">
-            <form action="{{url('momo')}}" method="post" class="pynt-form">
+            <form action="{{url('momo')}}" method="post" class="ml-15">
                 @csrf
                 <input type="hidden" name="total" value="{{$total}}">
                 <button class="btn btn-color" type="submit" name="payUrl">Tiếp tục thanh toán</button>
             </form>
-            <a href="{{url('manage-order-user')}}"><button class="btn pynt-form btn-color">Xem lại đơn hàng </button></a>
+            {{-- <div>
+            <a href="{{url('manage-order-user')}}"><button class="btn btn-color">Xem lại đơn hàng </button></a>
             <a href="{{url('/')}}"><button class="btn btn-color">Quay lại trang chủ </button></a>
-    </div>
+    </div> --}}
 </div>
 @include('footer')

@@ -115,11 +115,11 @@ class CheckoutController extends Controller
             DB::table('order_details')->insert($order_detail_data);
         }
         $request->session()->forget('coupon');
-        $request->session()->forget('discount');
-        $request->session()->forget('feeship');
+        
         //Hình thức thanh toán
         if ($request->payment_option == 1) {
-            
+            $request->session()->forget('discount');
+            $request->session()->forget('feeship');
             $request->session()->forget('cart');
             return view('payment.cash');
         } 

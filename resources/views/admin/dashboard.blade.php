@@ -101,7 +101,7 @@
 							var donut = Morris.Donut({
 								element: 'donut',
 								data: [{"value":"","label":""}],
-								colors: ['#ff00bd','#ff0000','#ffd8bd','#2D619C'],
+								colors: ['#e00b00','#002fff','#00e038','#2D619C'],
 							});
 						});
 					</script>
