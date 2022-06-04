@@ -143,7 +143,15 @@ $total = 0;
                   }
                       ?>
                     @else
-                    <h4 style="text-align: center;">Giỏ hàng của bạn đang trống</h4>  
+                    <h4 style="text-align: center;" class="mb-4">Giỏ hàng của bạn đang trống</h4>  
+                    <div style="text-align: center;" class="mb-4">
+                        <a href="{{url('/')}}" >
+                        <button class="btn btn-primary ml-7">Tiếp tục mua sắm</button>
+                        </a>
+                        <a href="{{url('manage-order-user')}}" >
+                        <button class="btn btn-primary">Xem lại đơn hàng</button>
+                        </a>
+                    </div>
                     @endif
                     </div>
                 </div>
