@@ -20,23 +20,23 @@
                                    @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên người dùng</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input required type="text" name="name" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Địa chỉ email</label>
-                                    <input type="text" name="email" class="form-control">
+                                    <input required type="email" name="email" class="form-control">
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Số điện thoại</label>
-                                    <input type="text" name="phone" class="form-control">
+                                    <input required type="text" name="phone" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Địa chỉ người dùng</label>
-                                    <input type="text" name="address" class="form-control">
+                                    <input required type="text" name="address" class="form-control">
                                 </div>
                                     <div class="form-group">
                                     <label for="exampleInputEmail1">Mật khẩu</label>
-                                    <input type="password" name="password" class="form-control">
+                                    <input required type="password" name="password" class="form-control">
                                 </div>
                                 <button type="submit"  class="btn btn-info">Thêm người dùng mới</button>
                                 </form>

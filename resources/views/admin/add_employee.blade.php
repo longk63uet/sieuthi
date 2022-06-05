@@ -20,23 +20,23 @@
                                    @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên Nhân viên</label>
-                                    <input type="text" name="name" class="form-control">
+                                    <input required type="text" name="name" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Địa chỉ email</label>
-                                    <input type="text" name="email" class="form-control">
+                                    <input required type="email" name="email" class="form-control">
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputEmail1">Số điện thoại</label>
-                                    <input type="text" name="phone" class="form-control">
+                                    <input required type="text" name="phone" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Địa chỉ</label>
-                                    <input type="text" name="address" class="form-control">
+                                    <input required type="text" name="address" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Chức vụ</label>
-                                    <select type="text" name="job" class="form-control">
+                                    <select required type="text" name="job" class="form-control">
                                         <option value="Shipper"> Shipper</option>
                                         <option value="Nhân viên bán hàng"> Nhân viên bán hàng</option>
                                         <option value="Nhân viên tạp vụ"> Nhân viên tạp vụ</option>

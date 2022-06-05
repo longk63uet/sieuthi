@@ -10,8 +10,8 @@
             <div id="login-form">
                 <form action="{{URL('/login')}}" method="post">
 					{{csrf_field()}}
-                    <input type="text" name="email" placeholder="Email" />
-                    <input type="password" name="password" placeholder="Mật khẩu" />
+                    <input type="email" name="email" placeholder="Email" required/>
+                    <input type="password" name="password" placeholder="Mật khẩu" required/>
                     <span class="remember" >
                         <input type="checkbox" class="checkbox" checked>
                         <label for="remember-me">Ghi nhớ đăng nhập</label>
@@ -24,12 +24,12 @@
             <div id="signup-form">
                 <form action="{{URL('/add-user')}}" method="POST">
 					{{csrf_field()}}
-                    <input type="email" name="user_email" placeholder="Email" />
-					<input type="text" name="user_name" placeholder="Tên" />
-                    <input type="text" name="user_phone" placeholder="Số điện thoại" />
-                    <input type="text" name="user_address" placeholder="Địa chỉ" />
-                    <input type="password" name="user_password" placeholder="Mật khẩu" />
-                    <input type="password" placeholder="Xác nhận mật khẩu" />
+                    <input type="email" name="user_email" placeholder="Email" required/>
+					<input type="text" name="user_name" placeholder="Tên" required/>
+                    <input type="text" name="user_phone" placeholder="Số điện thoại" required/>
+                    <input type="text" name="user_address" placeholder="Địa chỉ" required/>
+                    <input type="password" name="user_password" placeholder="Mật khẩu" required/>
+                    <input type="password" placeholder="Xác nhận mật khẩu" required/>
                     <button type="submit" class="btn signup">Đăng ký</button>
                 </form>
             </div>

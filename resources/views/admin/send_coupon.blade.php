@@ -20,7 +20,7 @@
                                    @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Mã giảm giá</label>
-                                    <select type="text" name="coupon" class="form-control">
+                                    <select required type="text" name="coupon" class="form-control">
                                         @foreach ($coupon as $item)
                                         <option value="{{$item->coupon_id}}">{{$item->coupon_name}}</option>
                                         @endforeach
@@ -28,7 +28,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Gửi đến khách hàng</label>
-                                    <select name="user[]" class="form-control" size="8" multiple="multiple" >
+                                    <select required name="user[]" class="form-control" size="8" multiple="multiple" >
                                         @foreach ($user as $us)
                                         <option value="{{$us->id}}">{{$us->name}} ( {{$us->email}} )</option>
                                         @endforeach

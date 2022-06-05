@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="form-group col-lg-6 col-md-6">
                     <label for="exampleInputEmail1">Chọn đơn hàng cần hỗ trợ:</label>
-                    <select name="order_id" class="form-control input-lg m-bot15">
+                    <select name="order_id" class="form-control input-lg m-bot15" required>
                         @foreach ($order as $item)
                         <option value="{{$item->order_id}}">{{$item->order_id}}</option>
                         @endforeach
@@ -38,24 +38,24 @@
                 </div>
                 <div class="form-group col-lg-6 col-md-6">
                     <label for="exampleInputEmail1">Chọn vấn đề cần hỗ trợ:</label>
-                    <select name="issue" class="form-control input-lg m-bot15">
+                    <select name="issue" class="form-control input-lg m-bot15" required>
                         @foreach ($issues as $key => $value)
                         <option value="{{$key}}">{{$value}}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" name="name" placeholder="Nhập tên của bạn">
+                    <input type="text" name="name" placeholder="Nhập tên của bạn" required>
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" name="email" placeholder="Nhập địa chỉ email">
+                    <input type="email" name="email" placeholder="Nhập địa chỉ email" required>
                 </div>
                 <div class="col-lg-6 col-md-6">
-                    <input type="text" name="phone" placeholder="Nhập số điện thoại">
+                    <input type="text" name="phone" placeholder="Nhập số điện thoại" required>
                 </div>
                 
                 <div class="col-lg-12 text-center">
-                    <textarea rows="7" name="feedback" placeholder="Nhập ý kiến của bạn"></textarea>
+                    <textarea rows="7" name="feedback" placeholder="Nhập ý kiến của bạn" required></textarea>
                     <button type="submit" class="site-btn" onclick="alert('Bạn đã gửi yêu cầu thành công!')">Gửi yêu cầu</button>
                 </div>
             </div>

@@ -14,28 +14,28 @@
                             @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tiêu đề Blog</label>
-                            <input type="text" value="{{$item->title}}" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" class="form-control" name="title" placeholder="Nhập tiêu đề Blog">
+                            <input required type="text" value="{{$item->title}}" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" class="form-control" name="title" placeholder="Nhập tiêu đề Blog">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Ảnh minh họa</label>
-                            <input type="file" class="form-control" name="images" id="exampleInputEmail1" >
+                            <input required type="file" class="form-control" name="images" id="exampleInputEmail1" >
                             <img src="{{URL::to('public/uploads/blog/'.$item->images)}}" height="100" width="100">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Nguyên liệu</label>
-                            <textarea id="editor2"  style="resize :none" rows="4" type="text" class="form-control" name="summary"  >
+                            <textarea required id="editor2"  style="resize :none" rows="4" type="text" class="form-control" name="summary"  >
                                 {{$item->summary}}
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mô tả chi tiết</label>
-                            <textarea id="editor3" style="resize :none" rows="8" type="text" class="form-control" name="content">
+                            <textarea required id="editor3" style="resize :none" rows="8" type="text" class="form-control" name="content">
                                 {{$item->content}} 
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Danh mục blog</label>
-                            <select name="blogcategory_id" class="form-control input-lg m-bot15">
+                            <select required name="blogcategory_id" class="form-control input-lg m-bot15">
                                 @foreach($cate as $cate)
                                             @if($cate->blogcategory_id==$item->blogcategory_id)
                                             <option selected value="{{$cate->blogcategory_id}}">{{$cate->blogcategory_name}}</option>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tùy chọn hiển thị</label>
-                            <select name="status" class="form-control input-lg m-bot15">
+                            <select required name="status" class="form-control input-lg m-bot15">
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Ẩn</option>
                             </select>

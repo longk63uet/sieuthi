@@ -13,11 +13,11 @@
                             @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tiêu đề danh mục Blog</label>
-                            <input data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền tên danh mục Blog" type="text" class="form-control" name="blogcategory_name" id="exampleInputEmail1" placeholder="Nhập tên danh mục blog">
+                            <input required data-validation="length" data-validation-length="min2" data-validation-error-msg="Làm ơn điền tên danh mục Blog" type="text" class="form-control" name="blogcategory_name" id="exampleInputEmail1" placeholder="Nhập tên danh mục blog">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tùy chọn hiển thị</label>
-                            <select name="blogcategory_status" class="form-control input-lg m-bot15">
+                            <select required name="blogcategory_status" class="form-control input-lg m-bot15">
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Ẩn</option>
                             </select>

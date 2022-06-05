@@ -20,19 +20,19 @@
                                     @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên banner</label>
-                                    <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" name="banner_name" class="form-control" id="exampleInputEmail1" placeholder="Tên banner">
+                                    <input required type="text" data-validation="length" data-validation-length="min2" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" name="banner_name" class="form-control" id="exampleInputEmail1" placeholder="Tên banner">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh Banner</label>
-                                    <input type="file" name="banner_image" class="form-control" id="exampleInputEmail1" placeholder="Banner">
+                                    <input required type="file" name="banner_image" class="form-control" id="exampleInputEmail1" placeholder="Banner">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả banner</label>
-                                    <textarea data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" style="resize: none" rows="8" class="form-control" name="banner_desc" id="exampleInputPassword1" placeholder="Mô tả banner"></textarea>
+                                    <textarea required data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 5 ký tự" style="resize: none" rows="8" class="form-control" name="banner_desc" id="exampleInputPassword1" placeholder="Mô tả banner"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Trạng thái</label>
-                                      <select name="banner_status" class="form-control input-sm m-bot15">
+                                      <select required name="banner_status" class="form-control input-sm m-bot15">
                                            <option value="1">Hiển thị</option>
                                             <option value="0">Ẩn</option>
                                     </select>

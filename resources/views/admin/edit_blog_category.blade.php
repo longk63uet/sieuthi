@@ -14,11 +14,11 @@
                             @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên danh mục</label>
-                            <input type="text" class="form-control" name="blogcategory" id="exampleInputEmail1" value={{$blogcate->blogcategory_name}}>
+                            <input required type="text" class="form-control" name="blogcategory" id="exampleInputEmail1" value={{$blogcate->blogcategory_name}}>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tùy chọn hiển thị</label>
-                            <select name="blogcategory_status" class="form-control input-lg m-bot15">
+                            <select required name="blogcategory_status" class="form-control input-lg m-bot15">
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Ẩn</option>
                             </select>

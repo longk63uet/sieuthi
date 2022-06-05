@@ -20,13 +20,12 @@
                                    @csrf
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Điểm Eko Point</label>
-                                    <input type="text" name="point" class="form-control">
+                                    <input required type="text" name="point" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Quà đổi</label>
-                                    <input type="text" name="gift" class="form-control">
+                                    <input required type="text" name="gift" class="form-control">
                                 </div>
-                                
                                 <button type="submit"  class="btn btn-info">Thêm quà tặng quy đổi mới</button>
                                 </form>
                             </div>

@@ -9,26 +9,26 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-fn">Tên</label>
-                        <input class="form-control" type="text" name="name" id="account-fn" value="{{$user->name}}" required="">
+                        <input required class="form-control" type="text" name="name" id="account-fn" value="{{$user->name}}" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-ln">Email</label>
-                        <input class="form-control" type="email" name="email" id="account-ln" value="{{$user->email}}" required="">
+                        <input required class="form-control" type="email" name="email" id="account-ln" value="{{$user->email}}" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-email">Số điện thoại</label>
-                        <input class="form-control" type="text" name="user_phone" id="account-email" value="{{$user->user_phone}}"
+                        <input required class="form-control" type="text" name="user_phone" id="account-email" value="{{$user->user_phone}}"
                         >
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-email">Địa chỉ</label>
-                        <input class="form-control" type="text" name="user_address" id="account-email" value="{{$user->user_address}}"
+                        <input required class="form-control" type="text" name="user_address" id="account-email" value="{{$user->user_address}}"
                             >
                     </div>
                 </div>
@@ -46,54 +46,54 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-fn">Họ</label>
-                        <input class="form-control" type="text" name="shipping_surname" id="account-fn" value="{{$shipping->shipping_surname ? $shipping->shipping_surname : ""}}" required="">
+                        <input required class="form-control" type="text" name="shipping_surname" id="account-fn" value="{{$shipping->shipping_surname ? $shipping->shipping_surname : ""}}" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-ln">Tên</label>
-                        <input class="form-control" name="shipping_name" type="text" id="account-ln" value="{{$shipping->shipping_name}}" required="">
+                        <input required class="form-control" name="shipping_name" type="text" id="account-ln" value="{{$shipping->shipping_name}}" required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-email">Email</label>
-                        <input class="form-control" name="shipping_email" type="email" id="account-email" value="{{$shipping->shipping_email}}"
+                        <input required class="form-control" name="shipping_email" type="email" id="account-email" value="{{$shipping->shipping_email}}"
                             >
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-phone">Số điện thoại</label>
-                        <input class="form-control" name="shipping_phone" type="text" id="account-phone" value="{{$shipping->shipping_phone}}"
+                        <input required class="form-control" name="shipping_phone" type="text" id="account-phone" value="{{$shipping->shipping_phone}}"
                             required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-city">Tỉnh/Thành phố</label>
-                        <input class="form-control" name="shipping_city" type="text" id="account-city" value="{{$shipping->shipping_city}}"
+                        <input required class="form-control" name="shipping_city" type="text" id="account-city" value="{{$shipping->shipping_city}}"
                             required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-district">Quận/Huyện</label>
-                        <input class="form-control" name="shipping_town" type="text" id="account-district" value="{{$shipping->shipping_town}}"
+                        <input required class="form-control" name="shipping_town" type="text" id="account-district" value="{{$shipping->shipping_town}}"
                             required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-vlg">Xã/Phường</label>
-                        <input class="form-control" name="shipping_village" type="text" id="account-vlg" value="{{$shipping->shipping_village}}"
+                        <input required class="form-control" name="shipping_village" type="text" id="account-vlg" value="{{$shipping->shipping_village}}"
                             required="">
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="account-address">Địa chỉ</label>
-                        <input class="form-control" name="shipping_address" type="text" id="account-address" value="{{$shipping->shipping_address}}"
+                        <input required class="form-control" name="shipping_address" type="text" id="account-address" value="{{$shipping->shipping_address}}"
                             required="">
                     </div>
                 </div>

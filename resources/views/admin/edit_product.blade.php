@@ -21,28 +21,28 @@
                                     {{ csrf_field() }}
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Tên sản phẩm</label>
-                                    <input type="text" name="product_name" class="form-control" onkeyup="ChangeToSlug();" id="slug" value="{{$pro->product_name}}">
+                                    <input required type="text" name="product_name" class="form-control" onkeyup="ChangeToSlug();" id="slug" value="{{$pro->product_name}}">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Số lượng sản phẩm</label>
-                                    <input type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="convert_slug" value="{{$pro->product_quantity}}">
+                                    <input required type="text" data-validation="number" data-validation-error-msg="Làm ơn điền số lượng" name="product_quantity" class="form-control" id="convert_slug" value="{{$pro->product_quantity}}">
                                 </div>
                                      <div class="form-group">
                                     <label for="exampleInputEmail1">Giá sản phẩm</label>
-                                    <input type="text" value="{{$pro->product_price}}" name="product_price" class="form-control" id="exampleInputEmail1" >
+                                    <input required type="text" value="{{$pro->product_price}}" name="product_price" class="form-control" id="exampleInputEmail1" >
                                 </div>
                                   <div class="form-group">
                                     <label for="exampleInputEmail1">Hình ảnh sản phẩm</label>
-                                    <input type="file" name="product_image" class="form-control" id="exampleInputEmail1">
+                                    <input required type="file" name="product_image" class="form-control" id="exampleInputEmail1">
                                     <img src="{{URL::to('public/uploads/product/'.$pro->product_image)}}" height="100" width="100">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Mô tả sản phẩm</label>
-                                    <textarea style="resize: none" rows="8" class="form-control" name="product_detail" id="ckeditor2">{{$pro->product_detail}}</textarea>
+                                    <textarea required style="resize: none" rows="8" class="form-control" name="product_detail" id="ckeditor2">{{$pro->product_detail}}</textarea>
                                 </div>
                                  <div class="form-group">
                                     <label for="exampleInputPassword1">Danh mục sản phẩm</label>
-                                      <select name="product_cate" class="form-control input-sm m-bot15">
+                                      <select required name="product_cate" class="form-control input-sm m-bot15">
                                         @foreach($cate as $cate)
                                             @if($cate->category_id==$pro->category_id)
                                             <option selected value="{{$cate->category_id}}">{{$cate->category_name}}</option>
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Hiển thị</label>
-                                      <select name="product_status" value=@php ($pro->product_status==1)? "Hiển thị": "Ẩn" @endphp  class="form-control input-sm m-bot15">
+                                      <select required name="product_status" value=@php ($pro->product_status==1)? "Hiển thị": "Ẩn" @endphp  class="form-control input-sm m-bot15">
                                             <option value="0">Ẩn</option>
                                             <option value="1">Hiển thị</option>
                                     </select>

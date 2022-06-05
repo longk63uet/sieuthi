@@ -13,12 +13,12 @@
                             @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên danh mục</label>
-                            <input data-validation="length" data-validation-length="min10" data-validation-error-msg="Làm ơn điền tên danh mục sản phẩm" type="text" class="form-control" name="category" id="exampleInputEmail1" placeholder="Nhập tên danh mục sản phẩm">
+                            <input required data-validation="length" data-validation-length="min2" data-validation-error-msg="Làm ơn điền tên danh mục sản phẩm" type="text" class="form-control" name="category" id="exampleInputEmail1" placeholder="Nhập tên danh mục sản phẩm">
                         </div>
                        
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tùy chọn hiển thị</label>
-                            <select name="category_status" class="form-control input-lg m-bot15">
+                            <select required name="category_status" class="form-control input-lg m-bot15">
                                 <option value="1">Hiển thị</option>
                                 <option value="0">Ẩn</option>
                             </select>

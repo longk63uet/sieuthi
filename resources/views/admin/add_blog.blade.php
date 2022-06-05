@@ -13,25 +13,25 @@
                             @csrf
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tiêu đề Blog</label>
-                            <input type="text" data-validation="length" data-validation-length="min5" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" class="form-control" name="title" placeholder="Nhập tiêu đề Blog">
+                            <input required type="text" data-validation="length" data-validation-length="min2" data-validation-error-msg="Làm ơn điền ít nhất 10 ký tự" class="form-control" name="title" placeholder="Nhập tiêu đề Blog">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Ảnh minh họa</label>
-                            <input type="file" class="form-control" name="images" id="exampleInputEmail1" >
+                            <input required type="file" class="form-control" name="images" id="exampleInputEmail1" >
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tóm tắt</label>
-                            <textarea id="editor2" style="resize :none" rows="4" type="text" class="form-control" name="summary"  placeholder="Mô tả ngắn">
+                            <textarea required id="editor2" style="resize :none" rows="4" type="text" class="form-control" name="summary"  placeholder="Mô tả ngắn">
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mô tả chi tiết</label>
-                            <textarea id="editor3" style="resize :none" rows="8" type="text" class="form-control" name="content"  placeholder="Mô tả Blog">
+                            <textarea required id="editor3" style="resize :none" rows="8" type="text" class="form-control" name="content"  placeholder="Mô tả Blog">
                             </textarea>
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Danh mục blog</label>
-                            <select name="blogcategory_id" class="form-control input-lg m-bot15">
+                            <select required name="blogcategory_id" class="form-control input-lg m-bot15">
                                 @foreach ($blogcate as $cate)
                                 
                                 <option value="{{$cate->blogcategory_id}}">{{$cate->blogcategory_name}}</option>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Sản phẩm giới thiệu</label>
-                            <select name="product[]" class="form-control" size="8" multiple="multiple" >
+                            <select required name="product[]" class="form-control" size="8" multiple="multiple" required>
                                 @foreach ($products as $pro)
                                 <option value="{{$pro->product_id}}">{{$pro->product_name}}</option>
                                 @endforeach
