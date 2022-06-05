@@ -279,6 +279,8 @@ $(document).ready(function(){
 <script>
     $(document).ready( function () {
     $('#myTable').DataTable();
+        // } );
+        $('#myTable1').DataTable();
         } );
         
 </script>

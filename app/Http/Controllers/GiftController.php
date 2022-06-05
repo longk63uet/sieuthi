@@ -25,7 +25,7 @@ class GiftController extends Controller
     public function exchange($point){
         $user_id = Session::get('user_id');
         $user = User::find($user_id);
-        if($user->point > $point){
+        if($user->point >= $point){
         $user->point -= $point;
         $user->save();
         $today = Carbon::now('Asia/Ho_Chi_Minh')->format('d-m-Y');

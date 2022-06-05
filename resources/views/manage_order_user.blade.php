@@ -5,7 +5,7 @@
             <div class="d-flex justify-content-end pb-3">
             </div>
             <div class="table-responsive">
-                <table class="table table-hover mb-0" id="myTable">
+                <table class="table table-hover mb-0" id="myTable1">
                     <thead>
                         <tr>
                             <th>Mã đơn hàng</th>
@@ -38,7 +38,6 @@
 
                             <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-primary">Đã nhận được hàng</button></a></td>
                             @endif
-
                         </tr>
                         @endforeach
                     </tbody>
