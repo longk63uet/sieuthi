@@ -36,7 +36,19 @@ class OrderController extends Controller
         $all_order = DB::table('order')
         ->join('users','order.user_id','=','users.id')
         ->select('order.*','users.name')
-        ->orderby('order.order_id','desc')->paginate(10);
+        ->orderby('order.order_id','desc')->get();
+
+        return view('admin.manage_order')->with('all_order',$all_order);
+    }
+
+	//Xử lý đơn hàng
+	public function handleOrder(){
+        $this->AuthLogin();
+        $all_order = DB::table('order')
+        ->join('users','order.user_id','=','users.id')
+        ->select('order.*','users.name')
+		->where('order.order_status', 1)
+        ->orderby('order.order_id','desc')->get();
 
         return view('admin.manage_order')->with('all_order',$all_order);
     }
@@ -252,7 +264,7 @@ class OrderController extends Controller
 		$order->order_code = rand(0,9999999);
 		$order->save();
 
-		return Redirect::to('manage-order');
+		return redirect()->back();
 
 	}
 

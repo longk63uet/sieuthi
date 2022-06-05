@@ -109,6 +109,7 @@ Route::get('/delete-comment/{id}', [CommentController::class, 'deleteComment']);
 
 //order
 Route::get('/manage-order', [OrderController::class, 'manageOrder']);
+Route::get('/handle-order', [OrderController::class, 'handleOrder']);
 Route::get('/view-order/{order_id}', [OrderController::class, 'viewOrder']);
 Route::get('/delete-order/{order_id}',[OrderController::class, 'deleteOrder']);
 Route::get('/print-order/{order_id}',[OrderController::class, 'printOrder']);

@@ -124,11 +124,21 @@ $( function() {
                             <span>Tổng quan</span>
                         </a>
                     </li>
-                    <li>
+                    {{-- <li>
                         <a class="active" href="{{url('/manage-order')}}">
                             <i class="fa fa-cogs"></i>
                             <span>Quản lý đơn hàng</span>
                         </a>
+                    </li> --}}
+                    <li class="sub-menu">
+                        <a href="javascript:;">
+                            <i class="fa fa-percent"></i>
+                            <span>Quản lý đơn hàng</span>
+                        </a>
+                        <ul class="sub">
+                            <li><a href="{{url('/manage-order')}}">Tất cả đơn hàng</a></li>
+                            <li><a href="{{url('/handle-order')}}">Xử lý đơn hàng</a></li>
+                        </ul>
                     </li>
                     <li class="sub-menu">
                         <a href="javascript:;">
