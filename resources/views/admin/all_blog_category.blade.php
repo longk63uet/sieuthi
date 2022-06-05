@@ -51,7 +51,7 @@
   </table>
   <form action="{{url('blogcategory-import-csv')}}" method="POST" enctype="multipart/form-data">
     @csrf
-    <input  type="file" name="file" accept=".xlsx"><br>
+    <input  type="file" name="file" accept=".xlsx" required><br>
     <input type="submit" value="Import file Excel" name="import_csv" class="btn btn-warning">
   </form>
   <form action="{{url('blogcategory-export-csv')}}" method="POST">
