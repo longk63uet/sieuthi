@@ -12,7 +12,7 @@
                             <th>Ngày đặt hàng</th>
                             <th>Trạng thái</th>
                             <th>Tổng tiền</th>
-                            <th>Hành động</th>
+                            <th>Hành động</th> 
                         </tr>
                     </thead>
                     <tbody>
@@ -31,13 +31,14 @@
                             <td><span class="badge badge-success m-0"> Giao hàng thành công </span></td>
                             @endif
                             
-                            <td>{{number_format($item->order_total)}} VNĐ</td>
+                            <td>{{number_format($item->order_total)}} VNĐ</td> 
+                            <td>
                             @if ($item->order_status == 1)
-                            <td><a onclick="return confirm('Bạn có muốn hủy đơn hàng này không?')"  href="{{url('cancel-order/'.$item->order_id)}}"><button class="btn btn-danger">Hủy đơn hàng</button></a></td>
+                            <a onclick="return confirm('Bạn có muốn hủy đơn hàng này không?')"  href="{{url('cancel-order/'.$item->order_id)}}"><button class="btn btn-danger">Hủy đơn hàng</button></a>
                             @elseif ($item->order_status == 2)
-
-                            <td><a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-primary">Đã nhận được hàng</button></a></td>
-                            @endif
+                            <a onclick="return confirm('Bạn xác nhận đã nhận được hàng?')" href="{{url('confirm-order/'.$item->order_id)}}"><button class="btn btn-primary">Đã nhận được hàng</button></a>
+                            @endif 
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
