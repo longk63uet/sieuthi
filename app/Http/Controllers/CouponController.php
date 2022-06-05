@@ -63,7 +63,7 @@ class CouponController extends Controller
                 ->whereIn('user_id', array(1, $user_id))
                 ->first();
         $output = '';
-        if(!empty($coupon) && (strtotime($coupon->coupon_end) >= strtotime($today))){
+        if(!empty($coupon) && (strtotime($coupon->coupon_end) >= strtotime($today)) && (strtotime($coupon->coupon_start) <= strtotime($today))){
             $output .= '<div class="checkout__order__subtotal">Mã <span> ' . $coupon->coupon_code
             . ' </span></div>';
            if($coupon->coupon_condition == 1 ){
